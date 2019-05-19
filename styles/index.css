@@ -1,0 +1,637 @@
+body {
+    background: #f3f4f9;
+}
+
+.layui-col-wheight {
+    height: 348px;
+}
+
+.layui-radius {
+    box-shadow: 0 0 10px 0 rgba(0, 63, 91, 0.08);
+    border-radius: 4px;
+    background: #fff;
+}
+
+.layui-carousel {
+    height: 100%
+}
+
+.layui-carousel img {
+    width: 100%;
+    height: 100%;
+}
+
+.layui-col-news {
+    background: #fff;
+    height: 348px;
+}
+
+.layui-carousel-ind {
+    top: -20px;
+}
+
+.layui-carousel-ind ul {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.layui-carousel-ind>ul>li {
+    width: 0.4rem;
+    height: 0.4rem;
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.layui-carousel-ind>ul>li.layui-this {
+    width: 1rem;
+    height: 0.4rem;
+    border-radius: 25px;
+    background-color: #0070C9
+}
+
+/* 签约快讯 */
+.news-left-block {
+    float: left;
+
+    width: 0.4rem;
+    height: 1.1rem;
+
+    background: #0070C9;
+
+    margin-left: 0.7%;
+    margin-right: 0.7%;
+    margin-top: 1.8%;
+
+}
+
+.news-title {
+    float: left;
+
+    width: calc(100% - 0.7% - 2% - 0.7% - 0.4rem);
+
+    margin-left: 0.7%;
+    margin-right: 0.7%;
+
+    border-bottom: 1px solid #E4EBF0;
+}
+
+.news-title>p {
+    cursor: default;
+
+    float: left;
+
+    font-size: 16px;
+    color: #222637;
+
+    margin-top: 1.6%;
+    margin-left: 0.3%;
+    margin-bottom: 1.7%;
+}
+
+.news-title>a {
+    display: block;
+    float: right;
+
+    font-size: 14px;
+    color: #0070C9;
+
+    margin-top: 1.7%;
+}
+
+.news-title>a>i {
+    font-size: 14px;
+}
+
+.news-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.news-content li {
+    height: 40px;
+}
+
+.news-content .news-info {
+    float: left;
+
+    width: 50%;
+
+    margin-left: 1.8%;
+
+    font-size: 16px;
+    color: #283945;
+    line-height: 40px;
+}
+
+.news-content .news-date {
+    float: right;
+
+    cursor: pointer;
+
+    margin-right: 1.5%;
+
+    font-size: 14px;
+    color: #ACB7BF;
+    line-height: 40px;
+
+}
+
+.news-content .news-info {
+    cursor: pointer;
+
+     -webkit-transition: color .3s;
+        -moz-transition: color .3s;
+          -o-transition: color .3s;
+             transition: color .3s;
+}
+
+.news-content .news-info:hover {
+    color: #0070C9;
+}
+
+/* 登陆框 */
+@media screen and (min-width: 1200px) {
+
+    .layui-carousel,
+    .layui-user {
+        width: 21%;
+    }
+}
+
+/* 登陆框 */
+.main-login {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.login-box {
+    width: 100%;
+    margin-top: 30px;
+    border-bottom: 1px solid #E4EBF0;
+}
+
+.login-box i {
+    font-size: 22px;
+
+    color: #E4EBF0;
+
+    margin-right: 10px;
+}
+
+.login-box input {
+    border: none;
+
+    height: 34px;
+
+    font-size: 15px;
+    color: #ACB7BF;
+}
+
+.login-verify {
+    width: 100%;
+    height: 3.2rem;
+
+    color: #E4EBF0;
+    border: 1px solid #E4EBF0;
+    border-radius: 2px;
+
+    text-align: center;
+    line-height: 3.2rem;
+
+    margin-top: 30px;
+
+    cursor: pointer;
+}
+
+.layui-form-checkbox span {
+    font-size: 15px;
+    color: #657580;
+}
+
+.layui-form-checkbox[lay-skin=primary] i {
+    width: 13px;
+    height: 13px;
+}
+
+.layui-form-checkbox[lay-skin=primary]:hover i {
+    border-color: #0070C9;
+}
+
+.layui-form-checked[lay-skin=primary] i {
+    background-color: #0070C9;
+}
+
+.login-function {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.login-function a {
+    float: right;
+    font-size: 15px;
+    color: #657580
+}
+
+.login-btn {
+    margin-top: 26px;
+}
+
+.login-btn button {
+    text-align: center;
+
+    font-size: 1rem;
+    color: #fff;
+    background: #0070C9;
+
+    height: 48px;
+    line-height: 48px;
+}
+
+.login-function a {
+
+     -webkit-transition: color .4s;
+        -moz-transition: color .4s;
+          -o-transition: color .4s;
+             transition: color .4s;
+}
+
+.login-function a:hover {
+    color: #0070C9;
+}
+
+/* 中心管理 */
+.layui-center {
+    margin-top: 1%;
+}
+
+.layui-center a {
+    display: inline-block;
+    width: 246px;
+    height: 122px;
+}
+
+.layui-center a p {
+    font-size: 1.3rem;
+
+    color: #fff;
+    text-align: center;
+    line-height: 122px;
+}
+
+.layui-center a.item-source {
+    background-image: url('../images/source_center.png');
+    background-position: top center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.layui-center a.item-surveillance {
+    background-image: url('../images/surveillance_center.png');
+    background-position: top center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.layui-center a.item-business {
+    background-image: url('../images/business_center.png');
+    background-position: top center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.layui-center a.item-dispatch {
+    background-image: url('../images/dispatch_center.png');
+    background-position: top center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.layui-center a.item-customer {
+    background-image: url('../images/customer_center.png');
+    background-position: top center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.layui-center a.item-operational {
+    background-image: url('../images/operational_center.png');
+    background-position: top center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+/* 能源经营业务 */
+.energy {
+    margin-top: 1%;
+
+    height: 60px;
+    line-height: 60px;
+
+    text-align: center;
+}
+
+.energy .line {
+    display: inline-block;
+
+    width: 36%;
+
+    border-top: 2px solid #D6D6D6;
+}
+
+.energy .txt {
+    display: inline-block;
+
+    margin-left: 3%;
+    margin-right: 3%;
+
+    color: #222637;
+    font-size: 20px;
+    font-weight: 600;
+
+    vertical-align: -8%;
+}
+
+.energy-tip {
+    margin-top: 1.2%;
+}
+
+.energy-tip p {
+    display: inline-block;
+
+    font-size: 16px;
+    color: #222637;
+
+    margin-left: 2%;
+    margin-right: 2%;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.energy-tip .energy-block {
+    display: block;
+
+    width: 0;
+    height: 0.4rem;
+
+    margin-top: 0.3rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    background: #0070C9;
+
+    -webkit-transition: .3s all cubic-bezier(.46, 1, .23, 1.52);
+    -moz-transition: .3s all cubic-bezier(.46, 1, .23, 1.52);
+    -o-transition: .3s all cubic-bezier(.46, 1, .23, 1.52);
+    transition: .3s all cubic-bezier(.46, 1, .23, 1.52);
+}
+
+.energy-tip .energy-block.active {
+    width: 1.1rem;
+}
+
+.energy-content {
+    margin-top: 2.2rem;
+    padding-left: 10%;
+}
+
+.energy-content .energy-content-title {
+    font-size: 14px;
+    color: #657580;
+}
+
+.energy-content .energy-content-number {
+    font-size: 24px;
+    color: #222637;
+
+    margin-left: 15%;
+    margin-top: 1rem;
+}
+
+.energy-content .energy-content-number span {
+    display: inline-block;
+
+    font-size: 14px;
+    color: #ACB7BF;
+
+    margin-left: 5px;
+}
+
+.progress-box {
+    margin-top: 1.5rem;
+}
+
+.progress-money {
+    font-size: 16px;
+    color: #657580;
+    margin-bottom: 0.2%;
+}
+
+.layui-progress {
+    background-color: rgba(0, 0, 0, 0);
+
+    width: 60%;
+    height: 0.4rem;
+
+    display: inline-block;
+}
+
+.progress-num {
+    display: inline-block;
+
+    margin-left: 20px;
+
+    font-size: 16px;
+    color: #222637;
+}
+
+.progress-num span {
+    display: inline-block;
+    margin-left: 3px;
+
+    font-size: 12px;
+
+    color: #ACB7BF;
+}
+
+.layui-bg-custom1 {
+    background-color: #0070C9 !important
+}
+
+.layui-bg-custom2 {
+    background-color: #7FB7E4 !important
+}
+
+/* 环形图 */
+.chart-title {
+    font-size: 16px;
+    color: #657580;
+    margin-left: 15px;
+    margin-bottom: 0.3%;
+}
+
+.chart-legend {
+    display: inline-block;
+
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+}
+
+.chart-legend1 {
+    background-color: #0070C9;
+}
+
+.chart-legend2 {
+    background-color: #7fb7e4;
+}
+
+.chart-legend3 {
+    background-color: #e8e9ea;
+}
+
+.chart-desc {
+    display: inline-block;
+
+    margin-left: 0.7rem;
+    margin-bottom: 0.7rem;
+
+    font-size: 12px;
+    color: #ACB7BF;
+}
+
+.chart-legend-all {
+    position: absolute;
+    bottom: 0;
+    right: 36px;
+}
+
+.energy-site {
+    float: left;
+
+    width: 0.4rem;
+    height: 1.1rem;
+
+    background: #0070C9;
+
+    margin-left: 0.7%;
+    margin-right: 0.7%;
+    margin-top: 1.2rem;
+}
+
+.energy-site-title {
+    float: left;
+
+    width: calc(100% - 0.7% - 2% - 0.7% - 0.4rem);
+
+    margin-left: 0.7%;
+    margin-right: 0.7%;
+}
+
+.energy-site-title p {
+    cursor: default;
+
+    float: left;
+
+    font-size: 16px;
+    color: #222637;
+
+    margin-left: 1rem;
+    margin-top: 1rem;
+
+    font-weight: 600;
+}
+
+.energy-content .energy-center .energy-content-number {
+    margin-left: 0;
+}
+
+.extended-longevity .progress-money,
+.extended-longevity .progress-num {
+    display: inline-block;
+}
+
+.extended-longevity .progress-money {
+    float: left;
+}
+
+.extended-longevity .progress-num {
+    float: right;
+}
+
+.extended-longevity .layui-progress {
+    width: 100%;
+
+    background-color: #E8E9EA;
+
+    margin-right: 20px;
+}
+
+/* 资信中心 */
+.credit-content {
+    width: 39.6rem;
+    height: 7.9rem;
+
+    background: #F1F4F6;
+
+    border-radius: 4px;
+
+    margin: 3.1rem auto 1.4rem auto;
+}
+
+.industry-box {
+    width: 20.4rem;
+    height: 19.3rem;
+
+    float: left;
+
+    margin-left: 1.4rem;
+    margin-right: 1.4rem;
+
+    cursor: pointer;
+
+    -webkit-transition: border .4s;
+        -moz-transition: border .4s;
+          -o-transition: border .4s;
+             transition: border .4s;
+}
+
+.industry-box img {
+    width: 18.4rem;
+    height: 11.8rem;
+
+    margin: 1rem;
+}
+
+.industry-box h1 {
+    font-size: 16px;
+    color: #283945;
+
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.industry-box p {
+    font-size: 14px;
+    color: #ACB7BF;
+
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.customer-box {
+    margin-top: 4.9rem;
+    padding-bottom: 6rem;
+    padding-left: 6.9rem;
+    padding-right: 6.9rem;
+}
+
+.customer-box img {
+    float: left;
+
+    width: 8.8rem;
+    height: 2.4rem;
+
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}

@@ -1,0 +1,36 @@
+/* 覆盖layui样式 */
+/* 头部 */
+.layui-layout-admin .layui-header {
+    background: #5a6378;
+}
+
+.layui-layout-admin .logo-box {
+    padding-top: 0.3%;
+    padding-left: 8.3%;
+}
+
+/* 内容 */
+.layui-fluid {
+    padding-top: 0.7%;
+    padding-left: 8.3%;
+    padding-right: 8.3%;
+}
+
+/* 页脚 */
+.footer {
+    width: 100%;
+    height: 6rem;
+
+    background: #5A6378;
+    ;
+    color: #fff;
+    font-size: 14px;
+    color: #B7B7B7;
+    text-align: center;
+
+    padding-top: 3rem;
+}
+
+.footer p {
+    line-height: 30px;
+}

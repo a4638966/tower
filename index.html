@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>中国铁塔股份有限公司河南省分公司</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="components/layui/css/layui.css">
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <script src="components/jquery/jquery.min.js"></script>
+  <script src="components/layui/layui.js"></script>
+  <script src="components/chart.js/Chart.js"></script>
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="layui-layout-body" style="overflow: auto">
+  <!-- 头部logo部分开始 -->
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header logo-box">
+      <a href="index.html">
+        <img src="images/logo.png" alt="logo">
+      </a>
+    </div>
+  </div>
+  <!-- 头部logo部分结束 -->
+  <!-- 主体内容开始 -->
+  <div class="layui-fluid">
+    <!-- 头部开始 -->
+    <div class="layui-row">
+      <div class="layui-col-lg3 layui-col-md3 layui-col-wheight layui-radius layui-carousel"
+        style="margin-right: 1%;">
+        <div class="layui-carousel" id="myCarousel">
+          <div carousel-item>
+            <div>
+              <a href="javascript:void(0)">
+                <img src="images/carousel-1.png" alt="轮播图片">
+              </a>
+            </div>
+            <div>
+              <a href="javascript:void(0)">
+                <img src="images/carousel-1.png" alt="轮播图片">
+              </a>
+            </div>
+            <div>
+              <a href="javascript:void(0)">
+                <img src="images/carousel-1.png" alt="轮播图片">
+              </a>
+            </div>
+            <div>
+              <a href="javascript:void(0)">
+                <img src="images/carousel-1.png" alt="轮播图片">
+              </a>
+            </div>
+            <div>
+              <a href="javascript:void(0)">
+                <img src="images/carousel-1.png" alt="轮播图片">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layui-col-lg6 layui-col-md6 layui-col-news layui-radius">
+        <div class="layui-row">
+          <div class="layui-col-lg12 layui-col-md12">
+            <div class="news-left-block"></div>
+            <div class="news-title">
+              <p>签约快讯</p>
+              <a href="#">
+                查看全部
+                <i class="layui-icon layui-icon-right news-icon"></i>
+              </a>
+              <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="layui-col-lg12 layui-col-md12">
+            <ul class="news-content">
+              <li>
+                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                <p class="news-date">2018-11-24 14:53</p>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                <p class="news-date">2018-11-24 14:53</p>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                <p class="news-date">2018-11-24 14:53</p>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                <p class="news-date">2018-11-24 14:53</p>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                <p class="news-date">2018-11-24 14:53</p>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                <p class="news-date">2018-11-24 14:53</p>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                <p class="news-date">2018-11-24 14:53</p>
+                <div class="clearfix"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="layui-col-lg3 layui-col-md3 layui-col-wheight layui-user layui-radius" style="margin-left: 0.7%;">
+        <div class="layui-row">
+          <div class="layui-col-lg12 lay-col-md12 main-login">
+            <div class="layui-form">
+              <div class="login-box">
+                <i class="layui-icon layui-icon-username"></i>
+                <input type="text" placeholder="手机号/邮箱/用户名">
+              </div>
+              <div class="login-box">
+                <i class="layui-icon layui-icon layui-icon-password"></i>
+                <input type="password" placeholder="密码">
+              </div>
+              <div class="login-verify">点击进行验证</div>
+              <div class="login-function">
+                <input type="checkbox" name="" title="两周内自动登录" lay-skin="primary">
+                <a href="#">忘记密码</a>
+              </div>
+              <div class="login-btn">
+                <button class="layui-btn layui-btn-fluid">登陆</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 头部结束 -->
+    <!-- 六张图开始 -->
+    <div class="layui-row layui-center">
+      <a href="#" class="item-resources item-source">
+        <p>资源中心</p>
+      </a>
+      <a href="#" class="item-resources item-surveillance">
+        <p>监控中心</p>
+      </a>
+      <a href="#" class="item-resources item-business">
+        <p>业务中心</p>
+      </a>
+      <a href="#" class="item-resources item-dispatch">
+        <p>调度中心</p>
+      </a>
+      <a href="#" class="item-resources item-customer">
+        <p>客户中心</p>
+      </a>
+      <a href="#" class="item-resources item-operational">
+        <p>运营中心</p>
+      </a>
+    </div>
+    <!-- 六张图结束 -->
+    <!-- 能源经营业务数据展示开始 -->
+    <div class="layui-row">
+      <div class="layui-col-lg12 layui-col-md12">
+        <div class="energy">
+          <span class="line" style="float:left;margin-top: 32px;margin-left:10px;"></span>
+          <span class="txt">能源经营业务数据展示</span>
+          <span class="line" style="float: right;margin-top: 32px;margin-right: 120px;"></span>
+        </div>
+      </div>
+      <div class="layui-col-lg12 layui-col-md12">
+        <div class="layui-row">
+          <div class="layui-col-lg6 layui-col-md6 layui-radius" style="width: 48%;margin-right: 1%;">
+            <div class="energy-tip">
+              <p>
+                <span class="energy-text">备电点</span>
+                <span class="energy-block"></span>
+              </p>
+              <p>
+                <span class="energy-text">发电点</span>
+                <span class="energy-block  active"></span>
+              </p>
+              <p>
+                <span class="energy-text">换电点</span>
+                <span class="energy-block"></span>
+              </p>
+              <p>
+                <span class="energy-text">售电点</span>
+                <span class="energy-block"></span>
+              </p>
+            </div>
+            <div class="energy-content">
+              <div class="layui-row" style="margin-bottom: 1.5rem;">
+                <div class="layui-col-lg4 layui-col-md4">
+                  <p class="energy-content-title">数量</p>
+                  <p class="energy-content-number">34<span>个</span></p>
+                </div>
+                <div class="layui-col-lg4 layui-col-md4">
+                  <p class="energy-content-title">收入</p>
+                  <p class="energy-content-number">5.8<span>万</span></p>
+                </div>
+                <div class="layui-col-lg4 layui-col-md4">
+                  <p class="energy-content-title">容量</p>
+                  <p class="energy-content-number">6000<span>w</span></p>
+                </div>
+                <div class="layui-row">
+                  <div class="layui-col-lg5 layui-col-md5">
+                    <div class="progress-box" style="margin-top: 3.5rem;">
+                      <p class="progress-money">合同金额</p>
+                      <div class="layui-progress">
+                        <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%"></div>
+                      </div>
+                      <p class="progress-num">2.1<span>万</span></p>
+                    </div>
+                    <div class="progress-box">
+                      <p class="progress-money">回款金额</p>
+                      <div class="layui-progress">
+                        <div class="layui-progress-bar layui-bg-custom1" lay-percent="50%"></div>
+                      </div>
+                      <p class="progress-num">5.3<span>万</span></p>
+                    </div>
+                    <div class="progress-box">
+                      <p class="progress-money">出账金额</p>
+                      <div class="layui-progress">
+                        <div class="layui-progress-bar layui-bg-custom1" lay-percent="100%"></div>
+                      </div>
+                      <p class="progress-num">4.8<span>万</span></p>
+                    </div>
+                  </div>
+                  <div class="layui-col-lg7 layui-col-md-7" style="margin-top:3.5rem;position:relative">
+                    <p class="chart-title">业务占比</p>
+                    <canvas id="pieChart" style="height:160px;"></canvas>
+                    <ul class="chart-legend-all">
+                      <li>
+                        <span class="chart-legend chart-legend1"></span>
+                        <span class="chart-desc">业务类型1</span>
+                      </li>
+                      <li>
+                        <span class="chart-legend chart-legend2"></span>
+                        <span class="chart-desc">业务类型2</span>
+                      </li>
+                      <li>
+                        <span class="chart-legend chart-legend3"></span>
+                        <span class="chart-desc">业务类型3</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="layui-col-lg3 layui-col-md3 layui-radius" style="width: 22%;margin-right: 1%;">
+            <div>
+              <div class="energy-site"></div>
+              <div class="energy-site-title">
+                <p>储能站</p>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="energy-content" style="margin-top:4.6rem">
+              <div class="layui-row energy-center" style="margin-bottom: 1.5rem;">
+                <div class="layui-col-lg6 layui-col-md6">
+                  <p class="energy-content-title">数量</p>
+                  <p class="energy-content-number">34<span>个</span></p>
+                </div>
+                <div class="layui-col-lg6 layui-col-md6">
+                  <p class="energy-content-title">容量</p>
+                  <p class="energy-content-number">5.8<span>万</span></p>
+                </div>
+                <div class="layui-col-lg6 layui-col-md6" style="margin-top: 2rem;">
+                  <p class="energy-content-title">峰值放电时长</p>
+                  <p class="energy-content-number">6000<span>min</span></p>
+                </div>
+                <div class="layui-row">
+                  <div class="layui-col-lg12 layui-col-md12">
+                    <div class="progress-box" style="margin-top: 2.9rem;">
+                      <p class="progress-money">充电量</p>
+                      <div class="layui-progress">
+                        <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%"></div>
+                      </div>
+                      <p class="progress-num">2.1<span>万</span></p>
+                    </div>
+                    <div class="progress-box">
+                      <p class="progress-money">放电量</p>
+                      <div class="layui-progress">
+                        <div class="layui-progress-bar layui-bg-custom2" lay-percent="50%"></div>
+                      </div>
+                      <p class="progress-num">5.3<span>万</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="layui-col-lg3 layui-col-md3 layui-radius" style="width: 22%;">
+            <div>
+              <div class="energy-site"></div>
+              <div class="energy-site-title">
+                <p>延寿站</p>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="energy-content extended-longevity" style="margin-top:4.6rem">
+              <div class="layui-row energy-center" style="margin-bottom: 1.5rem;padding-right: 20px;">
+                <div class="layui-col-lg6 layui-col-md6">
+                  <p class="energy-content-title">数量</p>
+                  <p class="energy-content-number">34<span>个</span></p>
+                </div>
+                <div class="layui-col-lg6 layui-col-md6">
+                  <p class="energy-content-title">容量</p>
+                  <p class="energy-content-number">5.8<span>万</span></p>
+                </div>
+                <div class="layui-col-lg6 layui-col-md6" style="margin-top: 2rem;">
+                  <p class="energy-content-title">平均续航时长</p>
+                  <p class="energy-content-number">6000<span>min</span></p>
+                </div>
+                <div class="layui-row">
+                  <div class="layui-col-lg12 layui-col-md12">
+                    <div class="progress-box" style="margin-top: 1.9rem;">
+                      <p class="progress-money">续航能力提升能力</p>
+                      <p class="progress-num">2.1<span>万</span></p>
+                      <div class="layui-progress">
+                        <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%"></div>
+                      </div>
+                    </div>
+                    <div class="progress-box">
+                      <p class="progress-money">放电量</p>
+                      <div class="layui-progress">
+                        <div class="layui-progress-bar layui-bg-custom2" lay-percent="50%"></div>
+                      </div>
+                      <p class="progress-num">5.3<span>万</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 能源经营业务数据展示结束 -->
+    <!-- 资信中心开始 -->
+    <div class="layui-row" style="margin-top:1.5rem;">
+      <div class="layui-col-lg6 layui-col-md6 layui-radius" style="width: 48%; margin-right: 1%;">
+        <div class="news-left-block"></div>
+        <div class="news-title" style="border:none">
+          <p>资信中心</p>
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="credit-content"></div>
+      </div>
+      <div class="layui-col-lg6 layui-col-md6 layui-radius" style="width: 45.1%">
+        <div class="news-left-block"></div>
+        <div class="news-title" style="border:none">
+          <p>信息下载中心</p>
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="credit-content"></div>
+      </div>
+    </div>
+    <!-- 资信中心结束 -->
+    <!-- 行业资信开始 -->
+    <div class="layui-row">
+      <div class="layui-col-lg12 layui-col-md12">
+        <div class="energy" style="margin-bottom: 2rem;">
+          <span class="line" style="float:left;margin-top: 32px;margin-left:10px;"></span>
+          <span class="txt">行业资信</span>
+          <span class="line" style="float: right;margin-top: 32px;margin-right: 120px;"></span>
+        </div>
+      </div>
+      <div class="layui-col-lg12 layui-col-md12">
+        <div class="industry-box layui-radius">
+          <img src="images/industry.jpg" alt="行业资信">
+          <h1 class="industry-title">今年的5G到来之前,智能手机还应该做什么?</h1>
+          <p>2018-11-24 14:53</p>
+        </div>
+        <div class="industry-box layui-radius">
+          <img src="images/industry.jpg" alt="行业资信">
+          <h1 class="industry-title">今年的5G到来之前,智能手机还应该做什么?</h1>
+          <p>2018-11-24 14:53</p>
+        </div>
+        <div class="industry-box layui-radius">
+          <img src="images/industry.jpg" alt="行业资信">
+          <h1 class="industry-title">今年的5G到来之前,智能手机还应该做什么?</h1>
+          <p>2018-11-24 14:53</p>
+        </div>
+        <div class="industry-box layui-radius" style="margin-right:0">
+          <img src="images/industry.jpg" alt="行业资信">
+          <h1 class="industry-title">今年的5G到来之前,智能手机还应该做什么?</h1>
+          <p>2018-11-24 14:53</p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- 行业资讯结束 -->
+    <!-- 签约客户开始 -->
+    <div class="layui-row">
+      <div class="layui-col-lg12 layui-col-md12">
+        <div class="energy" style="margin-bottom: 1rem;">
+          <span class="line" style="float:left;margin-top: 32px;margin-left:10px;"></span>
+          <span class="txt">签约客户</span>
+          <span class="line" style="float: right;margin-top: 32px;margin-right: 120px;"></span>
+        </div>
+      </div>
+      <div class="layui-col-lg12 layui-col-md12 layui-radius" style="width: 92%;margin-bottom: 20rem;">
+        <div class="energy-tip" style="text-align: center;margin-top:2rem;margin-left:-100px;">
+          <p>
+            <span class="energy-text">金融机构</span>
+            <span class="energy-block"></span>
+          </p>
+          <p>
+            <span class="energy-text">医疗卫生</span>
+            <span class="energy-block  active"></span>
+          </p>
+          <p>
+            <span class="energy-text">公安交警</span>
+            <span class="energy-block"></span>
+          </p>
+          <p>
+            <span class="energy-text">学校教育</span>
+            <span class="energy-block"></span>
+          </p>
+          <p>
+            <span class="energy-text">单位机房</span>
+            <span class="energy-block"></span>
+          </p>
+          <p>
+            <span class="energy-text">数据中心</span>
+            <span class="energy-block"></span>
+          </p>
+          <p>
+            <span class="energy-text">物业管理</span>
+            <span class="energy-block"></span>
+          </p>
+        </div>
+        <div class="customer-box">
+          <img src="images/customer_1.png" alt="腾讯云">
+          <img src="images/customer_2.png" alt="京东云">
+          <img src="images/customer_3.png" alt="航天云网">
+          <img src="images/customer_4.png" alt="浪潮云">
+          <img src="images/customer_5.png" alt="天泽智云">
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!-- 签约客户结束 -->
+  </div>
+  <footer class="footer">
+    <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
+    <p>creenshots © Their respective owners. Google+</p>
+  </footer>
+  <script>
+    layui.use(['carousel', 'form', 'element'], function () {
+      var carousel = layui.carousel;
+      var form = layui.form;
+      var element = layui.element;
+      //建造实例
+      carousel.render({
+        elem: '#myCarousel',
+        width: '100%' //设置容器宽度
+          ,
+        height: '348px',
+        arrow: 'hover' //始终显示箭头
+        //,anim: 'updown' //切换动画方式
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    $('.energy-tip p').on('click', function () {
+      $(this).children('.energy-block').addClass('active')
+      $(this).siblings().children('.energy-block').removeClass('active');
+    });
+  </script>
+  <script>
+    // 调用charts.js
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var pieChart = new Chart(pieChartCanvas)
+    var PieData = [{
+        value: 700,
+        color: '#0070C9',
+        highlight: '#0070C9',
+        label: '业务类型1'
+      },
+      {
+        value: 200,
+        color: '#7fb7e4',
+        highlight: '#7fb7e4',
+        label: '业务类型2'
+      },
+      {
+        value: 500,
+        color: '#e8e9ea',
+        highlight: '#e8e9ea',
+        label: '业务类型3'
+      }
+    ]
+    var pieOptions = {
+      segmentShowStroke: true,
+      segmentStrokeColor: '#fff',
+      segmentStrokeWidth: 2,
+      animationSteps: 100,
+      animationEasing: 'easeOutBounce',
+      animateRotate: true,
+      animateScale: false,
+      responsive: false,
+      maintainAspectRatio: true,
+      //String - A legend template
+      legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    }
+    pieChart.Doughnut(PieData, pieOptions)
+  </script>
+</body>
+
+</html>
