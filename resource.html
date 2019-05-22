@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>中国铁塔股份有限公司河南省分公司</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="components/layui/css/layui.css">
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/resource.css">
+  <script src="components/jquery/jquery.min.js"></script>
+  <script src="components/layui/layui.js"></script>
+  <script src="components/chart.js/Chart.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW"></script>
+  <script type="text/javascript"
+    src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="layui-layout-body" style="overflow: auto">
+  <!-- 头部logo部分开始 -->
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header logo-box">
+      <a href="index.html">
+        <img src="images/logo.png" alt="logo">
+      </a>
+      <ul class="layui-nav layui-layout-left nav-box">
+        <li class="layui-nav-item ">
+          <a href="index.html">首页
+            <!-- <span class="layui-badge-dot"></span> --></a>
+        </li>
+        <li class="layui-nav-item layui-this">
+          <a href="resource.html">资源中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+        </li>
+        <li class="layui-nav-item ">
+          <a href="#">监控中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+        </li>
+        <li class="layui-nav-item ">
+          <a href="#">业务中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+        </li>
+        <li class="layui-nav-item ">
+          <a href="#">调度中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+        </li>
+        <li class="layui-nav-item ">
+          <a href="#">客户中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+        </li>
+        <li class="layui-nav-item ">
+          <a href="#">运营中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+        </li>
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            <i class="layui-icon layui-icon-username"
+              style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i>
+            王凯旋
+            <span class="layui-nav-more"></span></a>
+          <dl class="layui-nav-child layui-anim layui-anim-upbit">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- 头部logo部分结束 -->
+  <!-- 主体内容开始 -->
+  <div class="layui-fluid">
+    <div class="layui-row">
+      <div class="layui-col-lg12 layui-col-md12" style="text-align: right;color: #ACB7BF;margin-bottom: 10px;">
+        <p style="margin-right: 6%;">数据更新于<span id="uploadDate"></span></p>
+      </div>
+    </div>
+    <div class="layui-row">
+      <div class="layui-col-lg4 layui-col-md4">
+        <div class="layui-row">
+          <div class="layui-col-lg12 layui-col-md12 layui-radius">
+            <div class="news-left-block"></div>
+            <div class="news-title">
+              <p>能源经营业务</p>
+            </div>
+            <div class="clearfix"></div>
+            <div class="layui-row">
+              <div class="layui-col-lg4 layui-col-md4 layui-tag">
+                <span class="tag-num">100</span>
+                <span class="tag-info">备电点(个)</span>
+              </div>
+              <div class="layui-col-lg4 layui-col-md4 layui-tag">
+                <span class="tag-num">100</span>
+                <span class="tag-info">充电点(个)</span>
+              </div>
+              <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none">
+                <span class="tag-num">100</span>
+                <span class="tag-info">换电点(个)</span>
+              </div>
+              <div class="layui-col-lg4 layui-col-md4 layui-tag">
+                <span class="tag-num">100</span>
+                <span class="tag-info">售电点(个)</span>
+              </div>
+              <div class="layui-col-lg4 layui-col-md4 layui-tag">
+                <span class="tag-num">100</span>
+                <span class="tag-info">蓄电池(个)</span>
+              </div>
+              <div class="layui-col-lg4 layui-col-md4"></div>
+            </div>
+          </div>
+          <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top: 10px;">
+            <div class="news-left-block"></div>
+            <div class="news-title">
+              <p>能源生产保障</p>
+            </div>
+            <div class="clearfix"></div>
+            <div class="layui-row">
+              <div class="layui-col-lg4 layui-col-md4 layui-tag">
+                <span class="tag-num">100</span>
+                <span class="tag-info">储能站(个)</span>
+              </div>
+              <div class="layui-col-lg4 layui-col-md4 layui-tag">
+                <span class="tag-num">100</span>
+                <span class="tag-info">延寿站(个)</span>
+              </div>
+              <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none">
+                <span class="tag-num">100</span>
+                <span class="tag-info">蓄电池规模(AH)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layui-col-lg8 layui-col-md8">
+        <div class="layui-radius" style="width: 90%;min-height: 448px;margin-left: 10px;margin-bottom: 50px;">
+          <div class="layui-row chart-box">
+            <div class="layui-col-lg12 layui-col-md12 chart-title">
+              <div class="layui-btn-group chart-btn-box">
+                <button id="btnChart" class="layui-btn layui-btn-sm layui-btn-normal">地图</button>
+                <button id="btnTable" class="layui-btn layui-btn-sm layui-btn-primary">列表</button>
+              </div>
+            </div>
+            <div id="myChart" class="layui-col-lg12 layui-col-md12 chart-content"></div>
+            <div id="myTable" class="layui-col-lg12 layui-col-md12" style="display:none">
+              <table class="layui-table" lay-skin="line">
+                <thead>
+                  <tr>
+                    <td colspan="6" style="font-size: 16px;border-right: 1px solid #e6e6e6">能源经营业务</td>
+                    <td colspan="3" style="font-size: 16px;">能源生产保障</td>
+                  </tr>
+                  <tr>
+                    <th>地区</th>
+                    <th>备电点</th>
+                    <th>充电点</th>
+                    <th>换电点</th>
+                    <th>售电点</th>
+                    <th style="border-right: 1px solid #e6e6e6">蓄电池</th>
+                    <th>储能站</th>
+                    <th>延寿站</th>
+                    <th>蓄电池规模</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>安阳市</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>400A/H</td>
+                  </tr>
+                  <tr>
+                    <td>洛阳市</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>400A/H</td>
+                  </tr>
+                  <tr>
+                    <td>开封市</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>400A/H</td>
+                  </tr>
+                  <tr>
+                    <td>新乡市</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>400A/H</td>
+                  </tr>
+                  <tr>
+                    <td>郑州市</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>400A/H</td>
+                  </tr>
+                  <tr>
+                    <td>南阳市</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
+                    <td>1000个</td>
+                    <td>1000个</td>
+                    <td>400A/H</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
+    <p>creenshots © Their respective owners. Google+</p>
+  </footer>
+  <script>
+    layui.use('element', function () {
+      var element = layui.element;
+    });
+    // 获取日期
+    function add(m) {
+      return m < 10 ? '0' + m : m
+    }
+    function fortime(date) {
+      var y = date.getFullYear();
+      var m = date.getMonth() + 1;
+      var d = date.getDate();
+      var h = date.getHours();
+      var mm = date.getMinutes();
+      var s = date.getSeconds();
+      return (y + '-' + add(m) + '-' + add(d) + ' ' + add(h) + ':' + add(mm) + ':' + add(s));
+    }
+
+    var date = new Date(new Date().getTime() + (1000 * 60 * 60 * 72));
+    var date_str = fortime(date);
+    $('#uploadDate').html(date_str)
+  </script>
+  <script>
+    // 获取地图数据
+    // 需要引入api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js
+    // 创建百度地图map实例
+    var map = new BMap.Map("myChart");
+    // 初始化地图，设置中心点坐标和地图级别
+    map.centerAndZoom(new BMap.Point(113.557234, 33.902115), 8);
+    // 设置地图显示的城市，这项是必须的
+    map.setCurrentCity("郑州");
+    // 开启滚轮缩放
+    map.enableScrollWheelZoom(true);
+    // 声明一个数组，装行政区域的数据
+    var blist = [];
+    var chartType = false;
+    // 设置一个计数器，用来判断什么时候加载完成行政区域，然后画图
+    var districtLoading = 0;
+    // 添加行政区划
+    function getBoundary() {
+      // 计数器来控制加载过程
+      districtLoading++;
+      // 创建行政区划的对象实例
+      var bdary = new BMap.Boundary();
+      // 获取行政区域
+      bdary.get("河南省", function (rs) {
+        // 清除地图覆盖物
+        // map.clearOverlays();
+        // 行政区域的点有多少个
+        var count = rs.boundaries.length;
+        if (count === 0) {
+          alert('未能获取当前输入行政区域');
+          return;
+        }
+        var pointArray = [];
+        for (var i = 0; i < count; i++) {
+          blist.push({ points: rs.boundaries[i], name: '河南' })
+        }
+        // 调整视野
+        // map.setViewport(pointArray);
+        // 执行完成后计数器 -1；
+        districtLoading--;
+        if (districtLoading === 0) {
+          // 画多边形来框选地图范围（边界）
+          drawBoundary();
+        }
+      });
+    }
+    function drawBoundary() {
+      var bdary = new BMap.Boundary();
+      bdary.get("河南省", function (rs) {       //获取行政区域     
+        var count = rs.boundaries.length; //行政区域的点有多少个
+        if (count === 0) {
+          alert('未能获取当前输入行政区域');
+          return;
+        }
+        var pointArray = [];
+        if (chartType === false) {
+          for (var i = 0; i < count; i++) {
+            var ply = new BMap.Polygon(rs.boundaries[i], { strokeWeight: 2, strokeColor: "#2174ee", fillOpacity: 0.07, fillColor: '#2174ee' }); //建立多边形覆盖物
+            map.addOverlay(ply);  //添加覆盖物
+            pointArray = pointArray.concat(ply.getPath());
+          }
+        }
+        map.setViewport(pointArray);    //调整视野  
+      });
+    }
+    // 使用添加点的方法
+    addPoint();
+    // 添加坐标点
+    function addPoint() {
+      // 生成坐标点
+      // 我这里是随机取了河南省的几个坐标，用来添加坐标点
+      var positionArray = [
+        [113.701699, 34.756999],
+        [113.585998, 34.714994],
+        [113.768533, 34.714638],
+        [112.977737, 34.658004],
+        [113.861957, 34.534389],
+        [114.45412, 36.092283],
+        [114.477099, 35.745347],
+        [112.56378, 33.324863],
+        [115.69132, 34.307679]
+      ]
+      for (var i = 0; i < positionArray.length; i++) {
+        // 一个坐标对应一个mark的生成
+        var point = new BMap.Point(positionArray[i][0], positionArray[i][1]);
+        var myIcon = new BMap.Icon('images/icon_point.png', new BMap.Size(24, 24));
+        addMark(point, myIcon);
+      }
+    };
+    function addMark(point, myIcon) {
+      // 生成图像标注
+      var mark = new BMap.Marker(point, { icon: myIcon });
+      map.addOverlay(mark);
+      // 添加鼠标划入坐标点的显示内容
+      str = '';
+      str += '<div class="info-box">';
+      str += '<p>备电点：100</p>';
+      str += '<p>充点电：50</p>';
+      str += '<p>换电点：200</p>';
+      str += '<p>售电点：100</p>';
+      str += '<p>蓄电池：400</p>';
+      str += '</div>';
+      // 创建一个文本标注实例
+      var lable = new BMap.Label(str);
+      // 清除百度地图自带样式
+      lable.setStyle({
+        border: 'none',
+        border: '1px solid rgba(36,110,221, .5)',
+        borderRadius: '5px'
+      });
+      // 设置标注的地理坐标
+      lable.setPosition(point);
+      // 默认不显示文本标注
+      lable.hide();
+      // 在全景场景内添加覆盖物
+      map.addOverlay(lable);
+      mark.addEventListener('mouseover', function () {
+        lable.show();
+      });
+      mark.addEventListener('mouseout', function () {
+        lable.hide();
+      });
+    }
+    // 使用行政区划
+    setTimeout(function () {
+      getBoundary();
+    }, 100);
+
+    $('#btnChart').on('click', function () {
+      $('#myChart').show();
+      $('#myTable').hide();
+      $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
+      $('#btnTable').addClass('layui-btn-primary').removeClass('layui-btn-normal');
+      setTimeout(function () {
+        chartType = true;
+        getBoundary();
+      }, 100);
+    });
+    $('#btnTable').on('click', function () {
+      $('#myChart').hide();
+      $('#myTable').show();
+      $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
+      $('#btnChart').removeClass('layui-btn-normal').addClass('layui-btn-primary');
+    });
+  </script>
+  <script>
+
+  </script>
+</body>
+
+</html>

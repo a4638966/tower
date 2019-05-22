@@ -9,10 +9,30 @@
     padding-left: 8.3%;
 }
 
+.layui-radius {
+    box-shadow: 0 0 10px 0 rgba(0, 63, 91, 0.08);
+    border-radius: 4px;
+    background: #fff;
+}
+
+/* 导航 */
+.nav-box {
+    margin-left: 10%;
+}
+
+.layui-nav-bar {
+    background: #6EC8FF;
+}
+
+.layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after {
+    background:#6EC8FF;
+}
+
 /* 内容 */
 .layui-fluid {
     padding-top: 0.7%;
     width: 1280px;
+    min-height: 700px;
     margin: 0 auto;
 }
 
