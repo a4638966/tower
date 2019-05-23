@@ -75,7 +75,7 @@
   </div>
   <!-- 头部logo部分结束 -->
   <!-- 主体内容开始 -->
-  <div class="layui-fluid">
+  <div class="layui-fluid" style="min-height: 900px;">
     <div class="layui-row">
       <div class="layui-col-lg12 layui-col-md12" style="text-align: right;color: #ACB7BF;margin-bottom: 10px;">
         <p style="margin-right: 6%;">数据更新于<span id="uploadDate"></span></p>
@@ -85,53 +85,49 @@
       <div class="layui-col-lg4 layui-col-md4">
         <div class="layui-row">
           <div class="layui-col-lg12 layui-col-md12 layui-radius">
-            <div class="news-left-block"></div>
             <div class="news-title">
-              <p>能源经营业务</p>
+              <div>
+                <p id="btnEnergy" class="active">储能</p>
+                <div class="btn-this"></div>
+              </div>
+              <div>
+                <p id="btnExtended">延寿</p>
+                <div></div>
+              </div>
             </div>
             <div class="clearfix"></div>
             <div class="layui-row">
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">备电点(个)</span>
+              <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                <p class="tag-title">蓄电池放电8小时以上站点数量(个)</p>
+                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">充电点(个)</span>
+              <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                <p class="tag-title">蓄电池放电不足4小时站点数量(个)</p>
+                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none">
-                <span class="tag-num">100</span>
-                <span class="tag-info">换电点(个)</span>
+              <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                <p class="tag-title">蓄电池管理设备/DTU系统告警数量(个)</p>
+                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">售电点(个)</span>
+              <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                <p class="tag-title">蓄电池放电4~8小时站点数量(个)</p>
+                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">蓄电池(个)</span>
+              <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                <p class="tag-title">平均放电时长变动>20%站点数量(个)</p>
+                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4"></div>
-            </div>
-          </div>
-          <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top: 10px;">
-            <div class="news-left-block"></div>
-            <div class="news-title">
-              <p>能源生产保障</p>
-            </div>
-            <div class="clearfix"></div>
-            <div class="layui-row">
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">储能站(个)</span>
+              <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                <p class="tag-title">蓄电池管理设备/DTU离线告警数量(个)</p>
+                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+              </div> 
+              <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                <p class="tag-title">蓄电池电压告警数量(个)</p>
+                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">延寿站(个)</span>
-              </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none">
-                <span class="tag-num">100</span>
-                <span class="tag-info">蓄电池规模(AH)</span>
+              <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                <p class="tag-title">蓄电池温度告警数量(个)</p>
+                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
               </div>
             </div>
           </div>
@@ -148,90 +144,127 @@
             </div>
             <div id="myChart" class="layui-col-lg12 layui-col-md12 chart-content"></div>
             <div id="myTable" class="layui-col-lg12 layui-col-md12" style="display:none">
-              <table class="layui-table" lay-skin="line">
+              <table id="tableEnergy" class="layui-table" lay-skin="line">
                 <thead>
                   <tr>
-                    <td colspan="6" style="font-size: 16px;border-right: 1px solid #e6e6e6">能源经营业务</td>
-                    <td colspan="3" style="font-size: 16px;">能源生产保障</td>
-                  </tr>
-                  <tr>
-                    <th>地区</th>
-                    <th>备电点</th>
-                    <th>充电点</th>
-                    <th>换电点</th>
-                    <th>售电点</th>
-                    <th style="border-right: 1px solid #e6e6e6">蓄电池</th>
-                    <th>储能站</th>
-                    <th>延寿站</th>
-                    <th>蓄电池规模</th>
+                    <th>地市/区县</th>
+                    <th>储能站数量</th>
+                    <th>充电量</th>
+                    <th>放电量</th>
+                    <th>环比预警</th>
+                    <th>备注</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>安阳市</td>
                     <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>1000/KWH</td>
+                    <td>1000/KWH</td>
+                    <td>30%</td>
+                    <td>整体形势一片大好</td>
                   </tr>
                   <tr>
                     <td>洛阳市</td>
                     <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>1000/KWH</td>
+                    <td>1000/KWH</td>
+                    <td>30%</td>
+                    <td>整体形势一片大好</td>
                   </tr>
                   <tr>
                     <td>开封市</td>
                     <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>1000/KWH</td>
+                    <td>1000/KWH</td>
+                    <td>30%</td>
+                    <td>整体形势一片大好</td>
                   </tr>
                   <tr>
                     <td>新乡市</td>
                     <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>1000/KWH</td>
+                    <td>1000/KWH</td>
+                    <td>30%</td>
+                    <td>整体形势一片大好</td>
                   </tr>
                   <tr>
                     <td>郑州市</td>
                     <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>1000/KWH</td>
+                    <td>1000/KWH</td>
+                    <td>30%</td>
+                    <td>整体形势一片大好</td>
                   </tr>
                   <tr>
                     <td>南阳市</td>
                     <td>1000个</td>
+                    <td>1000/KWH</td>
+                    <td>1000/KWH</td>
+                    <td>30%</td>
+                    <td>整体形势一片大好</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table id="tableExtended" class="layui-table" lay-skin="line" style="display:none">
+                <thead>
+                  <tr>
+                    <th>地市/区县</th>
+                    <th>延寿站数量</th>
+                    <th>备电时长</th>
+                    <th>应急放电次数</th>
+                    <th>应急放电达标</th>
+                    <th>备注</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>安阳市</td>
                     <td>1000个</td>
+                    <td>200H</td>
+                    <td>50次</td>
+                    <td>300次</td>
+                    <td>整体形势一片大好</td>
+                  </tr>
+                  <tr>
+                    <td>洛阳市</td>
                     <td>1000个</td>
+                    <td>200H</td>
+                    <td>50次</td>
+                    <td>300次</td>
+                    <td>整体形势一片大好</td>
+                  </tr>
+                  <tr>
+                    <td>开封市</td>
                     <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
+                    <td>200H</td>
+                    <td>50次</td>
+                    <td>300次</td>
+                    <td>整体形势一片大好</td>
+                  </tr>
+                  <tr>
+                    <td>新乡市</td>
                     <td>1000个</td>
+                    <td>200H</td>
+                    <td>50次</td>
+                    <td>300次</td>
+                    <td>整体形势一片大好</td>
+                  </tr>
+                  <tr>
+                    <td>郑州市</td>
                     <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>200H</td>
+                    <td>50次</td>
+                    <td>300次</td>
+                    <td>整体形势一片大好</td>
+                  </tr>
+                  <tr>
+                    <td>南阳市</td>
+                    <td>1000个</td>
+                    <td>200H</td>
+                    <td>50次</td>
+                    <td>300次</td>
+                    <td>整体形势一片大好</td>
                   </tr>
                 </tbody>
               </table>

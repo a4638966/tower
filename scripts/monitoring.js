@@ -1,15 +1,20 @@
 var Monitoring = function () {
   this._urls = {};
   this._controls = {
-    uploadDate: $('#uploadDate'),
-    btnChart: $('#btnChart'),
-    btnTable: $('#btnTable'),
-    myChart: $('#myChart'),
-    myTable: $('#myTable')
-  },
-  this._commonData = {
-    chartType: false
-  }
+      uploadDate: $('#uploadDate'),
+      btnEnergy: $('#btnEnergy'),
+      btnExtended: $('#btnExtended'),
+      btnChart: $('#btnChart'),
+      btnTable: $('#btnTable'),
+      myChart: $('#myChart'),
+      myTable: $('#myTable'),
+      tableEnergy: $('#tableEnergy'),
+      tableExtended: $('#tableExtended')
+    },
+    this._commonData = {
+      chartType: false,
+      dataType: 'energy'
+    }
 }
 Monitoring.prototype.initControl = function () {
   var that = this;
@@ -22,6 +27,38 @@ Monitoring.prototype.initControl = function () {
   // 初始化地图
   this.initChart();
   // 按钮事件
+  // 储能
+  this._controls.btnEnergy.on('click', function () {
+    $(this).addClass('active');
+    $(this).siblings().addClass('btn-this');
+    that._controls.btnExtended.removeClass('active');
+    that._controls.btnExtended.siblings().removeClass('btn-this');
+    that._commonData.dataType = 'energy';
+    that._controls.myChart.show();
+    that._controls.myTable.hide();
+    that._controls.btnChart.addClass('layui-btn-normal').removeClass('layui-btn-primary');
+    that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
+    setTimeout(function () {
+      that.initChart();
+    },100);
+    that.initTable();
+  });
+  // 延寿
+  this._controls.btnExtended.on('click', function () {
+    $(this).addClass('active');
+    $(this).siblings().addClass('btn-this');
+    that._controls.btnEnergy.removeClass('active');
+    that._controls.btnEnergy.siblings().removeClass('btn-this');
+    that._commonData.dataType = 'extended';
+    that._controls.myChart.show();
+    that._controls.myTable.hide();
+    that._controls.btnChart.addClass('layui-btn-normal').removeClass('layui-btn-primary');
+    that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
+    setTimeout(function () {
+      that.initChart();
+    },100);
+    that.initTable();
+  });
   this._controls.btnChart.on('click', function () {
     that._controls.myChart.show();
     that._controls.myTable.hide();
@@ -42,6 +79,7 @@ Monitoring.prototype.initControl = function () {
 // 初始化日期
 Monitoring.prototype.initUpdate = function () {
   var that = this;
+
   function add(m) {
     return m < 10 ? '0' + m : m
   }
@@ -60,6 +98,18 @@ Monitoring.prototype.initUpdate = function () {
   var date_str = fortime(date);
   that._controls.uploadDate.html(date_str)
 };
+// 初始化列表
+Monitoring.prototype.initTable = function () {
+  var that = this;
+  if (that._commonData.dataType === 'energy') {
+    that._controls.tableEnergy.show();
+    that._controls.tableExtended.hide();
+  } else if (that._commonData.dataType === 'extended') {
+    that._controls.tableEnergy.hide();
+    that._controls.tableExtended.show();
+  }
+};
+// 初始化地图
 Monitoring.prototype.initChart = function () {
   var that = this;
   // 获取地图数据
@@ -140,17 +190,32 @@ Monitoring.prototype.initChart = function () {
   function addPoint() {
     // 生成坐标点
     // 我这里是随机取了河南省的几个坐标，用来添加坐标点
-    var positionArray = [
-      [113.701699, 34.756999],
-      [113.585998, 34.714994],
-      [113.768533, 34.714638],
-      [112.977737, 34.658004],
-      [113.861957, 34.534389],
-      [114.45412, 36.092283],
-      [114.477099, 35.745347],
-      [112.56378, 33.324863],
-      [115.69132, 34.307679]
-    ]
+    var positionArray = [];
+    if (that._commonData.dataType === 'energy') {
+      positionArray = [
+        [113.701699, 34.756999],
+        [113.585998, 34.714994],
+        [113.768533, 34.714638],
+        [112.977737, 34.658004],
+        [113.861957, 34.534389],
+        [114.45412, 36.092283],
+        [114.477099, 35.745347],
+        [112.56378, 33.324863],
+        [115.69132, 34.307679]
+      ]
+    } else if (that._commonData.dataType === 'extended'){
+      positionArray = [
+        [114.60588,35.662811],
+        [114.881839,35.542605],
+        [111.735901,33.517713],
+        [113.888385,34.726467],
+        [114.458701,32.650384],
+        [115.268182,32.119598],
+        [114.716263,35.527567],
+        [111.441545,33.917455],
+        [113.814796,32.572525]
+      ]
+    }
     for (var i = 0; i < positionArray.length; i++) {
       // 一个坐标对应一个mark的生成
       var point = new BMap.Point(positionArray[i][0], positionArray[i][1]);
@@ -165,35 +230,6 @@ Monitoring.prototype.initChart = function () {
       icon: myIcon
     });
     map.addOverlay(mark);
-    // 添加鼠标划入坐标点的显示内容
-    str = '';
-    str += '<div class="info-box">';
-    str += '<p>备电点：100</p>';
-    str += '<p>充点电：50</p>';
-    str += '<p>换电点：200</p>';
-    str += '<p>售电点：100</p>';
-    str += '<p>蓄电池：400</p>';
-    str += '</div>';
-    // 创建一个文本标注实例
-    var lable = new BMap.Label(str);
-    // 清除百度地图自带样式
-    lable.setStyle({
-      border: 'none',
-      border: '1px solid rgba(36,110,221, .5)',
-      borderRadius: '5px'
-    });
-    // 设置标注的地理坐标
-    lable.setPosition(point);
-    // 默认不显示文本标注
-    lable.hide();
-    // 在全景场景内添加覆盖物
-    map.addOverlay(lable);
-    mark.addEventListener('mouseover', function () {
-      lable.show();
-    });
-    mark.addEventListener('mouseout', function () {
-      lable.hide();
-    });
   }
   // 使用行政区划
   setTimeout(function () {
