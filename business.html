@@ -9,7 +9,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="components/layui/css/layui.css">
   <link rel="stylesheet" href="styles/common.css">
-  <link rel="stylesheet" href="styles/resource.css">
+  <link rel="stylesheet" href="styles/business.css">
   <script src="components/jquery/jquery.min.js"></script>
   <script src="components/layui/layui.js"></script>
   <script src="components/chart.js/Chart.js"></script>
@@ -33,15 +33,15 @@
           <a href="index.html">首页
             <!-- <span class="layui-badge-dot"></span> --></a>
         </li>
-        <li class="layui-nav-item layui-this">
+        <li class="layui-nav-item">
           <a href="resource.html">资源中心
             <!-- <span class="layui-badge-dot"></span> --></a>
         </li>
-        <li class="layui-nav-item ">
+        <li class="layui-nav-item">
           <a href="monitoring.html">监控中心
             <!-- <span class="layui-badge-dot"></span> --></a>
         </li>
-        <li class="layui-nav-item ">
+        <li class="layui-nav-item layui-this">
           <a href="business.html">业务中心
             <!-- <span class="layui-badge-dot"></span> --></a>
         </li>
@@ -87,51 +87,50 @@
           <div class="layui-col-lg12 layui-col-md12 layui-radius">
             <div class="news-left-block"></div>
             <div class="news-title">
-              <p>能源经营业务</p>
+              <p>储能管理</p>
             </div>
             <div class="clearfix"></div>
             <div class="layui-row">
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">备电点(个)</span>
+              <div class="layui-col-lg6 layui-col-md6 layui-tag">
+                <p class="tag-info">储能电池容量总计(KWH)</p>
+                <p class="tag-num">200<span>KWH</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">充电点(个)</span>
+              <div class="layui-col-lg6 layui-col-md6 layui-tag">
+                <p class="tag-info">削峰填谷能力(KWH)</p>
+                <p class="tag-num">200<span>KWH</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none">
-                <span class="tag-num">100</span>
-                <span class="tag-info">换电点(个)</span>
+              <div class="layui-col-lg6 layui-col-md6 layui-tag">
+                <p class="tag-info">累计结费金额(元)</p>
+                <p class="tag-num">20000<span>元</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">售电点(个)</span>
+              <div class="layui-col-lg6 layui-col-md6 layui-tag">
+                <p class="tag-info">单站日均放电时长(H)</p>
+                <p class="tag-num">200<span>H</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">蓄电池(个)</span>
-              </div>
-              <div class="layui-col-lg4 layui-col-md4"></div>
             </div>
           </div>
-          <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top: 10px;">
+          <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top:10px;">
             <div class="news-left-block"></div>
             <div class="news-title">
-              <p>能源生产保障</p>
+              <p>延寿管理</p>
             </div>
             <div class="clearfix"></div>
             <div class="layui-row">
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">储能站(个)</span>
+              <div class="layui-col-lg6 layui-col-md6 layui-tag">
+                <p class="tag-info">T0平均应急时长(H)</p>
+                <p class="tag-num">200<span>H</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">延寿站(个)</span>
+              <div class="layui-col-lg6 layui-col-md6 layui-tag">
+                <p class="tag-info">T1平均应急时长(H)</p>
+                <p class="tag-num">200<span>H</span></p>
               </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none">
-                <span class="tag-num">100</span>
-                <span class="tag-info">蓄电池规模(AH)</span>
+              <div class="layui-col-lg6 layui-col-md6 layui-tag">
+                <p class="tag-info">延寿管理提升(%)</p>
+                <p class="tag-num">30<span>%</span></p>
+              </div>
+              <div class="layui-col-lg6 layui-col-md6 layui-tag">
+                <p class="tag-info">应急次数(次)</p>
+                <p class="tag-num">30<span>次</span></p>
               </div>
             </div>
           </div>
@@ -151,87 +150,106 @@
               <table class="layui-table" lay-skin="line">
                 <thead>
                   <tr>
-                    <td colspan="6" style="font-size: 16px;border-right: 1px solid #e6e6e6">能源经营业务</td>
-                    <td colspan="3" style="font-size: 16px;">能源生产保障</td>
+                      <td colspan="4" style="font-size: 16px;text-align: center">储能电池削峰填谷</td>
                   </tr>
                   <tr>
                     <th>地区</th>
-                    <th>备电点</th>
-                    <th>充电点</th>
-                    <th>换电点</th>
-                    <th>售电点</th>
-                    <th style="border-right: 1px solid #e6e6e6">蓄电池</th>
-                    <th>储能站</th>
-                    <th>延寿站</th>
-                    <th>蓄电池规模</th>
+                    <th>储能电池容量总计</th>
+                    <th>削峰填谷能力</th>
+                    <th>节费金额</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>安阳市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>40KWH</td>
+                    <td>5KWH</td>
+                    <td>80W</td>
                   </tr>
                   <tr>
-                    <td>洛阳市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>鹤壁市</td>
+                    <td>40KWH</td>
+                    <td>5KWH</td>
+                    <td>80W</td>
+                  </tr>
+                  <tr>
+                    <td>济源市</td>
+                    <td>40KWH</td>
+                    <td>5KWH</td>
+                    <td>80W</td>
+                  </tr>
+                  <tr>
+                    <td>焦作市</td>
+                    <td>40KWH</td>
+                    <td>5KWH</td>
+                    <td>80W</td>
                   </tr>
                   <tr>
                     <td>开封市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>40KWH</td>
+                    <td>5KWH</td>
+                    <td>80W</td>
                   </tr>
                   <tr>
-                    <td>新乡市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>洛阳市</td>
+                    <td>40KWH</td>
+                    <td>5KWH</td>
+                    <td>80W</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="layui-table" lay-skin="line" style="margin-top: 20px;">
+                <thead>
+                  <tr>
+                    <th>区域</th>
+                    <th>上阶段蓄电池平均应急时长</th>
+                    <th>上阶段断站率</th>
+                    <th>延寿管理后平均应急时长</th>
+                    <th>提升</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>安阳市</td>
+                    <td>5H</td>
+                    <td>2%</td>
+                    <td>6.6H</td>
+                    <td>20%</td>
                   </tr>
                   <tr>
-                    <td>郑州市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>鹤壁市</td>
+                    <td>5H</td>
+                    <td>2%</td>
+                    <td>6.6H</td>
+                    <td>20%</td>
                   </tr>
                   <tr>
-                    <td>南阳市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
+                    <td>济源市</td>
+                    <td>5H</td>
+                    <td>2%</td>
+                    <td>6.6H</td>
+                    <td>20%</td>
+                  </tr>
+                  <tr>
+                    <td>焦作市</td>
+                    <td>5H</td>
+                    <td>2%</td>
+                    <td>6.6H</td>
+                    <td>20%</td>
+                  </tr>
+                  <tr>
+                    <td>开封市</td>
+                    <td>5H</td>
+                    <td>2%</td>
+                    <td>6.6H</td>
+                    <td>20%</td>
+                  </tr>
+                  <tr>
+                    <td>洛阳市</td>
+                    <td>5H</td>
+                    <td>2%</td>
+                    <td>6.6H</td>
+                    <td>20%</td>
                   </tr>
                 </tbody>
               </table>
@@ -245,11 +263,11 @@
     <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
     <p>creenshots © Their respective owners. Google+</p>
   </footer>
-  <script src="scripts/resource.js"></script>
+  <script src="scripts/business.js"></script>
   <script>
-    var resource = null;
-    resource = new Resource();
-    resource.initControl();
+    var business = null;
+    business = new Business();
+    business.initControl();
   </script>
 </body>
 
