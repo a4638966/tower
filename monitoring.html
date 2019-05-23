@@ -9,7 +9,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="components/layui/css/layui.css">
   <link rel="stylesheet" href="styles/common.css">
-  <link rel="stylesheet" href="styles/resource.css">
+  <link rel="stylesheet" href="styles/monitoring.css">
   <script src="components/jquery/jquery.min.js"></script>
   <script src="components/layui/layui.js"></script>
   <script src="components/chart.js/Chart.js"></script>
@@ -33,11 +33,11 @@
           <a href="index.html">首页
             <!-- <span class="layui-badge-dot"></span> --></a>
         </li>
-        <li class="layui-nav-item layui-this">
+        <li class="layui-nav-item">
           <a href="resource.html">资源中心
             <!-- <span class="layui-badge-dot"></span> --></a>
         </li>
-        <li class="layui-nav-item ">
+        <li class="layui-nav-item layui-this">
           <a href="monitoring.html">监控中心
             <!-- <span class="layui-badge-dot"></span> --></a>
         </li>
@@ -245,11 +245,11 @@
     <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
     <p>creenshots © Their respective owners. Google+</p>
   </footer>
-  <script src="scripts/resource.js"></script>
+  <script src="scripts/monitoring.js"></script>
   <script>
-    var resource = null;
-    resource = new Resource();
-    resource.initControl();
+    var monitoring = null;
+    monitoring = new Monitoring();
+    monitoring.initControl();
   </script>
 </body>
 

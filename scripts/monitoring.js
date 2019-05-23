@@ -1,4 +1,4 @@
-var Resource = function () {
+var Monitoring = function () {
   this._urls = {};
   this._controls = {
     uploadDate: $('#uploadDate'),
@@ -11,7 +11,7 @@ var Resource = function () {
     chartType: false
   }
 }
-Resource.prototype.initControl = function () {
+Monitoring.prototype.initControl = function () {
   var that = this;
   // 初始化日期
   this.initUpdate();
@@ -40,7 +40,7 @@ Resource.prototype.initControl = function () {
   });
 };
 // 初始化日期
-Resource.prototype.initUpdate = function () {
+Monitoring.prototype.initUpdate = function () {
   var that = this;
   function add(m) {
     return m < 10 ? '0' + m : m
@@ -60,7 +60,7 @@ Resource.prototype.initUpdate = function () {
   var date_str = fortime(date);
   that._controls.uploadDate.html(date_str)
 };
-Resource.prototype.initChart = function () {
+Monitoring.prototype.initChart = function () {
   var that = this;
   // 获取地图数据
   // 需要引入api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js

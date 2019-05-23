@@ -1,0 +1,100 @@
+body {
+  background: #f3f4f9;
+}
+
+/* 能源经营业务 */
+.news-left-block {
+  float: left;
+
+  width: 6px;
+  height: 16px;
+
+  background: #0070C9;
+
+  margin-left: 16px;
+  margin-top: 20px;
+
+}
+
+.news-title {
+  float: left;
+
+  width: calc(100% - 0.7% - 0.7% - 6px - 16px);
+
+  margin-left: 0.7%;
+  margin-right: 0.7%;
+
+  border-bottom: 1px solid #E4EBF0;
+}
+
+.news-title>p {
+  cursor: default;
+
+  float: left;
+
+  font-size: 16px;
+  color: #222637;
+
+  margin-top: 17px;
+  margin-left:8px;
+  margin-bottom: 13px;
+}
+
+.layui-tag {
+  margin-top: 20px;
+  border-right: 1px solid #E3E3E3;
+  margin-bottom: 24px;
+}
+
+.layui-tag span {
+  display: block;
+  text-align: center;
+}
+
+
+.layui-tag .tag-num {
+  font-size: 26px;
+  color: #0070C9;
+  margin-bottom: 18px;
+}
+
+.chart-box {
+  padding: 12px;
+}
+
+.chart-title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E4EBF0;
+}
+
+.layui-btn-group .layui-btn-primary:hover {
+  color: #0070C9;
+  border-top: 1px solid #0070C9;
+  border-right: 1px solid #0070C9;
+  border-bottom: 1px solid #0070C9;
+}
+
+.chart-content {
+  margin-top: 14px;
+  width: 100%;
+  height: 700px;
+}
+
+/* 地图内容 */
+.info-box {
+  padding: 12px;
+
+  font-size:14px;
+
+  line-height: 20px;
+
+  color: #fff;
+
+  background: rgba(36,110,221, .6);
+  border-radius: 5px;
+}
+
+#btnChart {
+  border-right: none;
+}
+
