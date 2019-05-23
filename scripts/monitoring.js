@@ -4,6 +4,8 @@ var Monitoring = function () {
       uploadDate: $('#uploadDate'),
       btnEnergy: $('#btnEnergy'),
       btnExtended: $('#btnExtended'),
+      energyDetil: $('#energyDetil'),
+      extendedDetil: $('#extendedDetil'),
       btnChart: $('#btnChart'),
       btnTable: $('#btnTable'),
       myChart: $('#myChart'),
@@ -31,6 +33,8 @@ Monitoring.prototype.initControl = function () {
   this._controls.btnEnergy.on('click', function () {
     $(this).addClass('active');
     $(this).siblings().addClass('btn-this');
+    that._controls.energyDetil.show();
+    that._controls.extendedDetil.hide();
     that._controls.btnExtended.removeClass('active');
     that._controls.btnExtended.siblings().removeClass('btn-this');
     that._commonData.dataType = 'energy';
@@ -47,6 +51,8 @@ Monitoring.prototype.initControl = function () {
   this._controls.btnExtended.on('click', function () {
     $(this).addClass('active');
     $(this).siblings().addClass('btn-this');
+    that._controls.energyDetil.hide();
+    that._controls.extendedDetil.show();
     that._controls.btnEnergy.removeClass('active');
     that._controls.btnEnergy.siblings().removeClass('btn-this');
     that._commonData.dataType = 'extended';
