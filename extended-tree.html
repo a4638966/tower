@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国铁塔股份有限公司河南省分公司</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="components/layui/css/layui.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/extended-tree.css">
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/layui/layui.js"></script>
+    <script src="components/chart.js/Chart.js"></script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="layui-layout-body layui-layout layui-layout-admin" style="overflow: auto">
+    <!-- 头部logo部分开始 -->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header logo-box">
+            <a href="index.html">
+                <img src="images/logo.png" alt="logo">
+            </a>
+            <ul id="userMin" class="layui-nav layui-layout-right" style="display:block">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-username"
+                            style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i>
+                        王凯旋
+                        <span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                        <dd><a href="personal.html">个人中心</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 头部logo部分结束 -->
+    <!-- 主体内容开始 -->
+    <!-- 头部开始 -->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul id="treeNav"></ul>
+        </div>
+    </div>
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 25px;">
+            <div class="row" style="margin-bottom: 35px;">
+                <div class="layui-col-lg12 layui-col-md12">
+                    <span style="color:#778892;cursor: pointer;">返回</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="layui-col-lg11 layui-col-md11 layui-radius" style="padding: 20px;">
+                    <div class="row">
+                        <div class="layui-col-lg11 layui-col-md11">
+                            <span>储能</span>
+                            <span>延寿</span>
+                        </div>
+                        <table class="layui-table" lay-skin="line">
+                            <thead>
+                                <tr>
+                                    <th>地区</th>
+                                    <th>储能中心(KWH)</th>
+                                    <th>备电(KWH)</th>
+                                    <th>充电站(个)</th>
+                                    <th>移动电池包(KWH)</th>
+                                    <th>只能换电柜(个)</th>
+                                    <th>只能电池包(个)</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>安阳市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>鹤壁市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>济源市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>焦作市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>开封市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>洛阳市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>漯河市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>南阳市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>平顶山市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>濮阳市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>三门峡市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>商丘市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>新乡市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>信阳市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>许昌市</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer class="layui-footer footer">
+        <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
+        <p>creenshots © Their respective owners. Google+</p>
+    </footer>
+    <script src="scripts/extended-tree.js"></script>
+    <script>
+        var extendedTree = null;
+        extendeTree = new ExtendedTree();
+        extendeTree.initControl();
+    </script>
+</body>
+
+</html>

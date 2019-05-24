@@ -1,0 +1,42 @@
+html,
+body {
+    height: 100%;
+
+    background:#f3f4f9;
+}
+
+.layui-tree-skin-shihuang {
+    margin-top: 30px;
+}
+
+.layui-tree-skin-shihuang a{
+    color: #fff;
+}
+
+.layui-tree li i {
+    color: #fff;
+}
+
+
+/* 页脚 */
+.layui-layout-admin .footer {
+    width: 100%;
+    height: 60px;
+
+    background: #5A6378;
+    ;
+    color: #fff;
+    font-size: 14px;
+    color: #B7B7B7;
+    text-align: center;
+
+    padding-top: 10px;
+}
+
+.current {
+    color: #0070C9;
+}
+
+.layui-layout-admin .footer p {
+    line-height: 30px;
+}
