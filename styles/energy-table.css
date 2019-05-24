@@ -1,0 +1,40 @@
+.search-box {
+    margin-top: 15px;
+}
+
+.search-box dt,
+.search-box dd {
+    float: left;
+
+    font-size: 15px;
+    color:#6e7c87;
+
+    margin-right: 20px;
+}
+
+.search-box dt {
+    cursor: default;
+
+    width: 75px;
+
+    text-align: right;
+}
+
+.search-box dd {
+    cursor: pointer;
+
+    width: 80px;
+
+    -webkit-transition: color .4s;
+    -moz-transition: color .4s;
+    -o-transition: color .4s;
+    transition: color .4s;
+}
+
+.search-box dd:hover {
+    color: #0070C9;
+}
+
+.search-box dd.active {
+    color: #0070C9;
+}
