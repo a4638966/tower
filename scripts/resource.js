@@ -172,7 +172,9 @@ Resource.prototype.initChart = function () {
     str += '<p>充点电：50</p>';
     str += '<p>换电点：200</p>';
     str += '<p>售电点：100</p>';
-    str += '<p>蓄电池：400</p>';
+    str += '<p>储能站：100</p>';
+    str += '<p>延寿站：100</p>';
+    // str += '<p>蓄电池：400</p>';
     str += '</div>';
     // 创建一个文本标注实例
     var lable = new BMap.Label(str);
