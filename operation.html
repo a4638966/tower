@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国铁塔股份有限公司河南省分公司</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="components/layui/css/layui.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/operation.css">
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/layui/layui.js"></script>
+    <script src="components/chart.js/Chart.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW">
+    </script>
+    <script type="text/javascript"
+        src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="layui-layout-body" style="overflow: auto">
+    <!-- 头部logo部分开始 -->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header logo-box">
+            <a href="index.html">
+                <img src="images/logo.png" alt="logo">
+            </a>
+            <ul class="layui-nav layui-layout-left nav-box">
+                <li class="layui-nav-item ">
+                    <a href="index.html">首页
+                        <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="resource.html">资源中心
+                        <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="monitoring.html">监控中心
+                        <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="business.html">业务中心
+                        <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="#">调度中心
+                        <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="customer.html">客户中心
+                        <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="operation.html">运营中心
+                        <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-username"
+                            style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i>
+                        王凯旋
+                        <span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                        <dd><a href="personal.html">个人中心</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 头部logo部分结束 -->
+    <!-- 主体内容开始 -->
+    <div class="layui-fluid" style="min-height: 1150px;">
+        <div class="layui-row">
+            <div class="layui-col-lg12 layui-col-md12" style="text-align: right;color: #ACB7BF;margin-bottom: 10px;">
+                <p style="margin-right: 6%;">数据更新于<span id="uploadDate"></span></p>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-lg4 layui-col-md4">
+                <div class="layui-row">
+                    <div class="layui-col-lg12 layui-col-md12 layui-radius">
+                        <div class="news-left-block"></div>
+                        <div class="news-title">
+                            <p>能源经营</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="layui-row" style="padding-left:20px;padding-right: 20px;">
+                            <div class="layui-col-lg12 layui-col-md12 operation-title">
+                                <h1>能源经营业务</h1>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 operation-content">
+                                <div class="layui-row operation-item-box" style="margin-top: 15px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>备电用户数量(个)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>备电点数量(个)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box" style="margin-bottom: 10px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>备电客户固定电池容量(AH)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 operation-content">
+                                <div class="layui-row operation-item-box" style="margin-top: 15px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>充电点数量(个)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>充电总量(KWH)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box" style="margin-bottom: 10px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>YD能源包数量(个)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box" style="margin-bottom: 10px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>YD能源包容量(AH)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box" style="margin-bottom: 10px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>发电次数(次)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 operation-content">
+                                <div class="layui-row operation-item-box" style="margin-top: 15px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>换电点数量(个)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>HD能源包数量(KWH)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box" style="margin-bottom: 10px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>HD能源包容量(AH)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 operation-content">
+                                <div class="layui-row operation-item-box" style="margin-top: 15px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>售电点数量(个)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>售电量(KWH)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 operation-content" style="margin-bottom: 10px;">
+                                <div class="layui-row operation-item-box" style="margin-top: 15px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>在网设备总量(个)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203.2</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>能源服务车辆(辆)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>能源服务人员(位)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-row" style="padding-left:20px;padding-right: 20px;margin-bottom: 15px;">
+                            <div class="layui-col-lg12 layui-col-md12 operation-title">
+                                <h1>能源保障</h1>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 operation-content">
+                                <div class="layui-row operation-item-box" style="margin-top: 15px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>储能站点数量(个)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box" style="margin-top: 15px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>储能总容量(KWH)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box" style="margin-top: 15px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>充电总量(KWH)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box" style="margin-top: 15px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>充电总量(元)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 operation-content">
+                                <div class="layui-row operation-item-box" style="margin-top: 15px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>延寿站点数量(个)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203</p>
+                                    </div>
+                                </div>
+                                <div class="layui-row operation-item-box" style="margin-top: 15px;">
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-info">
+                                        <p>平均应急时长(H)</p>
+                                    </div>
+                                    <div class="layui-col-lg6 layui-col-md6 option-item-number">
+                                        <p>1203</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-lg8 layui-col-md8">
+                <div class="layui-row">
+                    <div class="layui-col-lg12 layui-col-md12">
+                        <div class="layui-radius" style="width: 90%;margin-left:10px;margin-bottom: 10px;">
+                            <div class="news-left-block"></div>
+                            <div class="news-title">
+                                <p>项目分类汇总</p>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="layui-row">
+                                <div class="layui-col-lg4 layui-col-md4 layui-tag">
+                                    <span class="tag-num">100</span>
+                                    <span class="tag-info">备电点数量(个)</span>
+                                </div>
+                                <div class="layui-col-lg4 layui-col-md4 layui-tag">
+                                    <span class="tag-num">100</span>
+                                    <span class="tag-info">发电次数(个)</span>
+                                </div>
+                                <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none">
+                                    <span class="tag-num">100</span>
+                                    <span class="tag-info">换电次数(次)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-lg12 layui-lg12">
+                        <div class="layui-radius"
+                            style="width: 90%;min-height: 448px;margin-left: 10px;margin-bottom: 50px;">
+                            <div class="layui-row chart-box">
+                                <div class="layui-col-lg12 layui-col-md12 chart-title">
+                                    <div class="news-left-block" style="margin-left:0"></div>
+                                    <div class="news-title">
+                                        <p>地图</p>
+                                    </div>
+                                </div>
+                                <div id="myChart" class="layui-col-lg12 layui-col-md12 chart-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
+        <p>creenshots © Their respective owners. Google+</p>
+    </footer>
+    <script src="scripts/operation.js"></script>
+    <script>
+        var operation = null;
+        operation = new Operation();
+        operation.initControl();
+    </script>
+</body>
+
+</html>
