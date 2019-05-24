@@ -1,47 +1,103 @@
 var Resource = function () {
   this._urls = {};
   this._controls = {
-    uploadDate: $('#uploadDate'),
-    btnChart: $('#btnChart'),
-    btnTable: $('#btnTable'),
-    myChart: $('#myChart'),
-    myTable: $('#myTable')
-  },
-  this._commonData = {
-    chartType: false
-  }
+      uploadDate: $('#uploadDate'),
+      btnChart: $('#btnChart'),
+      btnTable: $('#btnTable'),
+      myChart: $('#myChart'),
+      myTable: $('#myTable')
+    },
+    this._commonData = {
+      chartType: false
+    }
 }
 Resource.prototype.initControl = function () {
   var that = this;
   // 初始化日期
-  this.initUpdate();
-  // 初始化layui
-  layui.use('element', function () {
+  // this.initUpdate();
+  layui.use(['tree','element'], function () {
     var element = layui.element;
+    layui.tree({
+      elem: '#treeNav',
+      skin: 'shihuang',
+      nodes: [{ //节点
+        name: '河南省',
+        spread: true,
+        children: [{
+          name: '郑州市',
+          spread: true,
+          children: [{
+              name: '二七区'
+            },
+            {
+              name: '二七区'
+            }, {
+              name: '二七区'
+            }, {
+              name: '二七区'
+            }, {
+              name: '二七区'
+            }
+          ]
+        }, {
+          name: '洛阳',
+          children: [{
+              name: '二七区'
+            },
+            {
+              name: '二七区'
+            }, {
+              name: '二七区'
+            }, {
+              name: '二七区'
+            }, {
+              name: '二七区'
+            }
+          ]
+        }, {
+          name: '新乡',
+          children: [{
+              name: '二七区'
+            },
+            {
+              name: '二七区'
+            }, {
+              name: '二七区'
+            }, {
+              name: '二七区'
+            }, {
+              name: '二七区'
+            }
+          ]
+        }]
+      }]
+    });
   });
+
   // 初始化地图
-  this.initChart();
+  // this.initChart();
   // 按钮事件
-  this._controls.btnChart.on('click', function () {
-    that._controls.myChart.show();
-    that._controls.myTable.hide();
-    $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
-    that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
-    setTimeout(function () {
-      that._commonData.chartType = true;
-      that.initChart.getBoundary;
-    }, 100);
-  });
-  that._controls.btnTable.on('click', function () {
-    that._controls.myChart.hide();
-    that._controls.myTable.show();
-    $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
-    that._controls.btnChart.removeClass('layui-btn-normal').addClass('layui-btn-primary');
-  });
+  // this._controls.btnChart.on('click', function () {
+  //   that._controls.myChart.show();
+  //   that._controls.myTable.hide();
+  //   $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
+  //   that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
+  //   setTimeout(function () {
+  //     that._commonData.chartType = true;
+  //     that.initChart.getBoundary;
+  //   }, 100);
+  // });
+  // that._controls.btnTable.on('click', function () {
+  //   that._controls.myChart.hide();
+  //   that._controls.myTable.show();
+  //   $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
+  //   that._controls.btnChart.removeClass('layui-btn-normal').addClass('layui-btn-primary');
+  // });
 };
 // 初始化日期
 Resource.prototype.initUpdate = function () {
   var that = this;
+
   function add(m) {
     return m < 10 ? '0' + m : m
   }
@@ -202,3 +258,10 @@ Resource.prototype.initChart = function () {
     getBoundary();
   }, 100);
 }
+
+$('.energy-tip p').on('click', function () {
+  $(this).children('.energy-block').addClass('active')
+  $(this).children('.energy-text').addClass('text-active');
+  $(this).siblings().children('.energy-block').removeClass('active');
+  $(this).siblings().children('.energy-text').removeClass('text-active');
+});

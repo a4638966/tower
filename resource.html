@@ -21,7 +21,7 @@
     <![endif]-->
 </head>
 
-<body class="layui-layout-body" style="overflow: auto">
+<body class="layui-layout-body layui-layout layui-layout-admin" style="overflow: auto">
   <!-- 头部logo部分开始 -->
   <div class="layui-layout layui-layout-admin">
     <div class="layui-header logo-box">
@@ -104,173 +104,152 @@
   </div>
   <!-- 头部logo部分结束 -->
   <!-- 主体内容开始 -->
-  <div class="layui-fluid">
-    <div class="layui-row">
-      <div class="layui-col-lg12 layui-col-md12" style="text-align: right;color: #ACB7BF;margin-bottom: 10px;">
-        <p style="margin-right: 6%;">数据更新于<span id="uploadDate"></span></p>
-      </div>
-    </div>
-    <div class="layui-row">
-      <div class="layui-col-lg4 layui-col-md4">
-        <div class="layui-row">
-          <div class="layui-col-lg12 layui-col-md12 layui-radius">
-            <div class="news-left-block"></div>
-            <div class="news-title">
-              <p>能源经营业务</p>
-            </div>
-            <div class="clearfix"></div>
-            <div class="layui-row">
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">备电点(个)</span>
-              </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">充电点(个)</span>
-              </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none">
-                <span class="tag-num">100</span>
-                <span class="tag-info">换电点(个)</span>
-              </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">售电点(个)</span>
-              </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">蓄电池(个)</span>
-              </div>
-              <div class="layui-col-lg4 layui-col-md4"></div>
-            </div>
-          </div>
-          <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top: 10px;">
-            <div class="news-left-block"></div>
-            <div class="news-title">
-              <p>能源生产保障</p>
-            </div>
-            <div class="clearfix"></div>
-            <div class="layui-row">
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">储能站(个)</span>
-              </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                <span class="tag-num">100</span>
-                <span class="tag-info">延寿站(个)</span>
-              </div>
-              <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none">
-                <span class="tag-num">100</span>
-                <span class="tag-info">蓄电池规模(AH)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="layui-col-lg8 layui-col-md8">
-        <div class="layui-radius" style="width: 90%;min-height: 448px;margin-left: 10px;margin-bottom: 50px;">
-          <div class="layui-row chart-box">
-            <div class="layui-col-lg12 layui-col-md12 chart-title">
-              <div class="layui-btn-group chart-btn-box">
-                <button id="btnChart" class="layui-btn layui-btn-sm layui-btn-normal">地图</button>
-                <button id="btnTable" class="layui-btn layui-btn-sm layui-btn-primary">列表</button>
-              </div>
-            </div>
-            <div id="myChart" class="layui-col-lg12 layui-col-md12 chart-content"></div>
-            <div id="myTable" class="layui-col-lg12 layui-col-md12" style="display:none">
-              <table class="layui-table" lay-skin="line">
-                <thead>
-                  <tr>
-                    <td colspan="6" style="font-size: 16px;border-right: 1px solid #e6e6e6">能源经营业务</td>
-                    <td colspan="3" style="font-size: 16px;">能源生产保障</td>
-                  </tr>
-                  <tr>
-                    <th>地区</th>
-                    <th>备电点</th>
-                    <th>充电点</th>
-                    <th>换电点</th>
-                    <th>售电点</th>
-                    <th style="border-right: 1px solid #e6e6e6">蓄电池</th>
-                    <th>储能站</th>
-                    <th>延寿站</th>
-                    <th>蓄电池规模</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>安阳市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
-                  </tr>
-                  <tr>
-                    <td>洛阳市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
-                  </tr>
-                  <tr>
-                    <td>开封市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
-                  </tr>
-                  <tr>
-                    <td>新乡市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
-                  </tr>
-                  <tr>
-                    <td>郑州市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
-                  </tr>
-                  <tr>
-                    <td>南阳市</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td style="border-right: 1px solid #e6e6e6">400A/H</td>
-                    <td>1000个</td>
-                    <td>1000个</td>
-                    <td>400A/H</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <ul id="treeNav"></ul>
     </div>
   </div>
-  <footer class="footer">
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 25px;">
+      <div class="row" style="margin-bottom: 35px;">
+        <div class="layui-col-lg12 layui-col-md12">
+          <span style="color:#778892;cursor: pointer;">返回</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="layui-col-lg11 layui-col-md11 layui-radius" style="padding: 20px;">
+          <div class="row">
+            <div class="layui-col-lg11 layui-col-md11">
+              <div class="energy-tip" style="margin-top:0;margin-bottom: 20px;">
+                <p style="margin-left:0">
+                  <span class="energy-text">备电</span>
+                  <span class="energy-block"></span>
+                </p>
+                <p>
+                  <span class="energy-text">发电</span>
+                  <span class="energy-block"></span>
+                </p>
+                <p>
+                  <span class="energy-text">换电</span>
+                  <span class="energy-block"></span>
+                </p>
+                <p>
+                  <span class="energy-text">售电</span>
+                  <span class="energy-block"></span>
+                </p>
+                <p>
+                  <span class="energy-text text-active">储能</span>
+                  <span class="energy-block active"></span>
+                </p>
+                <p>
+                  <span class="energy-text">延寿</span>
+                  <span class="energy-block"></span>
+                </p>
+              </div>
+            </div>
+            <table class="layui-table" lay-skin="line">
+              <thead>
+                <tr>
+                  <th colspan="3" style="border-right: 1px solid #e6e6e6;text-align: center">站点信息</th>
+                  <th colspan="4" style="border-right: 1px solid #e6e6e6;text-align: center">资源信息</th>
+                  <th colspan="3" style="text-align: center">站点信息</th>
+                </tr>
+                <tr>
+                  <th>储能站点名称</th>
+                  <th>站点编号</th>
+                  <th style="border-right: 1px solid #e6e6e6">地市/区县</th>
+                  <th>蓄电池类型</th>
+                  <th>蓄电池容量</th>
+                  <th>DTU/电池管理器</th>
+                  <th style="border-right: 1px solid #e6e6e6">光伏</th>
+                  <th>日均放电时长</th>
+                  <th>累计放电容量</th>
+                  <th>累计循环次数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>站点1</td>
+                  <td>10000</td>
+                  <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
+                  <td>锂蓄电池</td>
+                  <td>50安时</td>
+                  <td>DTU</td>
+                  <td style="border-right: 1px solid #e6e6e6">千瓦</td>
+                  <td>5小时</td>
+                  <td>200千瓦时</td>
+                  <td>10次</td>
+                </tr>
+                <tr>
+                  <td>站点1</td>
+                  <td>10000</td>
+                  <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
+                  <td>锂蓄电池</td>
+                  <td>50安时</td>
+                  <td>DTU</td>
+                  <td style="border-right: 1px solid #e6e6e6">千瓦</td>
+                  <td>5小时</td>
+                  <td>200千瓦时</td>
+                  <td>10次</td>
+                </tr>
+                <tr>
+                  <td>站点1</td>
+                  <td>10000</td>
+                  <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
+                  <td>锂蓄电池</td>
+                  <td>50安时</td>
+                  <td>DTU</td>
+                  <td style="border-right: 1px solid #e6e6e6">千瓦</td>
+                  <td>5小时</td>
+                  <td>200千瓦时</td>
+                  <td>10次</td>
+                </tr>
+                <tr>
+                  <td>站点1</td>
+                  <td>10000</td>
+                  <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
+                  <td>锂蓄电池</td>
+                  <td>50安时</td>
+                  <td>DTU</td>
+                  <td style="border-right: 1px solid #e6e6e6">千瓦</td>
+                  <td>5小时</td>
+                  <td>200千瓦时</td>
+                  <td>10次</td>
+                </tr>
+                <tr>
+                  <td>站点1</td>
+                  <td>10000</td>
+                  <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
+                  <td>锂蓄电池</td>
+                  <td>50安时</td>
+                  <td>DTU</td>
+                  <td style="border-right: 1px solid #e6e6e6">千瓦</td>
+                  <td>5小时</td>
+                  <td>200千瓦时</td>
+                  <td>10次</td>
+                </tr>
+                <tr>
+                  <td>站点1</td>
+                  <td>10000</td>
+                  <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
+                  <td>锂蓄电池</td>
+                  <td>50安时</td>
+                  <td>DTU</td>
+                  <td style="border-right: 1px solid #e6e6e6">千瓦</td>
+                  <td>5小时</td>
+                  <td>200千瓦时</td>
+                  <td>10次</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer class="layui-footer footer">
     <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
     <p>creenshots © Their respective owners. Google+</p>
   </footer>

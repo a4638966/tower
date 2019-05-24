@@ -1,9 +1,9 @@
-body {
+/* body {
   background: #f3f4f9;
-}
+} */
 
 /* 能源经营业务 */
-.news-left-block {
+/* .news-left-block {
   float: left;
 
   width: 6px;
@@ -79,8 +79,10 @@ body {
   width: 100%;
   height: 700px;
 }
+*/
 
 /* 地图内容 */
+/*
 .info-box {
   padding: 12px;
 
@@ -96,5 +98,90 @@ body {
 
 #btnChart {
   border-right: none;
+} */
+
+
+html,
+body {
+  height: 100%;
+
+  background: #f3f4f9;
 }
 
+.energy-tip {
+  margin-top: 3.2%;
+}
+
+.energy-tip p {
+  display: inline-block;
+
+  font-size: 15px;
+  color: #222637;
+
+  margin-left: 2%;
+  margin-right: 2%;
+
+  cursor: pointer;
+}
+
+.energy-tip .energy-block {
+  display: block;
+
+  width: 0;
+  height: 0.4rem;
+
+  margin-top: 0.3rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: #0070C9;
+
+  -webkit-transition: .3s all cubic-bezier(.46, 1, .23, 1.52);
+  -moz-transition: .3s all cubic-bezier(.46, 1, .23, 1.52);
+  -o-transition: .3s all cubic-bezier(.46, 1, .23, 1.52);
+  transition: .3s all cubic-bezier(.46, 1, .23, 1.52);
+}
+
+.text-active {
+  color: #0070C9;
+}
+
+.energy-tip .energy-block.active {
+  width: 1.1rem;
+}
+
+.layui-tree-skin-shihuang {
+  margin-top: 30px;
+}
+
+.layui-tree-skin-shihuang a {
+  color: #fff;
+}
+
+.layui-tree li i {
+  color: #fff;
+}
+
+
+/* 页脚 */
+.layui-layout-admin .footer {
+  width: 100%;
+  height: 60px;
+
+  background: #5A6378;
+  ;
+  color: #fff;
+  font-size: 14px;
+  color: #B7B7B7;
+  text-align: center;
+
+  padding-top: 10px;
+}
+
+.current {
+  color: #0070C9;
+}
+
+.layui-layout-admin .footer p {
+  line-height: 30px;
+}
