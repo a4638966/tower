@@ -28,6 +28,10 @@
     background:#6EC8FF;
 }
 
+.layui-nav-child {
+    text-align: center;
+}
+
 /* 内容 */
 .layui-fluid {
     padding-top: 0.7%;
