@@ -83,7 +83,7 @@
             <!-- <span class="layui-badge-dot"></span> --></a>
         </li>
       </ul>
-      <ul class="layui-nav layui-layout-right">
+      <ul id="userMin" class="layui-nav layui-layout-right" style="display:none">
         <li class="layui-nav-item">
           <a href="javascript:;">
             <i class="layui-icon layui-icon-username"
@@ -191,7 +191,7 @@
         </div>
       </div>
       <div class="layui-col-lg3 layui-col-md3 layui-col-wheight layui-user layui-radius" style="margin-left: 0.7%;">
-        <div class="layui-row">
+        <div id="loginAgo" class="layui-row" style="display:block">
           <div class="layui-col-lg12 lay-col-md12 main-login">
             <div class="layui-form">
               <div class="login-box">
@@ -208,8 +208,38 @@
                 <a href="#">忘记密码</a>
               </div>
               <div class="login-btn">
-                <button class="layui-btn layui-btn-fluid">登陆</button>
+                <button id="btnLogin" class="layui-btn layui-btn-fluid">登陆</button>
               </div>
+            </div>
+          </div>
+        </div>
+        <div id="loginAfter" style="display:none">
+          <div class="layui-row">
+            <div class="layui-col-lg12 layui-col-md12">
+              <div class="news-left-block"></div>
+              <div class="news-title">
+                <p>工作</p>
+                <a id="btnLoginOut" href="javascript:void(0)">
+                  退出登录
+                  <i class="layui-icon layui-icon-right news-icon"></i>
+                </a>
+                <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="layui-col-lg4 layui-col-md4">
+              <span class="layui-badge layui-badge1">6</span>
+              <span class="badeg-info">待办事项</span>
+            </div>
+            <div class="layui-col-lg4 layui-col-md4">
+              <span class="layui-badge layui-badge2">6</span>
+              <span class="badeg-info">我的申请</span>
+            </div>
+            <div class="layui-col-lg4 layui-col-md4">
+              <span class="layui-badge layui-badge3">6</span>
+              <span class="badeg-info">委托代办</span>
             </div>
           </div>
         </div>

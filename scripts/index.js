@@ -1,9 +1,16 @@
 var Index = function () {
     this._urls = {};
-    this._controls = {};
+    this._controls = {
+        userMin: $('#userMin'),
+        btnLogin: $('#btnLogin'),
+        loginAgo: $('#loginAgo'),
+        loginAfter: $('#loginAfter'),
+        btnLoginOut: $('#btnLoginOut')
+    };
 };
 
 Index.prototype.initControl = function () {
+    var that = this;
     // 初始化layui
     layui.use(['carousel', 'form', 'element'], function () {
         var carousel = layui.carousel;
@@ -18,8 +25,35 @@ Index.prototype.initControl = function () {
             arrow: 'hover' //始终显示箭头
             //,anim: 'updown' //切换动画方式
         });
-    });
+        // 按钮事件
+        that._controls.btnLogin.on('click', function () {
+            layer.msg('登陆成功，欢迎您王凯旋', {
+                icon: 1,
+                time: 700 //2秒关闭（如果不配置，默认是3秒）
+            }, function () {
+                that._controls.loginAgo.hide();
+                that._controls.loginAfter.show();
+                that._controls.userMin.show();
+            });
+        });
+        that._controls.btnLoginOut.on('click', function () {
+            layer.confirm('确认退出当前账户？', {
+                icon: 3,
+                title: '提示'
+            }, function (index) {
+                layer.close(index);
+                layer.msg('退出成功', {
+                    icon: 1,
+                    time: 500 //2秒关闭（如果不配置，默认是3秒）
+                }, function () {
+                    that._controls.loginAgo.show();
+                    that._controls.loginAfter.hide();
+                    that._controls.userMin.hide();
+                });
 
+            });
+        });
+    });
     // 初始化chart图表
     // 调用charts.js
     var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
