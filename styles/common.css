@@ -24,6 +24,10 @@
     background: #6EC8FF;
 }
 
+.layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this {
+    background: #6EC8FF;
+}
+
 .layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after {
     background:#6EC8FF;
 }
