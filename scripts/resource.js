@@ -5,7 +5,8 @@ var Resource = function() {
             btnChart: $('#btnChart'),
             btnTable: $('#btnTable'),
             myChart: $('#myChart'),
-            myTable: $('#myTable')
+            myTable: $('#myTable'),
+            _layuiTag: $('.layui-tag')
         },
         this._commonData = {
             chartType: false
@@ -92,6 +93,10 @@ Resource.prototype.initControl = function() {
         that._controls.myTable.show();
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnChart.removeClass('layui-btn-normal').addClass('layui-btn-primary');
+    });
+
+    this._controls._layuiTag.on('click', function() {
+        window.location.href = 'resource1.html';
     });
 };
 // 初始化日期
