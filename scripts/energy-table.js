@@ -1,4 +1,4 @@
-var EnergyTable = function () {
+var EnergyTable = function() {
     this._urls = {};
     this._controls = {
         regional: $('#regional dd'),
@@ -6,15 +6,18 @@ var EnergyTable = function () {
         date: $('#date dd')
     };
 }
-EnergyTable.prototype.initControl = function () {
+EnergyTable.prototype.initControl = function() {
     // 点击事件
-    this._controls.regional.on('click', function () {
+    this._controls.regional.on('click', function() {
         $(this).addClass('active').siblings().removeClass('active');
     })
-    this._controls.business.on('click', function () {
+    this._controls.business.on('click', function() {
         $(this).addClass('active').siblings().removeClass('active');
     })
-    this._controls.date.on('click', function () {
+    this._controls.date.on('click', function() {
         $(this).addClass('active').siblings().removeClass('active');
-    })
+    });
+    layui.use('element', function() {
+        var element = layui.element;
+    });
 }

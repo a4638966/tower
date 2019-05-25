@@ -1,11 +1,12 @@
-var ExtendedTree = function () {
+var ExtendedTree = function() {
     this._urls = {};
     this._control = {};
 };
-ExtendedTree.prototype.initControl = function () {
+ExtendedTree.prototype.initControl = function() {
     var that = this;
     // 初始化layui
-    layui.use('tree', function () {
+    layui.use(['tree', 'element'], function() {
+        var element = layui.element;
         layui.tree({
             elem: '#treeNav',
             skin: 'shihuang',
@@ -59,7 +60,7 @@ ExtendedTree.prototype.initControl = function () {
                         }
                     ]
                 }]
-            }] 
+            }]
         });
     });
 };
