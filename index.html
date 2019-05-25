@@ -2,536 +2,518 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>中国铁塔股份有限公司河南省分公司</title>
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="components/layui/css/layui.css">
-  <link rel="stylesheet" href="styles/common.css">
-  <link rel="stylesheet" href="styles/index.css">
-  <script src="components/jquery/jquery.min.js"></script>
-  <script src="components/layui/layui.js"></script>
-  <script src="components/chart.js/Chart.js"></script>
-  <!--[if lt IE 9]>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国铁塔股份有限公司河南省分公司</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="components/layui/css/layui.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/layui/layui.js"></script>
+    <script src="components/chart.js/Chart.js"></script>
+    <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
 
 <body class="layui-layout-body" style="overflow: auto">
-  <!-- 头部logo部分开始 -->
-  <div class="layui-layout layui-layout-admin">
-    <div class="layui-header logo-box">
-      <a href="index.html">
-        <img src="images/logo.png" alt="logo">
-      </a>
-      <ul class="layui-nav layui-layout-left nav-box">
-        <li class="layui-nav-item layui-this">
-          <a href="index.html">首页
+    <!-- 头部logo部分开始 -->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header logo-box">
+            <a href="index.html">
+                <img src="images/logo.png" alt="logo">
+            </a>
+            <ul class="layui-nav layui-layout-left nav-box">
+                <li class="layui-nav-item layui-this">
+                    <a href="index.html">首页
             <!-- <span class="layui-badge-dot"></span> --></a>
-        </li>
-        <li class="layui-nav-item">
-          <a href="resource.html">资源中心</a>
-        </li>
-        <li class="layui-nav-item ">
-          <a href="monitoring.html">监控中心</a>
-          <dl class="layui-nav-child">
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=5"
-                target="_blank">智慧能源备电监控中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=6"
-                target="_blank">智慧能源发电监控中心</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item ">
-          <a href="business.html">业务中心
+                </li>
+                <li class="layui-nav-item">
+                    <a href="resource.html">资源中心</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="monitoring.html">监控中心</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=5">智慧能源备电监控中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=6">智慧能源发电监控中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="business.html">业务中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-          <dl class="layui-nav-child">
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=7"
-                target="_blank">智慧能源发电业务中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=8"
-                target="_blank">智慧能源备电业务中心</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item ">
-          <a href="#">调度中心
+                    <dl class="layui-nav-child">
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=8">智慧能源发电业务中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=7">智慧能源备电业务中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="#">调度中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-          <dl class="layui-nav-child">
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=1"
-                target="_blank">对内应急保障中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=2"
-                target="_blank">备电客户保障中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=3"
-                target="_blank">电力停电预警中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=4"
-                target="_blank">基站能源均衡中心</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item ">
-          <a href="customer.html">客户中心
+                    <dl class="layui-nav-child">
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=1">对内应急保障中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=2">备电客户保障中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=3">电力停电预警中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=4">基站能源均衡中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="customer.html">客户中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-        </li>
-        <li class="layui-nav-item ">
-          <a href="operation.html">运营中心
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="operation.html">运营中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-        </li>
-      </ul>
-      <ul id="userMin" class="layui-nav layui-layout-right" style="display:none">
-        <li class="layui-nav-item">
-          <a href="javascript:;">
-            <i class="layui-icon layui-icon-username"
-              style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i>
-            王凯旋
-            <span class="layui-nav-more"></span></a>
-          <dl class="layui-nav-child layui-anim layui-anim-upbit">
-            <dd><a href="personal.html">个人中心</a></dd>
-          </dl>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- 头部logo部分结束 -->
-  <!-- 主体内容开始 -->
-  <div class="layui-fluid">
-    <!-- 头部开始 -->
-    <div class="layui-row">
-      <div class="layui-col-lg3 layui-col-md3 layui-col-wheight layui-radius layui-carousel" style="margin-right: 1%;">
-        <div class="layui-carousel" id="myCarousel">
-          <div carousel-item>
-            <div>
-              <a href="javascript:void(0)">
-                <img src="images/carousel-1.png" alt="轮播图片">
-              </a>
-            </div>
-            <div>
-              <a href="javascript:void(0)">
-                <img src="images/carousel-1.png" alt="轮播图片">
-              </a>
-            </div>
-            <div>
-              <a href="javascript:void(0)">
-                <img src="images/carousel-1.png" alt="轮播图片">
-              </a>
-            </div>
-            <div>
-              <a href="javascript:void(0)">
-                <img src="images/carousel-1.png" alt="轮播图片">
-              </a>
-            </div>
-            <div>
-              <a href="javascript:void(0)">
-                <img src="images/carousel-1.png" alt="轮播图片">
-              </a>
-            </div>
-          </div>
+                </li>
+            </ul>
+            <ul id="userMin" class="layui-nav layui-layout-right" style="display:none">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-username" style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i> 王凯旋
+                        <span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                        <dd><a href="personal.html">个人中心</a></dd>
+                    </dl>
+                </li>
+            </ul>
         </div>
-      </div>
-      <div class="layui-col-lg6 layui-col-md6 layui-col-news layui-radius">
+    </div>
+    <!-- 头部logo部分结束 -->
+    <!-- 主体内容开始 -->
+    <div class="layui-fluid">
+        <!-- 头部开始 -->
         <div class="layui-row">
-          <div class="layui-col-lg12 layui-col-md12">
-            <div class="news-left-block"></div>
-            <div class="news-title">
-              <p>签约快讯</p>
-              <a href="#">
+            <div class="layui-col-lg3 layui-col-md3 layui-col-wheight layui-radius layui-carousel" style="margin-right: 1%;">
+                <div class="layui-carousel" id="myCarousel">
+                    <div carousel-item>
+                        <div>
+                            <a href="javascript:void(0)">
+                                <img src="images/carousel-1.png" alt="轮播图片">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="javascript:void(0)">
+                                <img src="images/carousel-1.png" alt="轮播图片">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="javascript:void(0)">
+                                <img src="images/carousel-1.png" alt="轮播图片">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="javascript:void(0)">
+                                <img src="images/carousel-1.png" alt="轮播图片">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="javascript:void(0)">
+                                <img src="images/carousel-1.png" alt="轮播图片">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-lg6 layui-col-md6 layui-col-news layui-radius">
+                <div class="layui-row">
+                    <div class="layui-col-lg12 layui-col-md12">
+                        <div class="news-left-block"></div>
+                        <div class="news-title">
+                            <p>签约快讯</p>
+                            <a href="#">
                 查看全部
                 <i class="layui-icon layui-icon-right news-icon"></i>
               </a>
-              <div class="clearfix"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="layui-col-lg12 layui-col-md12">
+                        <ul class="news-content">
+                            <li>
+                                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                                <p class="news-date">2018-11-24 14:53</p>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                                <p class="news-date">2018-11-24 14:53</p>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                                <p class="news-date">2018-11-24 14:53</p>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                                <p class="news-date">2018-11-24 14:53</p>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                                <p class="news-date">2018-11-24 14:53</p>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                                <p class="news-date">2018-11-24 14:53</p>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
+                                <p class="news-date">2018-11-24 14:53</p>
+                                <div class="clearfix"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="layui-col-lg12 layui-col-md12">
-            <ul class="news-content">
-              <li>
-                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
-                <p class="news-date">2018-11-24 14:53</p>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
-                <p class="news-date">2018-11-24 14:53</p>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
-                <p class="news-date">2018-11-24 14:53</p>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
-                <p class="news-date">2018-11-24 14:53</p>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
-                <p class="news-date">2018-11-24 14:53</p>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
-                <p class="news-date">2018-11-24 14:53</p>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <p class="news-info">西藏铁塔综合维护业务合作伙伴招募公告</p>
-                <p class="news-date">2018-11-24 14:53</p>
-                <div class="clearfix"></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="layui-col-lg3 layui-col-md3 layui-col-wheight layui-user layui-radius" style="margin-left: 0.7%;">
-        <div id="loginAgo" class="layui-row" style="display:block">
-          <div class="layui-col-lg12 lay-col-md12 main-login">
-            <div class="layui-form">
-              <div class="login-box">
-                <i class="layui-icon layui-icon-username"></i>
-                <input type="text" placeholder="手机号/邮箱/用户名">
-              </div>
-              <div class="login-box">
-                <i class="layui-icon layui-icon layui-icon-password"></i>
-                <input type="password" placeholder="密码">
-              </div>
-              <div class="login-verify">点击进行验证</div>
-              <div class="login-function">
-                <input type="checkbox" name="" title="两周内自动登录" lay-skin="primary">
-                <a href="#">忘记密码</a>
-              </div>
-              <div class="login-btn">
-                <button id="btnLogin" class="layui-btn layui-btn-fluid">登陆</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="loginAfter" style="display:none">
-          <div class="layui-row">
-            <div class="layui-col-lg12 layui-col-md12">
-              <div class="news-left-block"></div>
-              <div class="news-title">
-                <p>工作</p>
-                <a id="btnLoginOut" href="javascript:void(0)">
+            <div class="layui-col-lg3 layui-col-md3 layui-col-wheight layui-user layui-radius" style="margin-left: 0.7%;">
+                <div id="loginAgo" class="layui-row" style="display:block">
+                    <div class="layui-col-lg12 lay-col-md12 main-login">
+                        <div class="layui-form">
+                            <div class="login-box">
+                                <i class="layui-icon layui-icon-username"></i>
+                                <input type="text" placeholder="手机号/邮箱/用户名">
+                            </div>
+                            <div class="login-box">
+                                <i class="layui-icon layui-icon layui-icon-password"></i>
+                                <input type="password" placeholder="密码">
+                            </div>
+                            <div class="login-verify">点击进行验证</div>
+                            <div class="login-function">
+                                <input type="checkbox" name="" title="两周内自动登录" lay-skin="primary">
+                                <a href="#">忘记密码</a>
+                            </div>
+                            <div class="login-btn">
+                                <button id="btnLogin" class="layui-btn layui-btn-fluid">登陆</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="loginAfter" style="display:none">
+                    <div class="layui-row">
+                        <div class="layui-col-lg12 layui-col-md12">
+                            <div class="news-left-block"></div>
+                            <div class="news-title">
+                                <p>工作</p>
+                                <a id="btnLoginOut" href="javascript:void(0)">
                   退出登录
                   <i class="layui-icon layui-icon-right news-icon"></i>
                 </a>
-                <div class="clearfix"></div>
-              </div>
-              <div class="clearfix"></div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="layui-col-lg4 layui-col-md4">
+                            <span class="layui-badge layui-badge1">6</span>
+                            <span class="badeg-info">待办事项</span>
+                        </div>
+                        <div class="layui-col-lg4 layui-col-md4">
+                            <span class="layui-badge layui-badge2">6</span>
+                            <span class="badeg-info">我的申请</span>
+                        </div>
+                        <div class="layui-col-lg4 layui-col-md4">
+                            <span class="layui-badge layui-badge3">6</span>
+                            <span class="badeg-info">委托代办</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="layui-col-lg4 layui-col-md4">
-              <span class="layui-badge layui-badge1">6</span>
-              <span class="badeg-info">待办事项</span>
-            </div>
-            <div class="layui-col-lg4 layui-col-md4">
-              <span class="layui-badge layui-badge2">6</span>
-              <span class="badeg-info">我的申请</span>
-            </div>
-            <div class="layui-col-lg4 layui-col-md4">
-              <span class="layui-badge layui-badge3">6</span>
-              <span class="badeg-info">委托代办</span>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <!-- 头部结束 -->
-    <!-- 六张图开始 -->
-    <div class="layui-row layui-center">
-      <a href="#" class="item-resources item-source">
-        <p>资源中心</p>
-      </a>
-      <a href="#" class="item-resources item-surveillance">
-        <p>监控中心</p>
-      </a>
-      <a href="#" class="item-resources item-business">
-        <p>业务中心</p>
-      </a>
-      <a href="#" class="item-resources item-dispatch">
-        <p>调度中心</p>
-      </a>
-      <a href="#" class="item-resources item-customer">
-        <p>客户中心</p>
-      </a>
-      <a href="#" class="item-resources item-operational">
-        <p>运营中心</p>
-      </a>
-    </div>
-    <!-- 六张图结束 -->
-    <!-- 能源经营业务数据展示开始 -->
-    <div class="layui-row">
-      <div class="layui-col-lg12 layui-col-md12">
-        <div class="energy">
-          <span class="line"></span>
-          <span class="txt">能源经营业务数据展示</span>
-          <span class="line"></span>
+        <!-- 头部结束 -->
+        <!-- 六张图开始 -->
+        <div class="layui-row layui-center">
+            <a href="#" class="item-resources item-source">
+                <p>资源中心</p>
+            </a>
+            <a href="#" class="item-resources item-surveillance">
+                <p>监控中心</p>
+            </a>
+            <a href="#" class="item-resources item-business">
+                <p>业务中心</p>
+            </a>
+            <a href="#" class="item-resources item-dispatch">
+                <p>调度中心</p>
+            </a>
+            <a href="#" class="item-resources item-customer">
+                <p>客户中心</p>
+            </a>
+            <a href="#" class="item-resources item-operational">
+                <p>运营中心</p>
+            </a>
         </div>
-      </div>
-      <div class="layui-col-lg12 layui-col-md12">
+        <!-- 六张图结束 -->
+        <!-- 能源经营业务数据展示开始 -->
         <div class="layui-row">
-          <div class="layui-col-lg6 layui-col-md6 layui-radius" style="width: 48%;height: 405px;margin-right: 1%;">
-            <div class="energy-tip">
-              <p>
-                <span class="energy-text">备电点</span>
-                <span class="energy-block"></span>
-              </p>
-              <p>
-                <span class="energy-text">发电点</span>
-                <span class="energy-block  active"></span>
-              </p>
-              <p>
-                <span class="energy-text">换电点</span>
-                <span class="energy-block"></span>
-              </p>
-              <p>
-                <span class="energy-text">售电点</span>
-                <span class="energy-block"></span>
-              </p>
+            <div class="layui-col-lg12 layui-col-md12">
+                <div class="energy">
+                    <span class="line"></span>
+                    <span class="txt">能源经营业务数据展示</span>
+                    <span class="line"></span>
+                </div>
             </div>
-            <div class="energy-content">
-              <div class="layui-row" style="margin-bottom: 1.5rem;">
-                <div class="layui-col-lg4 layui-col-md4">
-                  <p class="energy-content-title">数量</p>
-                  <p class="energy-content-number">34<span>个</span></p>
-                </div>
-                <div class="layui-col-lg4 layui-col-md4">
-                  <p class="energy-content-title">收入</p>
-                  <p class="energy-content-number">5.8<span>万</span></p>
-                </div>
-                <div class="layui-col-lg4 layui-col-md4">
-                  <p class="energy-content-title">容量</p>
-                  <p class="energy-content-number">600.530<span>mw</span></p>
-                </div>
+            <div class="layui-col-lg12 layui-col-md12">
                 <div class="layui-row">
-                  <div class="layui-col-lg5 layui-col-md5">
-                    <div class="progress-box" style="margin-top: 3.5rem;">
-                      <p class="progress-money">合同金额</p>
-                      <div class="layui-progress">
-                        <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%"></div>
-                      </div>
-                      <p class="progress-num">2.1<span>万</span></p>
+                    <div class="layui-col-lg6 layui-col-md6 layui-radius" style="width: 48%;height: 405px;margin-right: 1%;">
+                        <div class="energy-tip">
+                            <p>
+                                <span class="energy-text">备电点</span>
+                                <span class="energy-block"></span>
+                            </p>
+                            <p>
+                                <span class="energy-text">发电点</span>
+                                <span class="energy-block  active"></span>
+                            </p>
+                            <p>
+                                <span class="energy-text">换电点</span>
+                                <span class="energy-block"></span>
+                            </p>
+                            <p>
+                                <span class="energy-text">售电点</span>
+                                <span class="energy-block"></span>
+                            </p>
+                        </div>
+                        <div class="energy-content">
+                            <div class="layui-row" style="margin-bottom: 1.5rem;">
+                                <div class="layui-col-lg4 layui-col-md4">
+                                    <p class="energy-content-title">数量</p>
+                                    <p class="energy-content-number">34<span>个</span></p>
+                                </div>
+                                <div class="layui-col-lg4 layui-col-md4">
+                                    <p class="energy-content-title">收入</p>
+                                    <p class="energy-content-number">5.8<span>万</span></p>
+                                </div>
+                                <div class="layui-col-lg4 layui-col-md4">
+                                    <p class="energy-content-title">容量</p>
+                                    <p class="energy-content-number">600.530<span>mw</span></p>
+                                </div>
+                                <div class="layui-row">
+                                    <div class="layui-col-lg5 layui-col-md5">
+                                        <div class="progress-box" style="margin-top: 3.5rem;">
+                                            <p class="progress-money">合同金额</p>
+                                            <div class="layui-progress">
+                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%"></div>
+                                            </div>
+                                            <p class="progress-num">2.1<span>万</span></p>
+                                        </div>
+                                        <div class="progress-box">
+                                            <p class="progress-money">回款金额</p>
+                                            <div class="layui-progress">
+                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="50%"></div>
+                                            </div>
+                                            <p class="progress-num">5.3<span>万</span></p>
+                                        </div>
+                                        <div class="progress-box">
+                                            <p class="progress-money">出账金额</p>
+                                            <div class="layui-progress">
+                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="100%"></div>
+                                            </div>
+                                            <p class="progress-num">4.8<span>万</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-lg7 layui-col-md-7" style="margin-top:3.5rem;position:relative">
+                                        <p class="chart-title">业务占比</p>
+                                        <canvas id="pieChart" style="height:150px;margin-top: 3%;margin-left: -15%;"></canvas>
+                                        <ul class="chart-legend-all">
+                                            <li>
+                                                <span class="chart-legend chart-legend1"></span>
+                                                <span class="chart-desc">业务类型1</span>
+                                            </li>
+                                            <li>
+                                                <span class="chart-legend chart-legend2"></span>
+                                                <span class="chart-desc">业务类型2</span>
+                                            </li>
+                                            <li>
+                                                <span class="chart-legend chart-legend3"></span>
+                                                <span class="chart-desc">业务类型3</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="progress-box">
-                      <p class="progress-money">回款金额</p>
-                      <div class="layui-progress">
-                        <div class="layui-progress-bar layui-bg-custom1" lay-percent="50%"></div>
-                      </div>
-                      <p class="progress-num">5.3<span>万</span></p>
+                    <div class="layui-col-lg3 layui-col-md3 layui-radius" style="width: 22%;height: 405px;margin-right: 1%;">
+                        <div>
+                            <div class="energy-site"></div>
+                            <div class="energy-site-title">
+                                <p>储能站</p>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="energy-content" style="margin-top:4.6rem">
+                            <div class="layui-row energy-center" style="margin-bottom: 1.5rem;">
+                                <div class="layui-col-lg6 layui-col-md6">
+                                    <p class="energy-content-title">数量</p>
+                                    <p class="energy-content-number">34<span>个</span></p>
+                                </div>
+                                <div class="layui-col-lg6 layui-col-md6">
+                                    <p class="energy-content-title">容量</p>
+                                    <p class="energy-content-number">6555.332<span>mw</span></p>
+                                </div>
+                                <div class="layui-col-lg6 layui-col-md6" style="margin-top: 2rem;">
+                                    <p class="energy-content-title">峰值放电时长</p>
+                                    <p class="energy-content-number">6000<span>min</span></p>
+                                </div>
+                                <div class="layui-row">
+                                    <div class="layui-col-lg12 layui-col-md12">
+                                        <div class="progress-box" style="margin-top: 2.9rem;">
+                                            <p class="progress-money">充电量</p>
+                                            <div class="layui-progress">
+                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%"></div>
+                                            </div>
+                                            <p class="progress-num">2.1<span>万</span></p>
+                                        </div>
+                                        <div class="progress-box">
+                                            <p class="progress-money">放电量</p>
+                                            <div class="layui-progress">
+                                                <div class="layui-progress-bar layui-bg-custom2" lay-percent="50%"></div>
+                                            </div>
+                                            <p class="progress-num">5.3<span>万</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="progress-box">
-                      <p class="progress-money">出账金额</p>
-                      <div class="layui-progress">
-                        <div class="layui-progress-bar layui-bg-custom1" lay-percent="100%"></div>
-                      </div>
-                      <p class="progress-num">4.8<span>万</span></p>
+                    <div class="layui-col-lg3 layui-col-md3 layui-radius" style="width: 22%;height: 405px;">
+                        <div>
+                            <div class="energy-site"></div>
+                            <div class="energy-site-title">
+                                <p>延寿站</p>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="energy-content extended-longevity" style="margin-top:4.6rem">
+                            <div class="layui-row energy-center" style="margin-bottom: 1.5rem;padding-right: 20px;">
+                                <div class="layui-col-lg6 layui-col-md6">
+                                    <p class="energy-content-title">数量</p>
+                                    <p class="energy-content-number">34<span>个</span></p>
+                                </div>
+                                <div class="layui-col-lg6 layui-col-md6">
+                                    <p class="energy-content-title">容量</p>
+                                    <p class="energy-content-number">5224.325<span>mw</span></p>
+                                </div>
+                                <div class="layui-col-lg6 layui-col-md6" style="margin-top: 2rem;">
+                                    <p class="energy-content-title">平均续航时长</p>
+                                    <p class="energy-content-number">6000<span>min</span></p>
+                                </div>
+                                <div class="layui-row">
+                                    <div class="layui-col-lg12 layui-col-md12">
+                                        <div class="progress-box" style="margin-top: 2.9rem;">
+                                            <p class="progress-money">续航能力提升能力</p>
+                                            <p class="progress-num">2.1<span>万</span></p>
+                                            <div class="layui-progress">
+                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box">
+                                            <p class="progress-money">放电量</p>
+                                            <div class="layui-progress">
+                                                <div class="layui-progress-bar layui-bg-custom2" lay-percent="50%"></div>
+                                            </div>
+                                            <p class="progress-num">5.3<span>万</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="layui-col-lg7 layui-col-md-7" style="margin-top:3.5rem;position:relative">
-                    <p class="chart-title">业务占比</p>
-                    <canvas id="pieChart" style="height:150px;margin-top: 3%;margin-left: -15%;"></canvas>
-                    <ul class="chart-legend-all">
-                      <li>
-                        <span class="chart-legend chart-legend1"></span>
-                        <span class="chart-desc">业务类型1</span>
-                      </li>
-                      <li>
-                        <span class="chart-legend chart-legend2"></span>
-                        <span class="chart-desc">业务类型2</span>
-                      </li>
-                      <li>
-                        <span class="chart-legend chart-legend3"></span>
-                        <span class="chart-desc">业务类型3</span>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="layui-col-lg3 layui-col-md3 layui-radius" style="width: 22%;height: 405px;margin-right: 1%;">
-            <div>
-              <div class="energy-site"></div>
-              <div class="energy-site-title">
-                <p>储能站</p>
+        </div>
+        <!-- 能源经营业务数据展示结束 -->
+        <!-- 资信中心开始 -->
+        <div class="layui-row" style="margin-top:1.5rem;">
+            <div class="layui-col-lg6 layui-col-md6 layui-radius" style="width: 48%; margin-right: 1%;">
+                <div class="news-left-block"></div>
+                <div class="news-title" style="border:none">
+                    <p>资信中心</p>
+                    <div class="clearfix"></div>
+                </div>
                 <div class="clearfix"></div>
-              </div>
+                <div class="credit-content"></div>
             </div>
-            <div class="energy-content" style="margin-top:4.6rem">
-              <div class="layui-row energy-center" style="margin-bottom: 1.5rem;">
-                <div class="layui-col-lg6 layui-col-md6">
-                  <p class="energy-content-title">数量</p>
-                  <p class="energy-content-number">34<span>个</span></p>
+            <div class="layui-col-lg6 layui-col-md6 layui-radius" style="width: 45.1%">
+                <div class="news-left-block"></div>
+                <div class="news-title" style="border:none">
+                    <p>信息下载中心</p>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="layui-col-lg6 layui-col-md6">
-                  <p class="energy-content-title">容量</p>
-                  <p class="energy-content-number">6555.332<span>mw</span></p>
-                </div>
-                <div class="layui-col-lg6 layui-col-md6" style="margin-top: 2rem;">
-                  <p class="energy-content-title">峰值放电时长</p>
-                  <p class="energy-content-number">6000<span>min</span></p>
-                </div>
-                <div class="layui-row">
-                  <div class="layui-col-lg12 layui-col-md12">
-                    <div class="progress-box" style="margin-top: 2.9rem;">
-                      <p class="progress-money">充电量</p>
-                      <div class="layui-progress">
-                        <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%"></div>
-                      </div>
-                      <p class="progress-num">2.1<span>万</span></p>
-                    </div>
-                    <div class="progress-box">
-                      <p class="progress-money">放电量</p>
-                      <div class="layui-progress">
-                        <div class="layui-progress-bar layui-bg-custom2" lay-percent="50%"></div>
-                      </div>
-                      <p class="progress-num">5.3<span>万</span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="layui-col-lg3 layui-col-md3 layui-radius" style="width: 22%;height: 405px;">
-            <div>
-              <div class="energy-site"></div>
-              <div class="energy-site-title">
-                <p>延寿站</p>
                 <div class="clearfix"></div>
-              </div>
+                <div class="credit-content"></div>
             </div>
-            <div class="energy-content extended-longevity" style="margin-top:4.6rem">
-              <div class="layui-row energy-center" style="margin-bottom: 1.5rem;padding-right: 20px;">
-                <div class="layui-col-lg6 layui-col-md6">
-                  <p class="energy-content-title">数量</p>
-                  <p class="energy-content-number">34<span>个</span></p>
+        </div>
+        <!-- 资信中心结束 -->
+        <!-- 签约客户开始 -->
+        <div class="layui-row">
+            <div class="layui-col-lg12 layui-col-md12">
+                <div class="energy" style="margin-bottom: 1rem;">
+                    <span class="line"></span>
+                    <span class="txt">签约客户</span>
+                    <span class="line"></span>
                 </div>
-                <div class="layui-col-lg6 layui-col-md6">
-                  <p class="energy-content-title">容量</p>
-                  <p class="energy-content-number">5224.325<span>mw</span></p>
-                </div>
-                <div class="layui-col-lg6 layui-col-md6" style="margin-top: 2rem;">
-                  <p class="energy-content-title">平均续航时长</p>
-                  <p class="energy-content-number">6000<span>min</span></p>
-                </div>
-                <div class="layui-row">
-                  <div class="layui-col-lg12 layui-col-md12">
-                    <div class="progress-box" style="margin-top: 2.9rem;">
-                      <p class="progress-money">续航能力提升能力</p>
-                      <p class="progress-num">2.1<span>万</span></p>
-                      <div class="layui-progress">
-                        <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%"></div>
-                      </div>
-                    </div>
-                    <div class="progress-box">
-                      <p class="progress-money">放电量</p>
-                      <div class="layui-progress">
-                        <div class="layui-progress-bar layui-bg-custom2" lay-percent="50%"></div>
-                      </div>
-                      <p class="progress-num">5.3<span>万</span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
+            <div class="layui-col-lg12 layui-col-md12 layui-radius" style="width: 94%;margin-bottom: 6rem;">
+                <div class="energy-tip" style="text-align: center;margin-top:2rem;margin-left:-100px;">
+                    <p>
+                        <span class="energy-text">金融机构</span>
+                        <span class="energy-block"></span>
+                    </p>
+                    <p>
+                        <span class="energy-text">医疗卫生</span>
+                        <span class="energy-block  active"></span>
+                    </p>
+                    <p>
+                        <span class="energy-text">公安交警</span>
+                        <span class="energy-block"></span>
+                    </p>
+                    <p>
+                        <span class="energy-text">学校教育</span>
+                        <span class="energy-block"></span>
+                    </p>
+                    <p>
+                        <span class="energy-text">单位机房</span>
+                        <span class="energy-block"></span>
+                    </p>
+                    <p>
+                        <span class="energy-text">数据中心</span>
+                        <span class="energy-block"></span>
+                    </p>
+                    <p>
+                        <span class="energy-text">物业管理</span>
+                        <span class="energy-block"></span>
+                    </p>
+                </div>
+                <div class="customer-box">
+                    <img src="images/customer_1.png" alt="腾讯云" style="margin-left:0">
+                    <img src="images/customer_2.png" alt="京东云">
+                    <img src="images/customer_3.png" alt="航天云网">
+                    <img src="images/customer_4.png" alt="浪潮云">
+                    <img src="images/customer_5.png" alt="天泽智云" style="margin-right:0">
+                    <div class="clearfix"></div>
+                </div>
+            </div>
         </div>
-      </div>
+        <!-- 签约客户结束 -->
     </div>
-    <!-- 能源经营业务数据展示结束 -->
-    <!-- 资信中心开始 -->
-    <div class="layui-row" style="margin-top:1.5rem;">
-      <div class="layui-col-lg6 layui-col-md6 layui-radius" style="width: 48%; margin-right: 1%;">
-        <div class="news-left-block"></div>
-        <div class="news-title" style="border:none">
-          <p>资信中心</p>
-          <div class="clearfix"></div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="credit-content"></div>
-      </div>
-      <div class="layui-col-lg6 layui-col-md6 layui-radius" style="width: 45.1%">
-        <div class="news-left-block"></div>
-        <div class="news-title" style="border:none">
-          <p>信息下载中心</p>
-          <div class="clearfix"></div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="credit-content"></div>
-      </div>
-    </div>
-    <!-- 资信中心结束 -->
-    <!-- 签约客户开始 -->
-    <div class="layui-row">
-      <div class="layui-col-lg12 layui-col-md12">
-        <div class="energy" style="margin-bottom: 1rem;">
-          <span class="line"></span>
-          <span class="txt">签约客户</span>
-          <span class="line"></span>
-        </div>
-      </div>
-      <div class="layui-col-lg12 layui-col-md12 layui-radius" style="width: 94%;margin-bottom: 6rem;">
-        <div class="energy-tip" style="text-align: center;margin-top:2rem;margin-left:-100px;">
-          <p>
-            <span class="energy-text">金融机构</span>
-            <span class="energy-block"></span>
-          </p>
-          <p>
-            <span class="energy-text">医疗卫生</span>
-            <span class="energy-block  active"></span>
-          </p>
-          <p>
-            <span class="energy-text">公安交警</span>
-            <span class="energy-block"></span>
-          </p>
-          <p>
-            <span class="energy-text">学校教育</span>
-            <span class="energy-block"></span>
-          </p>
-          <p>
-            <span class="energy-text">单位机房</span>
-            <span class="energy-block"></span>
-          </p>
-          <p>
-            <span class="energy-text">数据中心</span>
-            <span class="energy-block"></span>
-          </p>
-          <p>
-            <span class="energy-text">物业管理</span>
-            <span class="energy-block"></span>
-          </p>
-        </div>
-        <div class="customer-box">
-          <img src="images/customer_1.png" alt="腾讯云" style="margin-left:0">
-          <img src="images/customer_2.png" alt="京东云">
-          <img src="images/customer_3.png" alt="航天云网">
-          <img src="images/customer_4.png" alt="浪潮云">
-          <img src="images/customer_5.png" alt="天泽智云" style="margin-right:0">
-          <div class="clearfix"></div>
-        </div>
-      </div>
-    </div>
-    <!-- 签约客户结束 -->
-  </div>
-  <footer class="footer">
-    <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
-    <p>creenshots © Their respective owners. Google+</p>
-  </footer>
-  <script src="scripts/index.js"></script>
-  <script>
-    var index = null;
-    index = new Index();
-    index.initControl();
-  </script>
+    <footer class="footer">
+        <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
+        <p>creenshots © Their respective owners. Google+</p>
+    </footer>
+    <script src="scripts/index.js"></script>
+    <script>
+        var index = null;
+        index = new Index();
+        index.initControl();
+    </script>
 </body>
 
 </html>

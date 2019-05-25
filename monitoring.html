@@ -2,353 +2,335 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>中国铁塔股份有限公司河南省分公司</title>
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="components/layui/css/layui.css">
-  <link rel="stylesheet" href="styles/common.css">
-  <link rel="stylesheet" href="styles/monitoring.css">
-  <script src="components/jquery/jquery.min.js"></script>
-  <script src="components/layui/layui.js"></script>
-  <script src="components/chart.js/Chart.js"></script>
-  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW"></script>
-  <script type="text/javascript" src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
-  </script>
-  <!--[if lt IE 9]>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国铁塔股份有限公司河南省分公司</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="components/layui/css/layui.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/monitoring.css">
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/layui/layui.js"></script>
+    <script src="components/chart.js/Chart.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
+    </script>
+    <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
 
 <body class="layui-layout-body" style="overflow: auto">
-  <!-- 头部logo部分开始 -->
-  <div class="layui-layout layui-layout-admin">
-    <div class="layui-header logo-box">
-      <a href="index.html">
-        <img src="images/logo.png" alt="logo">
-      </a>
-      <ul class="layui-nav layui-layout-left nav-box">
-        <li class="layui-nav-item ">
-          <a href="index.html">首页
+    <!-- 头部logo部分开始 -->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header logo-box">
+            <a href="index.html">
+                <img src="images/logo.png" alt="logo">
+            </a>
+            <ul class="layui-nav layui-layout-left nav-box">
+                <li class="layui-nav-item ">
+                    <a href="index.html">首页
             <!-- <span class="layui-badge-dot"></span> --></a>
-        </li>
-        <li class="layui-nav-item">
-          <a href="resource.html">资源中心
+                </li>
+                <li class="layui-nav-item">
+                    <a href="resource.html">资源中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-        </li>
-        <li class="layui-nav-item layui-this">
-          <a href="monitoring.html">监控中心
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="monitoring.html">监控中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-          <dl class="layui-nav-child">
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=5"
-                target="_blank">智慧能源备电监控中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=6"
-                target="_blank">智慧能源发电监控中心</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item ">
-          <a href="business.html">业务中心
+                    <dl class="layui-nav-child">
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=5">智慧能源备电监控中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=6">智慧能源发电监控中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="business.html">业务中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-          <dl class="layui-nav-child">
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=7"
-                target="_blank">智慧能源发电业务中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=8"
-                target="_blank">智慧能源备电业务中心</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item ">
-          <a href="#">调度中心
+                    <dl class="layui-nav-child">
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=8">智慧能源发电业务中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=7">智慧能源备电业务中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="#">调度中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-          <dl class="layui-nav-child">
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=1"
-                target="_blank">对内应急保障中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=2"
-                target="_blank">备电客户保障中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=3"
-                target="_blank">电力停电预警中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=4"
-                target="_blank">基站能源均衡中心</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item ">
-          <a href="customer.html">客户中心
+                    <dl class="layui-nav-child">
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=1">对内应急保障中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=2">备电客户保障中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=3">电力停电预警中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=4">基站能源均衡中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="customer.html">客户中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-        </li>
-        <li class="layui-nav-item ">
-          <a href="operation.html">运营中心
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="operation.html">运营中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-        </li>
-      </ul>
-      <ul class="layui-nav layui-layout-right">
-        <li class="layui-nav-item">
-          <a href="javascript:;">
-            <i class="layui-icon layui-icon-username"
-              style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i>
-            王凯旋
-            <span class="layui-nav-more"></span></a>
-          <dl class="layui-nav-child layui-anim layui-anim-upbit">
-            <dd><a href="personal.html">个人中心</a></dd>
-          </dl>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- 头部logo部分结束 -->
-  <!-- 主体内容开始 -->
-  <div class="layui-fluid" style="min-height: 900px;">
-    <div class="layui-row">
-      <div class="layui-col-lg12 layui-col-md12" style="text-align: right;color: #ACB7BF;margin-bottom: 10px;">
-        <p style="margin-right: 6%;">数据更新于<span id="uploadDate"></span></p>
-      </div>
-    </div>
-    <div class="layui-row">
-      <div class="layui-col-lg4 layui-col-md4">
-        <div class="layui-row">
-          <div class="layui-col-lg12 layui-col-md12 layui-radius">
-            <div class="news-title">
-              <div>
-                <p id="btnEnergy" class="active">储能</p>
-                <div class="btn-this"></div>
-              </div>
-              <div>
-                <p id="btnExtended">延寿</p>
-                <div></div>
-              </div>
-            </div>
-            <div class="clearfix"></div>
-            <div id="energyDetil" class="layui-row">
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池放电8小时以上站点数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池放电不足4小时站点数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池管理设备/DTU系统告警数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池放电4~8小时站点数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">平均放电时长变动>20%站点数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池管理设备/DTU离线告警数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池电压告警数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池温度告警数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-            </div>
-            <div id="extendedDetil" class="layui-row" style="display:none">
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池放电3小时以上站点数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池放电不足1小时站点数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池管理设备/DTU离线告警数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池放电1~3小时站点数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池管理设备/DTU系统告警数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池电压告警数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-title">蓄电池温度告警数量(个)</p>
-                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
-              </div>
-            </div>
-          </div>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-username" style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i> 王凯旋
+                        <span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                        <dd><a href="personal.html">个人中心</a></dd>
+                    </dl>
+                </li>
+            </ul>
         </div>
-      </div>
-      <div class="layui-col-lg8 layui-col-md8">
-        <div class="layui-radius" style="width: 90%;min-height: 448px;margin-left: 10px;margin-bottom: 50px;">
-          <div class="layui-row chart-box">
-            <div class="layui-col-lg12 layui-col-md12 chart-title">
-              <div class="layui-btn-group chart-btn-box">
-                <button id="btnChart" class="layui-btn layui-btn-sm layui-btn-normal">地图</button>
-                <button id="btnTable" class="layui-btn layui-btn-sm layui-btn-primary">列表</button>
-              </div>
+    </div>
+    <!-- 头部logo部分结束 -->
+    <!-- 主体内容开始 -->
+    <div class="layui-fluid" style="min-height: 900px;">
+        <div class="layui-row">
+            <div class="layui-col-lg12 layui-col-md12" style="text-align: right;color: #ACB7BF;margin-bottom: 10px;">
+                <p style="margin-right: 6%;">数据更新于<span id="uploadDate"></span></p>
             </div>
-            <div id="myChart" class="layui-col-lg12 layui-col-md12 chart-content"></div>
-            <div id="myTable" class="layui-col-lg12 layui-col-md12" style="display:none">
-              <table id="tableEnergy" class="layui-table" lay-skin="line">
-                <thead>
-                  <tr>
-                    <th>站址名称</th>
-                    <th>站址编码</th>
-                    <th>平均放电时长</th>
-                    <th>剩余放电时长</th>
-                    <th>环比预警</th>
-                    <th>电池运行状态</th>
-                    <!-- <th>电池告警信息</th>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-lg4 layui-col-md4">
+                <div class="layui-row">
+                    <div class="layui-col-lg12 layui-col-md12 layui-radius">
+                        <div class="news-title">
+                            <div>
+                                <p id="btnEnergy" class="active">储能</p>
+                                <div class="btn-this"></div>
+                            </div>
+                            <div>
+                                <p id="btnExtended">延寿</p>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div id="energyDetil" class="layui-row">
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池放电8小时以上站点数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池放电不足4小时站点数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池管理设备/DTU系统告警数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池放电4~8小时站点数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">平均放电时长变动>20%站点数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池管理设备/DTU离线告警数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池电压告警数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池温度告警数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                        </div>
+                        <div id="extendedDetil" class="layui-row" style="display:none">
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池放电3小时以上站点数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池放电不足1小时站点数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池管理设备/DTU离线告警数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池放电1~3小时站点数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池管理设备/DTU系统告警数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池电压告警数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-title">蓄电池温度告警数量(个)</p>
+                                <p class="tag-num">200<span style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-lg8 layui-col-md8">
+                <div class="layui-radius" style="width: 90%;min-height: 448px;margin-left: 10px;margin-bottom: 50px;">
+                    <div class="layui-row chart-box">
+                        <div class="layui-col-lg12 layui-col-md12 chart-title">
+                            <div class="layui-btn-group chart-btn-box">
+                                <button id="btnChart" class="layui-btn layui-btn-sm layui-btn-normal">地图</button>
+                                <button id="btnTable" class="layui-btn layui-btn-sm layui-btn-primary">列表</button>
+                            </div>
+                        </div>
+                        <div id="myChart" class="layui-col-lg12 layui-col-md12 chart-content"></div>
+                        <div id="myTable" class="layui-col-lg12 layui-col-md12" style="display:none">
+                            <table id="tableEnergy" class="layui-table" lay-skin="line">
+                                <thead>
+                                    <tr>
+                                        <th>站址名称</th>
+                                        <th>站址编码</th>
+                                        <th>平均放电时长</th>
+                                        <th>剩余放电时长</th>
+                                        <th>环比预警</th>
+                                        <th>电池运行状态</th>
+                                        <!-- <th>电池告警信息</th>
                     <th>SOH</th>
                     <th>累计充电量</th>
                     <th>累计放电量</th>
                     <th>累计放电次数</th>
                     <th>冲放电效率</th> -->
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>安阳站</td>
-                    <td>10000</td>
-                    <td>5/H</td>
-                    <td>100/H</td>
-                    <td>30%</td>
-                    <td>正常</td>
-                  </tr>
-                  <tr>
-                    <td>洛阳站</td>
-                    <td>10001</td>
-                    <td>2/H</td>
-                    <td>50/H</td>
-                    <td>20%</td>
-                    <td>正常</td>
-                  </tr>
-                  <tr>
-                    <td>开封站</td>
-                    <td>10002</td>
-                    <td>1/H</td>
-                    <td>10/H</td>
-                    <td>30%</td>
-                    <td>预警</td>
-                  </tr>
-                  <tr>
-                    <td>新乡站</td>
-                    <td>10004</td>
-                    <td>10/H</td>
-                    <td>30/H</td>
-                    <td>30%</td>
-                    <td>正常</td>
-                  </tr>
-                  <tr>
-                    <td>郑州站</td>
-                    <td>10005</td>
-                    <td>4/H</td>
-                    <td>15/H</td>
-                    <td>10%</td>
-                    <td>正常</td>
-                  </tr>
-                  <tr>
-                    <td>南阳站</td>
-                    <td>10006</td>
-                    <td>5/H</td>
-                    <td>30/H</td>
-                    <td>5%</td>
-                    <td>正常</td>
-                  </tr>
-                </tbody>
-              </table>
-              <table id="tableExtended" class="layui-table" lay-skin="line" style="display:none">
-                <thead>
-                  <tr>
-                    <th>地市/区县</th>
-                    <th>延寿站数量</th>
-                    <th>备电时长</th>
-                    <th>应急放电次数</th>
-                    <th>应急放电达标</th>
-                    <th>备注</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>安阳市</td>
-                    <td>1000个</td>
-                    <td>200H</td>
-                    <td>50次</td>
-                    <td>300次</td>
-                    <td>整体形势一片大好</td>
-                  </tr>
-                  <tr>
-                    <td>洛阳市</td>
-                    <td>1000个</td>
-                    <td>200H</td>
-                    <td>50次</td>
-                    <td>300次</td>
-                    <td>整体形势一片大好</td>
-                  </tr>
-                  <tr>
-                    <td>开封市</td>
-                    <td>1000个</td>
-                    <td>200H</td>
-                    <td>50次</td>
-                    <td>300次</td>
-                    <td>整体形势一片大好</td>
-                  </tr>
-                  <tr>
-                    <td>新乡市</td>
-                    <td>1000个</td>
-                    <td>200H</td>
-                    <td>50次</td>
-                    <td>300次</td>
-                    <td>整体形势一片大好</td>
-                  </tr>
-                  <tr>
-                    <td>郑州市</td>
-                    <td>1000个</td>
-                    <td>200H</td>
-                    <td>50次</td>
-                    <td>300次</td>
-                    <td>整体形势一片大好</td>
-                  </tr>
-                  <tr>
-                    <td>南阳市</td>
-                    <td>1000个</td>
-                    <td>200H</td>
-                    <td>50次</td>
-                    <td>300次</td>
-                    <td>整体形势一片大好</td>
-                  </tr>
-                </tbody>
-              </table>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>安阳站</td>
+                                        <td>10000</td>
+                                        <td>5/H</td>
+                                        <td>100/H</td>
+                                        <td>30%</td>
+                                        <td>正常</td>
+                                    </tr>
+                                    <tr>
+                                        <td>洛阳站</td>
+                                        <td>10001</td>
+                                        <td>2/H</td>
+                                        <td>50/H</td>
+                                        <td>20%</td>
+                                        <td>正常</td>
+                                    </tr>
+                                    <tr>
+                                        <td>开封站</td>
+                                        <td>10002</td>
+                                        <td>1/H</td>
+                                        <td>10/H</td>
+                                        <td>30%</td>
+                                        <td>预警</td>
+                                    </tr>
+                                    <tr>
+                                        <td>新乡站</td>
+                                        <td>10004</td>
+                                        <td>10/H</td>
+                                        <td>30/H</td>
+                                        <td>30%</td>
+                                        <td>正常</td>
+                                    </tr>
+                                    <tr>
+                                        <td>郑州站</td>
+                                        <td>10005</td>
+                                        <td>4/H</td>
+                                        <td>15/H</td>
+                                        <td>10%</td>
+                                        <td>正常</td>
+                                    </tr>
+                                    <tr>
+                                        <td>南阳站</td>
+                                        <td>10006</td>
+                                        <td>5/H</td>
+                                        <td>30/H</td>
+                                        <td>5%</td>
+                                        <td>正常</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table id="tableExtended" class="layui-table" lay-skin="line" style="display:none">
+                                <thead>
+                                    <tr>
+                                        <th>地市/区县</th>
+                                        <th>延寿站数量</th>
+                                        <th>备电时长</th>
+                                        <th>应急放电次数</th>
+                                        <th>应急放电达标</th>
+                                        <th>备注</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>安阳市</td>
+                                        <td>1000个</td>
+                                        <td>200H</td>
+                                        <td>50次</td>
+                                        <td>300次</td>
+                                        <td>整体形势一片大好</td>
+                                    </tr>
+                                    <tr>
+                                        <td>洛阳市</td>
+                                        <td>1000个</td>
+                                        <td>200H</td>
+                                        <td>50次</td>
+                                        <td>300次</td>
+                                        <td>整体形势一片大好</td>
+                                    </tr>
+                                    <tr>
+                                        <td>开封市</td>
+                                        <td>1000个</td>
+                                        <td>200H</td>
+                                        <td>50次</td>
+                                        <td>300次</td>
+                                        <td>整体形势一片大好</td>
+                                    </tr>
+                                    <tr>
+                                        <td>新乡市</td>
+                                        <td>1000个</td>
+                                        <td>200H</td>
+                                        <td>50次</td>
+                                        <td>300次</td>
+                                        <td>整体形势一片大好</td>
+                                    </tr>
+                                    <tr>
+                                        <td>郑州市</td>
+                                        <td>1000个</td>
+                                        <td>200H</td>
+                                        <td>50次</td>
+                                        <td>300次</td>
+                                        <td>整体形势一片大好</td>
+                                    </tr>
+                                    <tr>
+                                        <td>南阳市</td>
+                                        <td>1000个</td>
+                                        <td>200H</td>
+                                        <td>50次</td>
+                                        <td>300次</td>
+                                        <td>整体形势一片大好</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <footer class="footer">
-    <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
-    <p>creenshots © Their respective owners. Google+</p>
-  </footer>
-  <script src="scripts/monitoring.js"></script>
-  <script>
-    var monitoring = null;
-    monitoring = new Monitoring();
-    monitoring.initControl();
-  </script>
+    <footer class="footer">
+        <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
+        <p>creenshots © Their respective owners. Google+</p>
+    </footer>
+    <script src="scripts/monitoring.js"></script>
+    <script>
+        var monitoring = null;
+        monitoring = new Monitoring();
+        monitoring.initControl();
+    </script>
 </body>
 
 </html>

@@ -2,270 +2,252 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>中国铁塔股份有限公司河南省分公司</title>
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="components/layui/css/layui.css">
-  <link rel="stylesheet" href="styles/common.css">
-  <link rel="stylesheet" href="styles/business.css">
-  <script src="components/jquery/jquery.min.js"></script>
-  <script src="components/layui/layui.js"></script>
-  <script src="components/chart.js/Chart.js"></script>
-  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW"></script>
-  <script type="text/javascript" src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
-  </script>
-  <!--[if lt IE 9]>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国铁塔股份有限公司河南省分公司</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="components/layui/css/layui.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/business.css">
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/layui/layui.js"></script>
+    <script src="components/chart.js/Chart.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
+    </script>
+    <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
 
 <body class="layui-layout-body" style="overflow: auto">
-  <!-- 头部logo部分开始 -->
-  <div class="layui-layout layui-layout-admin">
-    <div class="layui-header logo-box">
-      <a href="index.html">
-        <img src="images/logo.png" alt="logo">
-      </a>
-      <ul class="layui-nav layui-layout-left nav-box">
-        <li class="layui-nav-item ">
-          <a href="index.html">首页
+    <!-- 头部logo部分开始 -->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header logo-box">
+            <a href="index.html">
+                <img src="images/logo.png" alt="logo">
+            </a>
+            <ul class="layui-nav layui-layout-left nav-box">
+                <li class="layui-nav-item ">
+                    <a href="index.html">首页
             <!-- <span class="layui-badge-dot"></span> --></a>
-        </li>
-        <li class="layui-nav-item">
-          <a href="resource.html">资源中心
+                </li>
+                <li class="layui-nav-item">
+                    <a href="resource.html">资源中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-        </li>
-        <li class="layui-nav-item">
-          <a href="monitoring.html">监控中心
+                </li>
+                <li class="layui-nav-item">
+                    <a href="monitoring.html">监控中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-          <dl class="layui-nav-child">
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=5"
-                target="_blank">智慧能源备电监控中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=6"
-                target="_blank">智慧能源发电监控中心</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item">
-          <a href="business.html">业务中心
+                    <dl class="layui-nav-child">
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=5">智慧能源备电监控中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=6">智慧能源发电监控中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="business.html">业务中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-          <dl class="layui-nav-child">
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=7"
-                target="_blank">智慧能源发电业务中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=8"
-                target="_blank">智慧能源备电业务中心</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item ">
-          <a href="#">调度中心
+                    <dl class="layui-nav-child">
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=8">智慧能源发电业务中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=7">智慧能源备电业务中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="#">调度中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-          <dl class="layui-nav-child">
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=1"
-                target="_blank">对内应急保障中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=2"
-                target="_blank">备电客户保障中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=3"
-                target="_blank">电力停电预警中心</a></dd>
-            <dd><a
-                href="http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=4"
-                target="_blank">基站能源均衡中心</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item layui-this">
-          <a href="customer.html">客户中心
+                    <dl class="layui-nav-child">
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=1">对内应急保障中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=2">备电客户保障中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=3">电力停电预警中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_xx&password=123456&sso=4">基站能源均衡中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="customer.html">客户中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-        </li>
-        <li class="layui-nav-item ">
-          <a href="operation.html">运营中心
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="operation.html">运营中心
             <!-- <span class="layui-badge-dot"></span> --></a>
-        </li>
-      </ul>
-      <ul class="layui-nav layui-layout-right">
-        <li class="layui-nav-item">
-          <a href="javascript:;">
-            <i class="layui-icon layui-icon-username"
-              style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i>
-            王凯旋
-            <span class="layui-nav-more"></span></a>
-          <dl class="layui-nav-child layui-anim layui-anim-upbit">
-            <dd><a href="personal.html">个人中心</a></dd>
-          </dl>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- 头部logo部分结束 -->
-  <!-- 主体内容开始 -->
-  <div class="layui-fluid">
-    <div class="layui-row">
-      <div class="layui-col-lg12 layui-col-md12" style="text-align: right;color: #ACB7BF;margin-bottom: 10px;">
-        <p style="margin-right: 6%;">数据更新于<span id="uploadDate"></span></p>
-      </div>
-    </div>
-    <div class="layui-row">
-      <div class="layui-col-lg4 layui-col-md4">
-        <div class="layui-row">
-          <div class="layui-col-lg12 layui-col-md12 layui-radius">
-            <div class="news-left-block"></div>
-            <div class="news-title">
-              <p>备电客户</p>
-            </div>
-            <div class="clearfix"></div>
-            <div class="layui-row">
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-info">订购中客户数量(个)</p>
-                <p class="tag-num">200<span>个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-info">交付中客户数量(个)</p>
-                <p class="tag-num">200<span>个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-info">服务中客户数量(个)</p>
-                <p class="tag-num">20000<span>个</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top:10px;">
-            <div class="news-left-block"></div>
-            <div class="news-title">
-              <p>发电客户</p>
-            </div>
-            <div class="clearfix"></div>
-            <div class="layui-row">
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-info">使用换电客户数量(个)</p>
-                <p class="tag-num">200<span>个</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top:10px;">
-            <div class="news-left-block"></div>
-            <div class="news-title">
-              <p>换电客户</p>
-            </div>
-            <div class="clearfix"></div>
-            <div class="layui-row">
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-info">使用换电客户数量(个)</p>
-                <p class="tag-num">200<span>个</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top:10px;">
-            <div class="news-left-block"></div>
-            <div class="news-title">
-              <p>售电客户</p>
-            </div>
-            <div class="clearfix"></div>
-            <div class="layui-row">
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-info">使用售电客户数量(个)</p>
-                <p class="tag-num">200<span>个</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top:10px;margin-bottom: 30px;">
-            <div class="news-left-block"></div>
-            <div class="news-title">
-              <p>内部客户</p>
-            </div>
-            <div class="clearfix"></div>
-            <div class="layui-row">
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-info">内部生产人员数量(个)</p>
-                <p class="tag-num">200<span>个</span></p>
-              </div>
-              <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                <p class="tag-info">管理人员数量(个)</p>
-                <p class="tag-num">200<span>个</span></p>
-              </div>
-            </div>
-          </div>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-username" style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i> 王凯旋
+                        <span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                        <dd><a href="personal.html">个人中心</a></dd>
+                    </dl>
+                </li>
+            </ul>
         </div>
-      </div>
-      <div class="layui-col-lg8 layui-col-md8">
-        <div class="layui-radius" style="width: 90%;min-height: 448px;margin-left: 10px;margin-bottom: 50px;">
-          <div class="layui-row chart-box">
-            <div class="layui-col-lg12 layui-col-md12 chart-title">
-              <div class="layui-btn-group chart-btn-box">
-                <!-- <button id="btnChart" class="layui-btn layui-btn-sm layui-btn-normal">地图</button> -->
-                <button id="btnTable" class="layui-btn layui-btn-sm layui-btn-normal">列表</button>
-              </div>
+    </div>
+    <!-- 头部logo部分结束 -->
+    <!-- 主体内容开始 -->
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <div class="layui-col-lg12 layui-col-md12" style="text-align: right;color: #ACB7BF;margin-bottom: 10px;">
+                <p style="margin-right: 6%;">数据更新于<span id="uploadDate"></span></p>
             </div>
-            <!-- <div id="myChart" class="layui-col-lg12 layui-col-md12 chart-content"></div> -->
-            <div id="myTable" class="layui-col-lg12 layui-col-md12" style="display:show">
-              <table class="layui-table" lay-skin="line">
-                <thead>
-                  <tr>
-                    <th>客户编号</th>
-                    <th>地区/区县</th>
-                    <th>客户名称</th>
-                    <th>业务阶段</th>
-                    <th>业务类型</th>
-                    <th>数量统计</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>001</td>
-                    <td>安阳市</td>
-                    <td>张强</td>
-                    <td>第1阶段</td>
-                    <td>业务类型1</td>
-                    <td>数量统计1</td>
-                  </tr>
-                  <tr>
-                    <td>002</td>
-                    <td>鹤壁市</td>
-                    <td>赵磊</td>
-                    <td>第2阶段</td>
-                    <td>业务类型2</td>
-                    <td>数量统计2</td>
-                  </tr>
-                  <tr>
-                    <td>003</td>
-                    <td>济源市</td>
-                    <td>徐哲</td>
-                    <td>第3阶段</td>
-                    <td>业务类型3</td>
-                    <td>数量统计3</td>
-                  </tr>
-                  <tr>
-                    <td>004</td>
-                    <td>焦作市</td>
-                    <td>徐畅</td>
-                    <td>第4阶段</td>
-                    <td>业务类型4</td>
-                    <td>数量统计4</td>
-                  </tr>
-                  <tr>
-                    <td>005</td>
-                    <td>开封市</td>
-                    <td>沈轩</td>
-                    <td>第5阶段</td>
-                    <td>业务类型5</td>
-                    <td>数量统计5</td>
-                  </tr>
-                  <tr>
-                    <td>006</td>
-                    <td>洛阳市</td>
-                    <td>韩可欣</td>
-                    <td>第6阶段</td>
-                    <td>业务类型6</td>
-                    <td>数量统计6</td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- <table class="layui-table" lay-skin="line" style="margin-top: 20px;">
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-lg4 layui-col-md4">
+                <div class="layui-row">
+                    <div class="layui-col-lg12 layui-col-md12 layui-radius">
+                        <div class="news-left-block"></div>
+                        <div class="news-title">
+                            <p>备电客户</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="layui-row">
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-info">订购中客户数量(个)</p>
+                                <p class="tag-num">200<span>个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-info">交付中客户数量(个)</p>
+                                <p class="tag-num">200<span>个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-info">服务中客户数量(个)</p>
+                                <p class="tag-num">20000<span>个</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top:10px;">
+                        <div class="news-left-block"></div>
+                        <div class="news-title">
+                            <p>发电客户</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="layui-row">
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-info">使用换电客户数量(个)</p>
+                                <p class="tag-num">200<span>个</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top:10px;">
+                        <div class="news-left-block"></div>
+                        <div class="news-title">
+                            <p>换电客户</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="layui-row">
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-info">使用换电客户数量(个)</p>
+                                <p class="tag-num">200<span>个</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top:10px;">
+                        <div class="news-left-block"></div>
+                        <div class="news-title">
+                            <p>售电客户</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="layui-row">
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-info">使用售电客户数量(个)</p>
+                                <p class="tag-num">200<span>个</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top:10px;margin-bottom: 30px;">
+                        <div class="news-left-block"></div>
+                        <div class="news-title">
+                            <p>内部客户</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="layui-row">
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-info">内部生产人员数量(个)</p>
+                                <p class="tag-num">200<span>个</span></p>
+                            </div>
+                            <div class="layui-col-lg12 layui-col-md12 layui-tag">
+                                <p class="tag-info">管理人员数量(个)</p>
+                                <p class="tag-num">200<span>个</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-lg8 layui-col-md8">
+                <div class="layui-radius" style="width: 90%;min-height: 448px;margin-left: 10px;margin-bottom: 50px;">
+                    <div class="layui-row chart-box">
+                        <div class="layui-col-lg12 layui-col-md12 chart-title">
+                            <div class="layui-btn-group chart-btn-box">
+                                <!-- <button id="btnChart" class="layui-btn layui-btn-sm layui-btn-normal">地图</button> -->
+                                <button id="btnTable" class="layui-btn layui-btn-sm layui-btn-normal">列表</button>
+                            </div>
+                        </div>
+                        <!-- <div id="myChart" class="layui-col-lg12 layui-col-md12 chart-content"></div> -->
+                        <div id="myTable" class="layui-col-lg12 layui-col-md12" style="display:show">
+                            <table class="layui-table" lay-skin="line">
+                                <thead>
+                                    <tr>
+                                        <th>客户编号</th>
+                                        <th>地区/区县</th>
+                                        <th>客户名称</th>
+                                        <th>业务阶段</th>
+                                        <th>业务类型</th>
+                                        <th>数量统计</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>001</td>
+                                        <td>安阳市</td>
+                                        <td>张强</td>
+                                        <td>第1阶段</td>
+                                        <td>业务类型1</td>
+                                        <td>数量统计1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>002</td>
+                                        <td>鹤壁市</td>
+                                        <td>赵磊</td>
+                                        <td>第2阶段</td>
+                                        <td>业务类型2</td>
+                                        <td>数量统计2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>003</td>
+                                        <td>济源市</td>
+                                        <td>徐哲</td>
+                                        <td>第3阶段</td>
+                                        <td>业务类型3</td>
+                                        <td>数量统计3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>004</td>
+                                        <td>焦作市</td>
+                                        <td>徐畅</td>
+                                        <td>第4阶段</td>
+                                        <td>业务类型4</td>
+                                        <td>数量统计4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>005</td>
+                                        <td>开封市</td>
+                                        <td>沈轩</td>
+                                        <td>第5阶段</td>
+                                        <td>业务类型5</td>
+                                        <td>数量统计5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>006</td>
+                                        <td>洛阳市</td>
+                                        <td>韩可欣</td>
+                                        <td>第6阶段</td>
+                                        <td>业务类型6</td>
+                                        <td>数量统计6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- <table class="layui-table" lay-skin="line" style="margin-top: 20px;">
                 <thead>
                   <tr>
                     <th>区域</th>
@@ -320,22 +302,22 @@
                   </tr>
                 </tbody>
               </table> -->
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <footer class="footer">
-    <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
-    <p>creenshots © Their respective owners. Google+</p>
-  </footer>
-  <script src="scripts/business.js"></script>
-  <script>
-    var business = null;
-    business = new Business();
-    business.initControl();
-  </script>
+    <footer class="footer">
+        <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
+        <p>creenshots © Their respective owners. Google+</p>
+    </footer>
+    <script src="scripts/business.js"></script>
+    <script>
+        var business = null;
+        business = new Business();
+        business.initControl();
+    </script>
 </body>
 
 </html>
