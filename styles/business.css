@@ -1,111 +1,97 @@
 body {
-  background: #f3f4f9;
+    background: #f3f4f9;
 }
 
+
 /* 能源经营业务 */
+
 .news-left-block {
-  float: left;
-
-  width: 6px;
-  height: 16px;
-
-  background: #0070C9;
-
-  margin-left: 16px;
-  margin-top: 20px;
-
+    float: left;
+    width: 6px;
+    height: 16px;
+    background: #0070C9;
+    margin-left: 16px;
+    margin-top: 20px;
 }
 
 .news-title {
-  float: left;
-
-  width: calc(100% - 0.7% - 0.7% - 6px - 16px);
-
-  margin-left: 0.7%;
-  margin-right: 0.7%;
-
-  border-bottom: 1px solid #E4EBF0;
+    float: left;
+    width: calc(100% - 0.7% - 0.7% - 6px - 16px);
+    margin-left: 0.7%;
+    margin-right: 0.7%;
+    border-bottom: 1px solid #E4EBF0;
 }
 
 .news-title>p {
-  cursor: default;
-
-  float: left;
-
-  font-size: 16px;
-  color: #222637;
-
-  margin-top: 17px;
-  margin-left: 8px;
-  margin-bottom: 13px;
+    cursor: default;
+    float: left;
+    font-size: 16px;
+    color: #222637;
+    margin-top: 17px;
+    margin-left: 8px;
+    margin-bottom: 13px;
 }
 
 .layui-tag {
-  margin-top: 20px;
-  margin-bottom: 14px;
+    margin-top: 20px;
+    margin-bottom: 14px;
+    cursor: pointer;
 }
 
 .layui-tag span {
-  display: inline-block;
-  text-align: center;
-
-  font-size: 14px;
-
-  margin-left: 5px;
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    margin-left: 5px;
 }
 
 .layui-tag .tag-info {
-  margin-left: 20px;
-
-  font-size: 14px;
-  color: #6e7c87;
+    margin-left: 20px;
+    font-size: 14px;
+    color: #6e7c87;
 }
 
 .layui-tag .tag-num {
-  font-size: 24px;
-
-  color: #6e7c87;
-
-  margin-top: 10px;
-  margin-left: 20px;
+    font-size: 24px;
+    color: #6e7c87;
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 .chart-box {
-  padding: 12px;
+    padding: 12px;
 }
 
 .chart-title {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #E4EBF0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E4EBF0;
 }
 
 .layui-btn-group .layui-btn-primary:hover {
-  color: #0070C9;
-  border-top: 1px solid #0070C9;
-  border-right: 1px solid #0070C9;
-  border-bottom: 1px solid #0070C9;
+    color: #0070C9;
+    border-top: 1px solid #0070C9;
+    border-right: 1px solid #0070C9;
+    border-bottom: 1px solid #0070C9;
 }
 
 .chart-content {
-  margin-top: 14px;
-  width: 100%;
-  height: 700px;
+    margin-top: 14px;
+    width: 100%;
+    height: 700px;
 }
 
+
 /* 地图内容 */
+
 .info-box {
-  padding: 12px;
-
-  font-size: 14px;
-
-  line-height: 20px;
-
-  color: #fff;
-
-  background: rgba(36, 110, 221, .6);
-  border-radius: 5px;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+    background: rgba(36, 110, 221, .6);
+    border-radius: 5px;
 }
 
 #btnChart {
-  border-right: none;
+    border-right: none;
 }
