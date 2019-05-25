@@ -4,9 +4,10 @@ var CustomerCreate = function() {
 };
 CustomerCreate.prototype.initControl = function() {
     var that = this;
-    layui.use(['form', 'laydate'], function() {
+    layui.use(['form', 'laydate', 'element'], function() {
         var form = layui.form;
         var laydate = layui.laydate;
+        var element = layui.element;
         laydate.render({
             elem: '#test1' //指定元素
         });

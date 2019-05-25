@@ -1,0 +1,44 @@
+body {
+    background: #f3f4f9;
+}
+
+.search-box {
+    margin-top: 20px;
+}
+
+.search-box dt,
+.search-box dd {
+    float: left;
+    color: #666;
+}
+
+.search-box dt {
+    width: 90px;
+    padding: 9px 0 9px 15px;
+    color: #0070C9;
+    cursor: default;
+}
+
+.search-box dt>i {
+    font-weight: bold;
+}
+
+.search-box dd {
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    -webkit-transition: background-color .3s ease;
+    -moz-transition: background-color .3s ease;
+    -o-transition: background-color .3s ease;
+    transition: background-color .3s ease;
+}
+
+.search-box dd:hover {
+    background-color: #0070C9;
+    color: #fff;
+}
+
+.search-box dd.active {
+    background-color: #0070C9;
+    color: #fff;
+}
