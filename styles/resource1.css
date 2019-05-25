@@ -155,6 +155,11 @@ body {
     color: #fff;
 }
 
+.layui-table td,
+.layui-table th {
+    padding: 9px 10px;
+}
+
 
 /* 页脚 */
 

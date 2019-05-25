@@ -96,50 +96,254 @@
         <div style="padding: 25px;">
             <div class="row" style="margin-bottom: 35px;">
                 <div class="layui-col-lg12 layui-col-md12">
-                    <span style="color:#778892;cursor: pointer;">返回</span>
+                    <a href="resource.html" style="color:#778892;">返回</a>
+                    <span style="color:#778892;cursor: pointer;"></span>
                 </div>
             </div>
             <div class="row">
-                <div class="layui-col-lg11 layui-col-md11 layui-radius" style="padding: 20px;">
+                <div class="layui-col-lg12 layui-col-md12 layui-radius" style="padding: 20px;">
                     <div class="row">
-                        <div class="layui-col-lg11 layui-col-md11">
+                        <div class="layui-col-lg12 layui-col-md12">
                             <div class="energy-tip" style="margin-top:0;margin-bottom: 20px;">
-                                <p style="margin-left:0">
-                                    <span class="energy-text">备电</span>
+                                <p id="btnStandbyPower" style="margin-left:0">
+                                    <span class="energy-text">备电点</span>
                                     <span class="energy-block"></span>
                                 </p>
-                                <p>
-                                    <span class="energy-text">发电</span>
+                                <p id="btnCharge">
+                                    <span class="energy-text">充电点</span>
                                     <span class="energy-block"></span>
                                 </p>
-                                <p>
-                                    <span class="energy-text">换电</span>
+                                <p id="btnPowerExchange">
+                                    <span class="energy-text">换电点</span>
                                     <span class="energy-block"></span>
                                 </p>
-                                <p>
-                                    <span class="energy-text">售电</span>
+                                <p id="btnSellingElectricity">
+                                    <span class="energy-text">售电点</span>
                                     <span class="energy-block"></span>
                                 </p>
-                                <p>
-                                    <span class="energy-text text-active">储能</span>
-                                    <span class="energy-block active"></span>
+                                <p id="btnProlongLife">
+                                    <span class="energy-text">储能站</span>
+                                    <span class="energy-block"></span>
                                 </p>
-                                <p>
-                                    <span class="energy-text">延寿</span>
+                                <p id="btnEnergyStorage">
+                                    <span class="energy-text">延寿站</span>
+                                    <span class="energy-block"></span>
+                                </p>
+                                <p id="btnBatter">
+                                    <span class="energy-text">蓄电池</span>
+                                    <span class="energy-block"></span>
+                                </p>
+                                <p id="btnEnergyPack">
+                                    <span class="energy-text">能源包</span>
                                     <span class="energy-block"></span>
                                 </p>
                             </div>
                         </div>
-                        <table class="layui-table" lay-skin="line">
+                        <!-- 备电点列表 -->
+                        <table id="standbyPowerTable" class="layui-table" lay-skin="line" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th colspan="5" style="border-right: 1px solid #e6e6e6;text-align: center">站点信息</th>
+                                    <th colspan="4" style="border-right: 1px solid #e6e6e6;text-align: center">资源信息</th>
+                                    <th colspan="2" style="text-align: center">业务信息</th>
+                                </tr>
+                                <tr>
+                                    <th>客户名称</th>
+                                    <th>备电点名称</th>
+                                    <th>编号</th>
+                                    <th>地市/区县</th>
+                                    <th style="border-right: 1px solid #e6e6e6">签约时长</th>
+                                    <th>蓄电池类型</th>
+                                    <th>蓄电池容量</th>
+                                    <th>DTU/电池管理器</th>
+                                    <th style="border-right: 1px solid #e6e6e6">PCS/UPS</th>
+                                    <th>备电使用次数</th>
+                                    <th>最长备电时长</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>客户名称1</td>
+                                    <td>备电点1</td>
+                                    <td>001</td>
+                                    <td>红旗区</td>
+                                    <td style="border-right: 1px solid #e6e6e6">20H</td>
+                                    <td>磷酸铁锂</td>
+                                    <td>20AH</td>
+                                    <td>电池管理器</td>
+                                    <td style="border-right: 1px solid #e6e6e6">品牌-型号-功率</td>
+                                    <td>3次</td>
+                                    <td>4H</td>
+                                </tr>
+                                <tr>
+                                    <td>客户名称1</td>
+                                    <td>备电点1</td>
+                                    <td>001</td>
+                                    <td>红旗区</td>
+                                    <td style="border-right: 1px solid #e6e6e6">20H</td>
+                                    <td>磷酸铁锂</td>
+                                    <td>20AH</td>
+                                    <td>电池管理器</td>
+                                    <td style="border-right: 1px solid #e6e6e6">品牌-型号-功率</td>
+                                    <td>3次</td>
+                                    <td>4H</td>
+                                </tr>
+                                <tr>
+                                    <td>客户名称1</td>
+                                    <td>备电点1</td>
+                                    <td>001</td>
+                                    <td>红旗区</td>
+                                    <td style="border-right: 1px solid #e6e6e6">20H</td>
+                                    <td>磷酸铁锂</td>
+                                    <td>20AH</td>
+                                    <td>电池管理器</td>
+                                    <td style="border-right: 1px solid #e6e6e6">品牌-型号-功率</td>
+                                    <td>3次</td>
+                                    <td>4H</td>
+                                </tr>
+                                <tr>
+                                    <td>客户名称1</td>
+                                    <td>备电点1</td>
+                                    <td>001</td>
+                                    <td>红旗区</td>
+                                    <td style="border-right: 1px solid #e6e6e6">20H</td>
+                                    <td>磷酸铁锂</td>
+                                    <td>20AH</td>
+                                    <td>电池管理器</td>
+                                    <td style="border-right: 1px solid #e6e6e6">品牌-型号-功率</td>
+                                    <td>3次</td>
+                                    <td>4H</td>
+                                </tr>
+                                <tr>
+                                    <td>客户名称1</td>
+                                    <td>备电点1</td>
+                                    <td>001</td>
+                                    <td>红旗区</td>
+                                    <td style="border-right: 1px solid #e6e6e6">20H</td>
+                                    <td>磷酸铁锂</td>
+                                    <td>20AH</td>
+                                    <td>电池管理器</td>
+                                    <td style="border-right: 1px solid #e6e6e6">品牌-型号-功率</td>
+                                    <td>3次</td>
+                                    <td>4H</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- 充电点列表 -->
+                        <table id="chargeTable" class="layui-table" lay-skin="line" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" style="border-right: 1px solid #e6e6e6;text-align: center">站点信息</th>
+                                    <th colspan="8" style="border-right: 1px solid #e6e6e6;text-align: center">资源信息</th>
+                                    <th colspan="1" style="text-align: center">业务信息</th>
+                                </tr>
+                                <tr>
+                                    <th>充电站名称</th>
+                                    <th>编号</th>
+                                    <th style="border-right: 1px solid #e6e6e6">地市/区县</th>
+                                    <th>YD能源包</th>
+                                    <th>蓄电池容量</th>
+                                    <th>DTU</th>
+                                    <th>能源车</th>
+                                    <th>逆变器<br />数量</th>
+                                    <th>合路器<br />数量</th>
+                                    <th>充电桩<br />数量</th>
+                                    <th style="border-right: 1px solid #e6e6e6">充电位数量</th>
+                                    <th>充电量<br />当月累计KWH</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>充电点1</td>
+                                    <td>001</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>10</td>
+                                    <td>20AH</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td style="border-right: 1px solid #e6e6e6">5</td>
+                                    <td>59KWH</td>
+                                </tr>
+                                <tr>
+                                    <td>充电点1</td>
+                                    <td>001</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>10</td>
+                                    <td>20AH</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td style="border-right: 1px solid #e6e6e6">5</td>
+                                    <td>59KWH</td>
+                                </tr>
+                                <tr>
+                                    <td>充电点1</td>
+                                    <td>001</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>10</td>
+                                    <td>20AH</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td style="border-right: 1px solid #e6e6e6">5</td>
+                                    <td>59KWH</td>
+                                </tr>
+                                <tr>
+                                    <td>充电点1</td>
+                                    <td>001</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>10</td>
+                                    <td>20AH</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td style="border-right: 1px solid #e6e6e6">5</td>
+                                    <td>59KWH</td>
+                                </tr>
+                                <tr>
+                                    <td>充电点1</td>
+                                    <td>001</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>10</td>
+                                    <td>20AH</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td style="border-right: 1px solid #e6e6e6">5</td>
+                                    <td>59KWH</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- 换电点 -->
+                        <table id="powerExchangeTable" class="layui-table" lay-skin="line" style="display:none">
+                            <caption>暂无内容</caption>
+                        </table>
+                        <!-- 售电点 -->
+                        <table id="sellingElectricityTable" class="layui-table" lay-skin="line" style="display:none">
+                            <caption>暂无内容</caption>
+                        </table>
+                        <!-- 储能站列表 -->
+                        <table id="prolongLifeTable" class="layui-table" lay-skin="line" style="display:none">
                             <thead>
                                 <tr>
                                     <th colspan="3" style="border-right: 1px solid #e6e6e6;text-align: center">站点信息</th>
                                     <th colspan="4" style="border-right: 1px solid #e6e6e6;text-align: center">资源信息</th>
-                                    <th colspan="3" style="text-align: center">站点信息</th>
+                                    <th colspan="3" style="text-align: center">业务信息</th>
                                 </tr>
                                 <tr>
                                     <th>储能站点名称</th>
-                                    <th>站点编号</th>
+                                    <th>编号</th>
                                     <th style="border-right: 1px solid #e6e6e6">地市/区县</th>
                                     <th>蓄电池类型</th>
                                     <th>蓄电池容量</th>
@@ -152,76 +356,297 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>站点1</td>
-                                    <td>10000</td>
-                                    <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
-                                    <td>锂蓄电池</td>
-                                    <td>50安时</td>
-                                    <td>DTU</td>
-                                    <td style="border-right: 1px solid #e6e6e6">千瓦</td>
-                                    <td>5小时</td>
-                                    <td>200千瓦时</td>
-                                    <td>10次</td>
+                                    <td>能源创新中心1</td>
+                                    <td>3581</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>磷酸铁锂</td>
+                                    <td>800</td>
+                                    <td>DTU状态正常</td>
+                                    <td style="border-right: 1px solid #e6e6e6">0</td>
+                                    <td>18</td>
+                                    <td>6424.38</td>
+                                    <td>4</td>
                                 </tr>
                                 <tr>
-                                    <td>站点1</td>
-                                    <td>10000</td>
-                                    <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
-                                    <td>锂蓄电池</td>
-                                    <td>50安时</td>
-                                    <td>DTU</td>
-                                    <td style="border-right: 1px solid #e6e6e6">千瓦</td>
-                                    <td>5小时</td>
-                                    <td>200千瓦时</td>
-                                    <td>10次</td>
+                                    <td>原阳东刘庄</td>
+                                    <td>736</td>
+                                    <td style="border-right: 1px solid #e6e6e6">原阳县</td>
+                                    <td>铅酸</td>
+                                    <td>500</td>
+                                    <td>DTU状态正常</td>
+                                    <td style="border-right: 1px solid #e6e6e6">0</td>
+                                    <td>24</td>
+                                    <td>1185.07</td>
+                                    <td>6</td>
                                 </tr>
                                 <tr>
-                                    <td>站点1</td>
-                                    <td>10000</td>
-                                    <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
-                                    <td>锂蓄电池</td>
-                                    <td>50安时</td>
-                                    <td>DTU</td>
-                                    <td style="border-right: 1px solid #e6e6e6">千瓦</td>
-                                    <td>5小时</td>
-                                    <td>200千瓦时</td>
-                                    <td>10次</td>
+                                    <td>原阳县盐运司</td>
+                                    <td>370</td>
+                                    <td style="border-right: 1px solid #e6e6e6">原阳县</td>
+                                    <td>铅酸</td>
+                                    <td>500</td>
+                                    <td>DTU状态正常</td>
+                                    <td style="border-right: 1px solid #e6e6e6">0</td>
+                                    <td>14</td>
+                                    <td>275.18</td>
+                                    <td>3</td>
                                 </tr>
                                 <tr>
-                                    <td>站点1</td>
-                                    <td>10000</td>
-                                    <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
-                                    <td>锂蓄电池</td>
-                                    <td>50安时</td>
-                                    <td>DTU</td>
-                                    <td style="border-right: 1px solid #e6e6e6">千瓦</td>
-                                    <td>5小时</td>
-                                    <td>200千瓦时</td>
-                                    <td>10次</td>
+                                    <td>静音200AH动力电池包1</td>
+                                    <td>3691</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>铅酸</td>
+                                    <td>800</td>
+                                    <td>DTU状态正常</td>
+                                    <td style="border-right: 1px solid #e6e6e6">0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
                                 </tr>
                                 <tr>
-                                    <td>站点1</td>
-                                    <td>10000</td>
-                                    <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
-                                    <td>锂蓄电池</td>
-                                    <td>50安时</td>
-                                    <td>DTU</td>
-                                    <td style="border-right: 1px solid #e6e6e6">千瓦</td>
-                                    <td>5小时</td>
-                                    <td>200千瓦时</td>
-                                    <td>10次</td>
+                                    <td>BX0000074</td>
+                                    <td>4587</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>铅酸</td>
+                                    <td>200</td>
+                                    <td>DTU状态正常</td>
+                                    <td style="border-right: 1px solid #e6e6e6">0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- 延寿站列表 -->
+                        <table id="energyStorageTable" class="layui-table" lay-skin="line" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" style="border-right: 1px solid #e6e6e6;text-align: center">站点信息</th>
+                                    <th colspan="4" style="border-right: 1px solid #e6e6e6;text-align: center">资源信息</th>
+                                    <th colspan="2" style="text-align: center">业务信息</th>
                                 </tr>
                                 <tr>
-                                    <td>站点1</td>
-                                    <td>10000</td>
-                                    <td style="border-right: 1px solid #e6e6e6">洛宁县</td>
-                                    <td>锂蓄电池</td>
-                                    <td>50安时</td>
-                                    <td>DTU</td>
-                                    <td style="border-right: 1px solid #e6e6e6">千瓦</td>
-                                    <td>5小时</td>
-                                    <td>200千瓦时</td>
-                                    <td>10次</td>
+                                    <th>延寿站点名称</th>
+                                    <th>编号</th>
+                                    <th style="border-right: 1px solid #e6e6e6">地市/区县</th>
+                                    <th>蓄电池类型</th>
+                                    <th>蓄电池容量</th>
+                                    <th>DTU/电池管理器</th>
+                                    <th style="border-right: 1px solid #e6e6e6">启用时间</th>
+                                    <th>备电时长</th>
+                                    <th>末次应急放电时长</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>延寿创新中心1</td>
+                                    <td>3581</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>磷酸铁锂</td>
+                                    <td>800</td>
+                                    <td>DTU状态正常</td>
+                                    <td style="border-right: 1px solid #e6e6e6">0</td>
+                                    <td>18</td>
+                                    <td>6424.38</td>
+                                </tr>
+                                <tr>
+                                    <td>原阳东刘庄</td>
+                                    <td>736</td>
+                                    <td style="border-right: 1px solid #e6e6e6">原阳县</td>
+                                    <td>铅酸</td>
+                                    <td>500</td>
+                                    <td>DTU状态正常</td>
+                                    <td style="border-right: 1px solid #e6e6e6">0</td>
+                                    <td>24</td>
+                                    <td>1185.07</td>
+                                </tr>
+                                <tr>
+                                    <td>原阳县盐运司</td>
+                                    <td>370</td>
+                                    <td style="border-right: 1px solid #e6e6e6">原阳县</td>
+                                    <td>铅酸</td>
+                                    <td>500</td>
+                                    <td>DTU状态正常</td>
+                                    <td style="border-right: 1px solid #e6e6e6">0</td>
+                                    <td>14</td>
+                                    <td>275.18</td>
+                                </tr>
+                                <tr>
+                                    <td>静音200AH动力电池包1</td>
+                                    <td>3691</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>铅酸</td>
+                                    <td>800</td>
+                                    <td>DTU状态正常</td>
+                                    <td style="border-right: 1px solid #e6e6e6">0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>BX0000074</td>
+                                    <td>4587</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>铅酸</td>
+                                    <td>200</td>
+                                    <td>DTU状态正常</td>
+                                    <td style="border-right: 1px solid #e6e6e6">0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- 蓄电池 -->
+                        <table id="batteryTable" class="layui-table" lay-skin="line" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" style="border-right: 1px solid #e6e6e6;text-align: center">站址信息</th>
+                                    <th colspan="3" style="border-right: 1px solid #e6e6e6;text-align: center">资源信息</th>
+                                    <th colspan="3" style="text-align: center">资源能力</th>
+                                </tr>
+                                <tr>
+                                    <th>蓄电池组成码</th>
+                                    <th>站址名称/<br />站址编号</th>
+                                    <th style="border-right: 1px solid #e6e6e6">地市/区县</th>
+                                    <th>蓄电池类型</th>
+                                    <th>蓄电池容量</th>
+                                    <th style="border-right: 1px solid #e6e6e6">电池入网时间</th>
+                                    <th>末次核容</th>
+                                    <th>预期寿命</th>
+                                    <th>SHO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>XDC_ZCM_001</td>
+                                    <td>3581</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>蓄电池</td>
+                                    <td>AH</td>
+                                    <td style="border-right: 1px solid #e6e6e6">May/13</td>
+                                    <td>100AH</td>
+                                    <td>2月</td>
+                                    <td style="color:red">50%</td>
+                                </tr>
+                                <tr>
+                                    <td>XDC_ZCM_001</td>
+                                    <td>3581</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>蓄电池</td>
+                                    <td>AH</td>
+                                    <td style="border-right: 1px solid #e6e6e6">May/13</td>
+                                    <td>100AH</td>
+                                    <td>2月</td>
+                                    <td style="color:red">50%</td>
+                                </tr>
+                                <tr>
+                                    <td>XDC_ZCM_001</td>
+                                    <td>3581</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>蓄电池</td>
+                                    <td>AH</td>
+                                    <td style="border-right: 1px solid #e6e6e6">May/13</td>
+                                    <td>100AH</td>
+                                    <td>2月</td>
+                                    <td style="color:red">50%</td>
+                                </tr>
+                                <tr>
+                                    <td>XDC_ZCM_001</td>
+                                    <td>3581</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>蓄电池</td>
+                                    <td>AH</td>
+                                    <td style="border-right: 1px solid #e6e6e6">May/13</td>
+                                    <td>100AH</td>
+                                    <td>2月</td>
+                                    <td>10%</td>
+                                </tr>
+                                <tr>
+                                    <td>XDC_ZCM_001</td>
+                                    <td>3581</td>
+                                    <td style="border-right: 1px solid #e6e6e6">红旗区</td>
+                                    <td>蓄电池</td>
+                                    <td>AH</td>
+                                    <td style="border-right: 1px solid #e6e6e6">May/13</td>
+                                    <td>100AH</td>
+                                    <td>2月</td>
+                                    <td>20%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- 能源包 -->
+                        <table id="energyPackTable" class="layui-table" lay-skin="line" style="display:none">
+                            <thead>
+                                <tr>
+                                    <th colspan="4" style="border-right: 1px solid #e6e6e6;text-align: center">站址信息</th>
+                                    <th colspan="5">资源信息</th>
+                                </tr>
+                                <tr>
+                                    <th>能源包编码</th>
+                                    <th>站点名称</th>
+                                    <th>地市/区县</th>
+                                    <th style="border-right: 1px solid #e6e6e6">站点编号</th>
+                                    <th>电池标准选项</th>
+                                    <th>能源包容量/AH</th>
+                                    <th>品牌</th>
+                                    <th>入网时间</th>
+                                    <th>放电倍率<br />0.1C~2C选择</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>001</td>
+                                    <td>名称</td>
+                                    <td>红旗区</td>
+                                    <td style="border-right: 1px solid #e6e6e6">001</td>
+                                    <td>AH</td>
+                                    <td>May/13</td>
+                                    <td>100AH</td>
+                                    <td>2月</td>
+                                    <td>50%</td>
+                                </tr>
+                                <tr>
+                                    <td>001</td>
+                                    <td>名称</td>
+                                    <td>红旗区</td>
+                                    <td style="border-right: 1px solid #e6e6e6">001</td>
+                                    <td>AH</td>
+                                    <td>May/13</td>
+                                    <td>100AH</td>
+                                    <td>2月</td>
+                                    <td>50%</td>
+                                </tr>
+                                <tr>
+                                    <td>001</td>
+                                    <td>名称</td>
+                                    <td>红旗区</td>
+                                    <td style="border-right: 1px solid #e6e6e6">001</td>
+                                    <td>AH</td>
+                                    <td>May/13</td>
+                                    <td>100AH</td>
+                                    <td>2月</td>
+                                    <td>50%</td>
+                                </tr>
+                                <tr>
+                                    <td>001</td>
+                                    <td>名称</td>
+                                    <td>红旗区</td>
+                                    <td style="border-right: 1px solid #e6e6e6">001</td>
+                                    <td>AH</td>
+                                    <td>May/13</td>
+                                    <td>100AH</td>
+                                    <td>2月</td>
+                                    <td>50%</td>
+                                </tr>
+                                <tr>
+                                    <td>001</td>
+                                    <td>名称</td>
+                                    <td>红旗区</td>
+                                    <td style="border-right: 1px solid #e6e6e6">001</td>
+                                    <td>AH</td>
+                                    <td>May/13</td>
+                                    <td>100AH</td>
+                                    <td>2月</td>
+                                    <td>50%</td>
                                 </tr>
                             </tbody>
                         </table>

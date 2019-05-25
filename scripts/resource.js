@@ -96,7 +96,8 @@ Resource.prototype.initControl = function() {
     });
 
     this._controls._layuiTag.on('click', function() {
-        window.location.href = 'resource1.html';
+        var data_info = $(this).attr('data-info');
+        window.location.href = 'resource1.html?dataInfo=' + data_info + '';
     });
 };
 // 初始化日期
