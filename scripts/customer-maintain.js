@@ -6,8 +6,9 @@ var CustomerMaintain = function () {
 };
 CustomerMaintain.prototype.initControl = function () {
     var that = this;
-    layui.use('laydate', function () {
+    layui.use(['laydate','element'], function () {
         var laydate = layui.laydate;
+        var element = layui.element;
         laydate.render({
             elem: '#startDate'
         });
