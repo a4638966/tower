@@ -69,7 +69,7 @@ Resource.prototype.initChart = function () {
   // 初始化地图，设置中心点坐标和地图级别
   map.centerAndZoom(new BMap.Point(113.557234, 33.902115), 8);
   // 设置地图显示的城市，这项是必须的
-  map.setCurrentCity("郑州");
+  map.setCurrentCity("新乡");
   // 开启滚轮缩放
   map.enableScrollWheelZoom(true);
   // 声明一个数组，装行政区域的数据

@@ -44,7 +44,7 @@ Monitoring.prototype.initControl = function () {
     that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
     setTimeout(function () {
       that.initChart();
-    },100);
+    }, 100);
     that.initTable();
   });
   // 延寿
@@ -62,7 +62,7 @@ Monitoring.prototype.initControl = function () {
     that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
     setTimeout(function () {
       that.initChart();
-    },100);
+    }, 100);
     that.initTable();
   });
   this._controls.btnChart.on('click', function () {
@@ -100,7 +100,7 @@ Monitoring.prototype.initUpdate = function () {
     return (y + '-' + add(m) + '-' + add(d) + ' ' + add(h) + ':' + add(mm) + ':' + add(s));
   }
 
-  var date = new Date(new Date().getTime());// + (1000 * 60 * 60 * 72));
+  var date = new Date(new Date().getTime()); // + (1000 * 60 * 60 * 72));
   var date_str = fortime(date);
   that._controls.uploadDate.html(date_str)
 };
@@ -152,7 +152,7 @@ Monitoring.prototype.initChart = function () {
       for (var i = 0; i < count; i++) {
         blist.push({
           points: rs.boundaries[i],
-          name: '河南'
+          name: '新乡'
         })
       }
       // 调整视野
@@ -168,7 +168,7 @@ Monitoring.prototype.initChart = function () {
 
   function drawBoundary() {
     var bdary = new BMap.Boundary();
-    bdary.get("河南省", function (rs) { //获取行政区域     
+    bdary.get("新乡", function (rs) { //获取行政区域     
       var count = rs.boundaries.length; //行政区域的点有多少个
       if (count === 0) {
         alert('未能获取当前输入行政区域');
@@ -197,31 +197,14 @@ Monitoring.prototype.initChart = function () {
     // 生成坐标点
     // 我这里是随机取了河南省的几个坐标，用来添加坐标点
     var positionArray = [];
-    if (that._commonData.dataType === 'energy') {
-      positionArray = [
-        [113.701699, 34.756999],
-        [113.585998, 34.714994],
-        [113.768533, 34.714638],
-        [112.977737, 34.658004],
-        [113.861957, 34.534389],
-        [114.45412, 36.092283],
-        [114.477099, 35.745347],
-        [112.56378, 33.324863],
-        [115.69132, 34.307679]
-      ]
-    } else if (that._commonData.dataType === 'extended'){
-      positionArray = [
-        [114.60588,35.662811],
-        [114.881839,35.542605],
-        [111.735901,33.517713],
-        [113.888385,34.726467],
-        [114.458701,32.650384],
-        [115.268182,32.119598],
-        [114.716263,35.527567],
-        [111.441545,33.917455],
-        [113.814796,32.572525]
-      ]
-    }
+    positionArray = [
+      [113.869533, 35.334065],
+      [114.078228, 35.266899],
+      [113.680386, 35.205813],
+      [114.148367, 35.269964],
+      [114.06098, 35.323228]
+    ]
+
     for (var i = 0; i < positionArray.length; i++) {
       // 一个坐标对应一个mark的生成
       var point = new BMap.Point(positionArray[i][0], positionArray[i][1]);

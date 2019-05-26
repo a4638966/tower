@@ -1,4 +1,4 @@
-var Monitoring = function() {
+var Monitoring = function () {
     this._urls = {};
     this._controls = {
             uploadDate: $('#uploadDate'),
@@ -18,19 +18,19 @@ var Monitoring = function() {
             dataType: 'energy'
         }
 }
-Monitoring.prototype.initControl = function() {
+Monitoring.prototype.initControl = function () {
     var that = this;
     // 初始化日期
     this.initUpdate();
     // 初始化layui
-    layui.use('element', function() {
+    layui.use('element', function () {
         var element = layui.element;
     });
     // 初始化地图
     this.initChart();
     // 按钮事件
     // 储能
-    this._controls.btnEnergy.on('click', function() {
+    this._controls.btnEnergy.on('click', function () {
         $(this).addClass('active');
         $(this).siblings().addClass('btn-this');
         that._controls.energyDetil.show();
@@ -42,13 +42,13 @@ Monitoring.prototype.initControl = function() {
         that._controls.myTable.hide();
         that._controls.btnChart.addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
-        setTimeout(function() {
+        setTimeout(function () {
             that.initChart();
         }, 100);
         that.initTable();
     });
     // 延寿
-    this._controls.btnExtended.on('click', function() {
+    this._controls.btnExtended.on('click', function () {
         $(this).addClass('active');
         $(this).siblings().addClass('btn-this');
         that._controls.energyDetil.hide();
@@ -60,34 +60,37 @@ Monitoring.prototype.initControl = function() {
         that._controls.myTable.hide();
         that._controls.btnChart.addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
-        setTimeout(function() {
+        setTimeout(function () {
             that.initChart();
         }, 100);
         that.initTable();
     });
-    this._controls.btnChart.on('click', function() {
+    this._controls.btnChart.on('click', function () {
         that._controls.myChart.show();
         that._controls.myTable.hide();
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
-        setTimeout(function() {
+        setTimeout(function () {
             that._commonData.chartType = true;
             that.initChart.getBoundary;
         }, 100);
     });
-    that._controls.btnTable.on('click', function() {
+    that._controls.btnTable.on('click', function () {
         that._controls.myChart.hide();
         that._controls.myTable.show();
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnChart.removeClass('layui-btn-normal').addClass('layui-btn-primary');
     });
 
-    $('#energyDetil .layui-tag').on('click', function() {
+    $('#energyDetil .layui-tag').on('click', function () {
+        window.location.href = "monitoring-second.html";
+    });
+    $('#extendedDetil .layui-tag').on('click', function () {
         window.location.href = "monitoring-second.html";
     });
 };
 // 初始化日期
-Monitoring.prototype.initUpdate = function() {
+Monitoring.prototype.initUpdate = function () {
     var that = this;
 
     function add(m) {
@@ -104,12 +107,12 @@ Monitoring.prototype.initUpdate = function() {
         return (y + '-' + add(m) + '-' + add(d) + ' ' + add(h) + ':' + add(mm) + ':' + add(s));
     }
 
-    var date = new Date(new Date().getTime());// + (1000 * 60 * 60 * 72));
+    var date = new Date(new Date().getTime()); // + (1000 * 60 * 60 * 72));
     var date_str = fortime(date);
     that._controls.uploadDate.html(date_str)
 };
 // 初始化列表
-Monitoring.prototype.initTable = function() {
+Monitoring.prototype.initTable = function () {
     var that = this;
     if (that._commonData.dataType === 'energy') {
         that._controls.tableEnergy.show();
@@ -120,7 +123,7 @@ Monitoring.prototype.initTable = function() {
     }
 };
 // 初始化地图
-Monitoring.prototype.initChart = function() {
+Monitoring.prototype.initChart = function () {
     var that = this;
     // 获取地图数据
     // 需要引入api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js
@@ -143,7 +146,7 @@ Monitoring.prototype.initChart = function() {
         // 创建行政区划的对象实例
         var bdary = new BMap.Boundary();
         // 获取行政区域
-        bdary.get("河南省", function(rs) {
+        bdary.get("河南省", function (rs) {
             // 清除地图覆盖物
             // map.clearOverlays();
             // 行政区域的点有多少个
@@ -172,7 +175,7 @@ Monitoring.prototype.initChart = function() {
 
     function drawBoundary() {
         var bdary = new BMap.Boundary();
-        bdary.get("河南省", function(rs) { //获取行政区域     
+        bdary.get("河南省", function (rs) { //获取行政区域     
             var count = rs.boundaries.length; //行政区域的点有多少个
             if (count === 0) {
                 alert('未能获取当前输入行政区域');
@@ -203,27 +206,43 @@ Monitoring.prototype.initChart = function() {
         var positionArray = [];
         if (that._commonData.dataType === 'energy') {
             positionArray = [
-                [113.701699, 34.756999],
-                [113.585998, 34.714994],
-                [113.768533, 34.714638],
-                [112.977737, 34.658004],
-                [113.861957, 34.534389],
-                [114.45412, 36.092283],
-                [114.477099, 35.745347],
-                [112.56378, 33.324863],
-                [115.69132, 34.307679]
+                [114.385112, 36.104493],
+                [114.311523, 35.775339],
+                [115.01062, 35.805319],
+                [113.906782, 35.354419],
+                [113.226082, 35.248841],
+                [113.64922, 34.779614],
+                [114.311523, 34.825142],
+                [112.453396, 34.642879],
+                [111.20238, 34.809969],
+                [115.654526, 34.44497],
+                [113.833193, 34.093663],
+                [113.189288, 33.786977],
+                [114.017166, 33.617825],
+                [114.679469, 33.679373],
+                [114.035563, 33.046399],
+                [112.508588, 32.999902],
+                [114.072358, 32.174383]
             ]
         } else if (that._commonData.dataType === 'extended') {
             positionArray = [
-                [114.60588, 35.662811],
-                [114.881839, 35.542605],
-                [111.735901, 33.517713],
-                [113.888385, 34.726467],
-                [114.458701, 32.650384],
-                [115.268182, 32.119598],
-                [114.716263, 35.527567],
-                [111.441545, 33.917455],
-                [113.814796, 32.572525]
+                [114.385112, 36.104493],
+                [114.311523, 35.775339],
+                [115.01062, 35.805319],
+                [113.906782, 35.354419],
+                [113.226082, 35.248841],
+                [113.64922, 34.779614],
+                [114.311523, 34.825142],
+                [112.453396, 34.642879],
+                [111.20238, 34.809969],
+                [115.654526, 34.44497],
+                [113.833193, 34.093663],
+                [113.189288, 33.786977],
+                [114.017166, 33.617825],
+                [114.679469, 33.679373],
+                [114.035563, 33.046399],
+                [112.508588, 32.999902],
+                [114.072358, 32.174383]
             ]
         }
         for (var i = 0; i < positionArray.length; i++) {
@@ -242,7 +261,7 @@ Monitoring.prototype.initChart = function() {
         map.addOverlay(mark);
     }
     // 使用行政区划
-    setTimeout(function() {
+    setTimeout(function () {
         getBoundary();
     }, 100);
 }
