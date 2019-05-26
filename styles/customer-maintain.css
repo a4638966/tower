@@ -38,7 +38,15 @@ body {
     color: #fff;
 }
 
+.search-box dd.date-box:hover {
+    background: none;
+}
+
 .search-box dd.active {
     background-color: #0070C9;
     color: #fff;
+}
+
+.layui-laydate .layui-laydate-content .layui-this {
+    background-color: #0070C9!important;
 }

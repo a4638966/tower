@@ -129,8 +129,8 @@
                                             <i class="layui-icon layui-icon-app"></i>
                                             <span>业务类型</span>
                                         </dt>
-                            <dd>备电</dd>
-                            <dd class="active">发电</dd>
+                            <dd class="active">备电</dd>
+                            <dd>发电</dd>
                             <dd>换电</dd>
                             <dd>售电</dd>
                             <dd>储能</dd>
@@ -139,15 +139,16 @@
                     </div>
                     <div class="layui-col-lg12 layui-col-md12">
                         <dl class="search-box">
-                            <dt>
+                            <dt style="margin-top: 5px;">
                                                 <i class="layui-icon layui-icon-form"></i>
                                                 <span>时间</span>
                                             </dt>
-                            <dd>1个月</dd>
-                            <dd>2个月</dd>
-                            <dd>3个月</dd>
-                            <dd class="active">6个月</dd>
-                            <dd>12个月</dd>
+                            <dd class="date-box">
+                                <input type="text" class="layui-input" id="startDate" placeholder="请选择开始时间">
+                            </dd>
+                            <dd class="date-box">
+                                <input type="text" class="layui-input" id="endDate" placeholder="请选择结束时间">
+                            </dd>
                         </dl>
                     </div>
                 </div>
@@ -249,11 +250,11 @@
         <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
         <p>creenshots © Their respective owners. Google+</p>
     </footer>
-    <script src="scripts/business.js"></script>
+    <script src="scripts/customer-maintain.js"></script>
     <script>
-        var business = null;
-        business = new Business();
-        business.initControl();
+        var customerMaintain = null;
+        customerMaintain = new CustomerMaintain();
+        customerMaintain.initControl();
     </script>
 </body>
 
