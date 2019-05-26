@@ -399,7 +399,7 @@ body {
     color: #657580;
 }
 
-.energy-content .energy-content-number {
+.energy-content .energy-content-number .big-info{
     font-size: 20px;
     color: #222637;
 

@@ -271,58 +271,58 @@
                     <div class="layui-col-lg6 layui-col-md6 layui-radius" style="width: 48%;height: 405px;margin-right: 1%;">
                         <div class="energy-tip">
                             <p>
-                                <span class="energy-text">备电点</span>
-                                <span class="energy-block"></span>
-                            </p>
-                            <p>
-                                <span class="energy-text">发电点</span>
+                                <span class="energy-text" dataInfo="beidian">备电点</span>
                                 <span class="energy-block  active"></span>
                             </p>
                             <p>
-                                <span class="energy-text">换电点</span>
+                                <span class="energy-text" dataInfo="fadian">发电点</span>
                                 <span class="energy-block"></span>
                             </p>
                             <p>
-                                <span class="energy-text">售电点</span>
+                                <span class="energy-text" dataInfo="huandian">换电点</span>
+                                <span class="energy-block"></span>
+                            </p>
+                            <p>
+                                <span class="energy-text" dataInfo="shoudian">售电点</span>
                                 <span class="energy-block"></span>
                             </p>
                         </div>
                         <div class="energy-content">
-                            <div class="layui-row" style="margin-bottom: 1.5rem;">
+                            <div class="layui-row" style="margin-bottom: 1.5rem;" style="display:none">
                                 <div class="layui-col-lg4 layui-col-md4">
                                     <p class="energy-content-title">数量</p>
-                                    <p class="energy-content-number">134<span>个</span></p>
+                                    <p class="energy-content-number"><span class="big-info" id="number">134</span><span>个</span></p>
                                 </div>
                                 <div class="layui-col-lg4 layui-col-md4">
                                     <p class="energy-content-title">收入</p>
-                                    <p class="energy-content-number">0<span>万</span></p>
+                                    <p class="energy-content-number"><span class="big-info" id="income">0</span><span>万</span></p>
                                 </div>
                                 <div class="layui-col-lg4 layui-col-md4">
                                     <p class="energy-content-title">容量</p>
-                                    <p class="energy-content-number">80.4<span>mw</span></p>
+                                    <p class="energy-content-number"><span class="big-info" id="dapacity">80.4</span><span>mw</span></p>
                                 </div>
                                 <div class="layui-row">
                                     <div class="layui-col-lg5 layui-col-md5">
                                         <div class="progress-box" style="margin-top: 3.5rem;">
                                             <p class="progress-money">合同金额</p>
                                             <div class="layui-progress">
-                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%"></div>
+                                                <div class="layui-progress-bar" lay-percent="0"></div>
                                             </div>
-                                            <p class="progress-num">2.1<span>万</span></p>
+                                            <p class="progress-num"><span class="big-info" id="contractAmount">0</span><span>万</span></p>
                                         </div>
                                         <div class="progress-box">
                                             <p class="progress-money">回款金额</p>
                                             <div class="layui-progress">
-                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="50%"></div>
+                                                <div class="layui-progress-bar" lay-percent="0"></div>
                                             </div>
-                                            <p class="progress-num">5.3<span>万</span></p>
+                                            <p class="progress-num"><span class="big-info" id="moneyBackAmount">0</span><span>万</span></p>
                                         </div>
                                         <div class="progress-box">
                                             <p class="progress-money">出账金额</p>
                                             <div class="layui-progress">
-                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="100%"></div>
+                                                <div class="layui-progress-bar" lay-percent="0"></div>
                                             </div>
-                                            <p class="progress-num">4.8<span>万</span></p>
+                                            <p class="progress-num"><span class="big-info" id="billingAmount">0</span><span>万</span></p>
                                         </div>
                                     </div>
                                     <div class="layui-col-lg7 layui-col-md-7" style="margin-top:3.5rem;position:relative">
@@ -365,7 +365,7 @@
                                     <p class="energy-content-title">容量</p>
                                     <p class="energy-content-number">7<span>mw</span></p>
                                 </div>
-                                <div class="layui-col-lg6 layui-col-md6" style="margin-top: 2rem;">
+                                <div class="layui-col-lg12 layui-col-md12" style="margin-top: 2rem;">
                                     <p class="energy-content-title">峰值放电时长</p>
                                     <p class="energy-content-number">20<span>min</span></p>
                                 </div>
@@ -408,7 +408,7 @@
                                     <p class="energy-content-title">容量</p>
                                     <p class="energy-content-number">80.4<span>mw</span></p>
                                 </div>
-                                <div class="layui-col-lg6 layui-col-md6" style="margin-top: 2rem;">
+                                <div class="layui-col-lg12 layui-col-md12" style="margin-top: 2rem;">
                                     <p class="energy-content-title">平均续航时长</p>
                                     <p class="energy-content-number">180<span>min</span></p>
                                 </div>

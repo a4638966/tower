@@ -93,8 +93,33 @@ Index.prototype.initControl = function () {
     pieChart.Doughnut(PieData, pieOptions);
 
     // 切换效果
+    var dataInfo = '';
     $('.energy-tip p').on('click', function () {
         $(this).children('.energy-block').addClass('active')
         $(this).siblings().children('.energy-block').removeClass('active');
+
+        dataInfo = $(this).children('.energy-text').attr('dataInfo');
+        switch (dataInfo) {
+            case 'beidian':
+                $('#number').html('134');
+                $('#income').html('0');
+                $('#dapacity').html('80.4');
+                break;
+            case 'fadian':
+                $('#number').html('4');
+                $('#income').html('0');
+                $('#dapacity').html('4');
+                break;
+            case 'huandian':
+                $('#number').html('0');
+                $('#income').html('0');
+                $('#dapacity').html('0');
+                break;
+            case 'shoudian':
+                $('#number').html('0');
+                $('#income').html('0');
+                $('#dapacity').html('0');
+                break;
+        }
     });
 }
