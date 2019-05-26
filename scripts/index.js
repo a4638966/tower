@@ -120,6 +120,27 @@ Index.prototype.initControl = function () {
                 $('#income').html('0');
                 $('#dapacity').html('0');
                 break;
+            case 'jinrong':
+                $('#jinrongInfo').show().siblings('.customer-box').hide();
+                break;
+            case 'yuliao':
+                $('#yiliaoInfo').show().siblings('.customer-box').hide();
+                break;
+            case 'gongan':
+                $('#gonganInfo').show().siblings('.customer-box').hide();
+                break;
+            case 'xuexiao':
+                $('#xuexiaoInfo').show().siblings('.customer-box').hide();
+                break;
+            case 'jifang':
+                $('#jifangInfo').show().siblings('.customer-box').hide();
+                break;
+            case 'shuju':
+                $('#shujuInfo').show().siblings('.customer-box').hide();
+                break;
+            case 'wuye':
+                $('#wuyeInfo').show().siblings('.customer-box').hide();
+                break;
         }
     });
 }
