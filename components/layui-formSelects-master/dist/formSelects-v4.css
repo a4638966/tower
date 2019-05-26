@@ -52,7 +52,7 @@ select[xm-select]{display: none !important;}
 .xm-select-parent .xm-select-title div.xm-select-label>span i {position: absolute; margin-left: 8px; font-size: 12px; cursor: pointer; line-height: 20px;}
 .xm-select-parent .xm-select .xm-select-input {border: none;height: 28px;background-color: transparent;padding: 0;vertical-align: middle;display: inline-block;width: 50px}
 .xm-select-parent .xm-select--suffix input {border: none}
-.xm-form-selected .xm-select,.xm-form-selected .xm-select:hover {border-color: #009688!important}
+.xm-form-selected .xm-select,.xm-form-selected .xm-select:hover {border-color: #0070C9!important}
 .xm-select--suffix+div {position: absolute;top: 0;left: 0;bottom: 0;right: 0}
 .xm-select-dis .xm-select--suffix+div {z-index: 100;cursor: no-drop!important;opacity: .2;background-color: #FFF;}
 .xm-select-disabled,.xm-select-disabled:hover {color: #d2d2d2!important;cursor: not-allowed!important;background-color: #fff}

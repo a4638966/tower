@@ -105,3 +105,37 @@ body {
 .input-user {
     margin-left: 10px;
 } */
+
+.xm-form-checkbox > i {
+    /* background-color: #0070C9; */
+    border: 1px solid #0070C9;
+}
+
+.xm-form-checkbox:hover > i {
+    /* background-color: #0070C9; */
+    border: 1px solid #0070C9;
+}
+
+.xm-select-parent dl dd.xm-select-this div i {
+    color: #0070C9;
+}
+
+.xm-form-selected .xm-select, .xm-form-selected .xm-select:hover {
+    border-color: #0070C9
+}
+
+.xm-select-parent .xm-select-title div.xm-select-label>span {
+    background-color: #0070C9;
+}
+
+.layui-form-item div[xm-select-skin] .xm-select-title div.xm-select-label>span {
+    border: 1px solid #0070C9;
+}
+
+.xm-select-parent dd .xm-cz:hover {
+    color: #0070C9;
+}
+
+.layui-laydate .layui-laydate-content .layui-this {
+    background-color: #0070C9!important;
+}

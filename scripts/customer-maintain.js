@@ -1,7 +1,9 @@
 var CustomerMaintain = function () {
     this._urls = {};
     this._controls = {
-        searchItem: $('.search-box dd')
+        searchItem: $('.search-box dd'),
+        startDate: $('#startDate'),
+        endDate: $('#endDate')
     }
 };
 CustomerMaintain.prototype.initControl = function () {
@@ -18,7 +20,9 @@ CustomerMaintain.prototype.initControl = function () {
     });
 
     this._controls.searchItem.on('click', function () {
-        $(this).addClass('active');
-        $(this).siblings().removeClass('active');
+        if ($(this).attr('class') != 'date-box') {
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+        }
     });
 }

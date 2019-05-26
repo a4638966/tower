@@ -18,4 +18,5 @@ CustomerCreate.prototype.initControl = function() {
     });
     var formSelects = layui.formSelects;
     formSelects.render('selectId');
+    formSelects.render('selectId1');
 }
