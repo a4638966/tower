@@ -1,4 +1,4 @@
-var Resource = function() {
+﻿var Resource = function() {
     this._urls = {};
     this._controls = {
             uploadDate: $('#uploadDate'),
@@ -55,42 +55,64 @@ Resource.prototype.initControl = function() {
                             name: '二七区'
                         },
                         {
-                            name: '二七区'
+                            name: '中原区'
                         }, {
-                            name: '二七区'
+                            name: '金水区'
                         }, {
-                            name: '二七区'
-                        }, {
+                            name: '管城回族区'
+                        }
+                    ]
+                }, {
+                    name: '洛阳市',
+                    children: [{
                             name: '二七区'
                         }
                     ]
                 }, {
-                    name: '洛阳',
+                    name: '新乡市',
                     children: [{
-                            name: '二七区'
-                        },
-                        {
-                            name: '二七区'
-                        }, {
-                            name: '二七区'
-                        }, {
-                            name: '二七区'
-                        }, {
                             name: '二七区'
                         }
                     ]
                 }, {
-                    name: '新乡',
+                    name: '安阳市',
                     children: [{
                             name: '二七区'
-                        },
-                        {
+                        }
+                    ]
+                }, {
+                    name: '鹤壁市',
+                    children: [{
                             name: '二七区'
-                        }, {
+                        }
+                    ]
+                }, {
+                    name: '济源市',
+                    children: [{
                             name: '二七区'
-                        }, {
+                        }
+                    ]
+                }, {
+                    name: '焦作市',
+                    children: [{
                             name: '二七区'
-                        }, {
+                        }
+                    ]
+                }, {
+                    name: '开封市',
+                    children: [{
+                            name: '二七区'
+                        }
+                    ]
+                }, {
+                    name: '漯河市',
+                    children: [{
+                            name: '二七区'
+                        }
+                    ]
+                }, {
+                    name: '南阳市',
+                    children: [{
                             name: '二七区'
                         }
                     ]
@@ -265,7 +287,7 @@ Resource.prototype.initUpdate = function() {
         return (y + '-' + add(m) + '-' + add(d) + ' ' + add(h) + ':' + add(mm) + ':' + add(s));
     }
 
-    var date = new Date(new Date().getTime() + (1000 * 60 * 60 * 72));
+    var date = new Date(new Date().getTime());// + (1000 * 60 * 60 * 72));
     var date_str = fortime(date);
     that._controls.uploadDate.html(date_str)
 };

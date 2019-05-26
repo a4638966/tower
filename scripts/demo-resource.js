@@ -56,7 +56,7 @@ Resource.prototype.initUpdate = function () {
     return (y + '-' + add(m) + '-' + add(d) + ' ' + add(h) + ':' + add(mm) + ':' + add(s));
   }
 
-  var date = new Date(new Date().getTime() + (1000 * 60 * 60 * 72));
+  var date = new Date(new Date().getTime());// + (1000 * 60 * 60 * 72));
   var date_str = fortime(date);
   that._controls.uploadDate.html(date_str)
 };

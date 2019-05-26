@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国铁塔股份有限公司河南省分公司</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="components/layui/css/layui.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/energy-table.css">
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/layui/layui.js"></script>
+    <script src="components/chart.js/Chart.js"></script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="layui-layout-body" style="overflow: auto">
+    <!-- 头部logo部分开始 -->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header logo-box">
+            <a href="index.html">
+                <img src="images/logo.png" alt="logo">
+            </a>
+            <ul id="userMin" class="layui-nav layui-layout-right" style="display:block">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-username" style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i> 王凯旋
+                        <span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                        <dd><a href="personal.html">个人中心</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 头部logo部分结束 -->
+    <!-- 主体内容开始 -->
+    <div class="layui-fluid">
+        <!-- 头部开始 -->
+        <div class="row">
+            <div class="layui-col-lg12 layui-col-md12">
+                <dl id="regional" class="search-box">
+                    <dt>区域：</dt>
+                    <dd class="active">新乡市</dd>
+                    <dd>焦作市</dd>
+                    <dd>濮阳市</dd>
+                    <div class="clearfix"></div>
+                </dl>
+            </div>
+            <div class="layui-col-lg12 layui-col-md12">
+                <dl id="business" class="search-box">
+                    <dt>业务类型：</dt>
+                    <dd>业务类型1</dd>
+                    <dd class="active">业务类型2</dd>
+                    <dd>业务类型3</dd>
+                    <div class="clearfix"></div>
+                </dl>
+            </div>
+            <div class="layui-col-lg12 layui-col-md12">
+                <dl id="date" class="search-box">
+                    <dt>时间：</dt>
+                    <dd>1个月</dd>
+                    <dd>2个月</dd>
+                    <dd class="active">3个月</dd>
+                    <dd>6个月</dd>
+                    <dd>12个月</dd>
+                    <div class="clearfix"></div>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="layui-col-lg12 layui-col-md12" style="margin-top: 20px;">
+                <table id="tableEnergy" class="layui-table" lay-skin="line">
+                    <thead>
+                        <tr>
+                            <td colspan="2" style="border-right: 1px solid #e6e6e6">站点信息</td>
+                            <td colspan="3" style="border-right: 1px solid #e6e6e6">资源信息</td>
+                            <td colspan="3">业务信息</td>
+                        </tr>
+                        <tr>
+                            <th>站点名称</th>
+                            <th style="border-right: 1px solid #e6e6e6">站点编号</th>
+                            <th>蓄电池类型</th>
+                            <th>蓄电池容量</th>
+                            <th style="border-right: 1px solid #e6e6e6">DTU/电池管理器</th>
+                            <th>启用时间</th>
+                            <th>备电时长</th>
+                            <th>末次应急放电时长</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>站点名称1</td>
+                            <td style="border-right: 1px solid #e6e6e6">001</td>
+                            <td>蓄电池类型1</td>
+                            <td>蓄电池容量1</td>
+                            <td style="border-right: 1px solid #e6e6e6">管理器1</td>
+                            <td>2015-05-02</td>
+                            <td>2H(最近一次核容)</td>
+                            <td>5H(末次)</td>
+                        </tr>
+                        <tr>
+                            <td>站点名称2</td>
+                            <td style="border-right: 1px solid #e6e6e6">002</td>
+                            <td>蓄电池类型2</td>
+                            <td>蓄电池容量2</td>
+                            <td style="border-right: 1px solid #e6e6e6">管理器2</td>
+                            <td>2015-05-02</td>
+                            <td>2H(最近一次核容)</td>
+                            <td>5H(末次)</td>
+                        </tr>
+                        <tr>
+                            <td>站点名称3</td>
+                            <td style="border-right: 1px solid #e6e6e6">003</td>
+                            <td>蓄电池类型3</td>
+                            <td>蓄电池容量3</td>
+                            <td style="border-right: 1px solid #e6e6e6">管理器3</td>
+                            <td>2015-05-02</td>
+                            <td>2H(最近一次核容)</td>
+                            <td>5H(末次)</td>
+                        </tr>
+                        <tr>
+                            <td>站点名称4</td>
+                            <td style="border-right: 1px solid #e6e6e6">004</td>
+                            <td>蓄电池类型4</td>
+                            <td>蓄电池容量4</td>
+                            <td style="border-right: 1px solid #e6e6e6">管理器4</td>
+                            <td>2015-05-02</td>
+                            <td>2H(最近一次核容)</td>
+                            <td>5H(末次)</td>
+                        </tr>
+                        <tr>
+                            <td>站点名称5</td>
+                            <td style="border-right: 1px solid #e6e6e6">005</td>
+                            <td>蓄电池类型5</td>
+                            <td>蓄电池容量5</td>
+                            <td style="border-right: 1px solid #e6e6e6">管理器5</td>
+                            <td>2015-05-02</td>
+                            <td>2H(最近一次核容)</td>
+                            <td>5H(末次)</td>
+                        </tr>
+                        <tr>
+                            <td>站点名称6</td>
+                            <td style="border-right: 1px solid #e6e6e6">006</td>
+                            <td>蓄电池类型6</td>
+                            <td>蓄电池容量6</td>
+                            <td style="border-right: 1px solid #e6e6e6">管理器6</td>
+                            <td>2015-05-02</td>
+                            <td>2H(最近一次核容)</td>
+                            <td>5H(末次)</td>
+                        </tr>
+                        <tr>
+                            <td>站点名称7</td>
+                            <td style="border-right: 1px solid #e6e6e6">007</td>
+                            <td>蓄电池类型7</td>
+                            <td>蓄电池容量7</td>
+                            <td style="border-right: 1px solid #e6e6e6">管理器7</td>
+                            <td>2015-05-02</td>
+                            <td>2H(最近一次核容)</td>
+                            <td>5H(末次)</td>
+                        </tr>
+                        <tr>
+                            <td>站点名称8</td>
+                            <td style="border-right: 1px solid #e6e6e6">008</td>
+                            <td>蓄电池类型8</td>
+                            <td>蓄电池容量8</td>
+                            <td style="border-right: 1px solid #e6e6e6">管理器1</td>
+                            <td>2015-05-02</td>
+                            <td>2H(最近一次核容)</td>
+                            <td>5H(末次)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
+        <p>creenshots © Their respective owners. Google+</p>
+    </footer>
+    <script src="scripts/energy-table.js"></script>
+    <script>
+        var energyTable = null;
+        energyTable = new EnergyTable();
+        energyTable.initControl();
+    </script>
+</body>
+
+</html>
