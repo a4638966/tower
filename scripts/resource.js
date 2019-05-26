@@ -1,4 +1,4 @@
-var Resource = function() {
+var Resource = function () {
     this._urls = {};
     this._controls = {
             uploadDate: $('#uploadDate'),
@@ -12,11 +12,11 @@ var Resource = function() {
             chartType: false
         }
 }
-Resource.prototype.initControl = function() {
+Resource.prototype.initControl = function () {
     var that = this;
     // 初始化日期
     this.initUpdate();
-    layui.use(['tree', 'element'], function() {
+    layui.use(['tree', 'element'], function () {
         var element = layui.element;
         // layui.tree({
         //   elem: '#treeNav',
@@ -78,30 +78,30 @@ Resource.prototype.initControl = function() {
     // 初始化地图
     this.initChart();
     // 按钮事件
-    this._controls.btnChart.on('click', function() {
+    this._controls.btnChart.on('click', function () {
         that._controls.myChart.show();
         that._controls.myTable.hide();
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
-        setTimeout(function() {
+        setTimeout(function () {
             that._commonData.chartType = true;
             that.initChart.getBoundary;
         }, 100);
     });
-    that._controls.btnTable.on('click', function() {
+    that._controls.btnTable.on('click', function () {
         that._controls.myChart.hide();
         that._controls.myTable.show();
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnChart.removeClass('layui-btn-normal').addClass('layui-btn-primary');
     });
 
-    this._controls._layuiTag.on('click', function() {
+    this._controls._layuiTag.on('click', function () {
         var data_info = $(this).attr('data-info');
         window.location.href = 'resource1.html?dataInfo=' + data_info + '';
     });
 };
 // 初始化日期
-Resource.prototype.initUpdate = function() {
+Resource.prototype.initUpdate = function () {
     var that = this;
 
     function add(m) {
@@ -122,7 +122,7 @@ Resource.prototype.initUpdate = function() {
     var date_str = fortime(date);
     that._controls.uploadDate.html(date_str)
 };
-Resource.prototype.initChart = function() {
+Resource.prototype.initChart = function () {
     var that = this;
     // 获取地图数据
     // 需要引入api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js
@@ -145,7 +145,7 @@ Resource.prototype.initChart = function() {
         // 创建行政区划的对象实例
         var bdary = new BMap.Boundary();
         // 获取行政区域
-        bdary.get("河南省", function(rs) {
+        bdary.get("河南省", function (rs) {
             // 清除地图覆盖物
             // map.clearOverlays();
             // 行政区域的点有多少个
@@ -174,7 +174,7 @@ Resource.prototype.initChart = function() {
 
     function drawBoundary() {
         var bdary = new BMap.Boundary();
-        bdary.get("河南省", function(rs) { //获取行政区域     
+        bdary.get("河南省", function (rs) { //获取行政区域     
             var count = rs.boundaries.length; //行政区域的点有多少个
             if (count === 0) {
                 alert('未能获取当前输入行政区域');
@@ -203,15 +203,23 @@ Resource.prototype.initChart = function() {
         // 生成坐标点
         // 我这里是随机取了河南省的几个坐标，用来添加坐标点
         var positionArray = [
-            [113.701699, 34.756999],
-            [113.585998, 34.714994],
-            [113.768533, 34.714638],
-            [112.977737, 34.658004],
-            [113.861957, 34.534389],
-            [114.45412, 36.092283],
-            [114.477099, 35.745347],
-            [112.56378, 33.324863],
-            [115.69132, 34.307679]
+            [114.385112, 36.104493],
+            [114.311523, 35.775339],
+            [115.01062, 35.805319],
+            [113.906782, 35.354419],
+            [113.226082, 35.248841],
+            [113.64922, 34.779614],
+            [114.311523, 34.825142],
+            [112.453396, 34.642879],
+            [111.20238, 34.809969],
+            [115.654526, 34.44497],
+            [113.833193, 34.093663],
+            [113.189288, 33.786977],
+            [114.017166, 33.617825],
+            [114.679469, 33.679373],
+            [114.035563, 33.046399],
+            [112.508588, 32.999902],
+            [114.072358, 32.174383]
         ]
         for (var i = 0; i < positionArray.length; i++) {
             // 一个坐标对应一个mark的生成
@@ -252,20 +260,20 @@ Resource.prototype.initChart = function() {
         lable.hide();
         // 在全景场景内添加覆盖物
         map.addOverlay(lable);
-        mark.addEventListener('mouseover', function() {
+        mark.addEventListener('mouseover', function () {
             lable.show();
         });
-        mark.addEventListener('mouseout', function() {
+        mark.addEventListener('mouseout', function () {
             lable.hide();
         });
     }
     // 使用行政区划
-    setTimeout(function() {
+    setTimeout(function () {
         getBoundary();
     }, 100);
 }
 
-$('.energy-tip p').on('click', function() {
+$('.energy-tip p').on('click', function () {
     $(this).children('.energy-block').addClass('active')
     $(this).children('.energy-text').addClass('text-active');
     $(this).siblings().children('.energy-block').removeClass('active');

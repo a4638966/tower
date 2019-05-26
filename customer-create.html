@@ -100,7 +100,7 @@
                 <div class="layui-col-lg12 layui-col-md12 layui-radius">
                     <div class="news-left-block"></div>
                     <div class="news-title">
-                        <p>创建备电新用户</p>
+                        <p>创建新用户</p>
                     </div>
                     <div class="clearfix"></div>
                     <div class="layui-row" style="padding:10px">
@@ -109,18 +109,37 @@
                                 <div class="layui-row">
                                     <div class="layui-col-lg3 layui-col-md3">
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">隐患分类</label>
+                                            <label class="layui-form-label label-user">客户名称</label>
                                             <div class="layui-input-block input-user">
-                                                <input type="text" name="title" placeholder="这里是一个只读文本" class="layui-input layui-input-sm" disabled>
+                                                <input type="text" name="title" placeholder="请输入客户名称" class="layui-input layui-input-sm">
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">隐患分类</label>
+                                            <label class="layui-form-label label-user">客户类别</label>
                                             <div class="layui-input-block input-user">
-                                                <input type="text" name="title" placeholder="这里是一个只读文本" class="layui-input layui-input-sm" disabled>
+                                                <select>
+                                                        <option value="">请选择</option>
+                                                        <option value="1">备电客户</option>
+                                                        <option value="2">发电客户</option>
+                                                        <option value="3">换电客户</option>
+                                                        <option value="4">售电客户</option>
+                                                        <option value="5">内部客户</option>
+                                                    </select>
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
+                                            <label class="layui-form-label label-user">所属地市</label>
+                                            <div class="layui-input-block input-user">
+                                                <input type="text" name="title" placeholder="请输入所属地市" class="layui-input layui-input-sm">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label label-user">详细地址</label>
+                                            <div class="layui-input-block input-user">
+                                                <input type="text" name="title" placeholder="请输入详细地址" class="layui-input layui-input-sm">
+                                            </div>
+                                        </div>
+                                        <!-- <div class="layui-form-item">
                                             <label class="layui-form-label label-user">所属部门</label>
                                             <div class="layui-input-block input-user">
                                                 <select xm-select="selectId1">
@@ -129,81 +148,73 @@
                                                     <option value="2">部门2</option>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="layui-form-item">
                                             <label class="layui-form-label label-user">二维码</label>
                                             <div class="layui-input-block input-user">
-                                                <div style="width:100px;height: 100px;background:#333;"></div>
+                                                <div style="width:100px;height: 100px;">
+                                                    <img src="images/erweima.png" alt="二维码" style="width: 100%;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-lg3 layui-col-md3" style="padding-left: 20px;">
+                                        
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label label-user">合同编号</label>
+                                            <div class="layui-input-block input-user">
+                                                <input type="text" name="title" placeholder="请输入合同编号" class="layui-input layui-input-sm">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label label-user">签约金额</label>
+                                            <div class="layui-input-block input-user">
+                                                <input type="text" name="title" placeholder="请输入签约金额" class="layui-input layui-input-sm">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label label-user">签约人</label>
+                                            <div class="layui-input-block input-user">
+                                                <input type="text" name="title" placeholder="请输入合同签约人" class="layui-input layui-input-sm">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label label-user">签约周期</label>
+                                            <div class="layui-input-block input-user">
+                                                <input type="text" name="title" placeholder="请输入签约周期" class="layui-input layui-input-sm">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="layui-col-lg3 layui-col-md3" style="padding-left: 20px;">
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">必填项</label>
+                                            <label class="layui-form-label label-user">联系电话</label>
                                             <div class="layui-input-block input-user">
-                                                <input type="text" name="title" placeholder="" class="layui-input layui-input-sm">
+                                                <input type="text" name="title" placeholder="请输入联系电话" class="layui-input layui-input-sm">
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">必填项</label>
+                                            <label class="layui-form-label label-user">客户ID</label>
                                             <div class="layui-input-block input-user">
-                                                <input type="text" name="title" placeholder="" class="layui-input layui-input-sm">
+                                                <input type="text" name="title" placeholder="请输入客户ID" class="layui-input layui-input-sm">
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">所属部门</label>
+                                            <label class="layui-form-label label-user">备电时长</label>
                                             <div class="layui-input-block input-user">
-                                                <select xm-select="selectId">
-                                                        <option value="">所属部门</option>
-                                                        <option value="1">部门1</option>
-                                                        <option value="2">部门2</option>
-                                                    </select>
+                                                <input type="text" name="title" placeholder="请输入约定备电时长" class="layui-input layui-input-sm">
                                             </div>
                                         </div>
+                                        
                                     </div>
                                     <div class="layui-col-lg3 layui-col-md3" style="padding-left: 20px;">
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">隐患分类</label>
-                                            <div class="layui-input-block input-user">
-                                                <select>
-                                                    <option value="">分类1</option>
-                                                    <option value="1">分类1</option>
-                                                    <option value="2">分类1</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">隐患分类</label>
-                                            <div class="layui-input-block input-user">
-                                                <select>
-                                                    <option value="">分类1</option>
-                                                    <option value="1">分类1</option>
-                                                    <option value="2">分类1</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">开始日期</label>
+                                            <label class="layui-form-label label-user">办理日期</label>
                                             <div class="layui-input-block input-user">
                                                 <input type="text" class="layui-input" id="test1">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="layui-col-lg3 layui-col-md3" style="padding-left: 20px;">
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">隐患分类</label>
-                                            <div class="layui-input-block input-user">
-                                                <input type="text" name="title" placeholder="" class="layui-input layui-input-sm">
-                                            </div>
-                                        </div>
-                                        <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">隐患分类</label>
-                                            <div class="layui-input-block input-user">
-                                                <input type="text" name="title" placeholder="" class="layui-input layui-input-sm">
-                                            </div>
-                                        </div>
-                                        <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">结束日期</label>
+                                            <label class="layui-form-label label-user">生效日期</label>
                                             <div class="layui-input-block input-user">
                                                 <input type="text" class="layui-input" id="test2">
                                             </div>
