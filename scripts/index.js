@@ -99,6 +99,7 @@ Index.prototype.initControl = function () {
         $(this).siblings().children('.energy-block').removeClass('active');
 
         dataInfo = $(this).children('.energy-text').attr('dataInfo');
+        console.log(dataInfo)
         switch (dataInfo) {
             case 'beidian':
                 $('#number').html('134');
@@ -123,7 +124,8 @@ Index.prototype.initControl = function () {
             case 'jinrong':
                 $('#jinrongInfo').show().siblings('.customer-box').hide();
                 break;
-            case 'yuliao':
+            case 'yiliao':
+                
                 $('#yiliaoInfo').show().siblings('.customer-box').hide();
                 break;
             case 'gongan':
@@ -132,8 +134,8 @@ Index.prototype.initControl = function () {
             case 'xuexiao':
                 $('#xuexiaoInfo').show().siblings('.customer-box').hide();
                 break;
-            case 'jifang':
-                $('#jifangInfo').show().siblings('.customer-box').hide();
+            case 'danwei':
+                $('#danweiInfo').show().siblings('.customer-box').hide();
                 break;
             case 'shuju':
                 $('#shujuInfo').show().siblings('.customer-box').hide();
