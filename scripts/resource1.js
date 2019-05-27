@@ -49,17 +49,17 @@ Resource.prototype.initControl = function() {
                 name: '河南省',
                 spread: true,
                 children: [{
-                    name: '郑州市',
+                    name: '新乡市',
                     spread: true,
                     children: [{
-                            name: '二七区'
+                        name: '红旗区'
                         },
                         {
-                            name: '中原区'
+                            name: '辉县市'
                         }, {
-                            name: '金水区'
+                            name: '原阳县'
                         }, {
-                            name: '管城回族区'
+                            name: '卫辉市'
                         }
                     ]
                 }, {
@@ -69,7 +69,7 @@ Resource.prototype.initControl = function() {
                         }
                     ]
                 }, {
-                    name: '新乡市',
+                    name: '郑州市',
                     children: [{
                             name: '二七区'
                         }
@@ -115,6 +115,54 @@ Resource.prototype.initControl = function() {
                     children: [{
                             name: '二七区'
                         }
+                    ]
+                }, {
+                    name: '平顶山市',
+                    children: [{
+                        name: '二七区'
+                    }
+                    ]
+                }, {
+                    name: '濮阳市',
+                    children: [{
+                        name: '二七区'
+                    }
+                    ]
+                }, {
+                    name: '三门峡市',
+                    children: [{
+                        name: '二七区'
+                    }
+                    ]
+                }, {
+                    name: '商丘市',
+                    children: [{
+                        name: '二七区'
+                    }
+                    ]
+                }, {
+                    name: '信阳市',
+                    children: [{
+                        name: '二七区'
+                    }
+                    ]
+                }, {
+                    name: '许昌市',
+                    children: [{
+                        name: '二七区'
+                    }
+                    ]
+                }, {
+                    name: '周口市',
+                    children: [{
+                        name: '二七区'
+                    }
+                    ]
+                }, {
+                    name: '驻马店市',
+                    children: [{
+                        name: '二七区'
+                    }
                     ]
                 }]
             }]
