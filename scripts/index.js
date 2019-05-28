@@ -27,7 +27,7 @@ Index.prototype.initControl = function () {
         });
         // 按钮事件
         that._controls.btnLogin.on('click', function () {
-            layer.msg('登陆成功，欢迎您王凯旋', {
+            layer.msg('登陆成功，欢迎您薛总', {
                 icon: 1,
                 time: 700 //2秒关闭（如果不配置，默认是3秒）
             }, function () {
@@ -102,14 +102,14 @@ Index.prototype.initControl = function () {
         console.log(dataInfo)
         switch (dataInfo) {
             case 'beidian':
-                $('#number').html('134');
+                $('#number').html('18');
                 $('#income').html('0');
-                $('#dapacity').html('80.4');
+                $('#dapacity').html('0.27');
                 break;
             case 'fadian':
-                $('#number').html('4');
+                $('#number').html('2');
                 $('#income').html('0');
-                $('#dapacity').html('4');
+                $('#dapacity').html('0.17');
                 break;
             case 'huandian':
                 $('#number').html('0');
@@ -117,7 +117,7 @@ Index.prototype.initControl = function () {
                 $('#dapacity').html('0');
                 break;
             case 'shoudian':
-                $('#number').html('0');
+                $('#number').html('2');
                 $('#income').html('0');
                 $('#dapacity').html('0');
                 break;
@@ -145,4 +145,29 @@ Index.prototype.initControl = function () {
                 break;
         }
     });
+
+    // this.initUpdate();
 }
+
+// 初始化日期
+Index.prototype.initUpdate = function () {
+    var that = this;
+  
+    function add(m) {
+      return m < 10 ? '0' + m : m
+    }
+  
+    function fortime(date) {
+      var y = date.getFullYear();
+      var m = date.getMonth() + 1;
+      var d = date.getDate();
+      var h = date.getHours();
+      var mm = date.getMinutes();
+      var s = date.getSeconds();
+      return (y + '-' + add(m) + '-' + add(d) + ' ' + add(h) + ':' + add(mm) + ':' + add(s));
+    }
+  
+    var date = new Date(new Date().getTime());// + (1000 * 60 * 60 * 72));
+    var date_str = fortime(date);
+    $('.news-date').html(date_str)
+  };
