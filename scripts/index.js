@@ -99,7 +99,6 @@ Index.prototype.initControl = function () {
         $(this).siblings().children('.energy-block').removeClass('active');
 
         dataInfo = $(this).children('.energy-text').attr('dataInfo');
-        console.log(dataInfo)
         switch (dataInfo) {
             case 'beidian':
                 $('#number').html('18');
