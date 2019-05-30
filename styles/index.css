@@ -482,10 +482,22 @@ body {
 }
 
 .chart-legend2 {
-    background-color: #7fb7e4;
+    background-color: #388acc;
 }
 
 .chart-legend3 {
+    background-color: #5b8aaf;
+}
+.chart-legend4 {
+    background-color: #8cacc6;
+}
+.chart-legend5 {
+    background-color: #76bbf2;
+}
+.chart-legend6 {
+    background-color: #aed5f4;
+}
+.chart-legend7 {
     background-color: #e8e9ea;
 }
 

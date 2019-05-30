@@ -5,7 +5,14 @@ var Index = function () {
         btnLogin: $('#btnLogin'),
         loginAgo: $('#loginAgo'),
         loginAfter: $('#loginAfter'),
-        btnLoginOut: $('#btnLoginOut')
+        btnLoginOut: $('#btnLoginOut'),
+        // 备电，换电，发电，售电
+        number: $('#number'),
+        income: $('#income'),
+        dapacity: $('#dapacity'),
+        contractAmount: $('#contractAmount'),
+        moneyBackAmount: $('#moneyBackAmount'),
+        billingAmount: $('#billingAmount')
     };
 };
 
@@ -54,44 +61,8 @@ Index.prototype.initControl = function () {
             });
         });
     });
-    // 初始化chart图表
-    // 调用charts.js
-    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieChart = new Chart(pieChartCanvas)
-    var PieData = [{
-            value: 700,
-            color: '#0070C9',
-            highlight: '#0070C9',
-            label: '业务类型1'
-        },
-        {
-            value: 200,
-            color: '#7fb7e4',
-            highlight: '#7fb7e4',
-            label: '业务类型2'
-        },
-        {
-            value: 500,
-            color: '#e8e9ea',
-            highlight: '#e8e9ea',
-            label: '业务类型3'
-        }
-    ]
-    var pieOptions = {
-        segmentShowStroke: true,
-        segmentStrokeColor: '#fff',
-        segmentStrokeWidth: 2,
-        animationSteps: 100,
-        animationEasing: 'easeOutBounce',
-        animateRotate: true,
-        animateScale: false,
-        responsive: false,
-        maintainAspectRatio: true,
-        //String - A legend template
-        legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    }
-    pieChart.Doughnut(PieData, pieOptions);
-
+    this.initSearch('bd');
+    this.initEnergyStation();
     // 切换效果
     var dataInfo = '';
     $('.energy-tip p').on('click', function () {
@@ -101,30 +72,22 @@ Index.prototype.initControl = function () {
         dataInfo = $(this).children('.energy-text').attr('dataInfo');
         switch (dataInfo) {
             case 'beidian':
-                $('#number').html('18');
-                $('#income').html('0');
-                $('#dapacity').html('0.27');
+                that.initSearch('bd');
                 break;
             case 'fadian':
-                $('#number').html('2');
-                $('#income').html('0');
-                $('#dapacity').html('0.17');
+                that.initSearch('fd');
                 break;
             case 'huandian':
-                $('#number').html('0');
-                $('#income').html('0');
-                $('#dapacity').html('0');
+                that.initSearch('hd');
                 break;
             case 'shoudian':
-                $('#number').html('2');
-                $('#income').html('0');
-                $('#dapacity').html('0');
+                that.initSearch('sd');
                 break;
             case 'jinrong':
                 $('#jinrongInfo').show().siblings('.customer-box').hide();
                 break;
             case 'yiliao':
-                
+
                 $('#yiliaoInfo').show().siblings('.customer-box').hide();
                 break;
             case 'gongan':
@@ -146,27 +109,151 @@ Index.prototype.initControl = function () {
     });
 
     // this.initUpdate();
+
+}
+
+// 初始化备电点
+Index.prototype.initSearch = function (mode) {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/index/big_type_data',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: '',
+            cityId: '',
+            prefectureId: '',
+            mode: mode
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                res.result.total === '' ? that._controls.number.html(0) : that._controls.number.html(res.result.total);
+                res.result.income === '' ? that._controls.income.html(0) : that._controls.income.html(res.result.income);
+                res.result.capacity === '' ? that._controls.dapacity.html(0) : that._controls.dapacity.html(res.result.capacity);
+                res.result.contractAmount === '' ? that._controls.contractAmount.html(0) : that._controls.contractAmount.html(res.result.contractAmount);
+                res.result.refundAmount === '' ? that._controls.moneyBackAmount.html(0) : that._controls.moneyBackAmount.html(res.result.refundAmount);
+                res.result.accountAmount === '' ? that._controls.billingAmount.html(0) : that._controls.billingAmount.html(res.result.accountAmount);
+                that.initChart(res.result)
+            }
+        },
+        error: function () {
+            layer.msg('数据异常！')
+        }
+    });
+}
+
+// 地图数据
+Index.prototype.initChart = function (data) {
+    // 调用charts.js
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var pieChart = new Chart(pieChartCanvas)
+    var num = data.financeCount + data.medicalCount + data.policeCount + data.educationCount + data.unitComputerCount + data.dataCenterCount + data.estateManageCount;
+    
+    var PieData = [{
+            value: data.financeCount,
+            color: '#0070C9',
+            highlight: '#0070C9',
+            label: '金融机构'
+        },
+        {
+            value: data.medicalCount,
+            color: '#388acc',
+            highlight: '#388acc',
+            label: '医疗卫生'
+        },
+        {
+            value: data.policeCount,
+            color: '#5b8aaf',
+            highlight: '#5b8aaf',
+            label: '公安交警'
+        },
+        {
+            value: data.educationCount,
+            color: '#8cacc6',
+            highlight: '#8cacc6',
+            label: '学校教育'
+        },
+        {
+            value: data.unitComputerCount,
+            color: '#76bbf2',
+            highlight: '#76bbf2',
+            label: '单位机房'
+        },
+        {
+            value: data.dataCenterCount,
+            color: '#aed5f4',
+            highlight: '#aed5f4',
+            label: '数据中心'
+        },
+        {
+            value: data.estateManageCount,
+            color: '#e8e9ea',
+            highlight: '#e8e9ea',
+            label: '物业管理'
+        }
+    ]
+    var pieOptions = {
+        segmentShowStroke: true,
+        segmentStrokeColor: '#fff',
+        segmentStrokeWidth: 2,
+        animationSteps: 100,
+        animationEasing: 'easeOutBounce',
+        animateRotate: true,
+        animateScale: false,
+        responsive: false,
+        maintainAspectRatio: true,
+        //String - A legend template
+        legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    }
+    console.log(num)
+    if (num > 0) {
+        pieChart.Doughnut(PieData, pieOptions);
+    } else {
+        pieChart.Doughnut(PieData, pieOptions);
+    }
+    
+}
+
+// 储能站
+Index.prototype.initEnergyStation = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/index/energy_station',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: '',
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            console.log(res);
+        },
+        error: function () {
+            layer.msg('数据异常！');
+        }
+    });
 }
 
 // 初始化日期
 Index.prototype.initUpdate = function () {
     var that = this;
-  
+
     function add(m) {
-      return m < 10 ? '0' + m : m
+        return m < 10 ? '0' + m : m
     }
-  
+
     function fortime(date) {
-      var y = date.getFullYear();
-      var m = date.getMonth() + 1;
-      var d = date.getDate();
-      var h = date.getHours();
-      var mm = date.getMinutes();
-      var s = date.getSeconds();
-      return (y + '-' + add(m) + '-' + add(d) + ' ' + add(h) + ':' + add(mm) + ':' + add(s));
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        var h = date.getHours();
+        var mm = date.getMinutes();
+        var s = date.getSeconds();
+        return (y + '-' + add(m) + '-' + add(d) + ' ' + add(h) + ':' + add(mm) + ':' + add(s));
     }
-  
-    var date = new Date(new Date().getTime());// + (1000 * 60 * 60 * 72));
+
+    var date = new Date(new Date().getTime()); // + (1000 * 60 * 60 * 72));
     var date_str = fortime(date);
     $('.news-date').html(date_str)
-  };
+};
