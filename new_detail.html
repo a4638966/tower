@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国铁塔股份有限公司河南省分公司</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="components/layui/css/layui.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/resource.css">
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/layui/layui.js"></script>
+    <script src="components/chart.js/Chart.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
+    </script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="layui-layout-body layui-layout layui-layout-admin" style="overflow: auto">
+    <!-- 头部logo部分开始 -->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header logo-box">
+            <a href="index.html">
+                <img src="images/logo.png" alt="logo">
+            </a>
+            <ul class="layui-nav layui-layout-left nav-box">
+                <li class="layui-nav-item ">
+                    <a href="index.html">首页
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="resource.html">资源中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="javascript:void(0);">监控中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="monitoring.html">能源生产保障</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=5">能源备电监控</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=6">能源发电监控</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="javascript:void(0)">业务中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="business.html">能源生产保障</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=8">能源发电业务</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=7">能源备电业务</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="javascript:void(0)">调度中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=1">对内应急保障中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=2">备电客户保障中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=3">电力停电预警中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=4">基站能源均衡中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="javascript:void(0)">客户中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="customer-maintain.html">客户维护</a></dd>
+                        <dd><a href="demand-detail.html">客户管理</a></dd>
+                        <dd><a href="customer.html">客户统计</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="operation.html">运营中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-username" style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i> 薛总
+                        <span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                        <dd><a href="personal.html">个人中心</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 头部logo部分结束 -->
+    <!-- 主体内容开始 -->
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <div class="layui-col-lg12 layui-col-md12" style="text-align: left;color: #ACB7BF;margin-bottom: 10px;">
+                <p style="margin-right: 6%;cursor: default;">当前位置：<span>首页</span> - <span>签约快讯</span> -  <span>正文</span></p>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-lg12 layui-col-md12 layui-radius" style="box-shadow: none;">
+                <h1 class="new_title">河南、江西、云南等省明确由铁塔公司统筹规划5G基站建设 推进共建共享</h1>
+                <div class="new_info">
+                    <p>来源：<span>中国铁塔</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：<span>2019-02-13</span></p>
+                </div>
+                <div class="new-content">
+                    <p>近期，河南、江西、云南等省以多种形式，明确由铁塔公司统筹规划当地5G基础设施建设，推进共建共享。</p>
+                    <img src="images/news/new_detail_1_1.jpg" alt="">
+                    <p>河南省人民政府发布全国首个省级5G部署规划方案——《河南省5G产业发展行动方案》，提出加快5G基础网络建设的重点任务，要求铁塔公司按照5G 基站规划，深化电信基础设施共建共享要求，统筹基础电信运营商5G设施建设需求，共建铁塔、机房等基站配套设施以及公共交通、重点场所建筑楼宇室内分布系统。《方案》提出要加快5G基站建设规划编制，将5G基站规划纳入城市通信基础设施专项规划和发展控制性详细规划，将5G基站站址、机房及管线、电力等配套设施纳入市政基础设施规划。《方案》强调要落实5G建设配套需求，推动各地将政府公共建筑物、弱电井管道、杆塔、绿地等资源向移动通信基站建设开放，在规划落地、基站设置、传输和管道工程建设、电力引接等方面予以支持，并依法打击破坏5G 基站等信息基础设施的违法犯罪活动。</p>
+                    <img src="images/news/new_detail_1_2.jpg" alt="">
+                    <p>江西省委书记刘奇在江西VR产业基地参观5G演示厅时，听取了中国铁塔江西分公司关于5G通信基础设施建设的汇报。他对铁塔公司在提升地方通信网络能力方面作出的贡献表示肯定，并明确指示全省移动通信基础设施要由铁塔公司统筹规划，推进共建共享，减少重复建设，降低建设成本，尽快推进5G商用运行，推动江西经济更好更快发展。</p>
+                    <p>云南省副省长董华在中国铁塔云南分公司调研时，听取了关于“一部手机游云南”战略落地情况以及5G通信设施建设的汇报，对铁塔公司在云南通信基础设施建设及提升地方通信网络方面作出的贡献给予充分肯定，表示政府将进一步免费开放公共设施，由铁塔公司统筹、共享、使用公共资源，降低5G基站选址成本，并在5G建设电力保障方面给予支持，共同推进共建共享，助推5G商用。此外，针对疑难站址问题，政府也将继续开展专项督查，持续发力彻底解决疑难站址问题。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
+        <p>creenshots © Their respective owners. Google+</p>
+    </footer>
+    <script src="scripts/new_detail.js"></script>
+    <script>
+        var resource = null;
+        resource = new Resource();
+        resource.initControl();
+    </script>
+</body>
+
+</html>
