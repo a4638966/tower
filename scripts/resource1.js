@@ -1,4 +1,4 @@
-﻿var Resource = function() {
+﻿var Resource = function () {
     this._urls = {};
     this._controls = {
             uploadDate: $('#uploadDate'),
@@ -10,9 +10,11 @@
             // 备电点
             btnStandbyPower: $('#btnStandbyPower'),
             standbyPowerTable: $('#standbyPowerTable'),
+            tabdy1: $('#tabdy1'),
             // 充电点
             btnCharge: $('#btnCharge'),
             chargeTable: $('#chargeTable'),
+            table2: $('#table2'),
             // 换电点
             btnPowerExchange: $('#btnPowerExchange'),
             powerExchangeTable: $('#powerExchangeTable'),
@@ -36,11 +38,12 @@
             chartType: false
         }
 }
-Resource.prototype.initControl = function() {
+Resource.prototype.initControl = function () {
     var that = this;
+    this.initSecondBdList();
     // 初始化日期
     // this.initUpdate();
-    layui.use(['tree', 'element'], function() {
+    layui.use(['tree', 'element'], function () {
         var element = layui.element;
         layui.tree({
             elem: '#treeNav',
@@ -52,7 +55,7 @@ Resource.prototype.initControl = function() {
                     name: '新乡市',
                     spread: true,
                     children: [{
-                        name: '红旗区'
+                            name: '红旗区'
                         },
                         {
                             name: '辉县市'
@@ -65,105 +68,88 @@ Resource.prototype.initControl = function() {
                 }, {
                     name: '洛阳市',
                     children: [{
-                            name: '二七区'
-                        }
-                    ]
+                        name: '二七区'
+                    }]
                 }, {
                     name: '郑州市',
                     children: [{
-                            name: '二七区'
-                        }
-                    ]
+                        name: '二七区'
+                    }]
                 }, {
                     name: '安阳市',
                     children: [{
-                            name: '二七区'
-                        }
-                    ]
+                        name: '二七区'
+                    }]
                 }, {
                     name: '鹤壁市',
                     children: [{
-                            name: '二七区'
-                        }
-                    ]
+                        name: '二七区'
+                    }]
                 }, {
                     name: '济源市',
                     children: [{
-                            name: '二七区'
-                        }
-                    ]
+                        name: '二七区'
+                    }]
                 }, {
                     name: '焦作市',
                     children: [{
-                            name: '二七区'
-                        }
-                    ]
+                        name: '二七区'
+                    }]
                 }, {
                     name: '开封市',
                     children: [{
-                            name: '二七区'
-                        }
-                    ]
+                        name: '二七区'
+                    }]
                 }, {
                     name: '漯河市',
                     children: [{
-                            name: '二七区'
-                        }
-                    ]
+                        name: '二七区'
+                    }]
                 }, {
                     name: '南阳市',
                     children: [{
-                            name: '二七区'
-                        }
-                    ]
+                        name: '二七区'
+                    }]
                 }, {
                     name: '平顶山市',
                     children: [{
                         name: '二七区'
-                    }
-                    ]
+                    }]
                 }, {
                     name: '濮阳市',
                     children: [{
                         name: '二七区'
-                    }
-                    ]
+                    }]
                 }, {
                     name: '三门峡市',
                     children: [{
                         name: '二七区'
-                    }
-                    ]
+                    }]
                 }, {
                     name: '商丘市',
                     children: [{
                         name: '二七区'
-                    }
-                    ]
+                    }]
                 }, {
                     name: '信阳市',
                     children: [{
                         name: '二七区'
-                    }
-                    ]
+                    }]
                 }, {
                     name: '许昌市',
                     children: [{
                         name: '二七区'
-                    }
-                    ]
+                    }]
                 }, {
                     name: '周口市',
                     children: [{
                         name: '二七区'
-                    }
-                    ]
+                    }]
                 }, {
                     name: '驻马店市',
                     children: [{
                         name: '二七区'
-                    }
-                    ]
+                    }]
                 }]
             }]
         });
@@ -171,25 +157,27 @@ Resource.prototype.initControl = function() {
 
     // 按钮事件
     // 备电
-    this._controls.btnStandbyPower.on('click', function() {
+    this._controls.btnStandbyPower.on('click', function () {
         that._controls.btnStandbyPower.children('.energy-block').addClass('active')
         that._controls.btnStandbyPower.children('.energy-text').addClass('text-active');
         that._controls.btnStandbyPower.siblings().children('.energy-block').removeClass('active');
         that._controls.btnStandbyPower.siblings().children('.energy-text').removeClass('text-active');
         that._controls.standbyPowerTable.show();
         that._controls.standbyPowerTable.siblings('table').hide();
+        that.initSecondBdList();
     });
     // 充电
-    this._controls.btnCharge.on('click', function() {
+    this._controls.btnCharge.on('click', function () {
         that._controls.btnCharge.children('.energy-block').addClass('active')
         that._controls.btnCharge.children('.energy-text').addClass('text-active');
         that._controls.btnCharge.siblings().children('.energy-block').removeClass('active');
         that._controls.btnCharge.siblings().children('.energy-text').removeClass('text-active');
         that._controls.chargeTable.show();
         that._controls.chargeTable.siblings('table').hide();
+        that.initSecondCdList();
     });
     // 换电
-    this._controls.btnPowerExchange.on('click', function() {
+    this._controls.btnPowerExchange.on('click', function () {
         that._controls.btnPowerExchange.children('.energy-block').addClass('active')
         that._controls.btnPowerExchange.children('.energy-text').addClass('text-active');
         that._controls.btnPowerExchange.siblings().children('.energy-block').removeClass('active');
@@ -198,7 +186,7 @@ Resource.prototype.initControl = function() {
         that._controls.powerExchangeTable.siblings('table').hide();
     });
     // 售电
-    this._controls.btnSellingElectricity.on('click', function() {
+    this._controls.btnSellingElectricity.on('click', function () {
         that._controls.btnSellingElectricity.children('.energy-block').addClass('active')
         that._controls.btnSellingElectricity.children('.energy-text').addClass('text-active');
         that._controls.btnSellingElectricity.siblings().children('.energy-block').removeClass('active');
@@ -207,7 +195,7 @@ Resource.prototype.initControl = function() {
         that._controls.sellingElectricityTable.siblings('table').hide();
     });
     // 储能站
-    this._controls.btnProlongLife.on('click', function() {
+    this._controls.btnProlongLife.on('click', function () {
         that._controls.btnProlongLife.children('.energy-block').addClass('active')
         that._controls.btnProlongLife.children('.energy-text').addClass('text-active');
         that._controls.btnProlongLife.siblings().children('.energy-block').removeClass('active');
@@ -216,7 +204,7 @@ Resource.prototype.initControl = function() {
         that._controls.prolongLifeTable.siblings('table').hide();
     });
     // 延寿站
-    this._controls.btnEnergyStorage.on('click', function() {
+    this._controls.btnEnergyStorage.on('click', function () {
         that._controls.btnEnergyStorage.children('.energy-block').addClass('active')
         that._controls.btnEnergyStorage.children('.energy-text').addClass('text-active');
         that._controls.btnEnergyStorage.siblings().children('.energy-block').removeClass('active');
@@ -225,7 +213,7 @@ Resource.prototype.initControl = function() {
         that._controls.energyStorageTable.siblings('table').hide();
     });
     // 蓄电池
-    this._controls.btnBatter.on('click', function() {
+    this._controls.btnBatter.on('click', function () {
         that._controls.btnBatter.children('.energy-block').addClass('active')
         that._controls.btnBatter.children('.energy-text').addClass('text-active');
         that._controls.btnBatter.siblings().children('.energy-block').removeClass('active');
@@ -234,7 +222,7 @@ Resource.prototype.initControl = function() {
         that._controls.batteryTable.siblings('table').hide();
     });
     // 能源包
-    this._controls.btnEnergyPack.on('click', function() {
+    this._controls.btnEnergyPack.on('click', function () {
         that._controls.btnEnergyPack.children('.energy-block').addClass('active')
         that._controls.btnEnergyPack.children('.energy-text').addClass('text-active');
         that._controls.btnEnergyPack.siblings().children('.energy-block').removeClass('active');
@@ -318,7 +306,7 @@ Resource.prototype.initControl = function() {
     // });
 };
 // 初始化日期
-Resource.prototype.initUpdate = function() {
+Resource.prototype.initUpdate = function () {
     var that = this;
 
     function add(m) {
@@ -335,11 +323,11 @@ Resource.prototype.initUpdate = function() {
         return (y + '-' + add(m) + '-' + add(d) + ' ' + add(h) + ':' + add(mm) + ':' + add(s));
     }
 
-    var date = new Date(new Date().getTime());// + (1000 * 60 * 60 * 72));
+    var date = new Date(new Date().getTime()); // + (1000 * 60 * 60 * 72));
     var date_str = fortime(date);
     that._controls.uploadDate.html(date_str)
 };
-Resource.prototype.initChart = function() {
+Resource.prototype.initChart = function () {
     var that = this;
     // 获取地图数据
     // 需要引入api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js
@@ -362,7 +350,7 @@ Resource.prototype.initChart = function() {
         // 创建行政区划的对象实例
         var bdary = new BMap.Boundary();
         // 获取行政区域
-        bdary.get("河南省", function(rs) {
+        bdary.get("河南省", function (rs) {
             // 清除地图覆盖物
             // map.clearOverlays();
             // 行政区域的点有多少个
@@ -391,7 +379,7 @@ Resource.prototype.initChart = function() {
 
     function drawBoundary() {
         var bdary = new BMap.Boundary();
-        bdary.get("河南省", function(rs) { //获取行政区域     
+        bdary.get("河南省", function (rs) { //获取行政区域     
             var count = rs.boundaries.length; //行政区域的点有多少个
             if (count === 0) {
                 alert('未能获取当前输入行政区域');
@@ -469,15 +457,107 @@ Resource.prototype.initChart = function() {
         lable.hide();
         // 在全景场景内添加覆盖物
         map.addOverlay(lable);
-        mark.addEventListener('mouseover', function() {
+        mark.addEventListener('mouseover', function () {
             lable.show();
         });
-        mark.addEventListener('mouseout', function() {
+        mark.addEventListener('mouseout', function () {
             lable.hide();
         });
     }
     // 使用行政区划
-    setTimeout(function() {
+    setTimeout(function () {
         getBoundary();
     }, 100);
+}
+Resource.prototype.initSecondBdList = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_bd_list',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: '',
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                
+                if (res.result.length > 0) {
+                    var str = '';
+                    for (var i = 0; i < res.result.length; i++) {
+                        str += '<tr>';
+                        str += '<td>' + res.result[i].name + '</td>';
+                        str += '<td>' + res.result[i].customerName + '</td>';
+                        str += '<td>' + res.result[i].panelName + '</td>';
+                        str += '<td>' + res.result[i].deviceCode + '</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].readyTime + 'H</td>';
+                        str += '<td>' + res.result[i].batType + '</td>';
+                        str += '<td>' + res.result[i].capacity + 'AH</td>';
+                        str += '<td>' + res.result[i].dcglq + '</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].dcddsbl + '</td>';
+                        str += '<td>' + res.result[i].fdcs + '次</td>';
+                        str += '<td>' + res.result[i].zcbdsc + 'H</td>';
+                        str += '</tr>';
+                    }
+                    that._controls.tabdy1.html(str);
+                } else {
+                    that._controls.tabdy1.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
+                }
+            } else {
+                layer.msg(res.message);
+                that._controls.tabdy1.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
+            }
+        },
+        error: function () {
+            layer.msg('数据异常！')
+        }
+    });
+}
+
+Resource.prototype.initSecondCdList = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_cd_list',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: '',
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                
+                if (res.result.length > 0) {
+                    var str = '';
+                    for (var i = 0; i < res.result.length; i++) {
+                        str += '<tr>';
+                        str += '<td>' + res.result[i].name + '</td>';
+                        str += '<td>' + res.result[i].cdzmc + '</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].deviceCode + '</td>';
+                        str += '<td>' + res.result[i].ydnybsl + '个</td>';
+                        str += '<td>' + res.result[i].capacity + 'AH</td>';
+                        str += '<td>' + res.result[i].dtusl + '个</td>';
+                        str += '<td>' + res.result[i].nycsl + '辆</td>';
+                        str += '<td>' + res.result[i].nbqsl + '个</td>';
+                        str += '<td>' + res.result[i].hlqsl + '个</td>';
+                        str += '<td>' + res.result[i].cdzsl + '个</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].cdwsl + '个</td>';
+                        str += '<td>-</td>';
+                        str += '</tr>';
+                    }
+                    that._controls.table2.html(str);
+                } else {
+                    that._controls.tabdy2.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
+                }
+            } else {
+                layer.msg(res.message);
+                that._controls.tabdy2.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
+            }
+        },
+        error: function () {
+            layer.msg('数据异常！')
+        }
+    });
 }
