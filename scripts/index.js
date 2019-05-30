@@ -12,7 +12,19 @@ var Index = function () {
         dapacity: $('#dapacity'),
         contractAmount: $('#contractAmount'),
         moneyBackAmount: $('#moneyBackAmount'),
-        billingAmount: $('#billingAmount')
+        billingAmount: $('#billingAmount'),
+        // 储能站
+        energyTotal: $('#energyTotal'),
+        energyCapacity: $('#energyCapacity'),
+        energyPeakDischargeDuration: $('#energyPeakDischargeDuration'),
+        energyCDL: $('#energyCDL'),
+        energyFDL: $('#energyFDL'),
+        // 延寿站
+        extendTotal: $('#extendTotal'),
+        extendCapacity: $('#extendCapacity'),
+        extendPjxhnl: $('#extendPjxhnl'),
+        extendXhnltsnl: $('#extendXhnltsnl'),
+        extendFDL: $('#extendFDL')
     };
 };
 
@@ -63,6 +75,7 @@ Index.prototype.initControl = function () {
     });
     this.initSearch('bd');
     this.initEnergyStation();
+    this.initExtended();
     // 切换效果
     var dataInfo = '';
     $('.energy-tip p').on('click', function () {
@@ -148,7 +161,7 @@ Index.prototype.initChart = function (data) {
     var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
     var pieChart = new Chart(pieChartCanvas)
     var num = data.financeCount + data.medicalCount + data.policeCount + data.educationCount + data.unitComputerCount + data.dataCenterCount + data.estateManageCount;
-    
+
     var PieData = [{
             value: data.financeCount,
             color: '#0070C9',
@@ -211,7 +224,7 @@ Index.prototype.initChart = function (data) {
     } else {
         pieChart.Doughnut(PieData, pieOptions);
     }
-    
+
 }
 
 // 储能站
@@ -227,7 +240,40 @@ Index.prototype.initEnergyStation = function () {
             prefectureId: ''
         },
         success: function (res) {
-            console.log(res);
+            if (res.code === 200) {
+                res.result.total === '' ? that._controls.energyTotal.html('0<span>个</span>') : that._controls.energyTotal.html(res.result.total + '<span>个</span>');
+                res.result.totalcapacity === '' ? that._controls.energyCapacity.html('0<span>MWH</span>') : that._controls.energyCapacity.html(res.result.capacity + '<span>MWH</span>');
+                res.result.peakDischargeDuration === '' ? that._controls.energyPeakDischargeDuration.html('0<span>H</span>') : that._controls.energyPeakDischargeDuration.html(res.result.peakDischargeDuration + '<span>H</span>');
+                res.result.cdl === '' ? that._controls.energyCDL.html('0<span>MWH</span>') : that._controls.energyCDL.html(res.result.fdl + '<span>MWH</span>');
+                res.result.fdl === '' ? that._controls.energyFDL.html('0<span>MWH</span>') : that._controls.energyFDL.html(res.result.fdl + '<span>MWH</span>');
+            }
+        },
+        error: function () {
+            layer.msg('数据异常！');
+        }
+    });
+}
+
+// 延寿站
+Index.prototype.initExtended = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/index/prolong_station',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: '',
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                res.result.total === '' ? that._controls.extendTotal.html('0<span>个</span>') : that._controls.extendTotal.html(res.result.total + '<span>个</span>');
+                res.result.capacity === '' ? that._controls.extendCapacity.html('0<span>MWH</span>') : that._controls.extendCapacity.html(res.result.capacity + '<span>MWH</span>');
+                res.result.pjxhnl === '' ? that._controls.extendPjxhnl.html('0<span>H</span>') : that._controls.extendPjxhnl.html(res.result.pjxhnl + '<span>H</span>');
+                res.result.xhnltsnl === '' ? that._controls.extendXhnltsnl.html('0<span>%</span>') : that._controls.extendXhnltsnl.html(res.result.xhnltsnl + '<span>%</span>');
+                res.result.fdl === '' ? that._controls.extendFDL.html('0<span>MWH</span>') : that._controls.extendFDL.html(res.result.fdl + '<span>MWH</span>');
+            }
         },
         error: function () {
             layer.msg('数据异常！');

@@ -404,15 +404,15 @@
                             <div class="layui-row energy-center" style="margin-bottom: 1.5rem;">
                                 <div class="layui-col-lg6 layui-col-md6">
                                     <p class="energy-content-title">数量</p>
-                                    <p class="energy-content-number">4<span>个</span></p>
+                                    <p class="energy-content-number" id="energyTotal"><span>个</span></p>
                                 </div>
                                 <div class="layui-col-lg6 layui-col-md6">
                                     <p class="energy-content-title">容量</p>
-                                    <p class="energy-content-number">0.41<span>MWH</span></p>
+                                    <p class="energy-content-number" id="energyCapacity"></p>
                                 </div>
                                 <div class="layui-col-lg12 layui-col-md12" style="margin-top: 2rem;">
                                     <p class="energy-content-title">峰值放电时长</p>
-                                    <p class="energy-content-number">8<span>H</span></p>
+                                    <p class="energy-content-number" id="energyPeakDischargeDuration"></p>
                                 </div>
                                 <div class="layui-row">
                                     <div class="layui-col-lg12 layui-col-md12">
@@ -422,7 +422,7 @@
                                                 <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%">
                                                 </div>
                                             </div>
-                                            <p class="progress-num">0.36<span>MWH</span></p>
+                                            <p class="progress-num" id="energyCDL"></p>
                                         </div>
                                         <div class="progress-box">
                                             <p class="progress-money">放电量</p>
@@ -430,7 +430,7 @@
                                                 <div class="layui-progress-bar layui-bg-custom2" lay-percent="50%">
                                                 </div>
                                             </div>
-                                            <p class="progress-num">0.34<span>MWH</span></p>
+                                            <p class="progress-num" id="energyFDL"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -449,21 +449,21 @@
                             <div class="layui-row energy-center" style="margin-bottom: 1.5rem;padding-right: 20px;">
                                 <div class="layui-col-lg6 layui-col-md6">
                                     <p class="energy-content-title">数量</p>
-                                    <p class="energy-content-number">116<span>个</span></p>
+                                    <p class="energy-content-number" id="extendTotal"></p>
                                 </div>
                                 <div class="layui-col-lg6 layui-col-md6">
                                     <p class="energy-content-title">容量</p>
-                                    <p class="energy-content-number">5.6<span>mwh</span></p>
+                                    <p class="energy-content-number" id="extendCapacity"></p>
                                 </div>
                                 <div class="layui-col-lg12 layui-col-md12" style="margin-top: 2rem;">
                                     <p class="energy-content-title">平均续航时长</p>
-                                    <p class="energy-content-number">5.3<span>H</span></p>
+                                    <p class="energy-content-number" id="extendPjxhnl"></p>
                                 </div>
                                 <div class="layui-row">
                                     <div class="layui-col-lg12 layui-col-md12">
                                         <div class="progress-box" style="margin-top: 2.9rem;">
                                             <p class="progress-money">续航能力提升</p>
-                                            <p class="progress-num">90<span>%</span></p>
+                                            <p class="progress-num" id="extendXhnltsnl"></p>
                                             <div class="layui-progress">
                                                 <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%">
                                                 </div>
@@ -475,7 +475,7 @@
                                                 <div class="layui-progress-bar layui-bg-custom2" lay-percent="50%">
                                                 </div>
                                             </div>
-                                            <p class="progress-num">1.67<span>MWH</span></p>
+                                            <p class="progress-num" id="extendFDL"></p>
                                         </div>
                                     </div>
                                 </div>
