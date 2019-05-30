@@ -110,23 +110,23 @@
                         <div class="clearfix"></div>
                         <div class="layui-row">
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="standbyPower">
-                                <span class="tag-num">18</span>
+                                <span class="tag-num" id="bddsl"></span>
                                 <span class="tag-info">备电点(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="charge">
-                                <span class="tag-num">2</span>
+                                <span class="tag-num" id="cddsl"></span>
                                 <span class="tag-info">充电点(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none" data-info="powerExchange">
-                                <span class="tag-num">0</span>
+                                <span class="tag-num" id="hddsl"></span>
                                 <span class="tag-info">换电点(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="sellingElectricity">
-                                <span class="tag-num">2</span>
+                                <span class="tag-num" id="sddsl"></span>
                                 <span class="tag-info">售电点(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="batter">
-                                <span class="tag-num">5400</span>
+                                <span class="tag-num" id="xdcgm"></span>
                                 <span class="tag-info">蓄电池(AH)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4"></div>
@@ -140,15 +140,15 @@
                         <div class="clearfix"></div>
                         <div class="layui-row">
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="prolongLife">
-                                <span class="tag-num">4</span>
+                                <span class="tag-num" id="cnzsl"></span>
                                 <span class="tag-info">储能站(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="energyStorage">
-                                <span class="tag-num">116</span>
+                                <span class="tag-num" id="yszsl"></span>
                                 <span class="tag-info">延寿站(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none" data-info="batter">
-                                <span class="tag-num">124400</span>
+                                <span class="tag-num" id="xdcgm1"></span>
                                 <span class="tag-info">蓄电池规模(AH)</span>
                             </div>
                         </div>
@@ -184,74 +184,7 @@
                                         <th>蓄电池规模</th>
                                     </tr>
                                 </thead>
-                                <tbody onclick="window.location.href='resource1.html?dataInfo=standbyPower'">
-                                    <tr>
-                                        <td>新乡市</td>
-                                        <td>3个</td>
-                                        <td>2个</td>
-                                        <td>0个</td>
-                                        <td>2个</td>
-                                        <td style="border-right: 1px solid #e6e6e6">900AH</td>
-                                        <td>4个</td>
-                                        <td>104个</td>
-                                        <td>112400AH</td>
-                                    </tr>
-                                    <tr>
-                                        <td>洛阳市</td>
-                                        <td>1个</td>
-                                        <td>0个</td>
-                                        <td>0个</td>
-                                        <td>0个</td>
-                                        <td style="border-right: 1px solid #e6e6e6">300AH</td>
-                                        <td>0个</td>
-                                        <td>1个</td>
-                                        <td>1000AH</td>
-                                    </tr>
-                                    <tr>
-                                        <td>开封市</td>
-                                        <td>1个</td>
-                                        <td>0个</td>
-                                        <td>0个</td>
-                                        <td>0个</td>
-                                        <td style="border-right: 1px solid #e6e6e6">300AH</td>
-                                        <td>0个</td>
-                                        <td>1个</td>
-                                        <td>1000AH</td>
-                                    </tr>
-                                    <tr>
-                                        <td>安阳市</td>
-                                        <td>1个</td>
-                                        <td>0个</td>
-                                        <td>0个</td>
-                                        <td>0个</td>
-                                        <td style="border-right: 1px solid #e6e6e6">300AH</td>
-                                        <td>0个</td>
-                                        <td>1个</td>
-                                        <td>1000AH</td>
-                                    </tr>
-                                    <tr>
-                                        <td>郑州市</td>
-                                        <td>1个</td>
-                                        <td>0个</td>
-                                        <td>0个</td>
-                                        <td>0个</td>
-                                        <td style="border-right: 1px solid #e6e6e6">300AH</td>
-                                        <td>0个</td>
-                                        <td>1个</td>
-                                        <td>1000AH</td>
-                                    </tr>
-                                    <tr>
-                                        <td>南阳市</td>
-                                        <td>1个</td>
-                                        <td>0个</td>
-                                        <td>0个</td>
-                                        <td>0个</td>
-                                        <td style="border-right: 1px solid #e6e6e6">300AH</td>
-                                        <td>0个</td>
-                                        <td>1个</td>
-                                        <td>1000AH</td>
-                                    </tr>
-                                </tbody>
+                                <tbody onclick="window.location.href='resource1.html?dataInfo=standbyPower'" id="tableList"></tbody>
                             </table>
                         </div>
                     </div>

@@ -6,7 +6,17 @@ var Resource = function () {
             btnTable: $('#btnTable'),
             myChart: $('#myChart'),
             myTable: $('#myTable'),
-            _layuiTag: $('.layui-tag')
+            _layuiTag: $('.layui-tag'),
+            // 能源保障
+            bddsl: $('#bddsl'),
+            cddsl: $('#cddsl'),
+            hddsl: $('#hddsl'),
+            sddsl: $('#sddsl'),
+            xdcgm: $('#xdcgm'),
+            cnzsl: $('#cnzsl'),
+            yszsl: $('#yszsl'),
+            xdcgm1: $('#xdcgm1'),
+            tableList: $('#tableList')
         },
         this._commonData = {
             chartType: false
@@ -77,6 +87,12 @@ Resource.prototype.initControl = function () {
 
     // 初始化地图
     this.initChart();
+
+    this.initEnergyBusiness();
+
+    this.initEnergyProduct();
+
+    this.initResourceCenterList();
     // 按钮事件
     this._controls.btnChart.on('click', function () {
         that._controls.myChart.show();
@@ -271,6 +287,94 @@ Resource.prototype.initChart = function () {
     setTimeout(function () {
         getBoundary();
     }, 100);
+}
+
+Resource.prototype.initEnergyBusiness = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/energy_business_data',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: '',
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                res.result.bddsl === '' ? that._controls.bddsl.html('0') : that._controls.bddsl.html(res.result.bddsl);
+                res.result.cddsl === '' ? that._controls.cddsl.html('0') : that._controls.cddsl.html(res.result.cddsl);
+                res.result.hddsl === '' ? that._controls.hddsl.html('0') : that._controls.hddsl.html(res.result.hddsl);
+                res.result.sddsl === '' ? that._controls.sddsl.html('0') : that._controls.sddsl.html(res.result.sddsl);
+                res.result.xdcgm1 === '' ? that._controls.xdcgm1.html('0') : that._controls.xdcgm1.html(res.result.xdcgm);
+            }
+        },
+        error: function () {
+            layer.msg('数据异常！');
+        }
+    });
+}
+
+Resource.prototype.initEnergyProduct = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/energy_product_guarantee',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: '',
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                res.result.cnzsl === '' ? that._controls.cnzsl.html('0') : that._controls.cnzsl.html(res.result.cnzsl);
+                res.result.yszsl === '' ? that._controls.yszsl.html('0') : that._controls.yszsl.html(res.result.yszsl);
+                res.result.xdcgm === '' ? that._controls.xdcgm.html('0') : that._controls.xdcgm.html(res.result.xdcgm);
+            }
+        },
+        error: function () {
+            layer.msg('数据异常！');
+        }
+    });
+}
+
+Resource.prototype.initResourceCenterList = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/resource_center_list',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: '',
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                if (res.result.length > 0) {
+                    var str = '';
+                    for (var i=0;i< res.result.length;i++) {
+                        str += '<tr>';
+                        str += '<td>' + res.result.name + '个</td>';
+                        str += '<td>' + res.result.bddsl + '个</td>';
+                        str += '<td>' + res.result.cddsl + '个</td>';
+                        str += '<td>' + res.result.hddsl + '个</td>';
+                        str += '<th style="border-right: 1px solid #e6e6e6">' + res.result.xdcgmBdCdHdSd + 'AH</th>'
+                        str += '<td>' + res.result.cnzsl + '个</td>';
+                        str += '<td>' + res.result.yszsl + '个</td>';
+                        str += '<td>' + res.result.xdcgmCnzYsz + 'AH</td>';
+                        str += '</tr>';
+                    }
+                } else {
+                    that._controls.tableList.html('<td colspan="9" style="text-align:center">暂无数据</td>')
+                }
+            }
+        },
+        error: function () {
+            layer.msg('数据异常！');
+        }
+    });
 }
 
 $('.energy-tip p').on('click', function () {
