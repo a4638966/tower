@@ -1,15 +1,16 @@
 var CustomerMaintain = function () {
     this._urls = {};
     this._controls = {
-        searchItem: $('.search-box dd'),
+        searchItem: $('.search-box > dd'),
         startDate: $('#startDate'),
         endDate: $('#endDate')
     }
 };
 CustomerMaintain.prototype.initControl = function () {
     var that = this;
-    layui.use(['laydate','element'], function () {
+    layui.use(['laydate','element', 'form'], function () {
         var laydate = layui.laydate;
+        var form = layui.form;
         var element = layui.element;
         laydate.render({
             elem: '#startDate'

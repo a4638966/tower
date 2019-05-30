@@ -6,25 +6,25 @@ body {
     margin-top: 20px;
 }
 
-.search-box dt,
-.search-box dd {
+.search-box > dt,
+.search-box > dd {
     float: left;
     color: #666;
     margin-top: 5px;
 }
 
-.search-box dt {
+.search-box > dt {
     width: 90px;
     padding: 9px 0 9px 15px;
     color: #0070C9;
     cursor: default;
 }
 
-.search-box dt>i {
+.search-box > dt>i {
     font-weight: bold;
 }
 
-.search-box dd {
+.search-box > dd {
     padding: 5px 20px;
     margin-left: 5px;
     margin-right: 5px;
@@ -36,20 +36,28 @@ body {
     transition: background-color .3s ease;
 }
 
-.search-box dd:hover {
+.search-box > dd.hover:hover {
     background-color: #0070C9;
     color: #fff;
 }
 
-.search-box dd.date-box:hover {
+.search-box > dd.date-box:hover {
     background: none;
 }
 
-.search-box dd.active {
+.search-box > dd.active {
     background-color: #0070C9;
     color: #fff;
 }
 
 .layui-laydate .layui-laydate-content .layui-this {
     background-color: #0070C9!important;
+}
+
+.layui-form-select dl dd.layui-this {
+    background-color: #0070C9!important;
+}
+.date > dd,
+.user-box > dd {
+    padding:5px 0 5px 0;
 }
