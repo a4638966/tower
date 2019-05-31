@@ -115,6 +115,8 @@ Resource.prototype.initControl = function () {
         var data_info = $(this).attr('data-info');
         window.location.href = 'resource1.html?dataInfo=' + data_info + '';
     });
+
+
 };
 // 初始化日期
 Resource.prototype.initUpdate = function () {
@@ -149,21 +151,36 @@ Resource.prototype.initChart = function () {
     // 设置地图显示的城市，这项是必须的
     map.setCurrentCity("郑州");
     // 开启滚轮缩放
+    var provinceId = 17;
+    var cityId = '';
+    var prefectureId = '';
     map.enableScrollWheelZoom(true);
+    var scrollFunc = function (e) {
+        e = e || window.event;
+        if (map.getZoom() > 8 && map.getZoom() < 10) {
+            getBoundary('河南省');
+            getMap(provinceId, '', '')
+        }
+    }
+    /*注册事件*/
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    } //W3C
+    window.onmousewheel = document.onmousewheel = scrollFunc; //IE/Opera/Chrome
     // 声明一个数组，装行政区域的数据
     var blist = [];
     // 设置一个计数器，用来判断什么时候加载完成行政区域，然后画图
     var districtLoading = 0;
     // 添加行政区划
-    function getBoundary() {
+    function getBoundary(name) {
         // 计数器来控制加载过程
         districtLoading++;
         // 创建行政区划的对象实例
         var bdary = new BMap.Boundary();
         // 获取行政区域
-        bdary.get("河南省", function (rs) {
+        bdary.get(name, function (rs) {
             // 清除地图覆盖物
-            // map.clearOverlays();
+            map.clearOverlays();
             // 行政区域的点有多少个
             var count = rs.boundaries.length;
             if (count === 0) {
@@ -174,7 +191,7 @@ Resource.prototype.initChart = function () {
             for (var i = 0; i < count; i++) {
                 blist.push({
                     points: rs.boundaries[i],
-                    name: '河南'
+                    name: name
                 })
             }
             // 调整视野
@@ -183,14 +200,14 @@ Resource.prototype.initChart = function () {
             districtLoading--;
             if (districtLoading === 0) {
                 // 画多边形来框选地图范围（边界）
-                drawBoundary();
+                drawBoundary(name);
             }
         });
     }
 
-    function drawBoundary() {
+    function drawBoundary(name) {
         var bdary = new BMap.Boundary();
-        bdary.get("河南省", function (rs) { //获取行政区域     
+        bdary.get(name, function (rs) { //获取行政区域     
             var count = rs.boundaries.length; //行政区域的点有多少个
             if (count === 0) {
                 alert('未能获取当前输入行政区域');
@@ -213,39 +230,48 @@ Resource.prototype.initChart = function () {
         });
     }
     // 使用添加点的方法
-    addPoint();
+    getMap(provinceId, cityId, prefectureId);
+
+    function getMap(provinceId, cityId, prefectureId) {
+        $.ajax({
+            url: 'http://www.baoxingtech.com:9603/sys/resource_center/resource_center_map',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                provinceId: provinceId,
+                cityId: cityId,
+                prefectureId: prefectureId
+            },
+            success: function (res) {
+                if (res.code === 200) {
+                    addPoint(res.result);
+                }
+            },
+            error: function () {
+                layer.msg('数据异常！');
+            }
+        });
+    }
+
     // 添加坐标点
-    function addPoint() {
+    function addPoint(data) {
         // 生成坐标点
         // 我这里是随机取了河南省的几个坐标，用来添加坐标点
-        var positionArray = [
-            [114.385112, 36.104493],
-            [114.311523, 35.775339],
-            [115.01062, 35.805319],
-            [113.906782, 35.354419],
-            [113.226082, 35.248841],
-            [113.64922, 34.779614],
-            [114.311523, 34.825142],
-            [112.453396, 34.642879],
-            [111.20238, 34.809969],
-            [115.654526, 34.44497],
-            [113.833193, 34.093663],
-            [113.189288, 33.786977],
-            [114.017166, 33.617825],
-            [114.679469, 33.679373],
-            [114.035563, 33.046399],
-            [112.508588, 32.999902],
-            [114.072358, 32.174383]
-        ]
-        for (var i = 0; i < positionArray.length; i++) {
-            // 一个坐标对应一个mark的生成
-            var point = new BMap.Point(positionArray[i][0], positionArray[i][1]);
-            var myIcon = new BMap.Icon('images/icon_point.png', new BMap.Size(24, 24));
-            addMark(point, myIcon);
+        var positionArray = []
+        for (var i = 0; i < data.length; i++) {
+            positionArray.push([data[i].longitude, data[i].latitude])
+        }
+        if (positionArray.length > 0) {
+            for (var i = 0; i < positionArray.length; i++) {
+                // 一个坐标对应一个mark的生成
+                var point = new BMap.Point(positionArray[i][0], positionArray[i][1]);
+                var myIcon = new BMap.Icon('images/icon_point.png', new BMap.Size(24, 24));
+                addMark(point, myIcon, data[i]);
+            }
         }
     };
 
-    function addMark(point, myIcon) {
+    function addMark(point, myIcon, data) {
         // 生成图像标注
         var mark = new BMap.Marker(point, {
             icon: myIcon
@@ -254,13 +280,13 @@ Resource.prototype.initChart = function () {
         // 添加鼠标划入坐标点的显示内容
         str = '';
         str += '<div class="info-box">';
-        str += '<p>备电点：100</p>';
-        str += '<p>充点电：50</p>';
-        str += '<p>换电点：200</p>';
-        str += '<p>售电点：100</p>';
-        str += '<p>储能站：100</p>';
-        str += '<p>延寿站：100</p>';
-        // str += '<p>蓄电池：400</p>';
+        str += '<p>备电点：' + data.bddsl + '</p>';
+        str += '<p>充点电：' + data.cddsl + '</p>';
+        str += '<p>换电点：' + data.hddsl + '</p>';
+        str += '<p>售电点：' + data.sddsl + '</p>';
+        str += '<p>储能站：' + data.cnzsl + '</p>';
+        str += '<p>延寿站：' + data.yszsl + '</p>';
+        // str += '<p>蓄电池规模：' + data.xdcgmBdCdHdSd + '</p>';
         str += '</div>';
         // 创建一个文本标注实例
         var lable = new BMap.Label(str);
@@ -276,16 +302,20 @@ Resource.prototype.initChart = function () {
         lable.hide();
         // 在全景场景内添加覆盖物
         map.addOverlay(lable);
-        mark.addEventListener('mouseover', function () {
+        mark.addEventListener('mouseover', function (e) {
             lable.show();
         });
         mark.addEventListener('mouseout', function () {
             lable.hide();
         });
+        mark.addEventListener('click', function (e) {
+            getBoundary(data.name);
+            getMap(provinceId, data.id, prefectureId);
+        });
     }
     // 使用行政区划
     setTimeout(function () {
-        getBoundary();
+        getBoundary('河南省');
     }, 100);
 }
 
@@ -296,7 +326,7 @@ Resource.prototype.initEnergyBusiness = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: '',
+            provinceId: 17,
             cityId: '',
             prefectureId: ''
         },
@@ -322,7 +352,7 @@ Resource.prototype.initEnergyProduct = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: '',
+            provinceId: 17,
             cityId: '',
             prefectureId: ''
         },
@@ -346,7 +376,7 @@ Resource.prototype.initResourceCenterList = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: '',
+            provinceId: 17,
             cityId: '',
             prefectureId: ''
         },
@@ -354,18 +384,20 @@ Resource.prototype.initResourceCenterList = function () {
             if (res.code === 200) {
                 if (res.result.length > 0) {
                     var str = '';
-                    for (var i=0;i< res.result.length;i++) {
+                    for (var i = 0; i < res.result.length; i++) {
                         str += '<tr>';
-                        str += '<td>' + res.result.name + '个</td>';
-                        str += '<td>' + res.result.bddsl + '个</td>';
-                        str += '<td>' + res.result.cddsl + '个</td>';
-                        str += '<td>' + res.result.hddsl + '个</td>';
-                        str += '<th style="border-right: 1px solid #e6e6e6">' + res.result.xdcgmBdCdHdSd + 'AH</th>'
-                        str += '<td>' + res.result.cnzsl + '个</td>';
-                        str += '<td>' + res.result.yszsl + '个</td>';
-                        str += '<td>' + res.result.xdcgmCnzYsz + 'AH</td>';
+                        str += '<td>' + res.result[i].name + '</td>';
+                        str += '<td>' + res.result[i].bddsl + '个</td>';
+                        str += '<td>' + res.result[i].cddsl + '个</td>';
+                        str += '<td>' + res.result[i].hddsl + '个</td>';
+                        str += '<td>' + res.result[i].sddsl + '个</td>';
+                        str += '<th style="border-right: 1px solid #e6e6e6">' + res.result[i].xdcgmBdCdHdSd + 'AH</th>'
+                        str += '<td>' + res.result[i].cnzsl + '个</td>';
+                        str += '<td>' + res.result[i].yszsl + '个</td>';
+                        str += '<td>' + res.result[i].xdcgmCnzYsz + 'AH</td>';
                         str += '</tr>';
                     }
+                    that._controls.tableList.html(str);
                 } else {
                     that._controls.tableList.html('<td colspan="9" style="text-align:center">暂无数据</td>')
                 }

@@ -133,7 +133,7 @@ Index.prototype.initSearch = function (mode) {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: '',
+            provinceId: 17,
             cityId: '',
             prefectureId: '',
             mode: mode
@@ -235,7 +235,7 @@ Index.prototype.initEnergyStation = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: '',
+            provinceId: 17,
             cityId: '',
             prefectureId: ''
         },
@@ -262,7 +262,7 @@ Index.prototype.initExtended = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: '',
+            provinceId: 17,
             cityId: '',
             prefectureId: ''
         },
