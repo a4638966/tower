@@ -207,13 +207,14 @@
                         <table id="prolongLifeTable" class="layui-table" lay-skin="line" style="display:none">
                             <thead>
                                 <tr>
-                                    <th colspan="3" style="border-right: 1px solid #e6e6e6;text-align: center">站点信息</th>
+                                    <th colspan="4" style="border-right: 1px solid #e6e6e6;text-align: center">站点信息</th>
                                     <th colspan="4" style="border-right: 1px solid #e6e6e6;text-align: center">资源信息</th>
                                     <th colspan="3" style="text-align: center">业务信息</th>
                                 </tr>
                                 <tr>
                                     <th>地市/区县</th>
                                     <th>储能站点名称</th>
+                                    <th>设备名称</th>
                                     <th style="border-right: 1px solid #e6e6e6">编号</th>
                                     <th>蓄电池类型</th>
                                     <th>蓄电池容量/AH</th>
@@ -224,56 +225,7 @@
                                     <th>累计循环次数/次</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr onclick="window.open('http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=3581')">
-                                    <td>红旗区</td>
-                                    <td>能源创新中心1</td>
-                                    <td style="border-right: 1px solid #e6e6e6">3581</td>
-                                    <td>磷酸铁锂</td>
-                                    <td>800</td>
-                                    <td>DESS电池管理器</td>
-                                    <td style="border-right: 1px solid #e6e6e6">10</td>
-                                    <td>8</td>
-                                    <td>389</td>
-                                    <td>173</td>
-                                </tr>
-                                <tr onclick="window.open('http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=3513')">
-                                    <td>卫辉县</td>
-                                    <td>卫辉县孙杏村共享基站东专网27</td>
-                                    <td style="border-right: 1px solid #e6e6e6">3513</td>
-                                    <td>铅酸电池</td>
-                                    <td>300</td>
-                                    <td>DESS电池管理器</td>
-                                    <td style="border-right: 1px solid #e6e6e6">0</td>
-                                    <td>5</td>
-                                    <td>50</td>
-                                    <td>192</td>
-                                </tr>
-                                <tr onclick="window.open('http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=751')">
-                                    <td>原阳县</td>
-                                    <td>原阳史科堤基站</td>
-                                    <td style="border-right: 1px solid #e6e6e6">751</td>
-                                    <td>铅酸电池</td>
-                                    <td>1500</td>
-                                    <td>DESS电池管理器</td>
-                                    <td style="border-right: 1px solid #e6e6e6">0</td>
-                                    <td>8</td>
-                                    <td>27</td>
-                                    <td>35</td>
-                                </tr>
-                                <tr onclick="window.open('http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=374')">
-                                    <td>原阳县</td>
-                                    <td>原阳小吴庄移动</td>
-                                    <td style="border-right: 1px solid #e6e6e6">374</td>
-                                    <td>铅酸电池</td>
-                                    <td>1500</td>
-                                    <td>DESS电池管理器</td>
-                                    <td style="border-right: 1px solid #e6e6e6">0</td>
-                                    <td>8</td>
-                                    <td>23</td>
-                                    <td>28</td>
-                                </tr>
-                            </tbody>
+                            <tbody id="table5"></tbody>
                         </table>
                         <!-- 延寿站列表 -->
                         <table id="energyStorageTable" class="layui-table" lay-skin="line" style="display:none">
@@ -295,52 +247,7 @@
                                     <th>末次应急放电时长/H</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr onclick="window.open('http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=726')">
-                                    <td>原阳县</td>
-                                    <td>原阳县游堂村</td>
-                                    <td style="border-right: 1px solid #e6e6e6">726</td>
-                                    <td>铅酸电池</td>
-                                    <td>1000</td>
-                                    <td>DESS电池管理器</td>
-                                    <td style="border-right: 1px solid #e6e6e6">2019-04-09 00:00</td>
-                                    <td>350分钟</td>
-                                    <td>4.5</td>
-                                </tr>
-                                <tr onclick="window.open('http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=728')">
-                                    <td>原阳县</td>
-                                    <td>原阳县桥北乡破车庄移动基站</td>
-                                    <td style="border-right: 1px solid #e6e6e6">728</td>
-                                    <td>铅酸电池</td>
-                                    <td>1000</td>
-                                    <td>DESS电池管理器</td>
-                                    <td style="border-right: 1px solid #e6e6e6">2019-04-05 20::32</td>
-                                    <td>300分钟</td>
-                                    <td>6.2</td>
-                                </tr>
-                                <tr onclick="window.open('http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=251')">
-                                    <td>原阳县</td>
-                                    <td>原阳县娄月庄联通基站</td>
-                                    <td style="border-right: 1px solid #e6e6e6">251</td>
-                                    <td>铅酸电池</td>
-                                    <td>1000</td>
-                                    <td>DESS电池管理器</td>
-                                    <td style="border-right: 1px solid #e6e6e6">2019-04-06 20:02</td>
-                                    <td>300分钟</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr onclick="window.open('http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=373')">
-                                    <td>原阳县</td>
-                                    <td>原阳梁寨村</td>
-                                    <td style="border-right: 1px solid #e6e6e6">373</td>
-                                    <td>铅酸电池</td>
-                                    <td>1000</td>
-                                    <td>DESS电池管理器</td>
-                                    <td style="border-right: 1px solid #e6e6e6">2016-06-02 15:33</td>
-                                    <td>330分钟</td>
-                                    <td>1.3</td>
-                                </tr>
-                            </tbody>
+                            <tbody id="table6"></tbody>
                         </table>
                         <!-- 蓄电池 -->
                         <table id="batteryTable" class="layui-table" lay-skin="line" style="display:none">
@@ -362,11 +269,7 @@
                                     <th>SHO</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td colspan="9" style="text-align: center">暂无数据</td>
-                                </tr>
-                            </tbody>
+                            <tbody id="table7"></tbody>
                         </table>
                         <!-- 能源包 -->
                         <table id="energyPackTable" class="layui-table" lay-skin="line" style="display:none">

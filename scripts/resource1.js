@@ -24,12 +24,15 @@
             // 储能站
             btnProlongLife: $('#btnProlongLife'),
             prolongLifeTable: $('#prolongLifeTable'),
+            table5: $('#table5'),
             // 延寿站
             btnEnergyStorage: $('#btnEnergyStorage'),
             energyStorageTable: $('#energyStorageTable'),
+            table6: $('#table6'),
             // 蓄电池
             btnBatter: $('#btnBatter'),
             batteryTable: $('#batteryTable'),
+            table7: $('#table7'),
             // 能源包
             btnEnergyPack: $('#btnEnergyPack'),
             energyPackTable: $('#energyPackTable')
@@ -155,6 +158,8 @@ Resource.prototype.initControl = function () {
         });
     });
 
+    $('.layui-radius').css('height', $(window).height() - 210)
+
     // 按钮事件
     // 备电
     this._controls.btnStandbyPower.on('click', function () {
@@ -202,6 +207,7 @@ Resource.prototype.initControl = function () {
         that._controls.btnProlongLife.siblings().children('.energy-text').removeClass('text-active');
         that._controls.prolongLifeTable.show();
         that._controls.prolongLifeTable.siblings('table').hide();
+        that.initSecondCnzList();
     });
     // 延寿站
     this._controls.btnEnergyStorage.on('click', function () {
@@ -211,6 +217,7 @@ Resource.prototype.initControl = function () {
         that._controls.btnEnergyStorage.siblings().children('.energy-text').removeClass('text-active');
         that._controls.energyStorageTable.show();
         that._controls.energyStorageTable.siblings('table').hide();
+        that.initSecondYszList();
     });
     // 蓄电池
     this._controls.btnBatter.on('click', function () {
@@ -220,6 +227,7 @@ Resource.prototype.initControl = function () {
         that._controls.btnBatter.siblings().children('.energy-text').removeClass('text-active');
         that._controls.batteryTable.show();
         that._controls.batteryTable.siblings('table').hide();
+        that.initSecondXdcList();
     });
     // 能源包
     this._controls.btnEnergyPack.on('click', function () {
@@ -476,7 +484,7 @@ Resource.prototype.initSecondBdList = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: '',
+            provinceId: 17,
             cityId: '',
             prefectureId: ''
         },
@@ -522,7 +530,7 @@ Resource.prototype.initSecondCdList = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: '',
+            provinceId: 17,
             cityId: '',
             prefectureId: ''
         },
@@ -549,11 +557,145 @@ Resource.prototype.initSecondCdList = function () {
                     }
                     that._controls.table2.html(str);
                 } else {
-                    that._controls.tabdy2.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
+                    that._controls.tabdy2.html('<tr><td colspan="12" style="text-align: center">暂无数据</td></tr>');
                 }
             } else {
                 layer.msg(res.message);
-                that._controls.tabdy2.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
+                that._controls.tabdy2.html('<tr><td colspan="12" style="text-align: center">暂无数据</td></tr>');
+            }
+        },
+        error: function () {
+            layer.msg('数据异常！')
+        }
+    });
+}
+
+Resource.prototype.initSecondCnzList = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_cnz_list',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: 17,
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                
+                if (res.result.length > 0) {
+                    var str = '';
+                    for (var i = 0; i < res.result.length; i++) {
+                        for (var j=0;j< res.result[i].deviceList.length;j++) {
+                            str += '<tr onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].id + '\')">';
+                            str += '<td>' + res.result[i].name + '</td>';
+                            str += '<td>' + res.result[i].cnzmc + '</td>';
+                            str += '<td>' + res.result[i].deviceList[j].name + '</td>';
+                            str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].deviceCode + '</td>';
+                            str += '<td>' + res.result[i].deviceList[j].batType + '</td>';
+                            str += '<td>' + res.result[i].capacity + '</td>';
+                            str += '<td>' + res.result[i].deviceList[j].dcglq + '</td>';
+                            str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].gffdl + '</td>';
+                            str += '<td>' + res.result[i].rjfdsc + '</td>';
+                            str += '<td>' + res.result[i].ljfdrl + '</td>';
+                            str += '<td>' + res.result[i].ljxhcs + '</td>';
+                            str += '</tr>';
+                        }
+                    }
+                    that._controls.table5.html(str);
+                } else {
+                    that._controls.tabdy5.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
+                }
+            } else {
+                layer.msg(res.message);
+                that._controls.tabdy5.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
+            }
+        },
+        error: function () {
+            layer.msg('数据异常！')
+        }
+    });
+}
+
+Resource.prototype.initSecondYszList = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_ysz_list',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: 17,
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                if (res.result.length > 0) {
+                    var str = '';
+                    for (var i = 0; i < res.result.length; i++) {
+                        str += '<tr onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=726\')">';
+                        str += '<td>' + res.result[i].name + '</td>';
+                        str += '<td>' + res.result[i].yszmc + '</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].deviceCode + '</td>';
+                        str += '<td>' + res.result[i].batType + '</td>';
+                        str += '<td>' + res.result[i].capacity + '</td>';
+                        str += '<td>' + res.result[i].dcglq + '</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].qysj + '</td>';
+                        str += '<td>' + res.result[i].bdsj + '</td>';
+                        str += '<td>' + res.result[i].mcyjfdsc + '</td>';
+                        str += '</tr>';
+                    }
+                    that._controls.table6.html(str);
+                } else {
+                    that._controls.tabdy6.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
+                }
+            } else {
+                layer.msg(res.message);
+                that._controls.tabdy6.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
+            }
+        },
+        error: function () {
+            layer.msg('数据异常！')
+        }
+    });
+}
+
+Resource.prototype.initSecondXdcList = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_xdc_list',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: 17,
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                if (res.result.length > 0) {
+                    var str = '';
+                    for (var i = 0; i < res.result.length; i++) {
+                        str += '<tr>';
+                        str += '<td>' + res.result[i].name + '</td>';
+                        str += '<td>' + res.result[i].xdcbh + '</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].zzywid + '</td>';
+                        str += '<td>' + res.result[i].batType + '</td>';
+                        str += '<td>' + res.result[i].capacity + '</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].rwsj + '</td>';
+                        str += '<td>' + res.result[i].mchr + '</td>';
+                        str += '<td>' + res.result[i].bdsc + '</td>';
+                        str += '<td>' + res.result[i].soh + '</td>';
+                        str += '</tr>';
+                    }
+                    that._controls.table7.html(str);
+                } else {
+                    that._controls.tabdy7.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
+                }
+            } else {
+                layer.msg(res.message);
+                that._controls.tabdy7.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
             }
         },
         error: function () {
