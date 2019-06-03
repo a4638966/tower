@@ -355,7 +355,7 @@ Resource.prototype.initEnergyBusiness = function (provinceId, cityId, prefecture
                 res.result.cddsl === 0 ? that._controls.cddsl.html('-') : that._controls.cddsl.html(res.result.cddsl);
                 res.result.hddsl === 0 ? that._controls.hddsl.html('-') : that._controls.hddsl.html(res.result.hddsl);
                 res.result.sddsl === 0 ? that._controls.sddsl.html('-') : that._controls.sddsl.html(res.result.sddsl);
-                res.result.xdcgm1 === 0 ? that._controls.xdcgm1.html('-') : that._controls.xdcgm1.html(res.result.xdcgm);
+                res.result.xdcgm === 0 ? that._controls.xdcgm.html('-') : that._controls.xdcgm.html(res.result.xdcgm);
             }
         },
         error: function () {
