@@ -28,6 +28,8 @@ Monitoring.prototype.initControl = function () {
     });
     // 初始化地图
     this.initChart();
+    // 加载储能数据
+    this.energyStation();
     // 按钮事件
     // 储能
     this._controls.btnEnergy.on('click', function () {
@@ -40,6 +42,7 @@ Monitoring.prototype.initControl = function () {
         that._commonData.dataType = 'energy';
         that._controls.myChart.show();
         that._controls.myTable.hide();
+        that.energyStation();
         that._controls.btnChart.addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
         setTimeout(function () {
@@ -58,6 +61,7 @@ Monitoring.prototype.initControl = function () {
         that._commonData.dataType = 'extended';
         that._controls.myChart.show();
         that._controls.myTable.hide();
+        that.prolongStation();
         that._controls.btnChart.addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
         setTimeout(function () {
@@ -264,4 +268,57 @@ Monitoring.prototype.initChart = function () {
     setTimeout(function () {
         getBoundary();
     }, 100);
+}
+
+Monitoring.prototype.energyStation = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/monitor_center/energy_station',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: '17',
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                var data = res.result;
+                data.topDisChargeCount != 0 ? $('#topDisChargeCount').html(data.topDisChargeCount) : $('#topDisChargeCount').html('-').siblings().html('');
+                data.normalDisChargeCount != 0 ? $('#normalDisChargeCount').html(data.normalDisChargeCount) : $('#normalDisChargeCount').html('-').siblings().html('');
+                data.lowDisChargeCount != 0 ? $('#lowDisChargeCount').html(data.lowDisChargeCount) : $('#lowDisChargeCount').html('-').siblings().html('');
+                data.averageDisChargeWaveCount != 0 ? $('#averageDisChargeWaveCount').html(data.averageDisChargeWaveCount) : $('#averageDisChargeWaveCount').html('-').siblings().html('');
+                data.dtuSysWarnCount != 0 ? $('#dtuSysWarnCount').html(data.dtuSysWarnCount) : $('#dtuSysWarnCount').html('-').siblings().html('');
+                data.dtuOfflineCount != 0 ? $('#dtuOfflineCount').html(data.dtuOfflineCount) : $('#dtuOfflineCount').html('-').siblings().html('');
+                data.voltageWarnCount != 0 ? $('#voltageWarnCount').html(data.voltageWarnCount) : $('#voltageWarnCount').html('-').siblings().html('');
+                data.tempWarnCount != 0 ? $('#tempWarnCount').html(data.tempWarnCount) : $('#tempWarnCount').html('-').siblings().html('');
+            }
+        }
+    });
+}
+
+Monitoring.prototype.prolongStation = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/monitor_center/prolong_station',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: '17',
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                var data = res.result;
+                data.topDisChargeCount != 0 ? $('#topDisChargeCount1').html(data.topDisChargeCount) : $('#topDisChargeCount1').html('-').siblings().html('');
+                data.lowDisChargeCount != 0 ? $('#lowDisChargeCount1').html(data.lowDisChargeCount) : $('#lowDisChargeCount1').html('-').siblings().html('');
+                data.dtuOfflineCount != 0 ? $('#dtuOfflineCount1').html(data.dtuOfflineCount) : $('#dtuOfflineCount1').html('-').siblings().html('');
+                data.normalDisChargeCount != 0 ? $('#normalDisChargeCount1').html(data.normalDisChargeCount) : $('#normalDisChargeCount1').html('-').siblings().html('');
+                data.dtuSysWarnCount != 0 ? $('#dtuSysWarnCount1').html(data.dtuSysWarnCount) : $('#dtuSysWarnCount1').html('-').siblings().html('');
+                data.voltageWarnCount != 0 ? $('#voltageWarnCount1').html(data.voltageWarnCount) : $('#voltageWarnCount1').html('-').siblings().html('');
+                data.tempWarnCount != 0 ? $('#tempWarnCount1').html(data.tempWarnCount) : $('#tempWarnCount1').html('-').siblings().html('');
+            }
+        }
+    });
 }
