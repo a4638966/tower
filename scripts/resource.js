@@ -92,7 +92,7 @@ Resource.prototype.initControl = function () {
 
     this.initEnergyProduct('17', '', '');
 
-    this.initResourceCenterList();
+    this.initResourceCenterList('17', '', '');
     // 按钮事件
     this._controls.btnChart.on('click', function () {
         that._controls.myChart.show();
@@ -329,6 +329,7 @@ Resource.prototype.initChart = function () {
             getMap(provinceId1, cityId1, prefectureId1);
             that.initEnergyBusiness(provinceId1, cityId1, prefectureId1);
             that.initEnergyProduct(provinceId1, cityId1, prefectureId1)
+            that.initResourceCenterList(provinceId1, cityId1, prefectureId1)
         });
     }
     // 使用行政区划
@@ -387,16 +388,16 @@ Resource.prototype.initEnergyProduct = function (provinceId, cityId, prefectureI
     });
 }
 
-Resource.prototype.initResourceCenterList = function () {
+Resource.prototype.initResourceCenterList = function (provinceId, cityId, prefectureId) {
     var that = this;
     $.ajax({
         url: 'http://www.baoxingtech.com:9603/sys/resource_center/resource_center_list',
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: provinceId,
+            cityId: cityId,
+            prefectureId: prefectureId
         },
         success: function (res) {
             if (res.code === 200) {
