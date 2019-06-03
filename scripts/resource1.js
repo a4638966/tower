@@ -238,6 +238,7 @@ Resource.prototype.initControl = function () {
         that._controls.btnEnergyPack.siblings().children('.energy-text').removeClass('text-active');
         that._controls.energyPackTable.show();
         that._controls.energyPackTable.siblings('table').hide();
+        that.initSecondNybList();
     });
     // 根据参数判断哪个显示
     var url = location.search; //获取url中"?"符后的字串
@@ -724,22 +725,22 @@ Resource.prototype.initSecondNybList = function () {
                         str += '<tr>';
                         str += '<td>' + res.result[i].name + '</td>';
                         str += '<td>' + res.result[i].xdcbh + '</td>';
+                        str += '<td>' + res.result[i].zzywid + '</td>';
                         str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].zzywid + '</td>';
                         str += '<td>' + res.result[i].batType + '</td>';
                         str += '<td>' + res.result[i].capacity + '</td>';
-                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].rwsj + '</td>';
+                        str += '<td>' + res.result[i].rwsj + '</td>';
                         str += '<td>' + res.result[i].mchr + '</td>';
-                        str += '<td>' + res.result[i].bdsc + '</td>';
-                        str += '<td>' + res.result[i].soh + '</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].bdsc + '</td>';
                         str += '</tr>';
                     }
-                    that._controls.table7.html(str);
+                    that._controls.table8.html(str);
                 } else {
-                    that._controls.tabdy7.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
+                    that._controls.table8.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
                 }
             } else {
                 layer.msg(res.message);
-                that._controls.tabdy7.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
+                that._controls.table8.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
             }
         },
         error: function () {
