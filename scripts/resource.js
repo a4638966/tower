@@ -88,9 +88,9 @@ Resource.prototype.initControl = function () {
     // 初始化地图
     this.initChart();
 
-    this.initEnergyBusiness();
+    this.initEnergyBusiness('17', '', '');
 
-    this.initEnergyProduct();
+    this.initEnergyProduct('17', '', '');
 
     this.initResourceCenterList();
     // 按钮事件
@@ -178,9 +178,9 @@ Resource.prototype.initChart = function () {
         // 创建行政区划的对象实例
         var bdary = new BMap.Boundary();
         // 获取行政区域
+        // 清除地图覆盖物
+        map.clearOverlays();
         bdary.get(name, function (rs) {
-            // 清除地图覆盖物
-            map.clearOverlays();
             // 行政区域的点有多少个
             var count = rs.boundaries.length;
             if (count === 0) {
@@ -245,6 +245,11 @@ Resource.prototype.initChart = function () {
             success: function (res) {
                 if (res.code === 200) {
                     addPoint(res.result);
+                } else if (res.code === 500) {
+                    layui.use('layer', function () {
+                        var layer = layui.layer;
+                        layer.msg(res.message);
+                    });
                 }
             },
             error: function () {
@@ -271,6 +276,10 @@ Resource.prototype.initChart = function () {
         }
     };
 
+    var provinceId1 = '17';
+    var cityId1 = '';
+    var prefectureId1 = '';
+
     function addMark(point, myIcon, data) {
         // 生成图像标注
         var mark = new BMap.Marker(point, {
@@ -280,6 +289,7 @@ Resource.prototype.initChart = function () {
         // 添加鼠标划入坐标点的显示内容
         str = '';
         str += '<div class="info-box">';
+        str += '<p>' + data.name + '</p>';
         str += '<p>备电点：' + data.bddsl + '</p>';
         str += '<p>充点电：' + data.cddsl + '</p>';
         str += '<p>换电点：' + data.hddsl + '</p>';
@@ -308,9 +318,17 @@ Resource.prototype.initChart = function () {
         mark.addEventListener('mouseout', function () {
             lable.hide();
         });
+
         mark.addEventListener('click', function (e) {
             getBoundary(data.name);
-            getMap(provinceId, data.id, prefectureId);
+            if (map.getZoom() === 8) {
+                cityId1 = data.id;
+            } else if (map.getZoom() >= 10) {
+                prefectureId1 = data.id
+            }
+            getMap(provinceId1, cityId1, prefectureId1);
+            that.initEnergyBusiness(provinceId1, cityId1, prefectureId1);
+            that.initEnergyProduct(provinceId1, cityId1, prefectureId1)
         });
     }
     // 使用行政区划
@@ -319,24 +337,24 @@ Resource.prototype.initChart = function () {
     }, 100);
 }
 
-Resource.prototype.initEnergyBusiness = function () {
+Resource.prototype.initEnergyBusiness = function (provinceId, cityId, prefectureId) {
     var that = this;
     $.ajax({
         url: 'http://www.baoxingtech.com:9603/sys/resource_center/energy_business_data',
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: provinceId,
+            cityId: cityId,
+            prefectureId: prefectureId
         },
         success: function (res) {
             if (res.code === 200) {
-                res.result.bddsl === '' ? that._controls.bddsl.html('0') : that._controls.bddsl.html(res.result.bddsl);
-                res.result.cddsl === '' ? that._controls.cddsl.html('0') : that._controls.cddsl.html(res.result.cddsl);
-                res.result.hddsl === '' ? that._controls.hddsl.html('0') : that._controls.hddsl.html(res.result.hddsl);
-                res.result.sddsl === '' ? that._controls.sddsl.html('0') : that._controls.sddsl.html(res.result.sddsl);
-                res.result.xdcgm1 === '' ? that._controls.xdcgm1.html('0') : that._controls.xdcgm1.html(res.result.xdcgm);
+                res.result.bddsl === 0 ? that._controls.bddsl.html('-') : that._controls.bddsl.html(res.result.bddsl);
+                res.result.cddsl === 0 ? that._controls.cddsl.html('-') : that._controls.cddsl.html(res.result.cddsl);
+                res.result.hddsl === 0 ? that._controls.hddsl.html('-') : that._controls.hddsl.html(res.result.hddsl);
+                res.result.sddsl === 0 ? that._controls.sddsl.html('-') : that._controls.sddsl.html(res.result.sddsl);
+                res.result.xdcgm1 === 0 ? that._controls.xdcgm1.html('-') : that._controls.xdcgm1.html(res.result.xdcgm);
             }
         },
         error: function () {
@@ -345,22 +363,22 @@ Resource.prototype.initEnergyBusiness = function () {
     });
 }
 
-Resource.prototype.initEnergyProduct = function () {
+Resource.prototype.initEnergyProduct = function (provinceId, cityId, prefectureId) {
     var that = this;
     $.ajax({
         url: 'http://www.baoxingtech.com:9603/sys/resource_center/energy_product_guarantee',
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: provinceId,
+            cityId: cityId,
+            prefectureId: prefectureId
         },
         success: function (res) {
             if (res.code === 200) {
-                res.result.cnzsl === '' ? that._controls.cnzsl.html('0') : that._controls.cnzsl.html(res.result.cnzsl);
-                res.result.yszsl === '' ? that._controls.yszsl.html('0') : that._controls.yszsl.html(res.result.yszsl);
-                res.result.xdcgm === '' ? that._controls.xdcgm.html('0') : that._controls.xdcgm.html(res.result.xdcgm);
+                res.result.cnzsl === 0 ? that._controls.cnzsl.html('-') : that._controls.cnzsl.html(res.result.cnzsl);
+                res.result.yszsl === 0 ? that._controls.yszsl.html('-') : that._controls.yszsl.html(res.result.yszsl);
+                res.result.xdcgm === 0 ? that._controls.xdcgm1.html('-') : that._controls.xdcgm1.html(res.result.xdcgm);
             }
         },
         error: function () {
