@@ -253,8 +253,9 @@ Index.prototype.initEnergyStation = function () {
                 res.result.peakDischargeDuration === '' ? that._controls.energyPeakDischargeDuration.html('0<span>H</span>') : that._controls.energyPeakDischargeDuration.html(res.result.peakDischargeDuration + '<span>H</span>');
                 res.result.cdl === '' ? that._controls.energyCDL.html('0<span>MWH</span>') : that._controls.energyCDL.html(res.result.fdl + '<span>MWH</span>');
                 res.result.fdl === '' ? that._controls.energyFDL.html('0<span>MWH</span>') : that._controls.energyFDL.html(res.result.fdl + '<span>MWH</span>');
-                that._commonData.cdlbfb = res.result.cdl / (res.result.cdl + res.result.fdl);
-                that._commonData.fdlbfb = res.result.fdl / (res.result.cdl + res.result.fdl);
+                that._commonData.cdlbfb = res.result.cdl / (res.result.cdl + res.result.fdl) * 100;
+                that._commonData.fdlbfb = res.result.fdl / (res.result.cdl + res.result.fdl) * 100;
+                console.log(that._commonData.cdlbfb)
                 layui.use(['carousel', 'form', 'element'], function () {
                     var carousel = layui.carousel;
                     var form = layui.form;
