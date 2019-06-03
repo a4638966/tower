@@ -26,6 +26,10 @@ var Index = function () {
         extendXhnltsnl: $('#extendXhnltsnl'),
         extendFDL: $('#extendFDL')
     };
+    this._commonData = {
+        cdlbfb: 0,
+        fdlbfb:0
+    }
 };
 
 Index.prototype.initControl = function () {
@@ -44,6 +48,9 @@ Index.prototype.initControl = function () {
             arrow: 'hover' //始终显示箭头
             //,anim: 'updown' //切换动画方式
         });
+        element.progress('cdl', that._commonData.cdlbfb);
+        element.progress('fdl', that._commonData.fdlbfb);
+        element.progress('fdl1', that._commonData.fdlbfb);
         // 按钮事件
         that._controls.btnLogin.on('click', function () {
             layer.msg('登陆成功，欢迎您薛总', {
@@ -246,6 +253,15 @@ Index.prototype.initEnergyStation = function () {
                 res.result.peakDischargeDuration === '' ? that._controls.energyPeakDischargeDuration.html('0<span>H</span>') : that._controls.energyPeakDischargeDuration.html(res.result.peakDischargeDuration + '<span>H</span>');
                 res.result.cdl === '' ? that._controls.energyCDL.html('0<span>MWH</span>') : that._controls.energyCDL.html(res.result.fdl + '<span>MWH</span>');
                 res.result.fdl === '' ? that._controls.energyFDL.html('0<span>MWH</span>') : that._controls.energyFDL.html(res.result.fdl + '<span>MWH</span>');
+                that._commonData.cdlbfb = res.result.cdl / (res.result.cdl + res.result.fdl);
+                that._commonData.fdlbfb = res.result.fdl / (res.result.cdl + res.result.fdl);
+                layui.use(['carousel', 'form', 'element'], function () {
+                    var carousel = layui.carousel;
+                    var form = layui.form;
+                    var element = layui.element;
+                    element.progress('cdl', that._commonData.cdlbfb + '%');
+                    element.progress('fdl', that._commonData.fdlbfb + '%');
+                });
             }
         },
         error: function () {
@@ -273,6 +289,12 @@ Index.prototype.initExtended = function () {
                 res.result.pjxhnl === '' ? that._controls.extendPjxhnl.html('0<span>H</span>') : that._controls.extendPjxhnl.html(res.result.pjxhnl + '<span>H</span>');
                 res.result.xhnltsnl === '' ? that._controls.extendXhnltsnl.html('0<span>%</span>') : that._controls.extendXhnltsnl.html(res.result.xhnltsnl + '<span>%</span>');
                 res.result.fdl === '' ? that._controls.extendFDL.html('0<span>MWH</span>') : that._controls.extendFDL.html(res.result.fdl + '<span>MWH</span>');
+                layui.use(['carousel', 'form', 'element'], function () {
+                    var carousel = layui.carousel;
+                    var form = layui.form;
+                    var element = layui.element;
+                    element.progress('fdl1', that._commonData.fdlbfb + '%');
+                });
             }
         },
         error: function () {

@@ -226,7 +226,7 @@
                         <div class="layui-col-lg12 layui-col-md12">
                             <div class="news-left-block"></div>
                             <div class="news-title">
-                                <p>工作</p>
+                                <p>工作台</p>
                                 <a id="btnLoginOut" href="javascript:void(0)">
                                     退出登录
                                     <i class="layui-icon layui-icon-right news-icon"></i>
@@ -246,8 +246,8 @@
                             <span class="badeg-info">已办事项</span>
                         </div>
                         <div class="layui-col-lg12 layui-col-md12">
-                            <span class="layui-badge layui-badge3">6</span>
-                            <span class="badeg-info">需求数量</span>
+                            <span class="layui-badge layui-badge3"></span>
+                            <span class="badeg-info">需求申请</span>
                         </div>
                     </div>
                 </div>
@@ -418,16 +418,16 @@
                                     <div class="layui-col-lg12 layui-col-md12">
                                         <div class="progress-box" style="margin-top: 2.9rem;">
                                             <p class="progress-money">充电量</p>
-                                            <div class="layui-progress">
-                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%">
+                                            <div class="layui-progress" lay-filter="cdl">
+                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="0">
                                                 </div>
                                             </div>
                                             <p class="progress-num" id="energyCDL"></p>
                                         </div>
                                         <div class="progress-box">
                                             <p class="progress-money">放电量</p>
-                                            <div class="layui-progress">
-                                                <div class="layui-progress-bar layui-bg-custom2" lay-percent="50%">
+                                            <div class="layui-progress" lay-filter="fdl">
+                                                <div class="layui-progress-bar" lay-percent="0">
                                                 </div>
                                             </div>
                                             <p class="progress-num" id="energyFDL"></p>
@@ -464,15 +464,15 @@
                                         <div class="progress-box" style="margin-top: 2.9rem;">
                                             <p class="progress-money">续航能力提升</p>
                                             <p class="progress-num" id="extendXhnltsnl"></p>
-                                            <div class="layui-progress">
-                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="80%">
+                                            <div class="layui-progress" lay-filter="xhnl">
+                                                <div class="layui-progress-bar layui-bg-custom1" lay-percent="0">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="progress-box">
                                             <p class="progress-money">放电量</p>
-                                            <div class="layui-progress">
-                                                <div class="layui-progress-bar layui-bg-custom2" lay-percent="50%">
+                                            <div class="layui-progress" lay-filter="fdl1">
+                                                <div class="layui-progress-bar layui-bg-custom2" lay-percent="0">
                                                 </div>
                                             </div>
                                             <p class="progress-num" id="extendFDL"></p>

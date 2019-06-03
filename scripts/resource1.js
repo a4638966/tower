@@ -35,7 +35,8 @@
             table7: $('#table7'),
             // 能源包
             btnEnergyPack: $('#btnEnergyPack'),
-            energyPackTable: $('#energyPackTable')
+            energyPackTable: $('#energyPackTable'),
+            table8: $('#table8')
         },
         this._commonData = {
             chartType: false
@@ -665,6 +666,49 @@ Resource.prototype.initSecondXdcList = function () {
     var that = this;
     $.ajax({
         url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_xdc_list',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: 17,
+            cityId: '',
+            prefectureId: ''
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                if (res.result.length > 0) {
+                    var str = '';
+                    for (var i = 0; i < res.result.length; i++) {
+                        str += '<tr>';
+                        str += '<td>' + res.result[i].name + '</td>';
+                        str += '<td>' + res.result[i].xdcbh + '</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].zzywid + '</td>';
+                        str += '<td>' + res.result[i].batType + '</td>';
+                        str += '<td>' + res.result[i].capacity + '</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].rwsj + '</td>';
+                        str += '<td>' + res.result[i].mchr + '</td>';
+                        str += '<td>' + res.result[i].bdsc + '</td>';
+                        str += '<td>' + res.result[i].soh + '</td>';
+                        str += '</tr>';
+                    }
+                    that._controls.table7.html(str);
+                } else {
+                    that._controls.tabdy7.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
+                }
+            } else {
+                layer.msg(res.message);
+                that._controls.tabdy7.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
+            }
+        },
+        error: function () {
+            layer.msg('数据异常！')
+        }
+    });
+}
+
+Resource.prototype.initSecondNybList = function () {
+    var that = this;
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_nyb_list',
         type: 'GET',
         dataType: 'json',
         data: {
