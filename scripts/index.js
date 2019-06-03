@@ -294,7 +294,7 @@ Index.prototype.initExtended = function () {
                     var carousel = layui.carousel;
                     var form = layui.form;
                     var element = layui.element;
-                    element.progress('fdl1', that._commonData.fdlbfb + '%');
+                    element.progress('fdl1',  + res.result.fdl / res.result.capacity * 100 + '%');
                 });
             }
         },
