@@ -19,7 +19,10 @@ var Resource = function () {
             tableList: $('#tableList')
         },
         this._commonData = {
-            chartType: false
+            chartType: false,
+            provinceId: 17,
+            cityId: '',
+            prefectureId: ''
         }
 }
 Resource.prototype.initControl = function () {
@@ -113,7 +116,7 @@ Resource.prototype.initControl = function () {
 
     this._controls._layuiTag.on('click', function () {
         var data_info = $(this).attr('data-info');
-        window.location.href = 'resource1.html?dataInfo=' + data_info + '';
+        window.location.href = 'resource1.html?dataInfo=' + data_info + '&provinceId=' + that._commonData.provinceId + '&cityId=' + that._commonData.cityId + '&prefectureId=' + that._commonData.prefectureId + '';
     });
 
 
@@ -330,6 +333,9 @@ Resource.prototype.initChart = function () {
             that.initEnergyBusiness(provinceId1, cityId1, prefectureId1);
             that.initEnergyProduct(provinceId1, cityId1, prefectureId1)
             that.initResourceCenterList(provinceId1, cityId1, prefectureId1)
+            that._commonData.provinceId = provinceId1;
+            that._commonData.cityId = cityId1;
+            that._commonData.prefectureId = prefectureId1;
         });
     }
     // 使用行政区划

@@ -39,124 +39,102 @@
             table8: $('#table8')
         },
         this._commonData = {
-            chartType: false
+            chartType: false,
+            provinceId: '',
+            cityId: '',
+            prefectureId: ''
         }
 }
 Resource.prototype.initControl = function () {
     var that = this;
-    this.initSecondBdList();
     // 初始化日期
     // this.initUpdate();
     layui.use(['tree', 'element'], function () {
         var element = layui.element;
-        layui.tree({
-            elem: '#treeNav',
-            skin: 'shihuang',
-            nodes: [{ //节点
-                name: '河南省',
-                spread: true,
-                children: [{
-                    name: '新乡市',
-                    spread: true,
-                    children: [{
-                            name: '红旗区'
+        var tree = layui.tree;
+
+        var cityArray = [];
+        $.ajax({
+            url: 'http://www.baoxingtech.com:9603/sys/area/shi',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                provinceId: 17
+            },
+            success: function (res) {
+                for (var i = 0; i < res.result.length; i++) {
+                    var spread = false;
+                    if (res.result[i].name == '新乡市') {
+                        spread = true;
+                    }
+                    cityArray.push({
+                        name: res.result[i].name,
+                        id: res.result[i].id,
+                        spread: spread,
+                        children: []
+                    })
+                }
+                for (var i = 0; i < cityArray.length; i++) {
+                    var num = 0;
+                    $.ajax({
+                        url: 'http://www.baoxingtech.com:9603/sys/area/qx',
+                        type: 'GET',
+                        dataType: 'json',
+                        data: {
+                            cityId: cityArray[i].id
                         },
-                        {
-                            name: '辉县市'
-                        }, {
-                            name: '原阳县'
-                        }, {
-                            name: '卫辉市'
+                        success: function (res1) {
+                            num++;
+                            for (var i = 0; i < res1.result.length; i++) {
+                                res1.result[i].pid = cityArray[num - 1].id
+                                // console.log(cityArray[num - 1].id)
+                            }
+
+                            cityArray[num - 1].children = res1.result;
                         }
-                    ]
-                }, {
-                    name: '洛阳市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '郑州市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '安阳市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '鹤壁市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '济源市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '焦作市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '开封市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '漯河市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '南阳市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '平顶山市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '濮阳市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '三门峡市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '商丘市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '信阳市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '许昌市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '周口市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }, {
-                    name: '驻马店市',
-                    children: [{
-                        name: '二七区'
-                    }]
-                }]
-            }]
+                    });
+                }
+                setTimeout(function () {
+                    var inst1 = layui.tree({
+                        elem: '#treeNav',
+                        skin: 'shihuang',
+                        nodes: [{ //节点
+                            name: '河南省',
+                            spread: true,
+                            children: cityArray
+                        }],
+                        click: function (obj) {
+                            if (obj.children === undefined) {
+                                that._commonData.provinceId = 17;
+                                that._commonData.cityId = obj.pid;
+                                that._commonData.prefectureId = obj.id;
+
+                                that._controls.btnStandbyPower.children('.energy-block').addClass('active')
+                                that._controls.btnStandbyPower.children('.energy-text').addClass('text-active');
+                                that._controls.btnStandbyPower.siblings().children('.energy-block').removeClass('active');
+                                that._controls.btnStandbyPower.siblings().children('.energy-text').removeClass('text-active');
+                                that._controls.standbyPowerTable.show();
+                                that._controls.standbyPowerTable.siblings('table').hide();
+                                that.initSecondBdList();
+                            } else {
+                                that._controls.btnStandbyPower.children('.energy-block').addClass('active')
+                                that._controls.btnStandbyPower.children('.energy-text').addClass('text-active');
+                                that._controls.btnStandbyPower.siblings().children('.energy-block').removeClass('active');
+                                that._controls.btnStandbyPower.siblings().children('.energy-text').removeClass('text-active');
+                                that._controls.standbyPowerTable.show();
+                                that._controls.standbyPowerTable.siblings('table').hide();
+                                that._commonData.provinceId = 17;
+                                that._commonData.cityId = obj.id;
+                                that._commonData.prefectureId = '';
+                                that.initSecondBdList();
+                            }
+                        }
+                    });
+                }, 500)
+            }
         });
+
+
     });
 
     $('.layui-radius').css('height', $(window).height() - 210)
@@ -250,6 +228,9 @@ Resource.prototype.initControl = function () {
             theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
         }
     }
+    that._commonData.provinceId = theRequest.provinceId;
+    that._commonData.cityId = theRequest.cityId;
+    that._commonData.prefectureId = theRequest.prefectureId;
     switch (theRequest.dataInfo) {
         // 备电
         case 'standbyPower':
@@ -295,6 +276,7 @@ Resource.prototype.initControl = function () {
             break;
             // 能源包
     }
+    this.initSecondBdList();
     // 初始化地图
     // this.initChart();
     // 按钮事件
@@ -486,13 +468,13 @@ Resource.prototype.initSecondBdList = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
         },
         success: function (res) {
             if (res.code === 200) {
-                
+
                 if (res.result.length > 0) {
                     var str = '';
                     for (var i = 0; i < res.result.length; i++) {
@@ -532,13 +514,13 @@ Resource.prototype.initSecondCdList = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
         },
         success: function (res) {
             if (res.code === 200) {
-                
+
                 if (res.result.length > 0) {
                     var str = '';
                     for (var i = 0; i < res.result.length; i++) {
@@ -559,11 +541,11 @@ Resource.prototype.initSecondCdList = function () {
                     }
                     that._controls.table2.html(str);
                 } else {
-                    that._controls.tabdy2.html('<tr><td colspan="12" style="text-align: center">暂无数据</td></tr>');
+                    that._controls.table2.html('<tr><td colspan="12" style="text-align: center">暂无数据</td></tr>');
                 }
             } else {
                 layer.msg(res.message);
-                that._controls.tabdy2.html('<tr><td colspan="12" style="text-align: center">暂无数据</td></tr>');
+                that._controls.table2.html('<tr><td colspan="12" style="text-align: center">暂无数据</td></tr>');
             }
         },
         error: function () {
@@ -579,17 +561,17 @@ Resource.prototype.initSecondCnzList = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
         },
         success: function (res) {
             if (res.code === 200) {
-                
+
                 if (res.result.length > 0) {
                     var str = '';
                     for (var i = 0; i < res.result.length; i++) {
-                        for (var j=0;j< res.result[i].deviceList.length;j++) {
+                        for (var j = 0; j < res.result[i].deviceList.length; j++) {
                             str += '<tr onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].id + '\')">';
                             str += '<td>' + res.result[i].name + '</td>';
                             str += '<td>' + res.result[i].cnzmc + '</td>';
@@ -607,11 +589,11 @@ Resource.prototype.initSecondCnzList = function () {
                     }
                     that._controls.table5.html(str);
                 } else {
-                    that._controls.tabdy5.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
+                    that._controls.table5.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
                 }
             } else {
                 layer.msg(res.message);
-                that._controls.tabdy5.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
+                that._controls.table5.html('<tr><td colspan="11" style="text-align: center">暂无数据</td></tr>');
             }
         },
         error: function () {
@@ -627,9 +609,9 @@ Resource.prototype.initSecondYszList = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
         },
         success: function (res) {
             if (res.code === 200) {
@@ -650,11 +632,11 @@ Resource.prototype.initSecondYszList = function () {
                     }
                     that._controls.table6.html(str);
                 } else {
-                    that._controls.tabdy6.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
+                    that._controls.table6.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
                 }
             } else {
                 layer.msg(res.message);
-                that._controls.tabdy6.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
+                that._controls.table6.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
             }
         },
         error: function () {
@@ -670,9 +652,9 @@ Resource.prototype.initSecondXdcList = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
         },
         success: function (res) {
             if (res.code === 200) {
@@ -693,11 +675,11 @@ Resource.prototype.initSecondXdcList = function () {
                     }
                     that._controls.table7.html(str);
                 } else {
-                    that._controls.tabdy7.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
+                    that._controls.table7.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
                 }
             } else {
                 layer.msg(res.message);
-                that._controls.tabdy7.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
+                that._controls.table7.html('<tr><td colspan="9" style="text-align: center">暂无数据</td></tr>');
             }
         },
         error: function () {
@@ -713,9 +695,9 @@ Resource.prototype.initSecondNybList = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
         },
         success: function (res) {
             if (res.code === 200) {
