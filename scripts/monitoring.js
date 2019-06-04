@@ -26,6 +26,8 @@ Monitoring.prototype.initControl = function () {
     layui.use('element', function () {
         var element = layui.element;
     });
+    // 初始化列表
+    this.initTable();
     // 初始化地图
     this.initChart();
     // 加载储能数据
@@ -85,13 +87,52 @@ Monitoring.prototype.initControl = function () {
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnChart.removeClass('layui-btn-normal').addClass('layui-btn-primary');
     });
+    $('#btn1').on('click', function () {
+        that.getList('101', 'table1')
+    })
+    $('#btn2').on('click', function () {
+        that.getList('103', 'table1')
+    })
+    $('#btn3').on('click', function () {
+        that.getList('104', 'table1')
+    })
+    $('#btn4').on('click', function () {
+        that.getList('102', 'table1')
+    })
+    $('#btn5').on('click', function () {
+        that.getList('106', 'table1')
+    })
+    $('#btn6').on('click', function () {
+        that.getList('105', 'table1')
+    })
+    $('#btn7').on('click', function () {
+        that.getList('107', 'table1')
+    })
+    $('#btn8').on('click', function () {
+        that.getList('108', 'table1')
+    })
 
-    $('#energyDetil .layui-tag').on('click', function () {
-        window.location.href = "monitoring-second.html";
-    });
-    $('#extendedDetil .layui-tag').on('click', function () {
-        window.location.href = "monitoring-second.html";
-    });
+    $('#btn9').on('click', function () {
+        that.getList('201', 'table2')
+    })
+    $('#btn10').on('click', function () {
+        that.getList('203', 'table2')
+    })
+    $('#btn11').on('click', function () {
+        that.getList('205', 'table2')
+    })
+    $('#btn12').on('click', function () {
+        that.getList('202', 'table2')
+    })
+    $('#btn13').on('click', function () {
+        that.getList('204', 'table2')
+    })
+    $('#btn14').on('click', function () {
+        that.getList('207', 'table2')
+    })
+    $('#btn15').on('click', function () {
+        that.getList('208', 'table2')
+    })
 };
 // 初始化日期
 Monitoring.prototype.initUpdate = function () {
@@ -121,9 +162,57 @@ Monitoring.prototype.initTable = function () {
     if (that._commonData.dataType === 'energy') {
         that._controls.tableEnergy.show();
         that._controls.tableExtended.hide();
+        $.ajax({
+            url: 'http://www.baoxingtech.com:9603/sys/monitor_center/energy_station_prefecture_panel_list',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                prefectureId: ''
+            },
+            success: function (res) {
+                if (res.code === 200) {
+                    str = '';
+                    for (var i = 0; i < res.result.length; i++) {
+                        str += '<tr>';
+                        res.result[i].name != '' ? str += '<td>' + res.result[i].name + '</td>' : str += '<td>-</td>';
+                        res.result[i].deviceCode != '' ? str += '<td>' + res.result[i].deviceCode + '</td>' : str += '<td>-</td>';
+                        res.result[i].pjfdsc != '' ? str += '<td>' + res.result[i].pjfdsc + '/H</td>' : str += '<td>-</td>';
+                        res.result[i].syfdsc != '' ? str += '<td>' + res.result[i].syfdsc + '/H</td>' : str += '<td>-</td>';
+                        res.result[i].hbyj != '' ? str += '<td>' + res.result[i].hbyj + '%</td>' : str += '<td>-</td>';
+                        res.result[i].dcyxzt != '' ? str += '<td>' + res.result[i].dcyxzt + '</td>' : str += '<td>-</td>';
+                        str += '</tr>';
+                    }
+                    $('#table1').html(str);
+                }
+            }
+        });
     } else if (that._commonData.dataType === 'extended') {
         that._controls.tableEnergy.hide();
         that._controls.tableExtended.show();
+        $.ajax({
+            url: 'http://www.baoxingtech.com:9603/sys/monitor_center/prolong_station_prefecture_panel_list',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                prefectureId: ''
+            },
+            success: function (res) {
+                if (res.code === 200) {
+                    str = '';
+                    for (var i = 0; i < res.result.length; i++) {
+                        str += '<tr>';
+                        res.result[i].name != '' ? str += '<td>' + res.result[i].name + '</td>' : str += '<td>-</td>';
+                        res.result[i].deviceCode != '' ? str += '<td>' + res.result[i].deviceCode + '</td>' : str += '<td>-</td>';
+                        res.result[i].pjfdsc != '' ? str += '<td>' + res.result[i].pjfdsc + '/H</td>' : str += '<td>-</td>';
+                        res.result[i].syfdsc != '' ? str += '<td>' + res.result[i].syfdsc + '/H</td>' : str += '<td>-</td>';
+                        res.result[i].hbyj != '' ? str += '<td>' + res.result[i].hbyj + '%</td>' : str += '<td>-</td>';
+                        res.result[i].dcyxzt != '' ? str += '<td>' + res.result[i].dcyxzt + '</td>' : str += '<td>-</td>';
+                        str += '</tr>';
+                    }
+                    $('#table2').html(str);
+                }
+            }
+        });
     }
 };
 // 初始化地图
@@ -318,6 +407,36 @@ Monitoring.prototype.prolongStation = function () {
                 data.dtuSysWarnCount != 0 ? $('#dtuSysWarnCount1').html(data.dtuSysWarnCount) : $('#dtuSysWarnCount1').html('-').siblings().html('');
                 data.voltageWarnCount != 0 ? $('#voltageWarnCount1').html(data.voltageWarnCount) : $('#voltageWarnCount1').html('-').siblings().html('');
                 data.tempWarnCount != 0 ? $('#tempWarnCount1').html(data.tempWarnCount) : $('#tempWarnCount1').html('-').siblings().html('');
+            }
+        }
+    });
+}
+
+Monitoring.prototype.getList = function (code, tableId) {
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9603/sys/monitor_center/panel_list',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            provinceId: '',
+            cityId: '',
+            prefectureId: '',
+            code: code
+        },
+        success: function (res) {
+            if (res.code === 200) {
+                str = '';
+                for (var i = 0; i < res.result.length; i++) {
+                    str += '<tr>';
+                    res.result[i].name != '' ? str += '<td>' + res.result[i].name + '</td>' : str += '<td>-</td>';
+                    res.result[i].deviceCode != '' ? str += '<td>' + res.result[i].deviceCode + '</td>' : str += '<td>-</td>';
+                    res.result[i].pjfdsc != '' ? str += '<td>' + res.result[i].pjfdsc + '/H</td>' : str += '<td>-</td>';
+                    res.result[i].syfdsc != '' ? str += '<td>' + res.result[i].syfdsc + '/H</td>' : str += '<td>-</td>';
+                    res.result[i].hbyj != '' ? str += '<td>' + res.result[i].hbyj + '%</td>' : str += '<td>-</td>';
+                    res.result[i].dcyxzt != '' ? str += '<td>' + res.result[i].dcyxzt + '</td>' : str += '<td>-</td>';
+                    str += '</tr>';
+                }
+                $('#' + tableId).html(str);
             }
         }
     });
