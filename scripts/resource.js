@@ -410,7 +410,7 @@ Resource.prototype.initResourceCenterList = function (provinceId, cityId, prefec
                 if (res.result.length > 0) {
                     var str = '';
                     for (var i = 0; i < res.result.length; i++) {
-                        str += '<tr>';
+                        str += '<tr onclick="jump(\'' + res.result[i].id + '\')">';
                         str += '<td>' + res.result[i].name + '</td>';
                         str += '<td>' + res.result[i].bddsl + '个</td>';
                         str += '<td>' + res.result[i].cddsl + '个</td>';
@@ -432,6 +432,10 @@ Resource.prototype.initResourceCenterList = function (provinceId, cityId, prefec
             layer.msg('数据异常！');
         }
     });
+}
+
+function jump(id) {
+    window.location.href="resource1.html?dataInfo=standbyPower&provinceId=17&cityId=" + id + "&prefectureId="
 }
 
 $('.energy-tip p').on('click', function () {
