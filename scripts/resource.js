@@ -198,6 +198,9 @@ Resource.prototype.initChart = function () {
         div.onclick = function(e){
             getBoundary('河南省');
             getMap(provinceId, cityId, prefectureId);
+            that.initEnergyBusiness(17, '', '');
+            that.initEnergyProduct(17, '', '');
+            that.initResourceCenterList(17, '', '');
         }
         // 添加DOM元素到地图中
         map.getContainer().appendChild(div);
