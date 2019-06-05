@@ -312,28 +312,53 @@ Monitoring.prototype.initChart = function () {
     getMap(provinceId, cityId, prefectureId);
 
     function getMap(provinceId, cityId, prefectureId) {
-        $.ajax({
-            url: 'http://www.baoxingtech.com:9603/sys/monitor_center/energy_station_map',
-            type: 'GET',
-            dataType: 'json',
-            data: {
-                provinceId: provinceId,
-                cityId: cityId
-            },
-            success: function (res) {
-                if (res.code === 200) {
-                    addPoint(res.result);
-                } else if (res.code === 500) {
-                    layui.use('layer', function () {
-                        var layer = layui.layer;
-                        layer.msg(res.message);
-                    });
+        if (that._commonData.dataType === 'energy') {
+            $.ajax({
+                url: 'http://www.baoxingtech.com:9603/sys/monitor_center/energy_station_map',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    provinceId: provinceId,
+                    cityId: cityId
+                },
+                success: function (res) {
+                    if (res.code === 200) {
+                        addPoint(res.result);
+                    } else if (res.code === 500) {
+                        layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg(res.message);
+                        });
+                    }
+                },
+                error: function () {
+                    layer.msg('数据异常！');
                 }
-            },
-            error: function () {
-                layer.msg('数据异常！');
-            }
-        });
+            });
+        } else {
+            $.ajax({
+                url: 'http://www.baoxingtech.com:9603/sys/monitor_center/prolong_station_map',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    provinceId: provinceId,
+                    cityId: cityId
+                },
+                success: function (res) {
+                    if (res.code === 200) {
+                        addPoint(res.result);
+                    } else if (res.code === 500) {
+                        layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg(res.message);
+                        });
+                    }
+                },
+                error: function () {
+                    layer.msg('数据异常！');
+                }
+            });
+        }
     }
 
     // 添加坐标点
@@ -368,14 +393,24 @@ Monitoring.prototype.initChart = function () {
         str = '';
         str += '<div class="info-box">';
         str += '<p>' + data.name + '</p>';
-        data.topDisChargeCount != '' ? str += '<p>蓄电池放电8小时以上站点数量：' + data.topDisChargeCount + '个</p>' : str += '<p>蓄电池放电8小时以上站点数量：0</p>';
-        data.lowDisChargeCount != '' ? str += '<p>蓄电池放电不足4小时站点数量：' + data.lowDisChargeCount + '个</p>' : str += '<p>蓄电池放电不足4小时站点数量：0</p>';
-        data.dtuSysWarnCount != '' ? str += '<p>蓄电池管理设备/DTU系统告警数量：' + data.dtuSysWarnCount + '个</p>' : str += '<p>蓄电池管理设备/DTU系统告警数量：0</p>';
-        data.normalDisChargeCount != '' ? str += '<p>蓄电池放电4~8小时站点数量：' + data.normalDisChargeCount + '个</p>' : str += '<p>蓄电池放电4~8小时站点数量：0</p>';
-        data.averageDisChargeWaveCount != '' ? str += '<p>平均放电时长变动>20%站点数量：' + data.averageDisChargeWaveCount + '个</p>' : str += '<p>平均放电时长变动>20%站点数量：0</p>';
-        data.dtuOfflineCount != '' ? str += '<p>蓄电池管理设备/DTU离线告警数量：' + data.dtuOfflineCount + '个</p>' : str += '<p>蓄电池管理设备/DTU离线告警数量：0</p>';
-        data.voltageWarnCount != '' ? str += '<p>蓄电池电压告警数量：' + data.voltageWarnCount + '个</p>' : str += '<p>蓄电池电压告警数量：0</p>';
-        data.tempWarnCount != '' ? str += '<p>蓄电池温度告警数量：' + data.tempWarnCount + '个</p>' : str += '<p>蓄电池温度告警数量：0</p>';
+        if (that._commonData.dataType === 'energy') {
+            data.topDisChargeCount != '' ? str += '<p>蓄电池放电8小时以上站点数量：' + data.topDisChargeCount + '个</p>' : str += '<p>蓄电池放电8小时以上站点数量：0</p>';
+            data.lowDisChargeCount != '' ? str += '<p>蓄电池放电不足4小时站点数量：' + data.lowDisChargeCount + '个</p>' : str += '<p>蓄电池放电不足4小时站点数量：0</p>';
+            data.dtuSysWarnCount != '' ? str += '<p>蓄电池管理设备/DTU系统告警数量：' + data.dtuSysWarnCount + '个</p>' : str += '<p>蓄电池管理设备/DTU系统告警数量：0</p>';
+            data.normalDisChargeCount != '' ? str += '<p>蓄电池放电4~8小时站点数量：' + data.normalDisChargeCount + '个</p>' : str += '<p>蓄电池放电4~8小时站点数量：0</p>';
+            data.averageDisChargeWaveCount != '' ? str += '<p>平均放电时长变动>20%站点数量：' + data.averageDisChargeWaveCount + '个</p>' : str += '<p>平均放电时长变动>20%站点数量：0</p>';
+            data.dtuOfflineCount != '' ? str += '<p>蓄电池管理设备/DTU离线告警数量：' + data.dtuOfflineCount + '个</p>' : str += '<p>蓄电池管理设备/DTU离线告警数量：0</p>';
+            data.voltageWarnCount != '' ? str += '<p>蓄电池电压告警数量：' + data.voltageWarnCount + '个</p>' : str += '<p>蓄电池电压告警数量：0</p>';
+            data.tempWarnCount != '' ? str += '<p>蓄电池温度告警数量：' + data.tempWarnCount + '个</p>' : str += '<p>蓄电池温度告警数量：0</p>';
+        } else {
+            data.topDisChargeCount != '' ? str += '<p>蓄电池放电3小时以上站点数量：' + data.topDisChargeCount + '个</p>' : str += '<p>蓄电池放电3小时以上站点数量：0</p>';
+            data.lowDisChargeCount != '' ? str += '<p>蓄电池放电不足1小时站点数量：' + data.lowDisChargeCount + '个</p>' : str += '<p>蓄电池放电不足1小时站点数量：0</p>';
+            data.dtuOfflineCount != '' ? str += '<p>蓄电池管理设备/DTU离线告警数量：' + data.dtuOfflineCount + '个</p>' : str += '<p>蓄电池管理设备/DTU离线告警数量：0</p>';
+            data.normalDisChargeCount != '' ? str += '<p>蓄电池放电1~3小时站点数量：' + data.normalDisChargeCount + '个</p>' : str += '<p>蓄电池放电1~3小时站点数量：0</p>';
+            data.dtuSysWarnCount != '' ? str += '<p>蓄电池管理设备/DTU系统告警数量：' + data.dtuSysWarnCount + '个</p>' : str += '<p>蓄电池管理设备/DTU系统告警数量：0</p>';
+            data.voltageWarnCount != '' ? str += '<p>蓄电池电压告警数量：' + data.voltageWarnCount + '个</p>' : str += '<p>蓄电池电压告警数量：0</p>';
+            data.tempWarnCount != '' ? str += '<p>蓄电池温度告警数量：' + data.tempWarnCount + '个</p>' : str += '<p>蓄电池温度告警数量：0</p>';
+        }
         str += '</div>';
         // 创建一个文本标注实例
         var lable = new BMap.Label(str);
