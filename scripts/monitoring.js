@@ -79,10 +79,6 @@ Monitoring.prototype.initControl = function () {
         that._controls.myTable.hide();
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
-        setTimeout(function () {
-            that._commonData.chartType = true;
-            that.initChart.getBoundary;
-        }, 100);
     });
     that._controls.btnTable.on('click', function () {
         that._controls.myChart.hide();
@@ -221,6 +217,9 @@ Monitoring.prototype.initTable = function () {
 // 初始化地图
 Monitoring.prototype.initChart = function () {
     var that = this;
+    this._commonData.provinceId = 17;
+    this._commonData.cityId = '';
+    this._commonData.prefectureId = '';
     // 获取地图数据
     // 需要引入api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js
     // 创建百度地图map实例
@@ -237,8 +236,10 @@ Monitoring.prototype.initChart = function () {
     var scrollFunc = function (e) {
         e = e || window.event;
         if (map.getZoom() > 8 && map.getZoom() < 10) {
+            that._commonData.provinceId = 17;
+            that._commonData.cityId = '';
+            that._commonData.prefectureId = '';
             getBoundary('河南省');
-            getMap(provinceId, '', '')
         }
     }
     /*注册事件*/
@@ -273,8 +274,10 @@ Monitoring.prototype.initChart = function () {
         div.style.borderRadius = '10px';
         // 绑定事件,点击一次放大两级
         div.onclick = function (e) {
+            that._commonData.provinceId = 17;
+            that._commonData.cityId = '';
+            that._commonData.prefectureId = '';
             getBoundary('河南省');
-            getMap(provinceId, cityId, prefectureId);
         }
         // 添加DOM元素到地图中
         map.getContainer().appendChild(div);
@@ -333,23 +336,22 @@ Monitoring.prototype.initChart = function () {
                 return;
             }
             var pointArray = [];
-            if (that._commonData.chartType === false) {
-                for (var i = 0; i < count; i++) {
-                    var ply = new BMap.Polygon(rs.boundaries[i], {
-                        strokeWeight: 2,
-                        strokeColor: "#2174ee",
-                        fillOpacity: 0.07,
-                        fillColor: '#2174ee'
-                    }); //建立多边形覆盖物
-                    map.addOverlay(ply); //添加覆盖物
-                    pointArray = pointArray.concat(ply.getPath());
-                }
+            for (var i = 0; i < count; i++) {
+                var ply = new BMap.Polygon(rs.boundaries[i], {
+                    strokeWeight: 2,
+                    strokeColor: "#2174ee",
+                    fillOpacity: 0.07,
+                    fillColor: '#2174ee'
+                }); //建立多边形覆盖物
+                map.addOverlay(ply); //添加覆盖物
+                pointArray = pointArray.concat(ply.getPath());
             }
             map.setViewport(pointArray); //调整视野  
+            getMap(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);
         });
     }
     // 使用添加点的方法
-    getMap(provinceId, cityId, prefectureId);
+    
 
     function getMap(provinceId, cityId, prefectureId) {
         if (that._commonData.dataType === 'energy') {
@@ -474,17 +476,12 @@ Monitoring.prototype.initChart = function () {
         });
 
         mark.addEventListener('click', function (e) {
-            getBoundary(data.name);
             if (map.getZoom() === 8) {
-                cityId1 = data.id;
-                getMap(provinceId1, cityId1, prefectureId1);
-                that._commonData.provinceId = provinceId1;
-                that._commonData.cityId = cityId1;
-                that._commonData.prefectureId = prefectureId1;
+                that._commonData.cityId = data.id;
+                getBoundary(data.name);
             } else if (map.getZoom() >= 10) {
-                prefectureId1 = data.id
+                that._commonData.prefectureId = data.id
             }
-
         });
     }
     // 使用行政区划

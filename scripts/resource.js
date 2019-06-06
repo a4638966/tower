@@ -102,10 +102,6 @@ Resource.prototype.initControl = function () {
         that._controls.myTable.hide();
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
-        setTimeout(function () {
-            that._commonData.chartType = true;
-            that.initChart.getBoundary;
-        }, 100);
     });
     that._controls.btnTable.on('click', function () {
         that._controls.myChart.hide();
@@ -161,8 +157,10 @@ Resource.prototype.initChart = function () {
     var scrollFunc = function (e) {
         e = e || window.event;
         if (map.getZoom() > 8 && map.getZoom() < 10) {
+            that._commonData.provinceId = 17;
+            that._commonData.cityId = '';
+            that._commonData.prefectureId = '';
             getBoundary('河南省');
-            getMap(provinceId, '', '')
         }
     }
     /*注册事件*/
@@ -171,18 +169,18 @@ Resource.prototype.initChart = function () {
     } //W3C
 
     // 定义一个控件类,即function
-	function ZoomControl(){
+    function ZoomControl() {
         // 默认停靠位置和偏移量
         this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
         this.defaultOffset = new BMap.Size(10, 10);
-      }
-  
-      // 通过JavaScript的prototype属性继承于BMap.Control
-      ZoomControl.prototype = new BMap.Control();
-  
-      // 自定义控件必须实现自己的initialize方法,并且将控件的DOM元素返回
-      // 在本方法中创建个div元素作为控件的容器,并将其添加到地图容器中
-      ZoomControl.prototype.initialize = function(map){
+    }
+
+    // 通过JavaScript的prototype属性继承于BMap.Control
+    ZoomControl.prototype = new BMap.Control();
+
+    // 自定义控件必须实现自己的initialize方法,并且将控件的DOM元素返回
+    // 在本方法中创建个div元素作为控件的容器,并将其添加到地图容器中
+    ZoomControl.prototype.initialize = function (map) {
         // 创建一个DOM元素
         var div = document.createElement("div");
         // 添加文字说明
@@ -195,9 +193,11 @@ Resource.prototype.initChart = function () {
         div.style.padding = "5px 10px";
         div.style.borderRadius = '10px';
         // 绑定事件,点击一次放大两级
-        div.onclick = function(e){
+        div.onclick = function (e) {
+            that._commonData.provinceId = 17;
+            that._commonData.cityId = '';
+            that._commonData.prefectureId = '';
             getBoundary('河南省');
-            getMap(provinceId, cityId, prefectureId);
             that.initEnergyBusiness(17, '', '');
             that.initEnergyProduct(17, '', '');
             that.initResourceCenterList(17, '', '');
@@ -206,11 +206,11 @@ Resource.prototype.initChart = function () {
         map.getContainer().appendChild(div);
         // 将DOM元素返回
         return div;
-      }
-      // 创建控件
-      var myZoomCtrl = new ZoomControl();
-      // 添加到地图当中
-      map.addControl(myZoomCtrl);
+    }
+    // 创建控件
+    var myZoomCtrl = new ZoomControl();
+    // 添加到地图当中
+    map.addControl(myZoomCtrl);
 
     window.onmousewheel = document.onmousewheel = scrollFunc; //IE/Opera/Chrome
     // 声明一个数组，装行政区域的数据
@@ -273,10 +273,11 @@ Resource.prototype.initChart = function () {
                 }
             }
             map.setViewport(pointArray); //调整视野  
+            getMap(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);
         });
     }
     // 使用添加点的方法
-    getMap(provinceId, cityId, prefectureId);
+    
 
     function getMap(provinceId, cityId, prefectureId) {
         $.ajax({
@@ -366,19 +367,16 @@ Resource.prototype.initChart = function () {
         });
 
         mark.addEventListener('click', function (e) {
-            getBoundary(data.name);
+            
             if (map.getZoom() === 8) {
-                cityId1 = data.id;
+                that._commonData.cityId = data.id;
             } else if (map.getZoom() >= 10) {
-                prefectureId1 = data.id
+                that._commonData.prefectureId = data.id
             }
-            getMap(provinceId1, cityId1, prefectureId1);
-            that.initEnergyBusiness(provinceId1, cityId1, prefectureId1);
-            that.initEnergyProduct(provinceId1, cityId1, prefectureId1)
-            that.initResourceCenterList(provinceId1, cityId1, prefectureId1)
-            that._commonData.provinceId = provinceId1;
-            that._commonData.cityId = cityId1;
-            that._commonData.prefectureId = prefectureId1;
+            getBoundary(data.name);
+            that.initEnergyBusiness(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);
+            that.initEnergyProduct(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId)
+            that.initResourceCenterList(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId)
         });
     }
     // 使用行政区划
@@ -478,7 +476,7 @@ Resource.prototype.initResourceCenterList = function (provinceId, cityId, prefec
 }
 
 function jump(id) {
-    window.location.href="resource1.html?dataInfo=standbyPower&provinceId=17&cityId=" + id + "&prefectureId="
+    window.location.href = "resource1.html?dataInfo=standbyPower&provinceId=17&cityId=" + id + "&prefectureId="
 }
 
 $('.energy-tip p').on('click', function () {

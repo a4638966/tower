@@ -41,10 +41,6 @@ Business.prototype.initControl = function () {
         that._controls.myTable.hide();
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
-        setTimeout(function () {
-            that._commonData.chartType = true;
-            that.initChart.getBoundary;
-        }, 100);
     });
     that._controls.btnTable.on('click', function () {
         that._controls.myChart.hide();
@@ -92,15 +88,14 @@ Business.prototype.initChart = function () {
     // 设置地图显示的城市，这项是必须的
     map.setCurrentCity("郑州");
     // 开启滚轮缩放
-    var provinceId = 17;
-    var cityId = '';
-    var prefectureId = '';
     map.enableScrollWheelZoom(true);
     var scrollFunc = function (e) {
         e = e || window.event;
         if (map.getZoom() > 8 && map.getZoom() < 10) {
+            that._commonData.provinceId = 17;
+            that._commonData.cityId = '';
+            that._commonData.prefectureId = '';
             getBoundary('河南省');
-            getMap(provinceId, '', '')
         }
     }
     /*注册事件*/
@@ -134,11 +129,10 @@ Business.prototype.initChart = function () {
         div.style.borderRadius = '10px';
         // 绑定事件,点击一次放大两级
         div.onclick = function (e) {
-            getBoundary('河南省');
-            getMap(provinceId, cityId, prefectureId);
             that._commonData.provinceId = 17;
             that._commonData.cityId = '';
             that._commonData.prefectureId = '';
+            getBoundary('河南省');
             that.energyStation();
             that.prolongStation();
         }
@@ -199,23 +193,21 @@ Business.prototype.initChart = function () {
                 return;
             }
             var pointArray = [];
-            if (that._commonData.chartType === false) {
-                for (var i = 0; i < count; i++) {
-                    var ply = new BMap.Polygon(rs.boundaries[i], {
-                        strokeWeight: 2,
-                        strokeColor: "#2174ee",
-                        fillOpacity: 0.07,
-                        fillColor: '#2174ee'
-                    }); //建立多边形覆盖物
-                    map.addOverlay(ply); //添加覆盖物
-                    pointArray = pointArray.concat(ply.getPath());
-                }
+            for (var i = 0; i < count; i++) {
+                var ply = new BMap.Polygon(rs.boundaries[i], {
+                    strokeWeight: 2,
+                    strokeColor: "#2174ee",
+                    fillOpacity: 0.07,
+                    fillColor: '#2174ee'
+                }); //建立多边形覆盖物
+                map.addOverlay(ply); //添加覆盖物
+                pointArray = pointArray.concat(ply.getPath());
             }
             map.setViewport(pointArray); //调整视野  
+            getMap(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);
         });
     }
     // 使用添加点的方法
-    getMap(provinceId, cityId, prefectureId);
 
     function getMap(provinceId, cityId, prefectureId) {
         $.ajax({
@@ -320,15 +312,10 @@ Business.prototype.initChart = function () {
         });
 
         mark.addEventListener('click', function (e) {
-            getBoundary(data.name);
+            
             if (map.getZoom() === 8) {
-                cityId1 = data.id;
-                getMap(provinceId1, cityId1, prefectureId1);
-
-                that._commonData.provinceId = provinceId1;
-                that._commonData.cityId = cityId1;
-                that._commonData.prefectureId = prefectureId1;
-
+                that._commonData.cityId = data.id;
+                getBoundary(data.name);
                 that.energyStation();
                 that.prolongStation();
             } else if (map.getZoom() >= 10) {}

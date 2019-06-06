@@ -275,6 +275,11 @@ Resource.prototype.initControl = function () {
             that._controls.batteryTable.show();
             break;
             // 能源包
+        case 'energyPack':
+            that._controls.btnEnergyPack.children('.energy-block').addClass('active')
+            that._controls.btnEnergyPack.children('.energy-text').addClass('text-active');
+            that._controls.energyPackTable.show();
+            break;
     }
     this.initSecondBdList();
     // 初始化地图
