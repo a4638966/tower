@@ -478,6 +478,13 @@ Monitoring.prototype.initChart = function () {
         lable.hide();
         // 在全景场景内添加覆盖物
         map.addOverlay(lable);
+        var label1 = new BMap.Label(data.name,{offset:new BMap.Size(20,-10)});
+        label1.setStyle({
+            border: 'none',
+            border: '1px solid rgba(36,110,221, .5)',
+            borderRadius: '5px'
+        });
+	    mark.setLabel(label1);
         mark.addEventListener('mouseover', function (e) {
             lable.show();
         });
