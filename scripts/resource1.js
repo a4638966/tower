@@ -49,10 +49,22 @@ Resource.prototype.initControl = function () {
     var that = this;
     // 初始化日期
     // this.initUpdate();
+    // 根据参数判断哪个显示
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        var strs = str.split("&");
+        for (let i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        }
+    }
+    that._commonData.provinceId = theRequest.provinceId;
+    that._commonData.cityId = theRequest.cityId;
+    that._commonData.prefectureId = theRequest.prefectureId;
     layui.use(['tree', 'element'], function () {
         var element = layui.element;
         var tree = layui.tree;
-
         var cityArray = [];
         $.ajax({
             url: 'http://www.baoxingtech.com:9603/sys/area/shi',
@@ -64,18 +76,18 @@ Resource.prototype.initControl = function () {
             success: function (res) {
                 for (var i = 0; i < res.result.length; i++) {
                     var spread = false;
-                    if (res.result[i].name == '新乡市') {
+                    if (res.result[i].id == that._commonData.cityId) {
                         spread = true;
                     }
                     cityArray.push({
-                        name: res.result[i].name,
+                        title: res.result[i].name,
                         id: res.result[i].id,
                         spread: spread,
                         children: []
                     })
                 }
+                var prefectureArray = [];
                 for (var i = 0; i < cityArray.length; i++) {
-                    var num = 0;
                     $.ajax({
                         url: 'http://www.baoxingtech.com:9603/sys/area/qx',
                         type: 'GET',
@@ -83,58 +95,43 @@ Resource.prototype.initControl = function () {
                         data: {
                             cityId: cityArray[i].id
                         },
+                        async: false,
                         success: function (res1) {
-                            num++;
                             for (var i = 0; i < res1.result.length; i++) {
-                                res1.result[i].pid = cityArray[num - 1].id
-                                // console.log(cityArray[num - 1].id)
+                                res1.result[i].title = res1.result[i].name;
                             }
-
-                            cityArray[num - 1].children = res1.result;
+                            prefectureArray.push(res1.result)
                         }
                     });
                 }
-                setTimeout(function () {
-                    var inst1 = layui.tree({
-                        elem: '#treeNav',
-                        skin: 'shihuang',
-                        nodes: [{ //节点
-                            name: '河南省',
-                            spread: true,
-                            children: cityArray
-                        }],
-                        click: function (obj) {
-                            if (obj.children === undefined) {
-                                that._commonData.provinceId = 17;
-                                that._commonData.cityId = obj.pid;
-                                that._commonData.prefectureId = obj.id;
-
-                                that._controls.btnStandbyPower.children('.energy-block').addClass('active')
-                                that._controls.btnStandbyPower.children('.energy-text').addClass('text-active');
-                                that._controls.btnStandbyPower.siblings().children('.energy-block').removeClass('active');
-                                that._controls.btnStandbyPower.siblings().children('.energy-text').removeClass('text-active');
-                                that._controls.standbyPowerTable.show();
-                                that._controls.standbyPowerTable.siblings('table').hide();
-                                that.initSecondBdList();
-                            } else {
-                                that._controls.btnStandbyPower.children('.energy-block').addClass('active')
-                                that._controls.btnStandbyPower.children('.energy-text').addClass('text-active');
-                                that._controls.btnStandbyPower.siblings().children('.energy-block').removeClass('active');
-                                that._controls.btnStandbyPower.siblings().children('.energy-text').removeClass('text-active');
-                                that._controls.standbyPowerTable.show();
-                                that._controls.standbyPowerTable.siblings('table').hide();
-                                that._commonData.provinceId = 17;
-                                that._commonData.cityId = obj.id;
-                                that._commonData.prefectureId = '';
-                                that.initSecondBdList();
-                            }
-                        }
-                    });
-                }, 500)
+                for (var i = 0; i < prefectureArray.length; i++) {
+                    cityArray[i].children = prefectureArray[i]
+                }
             }
         });
 
+        setTimeout(function () {
+            tree.render({
+                elem: '#treeNav' //默认是点击节点可进行收缩
+                    ,
+                data: cityArray,
+                click: function (obj) {
+                    if (obj.data.children === undefined) {
+                        that._commonData.prefectureId = obj.data.id;
+                        that._controls.btnStandbyPower.children('.energy-block').addClass('active')
+                        that._controls.btnStandbyPower.children('.energy-text').addClass('text-active');
+                        that._controls.btnStandbyPower.siblings().children('.energy-block').removeClass('active');
+                        that._controls.btnStandbyPower.siblings().children('.energy-text').removeClass('text-active');
+                        that._controls.standbyPowerTable.show();
+                        that._controls.standbyPowerTable.siblings('table').hide();
+                        that.initSecondBdList();
+                    } else {
+                        that._commonData.cityId = obj.data.id
+                    }
 
+                }
+            });
+        }, 600)
     });
 
     $('.layui-radius').css('height', $(window).height() - 210)
@@ -218,19 +215,6 @@ Resource.prototype.initControl = function () {
         that._controls.energyPackTable.siblings('table').hide();
         that.initSecondNybList();
     });
-    // 根据参数判断哪个显示
-    var url = location.search; //获取url中"?"符后的字串
-    var theRequest = new Object();
-    if (url.indexOf("?") != -1) {
-        var str = url.substr(1);
-        var strs = str.split("&");
-        for (let i = 0; i < strs.length; i++) {
-            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-        }
-    }
-    that._commonData.provinceId = theRequest.provinceId;
-    that._commonData.cityId = theRequest.cityId;
-    that._commonData.prefectureId = theRequest.prefectureId;
     switch (theRequest.dataInfo) {
         // 备电
         case 'standbyPower':
@@ -582,7 +566,7 @@ Resource.prototype.initSecondCnzList = function () {
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].cnzmc + '</td>';
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].deviceList[j].name + '</td>';
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].deviceCode + '</td>';
-                            str += '<td style="border-right: 1px solid #e6e6e6">' +'<a href="" onclick="window.open(\'http://www.baoxingtech.com:9603/#/?panelId=' + res.result[i].panelId + '\')">'+'进入' +'</a>' +'</td>';
+                            str += '<td style="border-right: 1px solid #e6e6e6">' + '<a href="" onclick="window.open(\'http://www.baoxingtech.com:9603/#/?panelId=' + res.result[i].panelId + '\')">' + '进入' + '</a>' + '</td>';
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].deviceList[j].batType + '</td>';
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].capacity + '</td>';
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].deviceList[j].dcglq + '</td>';

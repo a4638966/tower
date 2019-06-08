@@ -166,7 +166,9 @@ Monitoring.prototype.initTable = function () {
             type: 'GET',
             dataType: 'json',
             data: {
-                prefectureId: ''
+                provinceId: that._commonData.provinceId,
+                cityId: that._commonData.cityId,
+                prefectureId: that._commonData.prefectureId
             },
             success: function (res) {
                 if (res.code === 200) {
@@ -193,7 +195,9 @@ Monitoring.prototype.initTable = function () {
             type: 'GET',
             dataType: 'json',
             data: {
-                prefectureId: ''
+                provinceId: that._commonData.provinceId,
+                cityId: that._commonData.cityId,
+                prefectureId: that._commonData.prefectureId
             },
             success: function (res) {
                 if (res.code === 200) {
@@ -240,6 +244,9 @@ Monitoring.prototype.initChart = function () {
             that._commonData.cityId = '';
             that._commonData.prefectureId = '';
             getBoundary('河南省');
+            that.initTable();
+            that.energyStation();
+            that.prolongStation();
         }
     }
     /*注册事件*/
@@ -278,6 +285,9 @@ Monitoring.prototype.initChart = function () {
             that._commonData.cityId = '';
             that._commonData.prefectureId = '';
             getBoundary('河南省');
+            that.initTable();
+            that.energyStation();
+            that.prolongStation();
         }
         // 添加DOM元素到地图中
         map.getContainer().appendChild(div);
@@ -351,7 +361,7 @@ Monitoring.prototype.initChart = function () {
         });
     }
     // 使用添加点的方法
-    
+
 
     function getMap(provinceId, cityId, prefectureId) {
         if (that._commonData.dataType === 'energy') {
@@ -479,6 +489,9 @@ Monitoring.prototype.initChart = function () {
             if (map.getZoom() === 8) {
                 that._commonData.cityId = data.id;
                 getBoundary(data.name);
+                that.initTable();
+                that.energyStation();
+                that.prolongStation();
             } else if (map.getZoom() >= 10) {
                 that._commonData.prefectureId = data.id
             }
@@ -497,9 +510,9 @@ Monitoring.prototype.energyStation = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: '17',
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId
         },
         success: function (res) {
             if (res.code === 200) {
@@ -524,9 +537,9 @@ Monitoring.prototype.prolongStation = function () {
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: '17',
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId
         },
         success: function (res) {
             if (res.code === 200) {
