@@ -13,11 +13,11 @@
     <script src="components/jquery/jquery.min.js"></script>
     <script src="components/layui/layui.js"></script>
     <script src="components/chart.js/Chart.js"></script>
-    <script type="text/javascript"
-        src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW">
+    </script>
     <script type="text/javascript"
         src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
-        </script>
+    </script>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -101,7 +101,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">
                         <i class="layui-icon layui-icon-username"
-                            style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i> 薛总
+                            style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i> 管理员
                         <span class="layui-nav-more"></span></a>
                     <dl class="layui-nav-child layui-anim layui-anim-upbit">
                         <dd><a href="personal.html">个人中心</a></dd>
@@ -113,6 +113,13 @@
     <!-- 头部logo部分结束 -->
     <!-- 主体内容开始 -->
     <div class="layui-fluid">
+        <div class="layui-row">
+            <div class="layui-col-lg6 layui-col-md6">
+                <span style="color:#778892;">位置：<a href="javascript:void(0)" style="color:#778892;">客户中心</a> - <a
+                        href="javascript:void(0)" style="color:#778892;">客户维护</a></span>
+                <span style="color:#778892;cursor: pointer;"></span>
+            </div>
+        </div>
         <div class="layui-row">
             <div class="layui-col-lg12 layui-col-md12 layui-radius" style="padding-bottom: 20px;padding-left:10px;">
                 <div class="layui-row">
@@ -205,7 +212,8 @@
                         </div>
                     </div>
                     <div class="layui-col-lg12 layui-col-md12">
-                        <button class="layui-btn layui-btn-normal layui-btn-sm" style="background: #0070C9;margin-left: 20px;">查询</button>
+                        <button class="layui-btn layui-btn-normal layui-btn-sm"
+                            style="background: #0070C9;margin-left: 20px;">查询</button>
                     </div>
                 </div>
             </div>

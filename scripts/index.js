@@ -53,7 +53,7 @@ Index.prototype.initControl = function () {
         element.progress('fdl1', that._commonData.fdlbfb);
         // 按钮事件
         that._controls.btnLogin.on('click', function () {
-            layer.msg('登陆成功，欢迎您薛总', {
+            layer.msg('登陆成功，欢迎您管理员', {
                 icon: 1,
                 time: 700 //2秒关闭（如果不配置，默认是3秒）
             }, function () {
