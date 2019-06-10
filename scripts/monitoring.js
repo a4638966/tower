@@ -564,14 +564,15 @@ Monitoring.prototype.prolongStation = function () {
 }
 
 Monitoring.prototype.getList = function (code, tableId) {
+    var that = this;
     $.ajax({
         url: 'http://www.baoxingtech.com:9603/sys/monitor_center/panel_list',
         type: 'GET',
         dataType: 'json',
         data: {
-            provinceId: '',
-            cityId: '',
-            prefectureId: '',
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
             code: code
         },
         success: function (res) {
