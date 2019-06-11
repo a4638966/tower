@@ -14,8 +14,8 @@
     <script src="components/layui/layui.js"></script>
     <script src="components/chart.js/Chart.js"></script>
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW"></script>
-    <script type="text/javascript" src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
-    </script>
+    <script type="text/javascript" src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+    <script src="components/jquery.cookie.js"></script>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -110,23 +110,23 @@
                         <div class="clearfix"></div>
                         <div class="layui-row">
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="standbyPower">
-                                <span class="tag-num" id="bddsl"></span>
+                                <span class="tag-num" id="bddsl">0</span>
                                 <span class="tag-info">备电点(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="charge">
-                                <span class="tag-num" id="cddsl"></span>
+                                <span class="tag-num" id="cddsl">0</span>
                                 <span class="tag-info">充电点(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none" data-info="powerExchange">
-                                <span class="tag-num" id="hddsl"></span>
+                                <span class="tag-num" id="hddsl">0</span>
                                 <span class="tag-info">换电点(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="sellingElectricity">
-                                <span class="tag-num" id="sddsl"></span>
+                                <span class="tag-num" id="sddsl">0</span>
                                 <span class="tag-info">售电点(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="energyPack">
-                                <span class="tag-num" id="xdcgm"></span>
+                                <span class="tag-num" id="xdcgm">0</span>
                                 <span class="tag-info">能源包(AH)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4"></div>
@@ -140,15 +140,15 @@
                         <div class="clearfix"></div>
                         <div class="layui-row">
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="prolongLife">
-                                <span class="tag-num" id="cnzsl"></span>
+                                <span class="tag-num" id="cnzsl">0</span>
                                 <span class="tag-info">储能站(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" data-info="energyStorage">
-                                <span class="tag-num" id="yszsl"></span>
+                                <span class="tag-num" id="yszsl">0</span>
                                 <span class="tag-info">延寿站(个)</span>
                             </div>
                             <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none" data-info="batter">
-                                <span class="tag-num" id="xdcgm1"></span>
+                                <span class="tag-num" id="xdcgm1">0</span>
                                 <span class="tag-info">蓄电池(AH)</span>
                             </div>
                         </div>

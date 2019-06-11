@@ -67,9 +67,10 @@ Resource.prototype.initControl = function () {
         var tree = layui.tree;
         var cityArray = [];
         $.ajax({
-            url: 'http://www.baoxingtech.com:9603/sys/area/shi',
+            url: 'http://www.baoxingtech.com:9604/sys/area/shi',
             type: 'GET',
             dataType: 'json',
+            headers:{'Admin-Token':$.cookie('adminToken')},
             data: {
                 provinceId: 17
             },
@@ -89,9 +90,10 @@ Resource.prototype.initControl = function () {
                 var prefectureArray = [];
                 for (var i = 0; i < cityArray.length; i++) {
                     $.ajax({
-                        url: 'http://www.baoxingtech.com:9603/sys/area/qx',
+                        url: 'http://www.baoxingtech.com:9604/sys/area/qx',
                         type: 'GET',
                         dataType: 'json',
+                        headers:{'Admin-Token':$.cookie('adminToken')},
                         data: {
                             cityId: cityArray[i].id
                         },
@@ -453,9 +455,10 @@ Resource.prototype.initChart = function () {
 Resource.prototype.initSecondBdList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_bd_list',
+        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_bd_list',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: that._commonData.provinceId,
             cityId: that._commonData.cityId,
@@ -499,9 +502,10 @@ Resource.prototype.initSecondBdList = function () {
 Resource.prototype.initSecondCdList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_cd_list',
+        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_cd_list',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: that._commonData.provinceId,
             cityId: that._commonData.cityId,
@@ -546,9 +550,10 @@ Resource.prototype.initSecondCdList = function () {
 Resource.prototype.initSecondCnzList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_cnz_list',
+        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_cnz_list',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: that._commonData.provinceId,
             cityId: that._commonData.cityId,
@@ -595,9 +600,10 @@ Resource.prototype.initSecondCnzList = function () {
 Resource.prototype.initSecondYszList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_ysz_list',
+        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_ysz_list',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: that._commonData.provinceId,
             cityId: that._commonData.cityId,
@@ -638,9 +644,10 @@ Resource.prototype.initSecondYszList = function () {
 Resource.prototype.initSecondXdcList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_xdc_list',
+        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_xdc_list',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: that._commonData.provinceId,
             cityId: that._commonData.cityId,
@@ -681,9 +688,10 @@ Resource.prototype.initSecondXdcList = function () {
 Resource.prototype.initSecondNybList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_nyb_list',
+        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_nyb_list',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: that._commonData.provinceId,
             cityId: that._commonData.cityId,

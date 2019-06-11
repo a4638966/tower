@@ -228,9 +228,10 @@ Resource.prototype.initChart = function () {
 
     function getMap(provinceId, cityId, prefectureId) {
         $.ajax({
-            url: 'http://www.baoxingtech.com:9603/sys/resource_center/resource_center_map',
+            url: 'http://www.baoxingtech.com:9604/sys/resource_center/resource_center_map',
             type: 'GET',
             dataType: 'json',
+            headers:{'Admin-Token':$.cookie('adminToken')},
             data: {
                 provinceId: provinceId,
                 cityId: cityId,
@@ -396,9 +397,10 @@ Resource.prototype.initChart = function () {
 Resource.prototype.initEnergyBusiness = function (provinceId, cityId, prefectureId) {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/resource_center/energy_business_data',
+        url: 'http://www.baoxingtech.com:9604/sys/resource_center/energy_business_data',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: provinceId,
             cityId: cityId,
@@ -422,9 +424,10 @@ Resource.prototype.initEnergyBusiness = function (provinceId, cityId, prefecture
 Resource.prototype.initEnergyProduct = function (provinceId, cityId, prefectureId) {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/resource_center/energy_product_guarantee',
+        url: 'http://www.baoxingtech.com:9604/sys/resource_center/energy_product_guarantee',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: provinceId,
             cityId: cityId,
@@ -446,9 +449,10 @@ Resource.prototype.initEnergyProduct = function (provinceId, cityId, prefectureI
 Resource.prototype.initResourceCenterList = function (provinceId, cityId, prefectureId) {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/resource_center/resource_center_list',
+        url: 'http://www.baoxingtech.com:9604/sys/resource_center/resource_center_list',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: provinceId,
             cityId: cityId,
