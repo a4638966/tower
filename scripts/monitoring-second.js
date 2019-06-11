@@ -273,7 +273,7 @@ Monitoring.prototype.initChart = function () {
 Monitoring.prototype.energyStation = function () {
   var that = this;
   $.ajax({
-      url: 'http://www.baoxingtech.com:9603/sys/monitor_center/energy_station',
+      url: 'http://www.baoxingtech.com:9604/sys/monitor_center/energy_station',
       type: 'GET',
       dataType: 'json',
       data: {
@@ -300,7 +300,7 @@ Monitoring.prototype.energyStation = function () {
 Monitoring.prototype.prolongStation = function () {
   var that = this;
   $.ajax({
-      url: 'http://www.baoxingtech.com:9603/sys/monitor_center/prolong_station',
+      url: 'http://www.baoxingtech.com:9604/sys/monitor_center/prolong_station',
       type: 'GET',
       dataType: 'json',
       data: {

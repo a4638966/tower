@@ -210,7 +210,7 @@ Operation.prototype.initChart = function () {
 
     function getMap(provinceId, cityId, prefectureId) {
         $.ajax({
-            url: 'http://www.baoxingtech.com:9603/sys/operation_center/map',
+            url: 'http://www.baoxingtech.com:9604/sys/operation_center/map',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -326,7 +326,7 @@ Operation.prototype.initChart = function () {
 Operation.prototype.getLeftData = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/operation_center/left_data',
+        url: 'http://www.baoxingtech.com:9604/sys/operation_center/left_data',
         type: 'GET',
         dataType: 'json',
         data: {

@@ -13,6 +13,7 @@
     <script src="components/jquery/jquery.min.js"></script>
     <script src="components/layui/layui.js"></script>
     <script src="components/chart.js/Chart.js"></script>
+    <script src="components/jquery.cookie.js"></script>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -204,13 +205,13 @@
                         <div class="layui-form">
                             <div class="login-box">
                                 <i class="layui-icon layui-icon-username"></i>
-                                <input type="text" placeholder="手机号/邮箱/用户名">
+                                <input type="text" placeholder="手机号/邮箱/用户名" id="userName">
                             </div>
                             <div class="login-box">
                                 <i class="layui-icon layui-icon layui-icon-password"></i>
-                                <input type="password" placeholder="密码">
+                                <input type="password" placeholder="密码" id="userPwd">
                             </div>
-                            <div class="login-verify">点击进行验证</div>
+                            <!-- <div class="login-verify">点击进行验证</div> -->
                             <div class="login-function">
                                 <input type="checkbox" name="" title="两周内自动登录" lay-skin="primary">
                                 <a href="#">忘记密码</a>
@@ -246,7 +247,7 @@
                             <span class="badeg-info">已办事项</span>
                         </div>
                         <div class="layui-col-lg12 layui-col-md12">
-                            <span class="layui-badge layui-badge3"></span>
+                            <span class="layui-badge layui-badge3">0</span>
                             <span class="badeg-info">需求申请</span>
                         </div>
                     </div>

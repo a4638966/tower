@@ -162,7 +162,7 @@ Monitoring.prototype.initTable = function () {
         that._controls.tableEnergy.show();
         that._controls.tableExtended.hide();
         $.ajax({
-            url: 'http://www.baoxingtech.com:9603/sys/monitor_center/energy_station_prefecture_panel_list',
+            url: 'http://www.baoxingtech.com:9604/sys/monitor_center/energy_station_prefecture_panel_list',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -191,7 +191,7 @@ Monitoring.prototype.initTable = function () {
         that._controls.tableEnergy.hide();
         that._controls.tableExtended.show();
         $.ajax({
-            url: 'http://www.baoxingtech.com:9603/sys/monitor_center/prolong_station_prefecture_panel_list',
+            url: 'http://www.baoxingtech.com:9604/sys/monitor_center/prolong_station_prefecture_panel_list',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -366,7 +366,7 @@ Monitoring.prototype.initChart = function () {
     function getMap(provinceId, cityId, prefectureId) {
         if (that._commonData.dataType === 'energy') {
             $.ajax({
-                url: 'http://www.baoxingtech.com:9603/sys/monitor_center/energy_station_map',
+                url: 'http://www.baoxingtech.com:9604/sys/monitor_center/energy_station_map',
                 type: 'GET',
                 dataType: 'json',
                 data: {
@@ -389,7 +389,7 @@ Monitoring.prototype.initChart = function () {
             });
         } else {
             $.ajax({
-                url: 'http://www.baoxingtech.com:9603/sys/monitor_center/prolong_station_map',
+                url: 'http://www.baoxingtech.com:9604/sys/monitor_center/prolong_station_map',
                 type: 'GET',
                 dataType: 'json',
                 data: {
@@ -513,7 +513,7 @@ Monitoring.prototype.initChart = function () {
 Monitoring.prototype.energyStation = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/monitor_center/energy_station',
+        url: 'http://www.baoxingtech.com:9604/sys/monitor_center/energy_station',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -540,7 +540,7 @@ Monitoring.prototype.energyStation = function () {
 Monitoring.prototype.prolongStation = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/monitor_center/prolong_station',
+        url: 'http://www.baoxingtech.com:9604/sys/monitor_center/prolong_station',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -566,7 +566,7 @@ Monitoring.prototype.prolongStation = function () {
 Monitoring.prototype.getList = function (code, tableId) {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/monitor_center/panel_list',
+        url: 'http://www.baoxingtech.com:9604/sys/monitor_center/panel_list',
         type: 'GET',
         dataType: 'json',
         data: {

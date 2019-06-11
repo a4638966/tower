@@ -28,7 +28,7 @@ var Index = function () {
     };
     this._commonData = {
         cdlbfb: 0,
-        fdlbfb:0
+        fdlbfb: 0
     }
 };
 
@@ -53,14 +53,8 @@ Index.prototype.initControl = function () {
         element.progress('fdl1', that._commonData.fdlbfb);
         // 按钮事件
         that._controls.btnLogin.on('click', function () {
-            layer.msg('登陆成功，欢迎您管理员', {
-                icon: 1,
-                time: 700 //2秒关闭（如果不配置，默认是3秒）
-            }, function () {
-                that._controls.loginAgo.hide();
-                that._controls.loginAfter.show();
-                that._controls.userMin.show();
-            });
+
+            that.login();
         });
         that._controls.btnLoginOut.on('click', function () {
             layer.confirm('确认退出当前账户？', {
@@ -130,13 +124,15 @@ Index.prototype.initControl = function () {
 
     // this.initUpdate();
 
+    console.log($.cookie('adminToken'))
+
 }
 
 // 初始化备电点
 Index.prototype.initSearch = function (mode) {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/index/big_type_data',
+        url: 'http://www.baoxingtech.com:9604/sys/index/big_type_data',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -238,7 +234,7 @@ Index.prototype.initChart = function (data) {
 Index.prototype.initEnergyStation = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/index/energy_station',
+        url: 'http://www.baoxingtech.com:9604/sys/index/energy_station',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -275,7 +271,7 @@ Index.prototype.initEnergyStation = function () {
 Index.prototype.initExtended = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/index/prolong_station',
+        url: 'http://www.baoxingtech.com:9604/sys/index/prolong_station',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -294,7 +290,7 @@ Index.prototype.initExtended = function () {
                     var carousel = layui.carousel;
                     var form = layui.form;
                     var element = layui.element;
-                    element.progress('fdl1',  + res.result.fdl / res.result.capacity * 100 + '%');
+                    element.progress('fdl1', +res.result.fdl / res.result.capacity * 100 + '%');
                 });
             }
         },
@@ -325,4 +321,34 @@ Index.prototype.initUpdate = function () {
     var date = new Date(new Date().getTime()); // + (1000 * 60 * 60 * 72));
     var date_str = fortime(date);
     $('.news-date').html(date_str)
+};
+
+Index.prototype.login = function () {
+    var that = this;
+    var data = {
+        userName: $('#userName').val(),
+        userPwd: $('#userPwd').val()
+    }
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9604/sys/user/login',
+        type: 'POST',
+        dataType: 'json',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(data),
+        success: function (res) {
+            if (res.code === 200) {
+                $.cookie('adminToken', res.result.adminToken);
+                layer.msg('登陆成功，欢迎您管理员', {
+                    icon: 1,
+                    time: 700 //2秒关闭（如果不配置，默认是3秒）
+                }, function () {
+                    that._controls.loginAgo.hide();
+                    that._controls.loginAfter.show();
+                    that._controls.userMin.show();
+                });
+            }
+        }
+    });
 };
