@@ -71,15 +71,10 @@ Operation.prototype.initUpdate = function() {
 };
 Operation.prototype.initChart = function () {
     var that = this;
-    // 获取地图数据
-    // 需要引入api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js
-    // 创建百度地图map实例
     var map = new BMap.Map("myChart");
     // 初始化地图，设置中心点坐标和地图级别
     map.centerAndZoom(new BMap.Point(113.557234, 33.902115), 8);
-    // 设置地图显示的城市，这项是必须的
     map.setCurrentCity("郑州");
-    // 开启滚轮缩放
     var provinceId = 17;
     var cityId = '';
     var prefectureId = '';
@@ -90,8 +85,10 @@ Operation.prototype.initChart = function () {
             that._commonData.provinceId = 17;
             that._commonData.cityId = '';
             that._commonData.prefectureId = '';
-            getBoundary('河南省');
-            that.getLeftData();
+            map.clearOverlays();
+            map.centerAndZoom(new BMap.Point(113.557234, 33.902115), 8);
+            map.setCurrentCity("郑州");
+            getCitySide();
         }
     }
     /*注册事件*/
@@ -99,64 +96,41 @@ Operation.prototype.initChart = function () {
         document.addEventListener('DOMMouseScroll', scrollFunc, false);
     } //W3C
 
-    // 定义一个控件类,即function
     function ZoomControl() {
-        // 默认停靠位置和偏移量
         this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
         this.defaultOffset = new BMap.Size(10, 10);
     }
-
-    // 通过JavaScript的prototype属性继承于BMap.Control
     ZoomControl.prototype = new BMap.Control();
-
-    // 自定义控件必须实现自己的initialize方法,并且将控件的DOM元素返回
-    // 在本方法中创建个div元素作为控件的容器,并将其添加到地图容器中
     ZoomControl.prototype.initialize = function (map) {
-        // 创建一个DOM元素
         var div = document.createElement("div");
-        // 添加文字说明
         div.appendChild(document.createTextNode("返回"));
-        // 设置样式
         div.style.cursor = "pointer";
         div.style.border = "1px solid #1E9FFF";
         div.style.backgroundColor = "#1E9FFF";
         div.style.color = "#fff";
         div.style.padding = "5px 10px";
         div.style.borderRadius = '10px';
-        // 绑定事件,点击一次放大两级
         div.onclick = function (e) {
             that._commonData.provinceId = 17;
             that._commonData.cityId = '';
             that._commonData.prefectureId = '';
-            getBoundary('河南省');
+            
+            map.centerAndZoom(new BMap.Point(113.557234, 33.902115), 8);
+            map.setCurrentCity("郑州");
+            map.clearOverlays();
+            getCitySide();
             that.getLeftData();
         }
-        // 添加DOM元素到地图中
         map.getContainer().appendChild(div);
-        // 将DOM元素返回
         return div;
     }
-    // 创建控件
     var myZoomCtrl = new ZoomControl();
-    // 添加到地图当中
     map.addControl(myZoomCtrl);
 
-    window.onmousewheel = document.onmousewheel = scrollFunc; //IE/Opera/Chrome
-    // 声明一个数组，装行政区域的数据
-    var blist = [];
-    // 设置一个计数器，用来判断什么时候加载完成行政区域，然后画图
-    var districtLoading = 0;
-    // 添加行政区划
-    function getBoundary(name) {
-        // 计数器来控制加载过程
-        districtLoading++;
-        // 创建行政区划的对象实例
+    function getBoundary(name, num) {
         var bdary = new BMap.Boundary();
-        // 获取行政区域
-        // 清除地图覆盖物
-        map.clearOverlays();
         bdary.get(name, function (rs) {
-            // 行政区域的点有多少个
+            // map.clearOverlays();              
             var count = rs.boundaries.length;
             if (count === 0) {
                 alert('未能获取当前输入行政区域');
@@ -164,48 +138,20 @@ Operation.prototype.initChart = function () {
             }
             var pointArray = [];
             for (var i = 0; i < count; i++) {
-                blist.push({
-                    points: rs.boundaries[i],
-                    name: name
-                })
+                var ply = new BMap.Polygon(rs.boundaries[i], {
+                    strokeWeight: 2,
+                    strokeColor: "#2174ee",
+                    fillOpacity: 0.07,
+                    fillColor: '#2174ee'
+                });
+                map.addOverlay(ply);
+                pointArray = pointArray.concat(ply.getPath());
             }
-            // 调整视野
-            // map.setViewport(pointArray);
-            // 执行完成后计数器 -1；
-            districtLoading--;
-            if (districtLoading === 0) {
-                // 画多边形来框选地图范围（边界）
-                drawBoundary(name);
+            if (num === 1) {
+                getMap(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);    
             }
         });
     }
-
-    function drawBoundary(name) {
-        var bdary = new BMap.Boundary();
-        bdary.get(name, function (rs) { //获取行政区域     
-            var count = rs.boundaries.length; //行政区域的点有多少个
-            if (count === 0) {
-                alert('未能获取当前输入行政区域');
-                return;
-            }
-            var pointArray = [];
-            if (that._commonData.chartType === false) {
-                for (var i = 0; i < count; i++) {
-                    var ply = new BMap.Polygon(rs.boundaries[i], {
-                        strokeWeight: 2,
-                        strokeColor: "#2174ee",
-                        fillOpacity: 0.07,
-                        fillColor: '#2174ee'
-                    }); //建立多边形覆盖物
-                    map.addOverlay(ply); //添加覆盖物
-                    pointArray = pointArray.concat(ply.getPath());
-                }
-            }
-            map.setViewport(pointArray); //调整视野  
-            getMap(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);
-        });
-    }
-    // 使用添加点的方法
     
 
     function getMap(provinceId, cityId, prefectureId) {
@@ -262,11 +208,12 @@ Operation.prototype.initChart = function () {
         var mark = new BMap.Marker(point, {
             icon: myIcon
         });
+        console.log(data)
         map.addOverlay(mark);
         // 添加鼠标划入坐标点的显示内容
         str = '';
         str += '<div class="chart-info-box" style="padding-top: 50px;">';
-        str += '<h1>新乡市</h1>';
+        str += '<p>' + data.name + '</p>';
         str += '<div class="chart-info-item">';
         str += '<p>蓄电池保障:</p>';
         str += '<p>正常:<span>' + data.xdczcsl + '</span>&nbsp;&nbsp;预警:<span>' + data.xdcgjsl + '</span>&nbsp;&nbsp;应急:<span>' + data.xdcyjsl + '</span></p>';
@@ -306,22 +253,84 @@ Operation.prototype.initChart = function () {
         mark.addEventListener('mouseout', function () {
             lable.hide();
         });
-
+        var label1 = new BMap.Label(data.name,{offset:new BMap.Size(20,-10)});
+        label1.setStyle({
+            border: 'none',
+            border: '1px solid rgba(36,110,221, .5)',
+            borderRadius: '5px'
+        });
+	    mark.setLabel(label1);
         mark.addEventListener('click', function (e) {
-            
+
             if (map.getZoom() === 8) {
                 that._commonData.cityId = data.id;
-                getBoundary(data.name);
+                pointClick(data.name);
                 that.getLeftData();
             } else if (map.getZoom() >= 10) {
                 that._commonData.prefectureId = data.id
             }
-           
         });
     }
-    // 使用行政区划
+
+    // 市级点击事件
+    function pointClick(name) {
+        // 百度地图API功能
+        map.enableScrollWheelZoom();
+        map.clearOverlays(); //清除地图覆盖物  
+        function getPointBoundary() {
+            var bdary = new BMap.Boundary();
+            bdary.get(name, function (rs) { //获取行政区域
+                     
+                var count = rs.boundaries.length; //行政区域的点有多少个
+                if (count === 0) {
+                    alert('未能获取当前输入行政区域');
+                    return;
+                }
+                var pointArray = [];
+                for (var i = 0; i < count; i++) {
+                    var ply = new BMap.Polygon(rs.boundaries[i], {
+                        strokeWeight: 2,
+                        strokeColor: "#2174ee",
+                        fillOpacity: 0.07,
+                        fillColor: '#2174ee'
+                    }); //建立多边形覆盖物
+                    map.addOverlay(ply); //添加覆盖物
+                    pointArray = pointArray.concat(ply.getPath());
+                }
+                map.setViewport(pointArray); //调整视野  
+                getMap(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);
+            });
+        }
+
+        setTimeout(function () {
+            getPointBoundary();
+        }, 100);
+    }
+
+
+    // 获取河南省各市区边界
+    function getCitySide() {
+        getBoundary('郑州', 1);
+        getBoundary('开封', 2);
+        getBoundary('洛阳', 3);
+        getBoundary('平顶山', 4);
+        getBoundary('安阳', 5);
+        getBoundary('鹤壁', 6);
+        getBoundary('新乡', 7);
+        getBoundary('焦作', 8);
+        getBoundary('濮阳', 9);
+        getBoundary('许昌', 10);
+        getBoundary('漯河', 11);
+        getBoundary('三门峡', 12);
+        getBoundary('南阳', 13);
+        getBoundary('商丘', 14);
+        getBoundary('信阳', 15);
+        getBoundary('周口', 16);
+        getBoundary('驻马店', 17);
+        getBoundary('济源市', 18);
+    }
     setTimeout(function () {
-        getBoundary('河南省');
+        getCitySide();
     }, 100);
 }
 Operation.prototype.getLeftData = function () {

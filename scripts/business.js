@@ -225,6 +225,8 @@ Business.prototype.initChart = function () {
     var prefectureId1 = '';
 
     function addMark(point, myIcon, data) {
+        var energyStation = data.energyStation;
+        var prolongStation = data.prolongStation;
         // 生成图像标注
         var mark = new BMap.Marker(point, {
             icon: myIcon
