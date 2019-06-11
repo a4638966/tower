@@ -16,6 +16,7 @@
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW">
     </script>
     <script type="text/javascript" src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+    <script src="components/jquery.cookie.js"></script>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -118,7 +119,7 @@
                                         <p>备电用户数量(个)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="bdkhsl"></p>
+                                        <p id="bdkhsl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box">
@@ -126,7 +127,7 @@
                                         <p>备电点数量(个)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="bddsl"></p>
+                                        <p id="bddsl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box" style="margin-bottom: 10px;">
@@ -134,7 +135,7 @@
                                         <p>备电客户固定电池容量(AH)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="bdkhgddcrl"></p>
+                                        <p id="bdkhgddcrl">0</p>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +145,7 @@
                                         <p>充电点数量(个)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="cddsl"></p>
+                                        <p id="cddsl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box">
@@ -152,7 +153,7 @@
                                         <p>充电总量(KWH)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="cddcdzl"></p>
+                                        <p id="cddcdzl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box" style="margin-bottom: 10px;">
@@ -160,7 +161,7 @@
                                         <p>YD能源包数量(个)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="yddcbsl"></p>
+                                        <p id="yddcbsl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box" style="margin-bottom: 10px;">
@@ -168,7 +169,7 @@
                                         <p>YD能源包容量(AH)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="yddcbrl"></p>
+                                        <p id="yddcbrl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box" style="margin-bottom: 10px;">
@@ -176,7 +177,7 @@
                                         <p>发电次数(次)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="fdcs"></p>
+                                        <p id="fdcs">0</p>
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +187,7 @@
                                         <p>换电点数量(个)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="hddsl"></p>
+                                        <p id="hddsl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box">
@@ -194,7 +195,7 @@
                                         <p>HD能源包数量(KWH)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="hdnybsl"></p>
+                                        <p id="hdnybsl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box" style="margin-bottom: 10px;">
@@ -202,7 +203,7 @@
                                         <p>HD能源包容量(AH)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="hdnybrl"></p>
+                                        <p id="hdnybrl">0</p>
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +213,7 @@
                                         <p>售电点数量(个)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="sddsl"></p>
+                                        <p id="sddsl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box">
@@ -220,7 +221,7 @@
                                         <p>售电量(KWH)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="sdl"></p>
+                                        <p id="sdl">0</p>
                                     </div>
                                 </div>
                             </div>
@@ -230,7 +231,7 @@
                                         <p>在网设备总量(个)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="zwsbzl"></p>
+                                        <p id="zwsbzl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box">
@@ -238,7 +239,7 @@
                                         <p>能源服务车辆(辆)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="nyfwcl"></p>
+                                        <p id="nyfwcl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box">
@@ -246,7 +247,7 @@
                                         <p>能源服务人员(位)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="nyfwrysl"></p>
+                                        <p id="nyfwrysl">0</p>
                                     </div>
                                 </div>
                             </div>
@@ -261,7 +262,7 @@
                                         <p>储能站点数量(个)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="cnzsl"></p>
+                                        <p id="cnzsl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box" style="margin-top: 15px;">
@@ -269,7 +270,7 @@
                                         <p>储能总容量(KWH)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="cnzrl"></p>
+                                        <p id="cnzrl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box" style="margin-top: 15px;">
@@ -277,7 +278,7 @@
                                         <p>充电总量(KWH)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="cnzcdzl"></p>
+                                        <p id="cnzcdzl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box" style="margin-top: 15px;">
@@ -285,7 +286,7 @@
                                         <p>充电总量(元)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="cnzcdzlje"></p>
+                                        <p id="cnzcdzlje">0</p>
                                     </div>
                                 </div>
                             </div>
@@ -295,7 +296,7 @@
                                         <p>延寿站点数量(个)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="yszsl"></p>
+                                        <p id="yszsl">0</p>
                                     </div>
                                 </div>
                                 <div class="layui-row operation-item-box" style="margin-top: 15px;">
@@ -303,7 +304,7 @@
                                         <p>平均应急时长(H)</p>
                                     </div>
                                     <div class="layui-col-lg6 layui-col-md6 option-item-number">
-                                        <p id="yszpjyjsc"></p>
+                                        <p id="yszpjyjsc">0</p>
                                     </div>
                                 </div>
                             </div>
@@ -322,15 +323,15 @@
                             <div class="clearfix"></div>
                             <div class="layui-row">
                                 <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                                    <span class="tag-num" id="bddsl1"></span>
+                                    <span class="tag-num" id="bddsl1">0</span>
                                     <span class="tag-info">备电点数量(个)</span>
                                 </div>
                                 <div class="layui-col-lg4 layui-col-md4 layui-tag">
-                                    <span class="tag-num" id="fdcs1"></span>
+                                    <span class="tag-num" id="fdcs1">0</span>
                                     <span class="tag-info">发电次数(个)</span>
                                 </div>
                                 <div class="layui-col-lg4 layui-col-md4 layui-tag" style="border-right: none">
-                                    <span class="tag-num" id=hdcs1></span>
+                                    <span class="tag-num" id=hdcs1>0</span>
                                     <span class="tag-info">换电次数(次)</span>
                                 </div>
                             </div>
