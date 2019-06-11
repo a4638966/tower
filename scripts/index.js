@@ -53,30 +53,13 @@ Index.prototype.initControl = function () {
         element.progress('fdl1', that._commonData.fdlbfb);
         // 按钮事件
         that._controls.btnLogin.on('click', function () {
-
             that.login();
         });
         that._controls.btnLoginOut.on('click', function () {
-            layer.confirm('确认退出当前账户？', {
-                icon: 3,
-                title: '提示'
-            }, function (index) {
-                layer.close(index);
-                layer.msg('退出成功', {
-                    icon: 1,
-                    time: 500 //2秒关闭（如果不配置，默认是3秒）
-                }, function () {
-                    that._controls.loginAgo.show();
-                    that._controls.loginAfter.hide();
-                    that._controls.userMin.hide();
-                });
-
-            });
+            that.logout();
         });
     });
-    this.initSearch('bd');
-    this.initEnergyStation();
-    this.initExtended();
+
     // 切换效果
     var dataInfo = '';
     $('.energy-tip p').on('click', function () {
@@ -124,7 +107,14 @@ Index.prototype.initControl = function () {
 
     // this.initUpdate();
 
-    console.log($.cookie('adminToken'))
+    if ($.cookie('adminToken') != undefined && $.cookie('adminToken') != 'null') {
+        that._controls.loginAgo.hide();
+        that._controls.loginAfter.show();
+        that._controls.userMin.show();
+        that.initSearch('bd');
+        that.initEnergyStation();
+        that.initExtended();
+    }
 
 }
 
@@ -132,9 +122,10 @@ Index.prototype.initControl = function () {
 Index.prototype.initSearch = function (mode) {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/index/big_type_data',
+        url: 'http://www.baoxingtech.com:9604/sys/index/big_type_data',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: 17,
             cityId: '',
@@ -234,9 +225,10 @@ Index.prototype.initChart = function (data) {
 Index.prototype.initEnergyStation = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/index/energy_station',
+        url: 'http://www.baoxingtech.com:9604/sys/index/energy_station',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: 17,
             cityId: '',
@@ -271,9 +263,10 @@ Index.prototype.initEnergyStation = function () {
 Index.prototype.initExtended = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9603/sys/index/prolong_station',
+        url: 'http://www.baoxingtech.com:9604/sys/index/prolong_station',
         type: 'GET',
         dataType: 'json',
+        headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
             provinceId: 17,
             cityId: '',
@@ -347,8 +340,42 @@ Index.prototype.login = function () {
                     that._controls.loginAgo.hide();
                     that._controls.loginAfter.show();
                     that._controls.userMin.show();
+                    that.initSearch('bd');
+                    that.initEnergyStation();
+                    that.initExtended();
                 });
             }
         }
     });
 };
+
+Index.prototype.logout = function () {
+    var that = this;
+    layer.confirm('确认退出当前账户？', {
+        icon: 3,
+        title: '提示'
+    }, function (index) {
+        $.ajax({
+            url: 'http://www.baoxingtech.com:9604/sys/user/logout',
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            success: function (res) {
+                if (res.code === 200) {
+                    $.cookie('adminToken', null);
+                    layer.close(index);
+                    layer.msg('退出成功', {
+                        icon: 1,
+                        time: 500 //2秒关闭（如果不配置，默认是3秒）
+                    }, function () {
+                        that._controls.loginAgo.show();
+                        that._controls.loginAfter.hide();
+                        that._controls.userMin.hide();
+                    });
+                }
+            }
+        });
+    });
+}
