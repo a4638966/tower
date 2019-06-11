@@ -211,7 +211,7 @@ Business.prototype.initChart = function () {
 
     function getMap(provinceId, cityId, prefectureId) {
         $.ajax({
-            url: 'http://www.baoxingtech.com:9604/sys/business_center/map',
+            url: 'http://www.baoxingtech.com:9603/sys/business_center/map',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -331,7 +331,7 @@ Business.prototype.initChart = function () {
 Business.prototype.energyStation = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9604/sys/business_center/energy_station',
+        url: 'http://www.baoxingtech.com:9603/sys/business_center/energy_station',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -354,7 +354,7 @@ Business.prototype.energyStation = function () {
 Business.prototype.prolongStation = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9604/sys/business_center/prolong_station',
+        url: 'http://www.baoxingtech.com:9603/sys/business_center/prolong_station',
         type: 'GET',
         dataType: 'json',
         data: {

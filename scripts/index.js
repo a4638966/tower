@@ -132,7 +132,7 @@ Index.prototype.initControl = function () {
 Index.prototype.initSearch = function (mode) {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9604/sys/index/big_type_data',
+        url: 'http://www.baoxingtech.com:9603/sys/index/big_type_data',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -234,7 +234,7 @@ Index.prototype.initChart = function (data) {
 Index.prototype.initEnergyStation = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9604/sys/index/energy_station',
+        url: 'http://www.baoxingtech.com:9603/sys/index/energy_station',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -271,7 +271,7 @@ Index.prototype.initEnergyStation = function () {
 Index.prototype.initExtended = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9604/sys/index/prolong_station',
+        url: 'http://www.baoxingtech.com:9603/sys/index/prolong_station',
         type: 'GET',
         dataType: 'json',
         data: {

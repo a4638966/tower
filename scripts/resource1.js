@@ -67,7 +67,7 @@ Resource.prototype.initControl = function () {
         var tree = layui.tree;
         var cityArray = [];
         $.ajax({
-            url: 'http://www.baoxingtech.com:9604/sys/area/shi',
+            url: 'http://www.baoxingtech.com:9603/sys/area/shi',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -89,7 +89,7 @@ Resource.prototype.initControl = function () {
                 var prefectureArray = [];
                 for (var i = 0; i < cityArray.length; i++) {
                     $.ajax({
-                        url: 'http://www.baoxingtech.com:9604/sys/area/qx',
+                        url: 'http://www.baoxingtech.com:9603/sys/area/qx',
                         type: 'GET',
                         dataType: 'json',
                         data: {
@@ -453,7 +453,7 @@ Resource.prototype.initChart = function () {
 Resource.prototype.initSecondBdList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_bd_list',
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_bd_list',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -499,7 +499,7 @@ Resource.prototype.initSecondBdList = function () {
 Resource.prototype.initSecondCdList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_cd_list',
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_cd_list',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -546,7 +546,7 @@ Resource.prototype.initSecondCdList = function () {
 Resource.prototype.initSecondCnzList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_cnz_list',
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_cnz_list',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -566,7 +566,7 @@ Resource.prototype.initSecondCnzList = function () {
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].cnzmc + '</td>';
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].deviceList[j].name + '</td>';
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].deviceCode + '</td>';
-                            str += '<td style="border-right: 1px solid #e6e6e6">' + '<a href="" onclick="window.open(\'http://www.baoxingtech.com:9604/#/?panelId=' + res.result[i].panelId + '\')">' + '进入' + '</a>' + '</td>';
+                            str += '<td style="border-right: 1px solid #e6e6e6">' + '<a href="" onclick="window.open(\'http://www.baoxingtech.com:9603/#/?panelId=' + res.result[i].panelId + '\')">' + '进入' + '</a>' + '</td>';
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].deviceList[j].batType + '</td>';
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].capacity + '</td>';
                             str += '<td onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].deviceList[j].id + '\')">' + res.result[i].deviceList[j].dcglq + '</td>';
@@ -595,7 +595,7 @@ Resource.prototype.initSecondCnzList = function () {
 Resource.prototype.initSecondYszList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_ysz_list',
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_ysz_list',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -638,7 +638,7 @@ Resource.prototype.initSecondYszList = function () {
 Resource.prototype.initSecondXdcList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_xdc_list',
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_xdc_list',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -681,7 +681,7 @@ Resource.prototype.initSecondXdcList = function () {
 Resource.prototype.initSecondNybList = function () {
     var that = this;
     $.ajax({
-        url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_nyb_list',
+        url: 'http://www.baoxingtech.com:9603/sys/resource_center/second_nyb_list',
         type: 'GET',
         dataType: 'json',
         data: {
