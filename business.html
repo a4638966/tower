@@ -16,6 +16,7 @@
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW"></script>
     <script type="text/javascript" src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
     </script>
+    <script src="components/jquery.cookie.js"></script>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -116,19 +117,19 @@
                         <div class="layui-row">
                             <div class="layui-col-lg6 layui-col-md6 layui-tag">
                                 <p class="tag-info">储能电池容量总计(KWH)</p>
-                                <p class="tag-num"><span id="capacity" class="num-get"></span><span>KWH</span></p>
+                                <p class="tag-num"><span id="capacity" class="num-get">0</span><span>KWH</span></p>
                             </div>
                             <div class="layui-col-lg6 layui-col-md6 layui-tag">
                                 <p class="tag-info">削峰填谷能力(KWH)</p>
-                                <p class="tag-num"><span id="fdl" class="num-get"></span><span>KWH</span></p>
+                                <p class="tag-num"><span id="fdl" class="num-get">0</span><span>KWH</span></p>
                             </div>
                             <div class="layui-col-lg6 layui-col-md6 layui-tag">
                                 <p class="tag-info">累计节费金额(元)</p>
-                                <p class="tag-num"><span id="ljjfje" class="num-get"></span><span>元</span></p>
+                                <p class="tag-num"><span id="ljjfje" class="num-get">0</span><span>元</span></p>
                             </div>
                             <div class="layui-col-lg6 layui-col-md6 layui-tag">
                                 <p class="tag-info">单站日均放电时长(H)</p>
-                                <p class="tag-num"><span id="dzrjfdsc" class="num-get"></span><span>H</span></p>
+                                <p class="tag-num"><span id="dzrjfdsc" class="num-get">0</span><span>H</span></p>
                             </div>
                         </div>
                     </div>
@@ -141,19 +142,19 @@
                         <div class="layui-row">
                             <div class="layui-col-lg6 layui-col-md6 layui-tag">
                                 <p class="tag-info">T0平均应急时长(H)</p>
-                                <p class="tag-num"><span id="t0pjyjsc" class="num-get"></span><span>H</span></p>
+                                <p class="tag-num"><span id="t0pjyjsc" class="num-get">0</span><span>H</span></p>
                             </div>
                             <div class="layui-col-lg6 layui-col-md6 layui-tag">
                                 <p class="tag-info">T1平均应急时长(H)</p>
-                                <p class="tag-num"><span id="t1pjyjsc" class="num-get"></span><span>H</span></p>
+                                <p class="tag-num"><span id="t1pjyjsc" class="num-get">0</span><span>H</span></p>
                             </div>
                             <div class="layui-col-lg6 layui-col-md6 layui-tag">
                                 <p class="tag-info">延寿管理提升(%)</p>
-                                <p class="tag-num"><span id="ysglts" class="num-get"></span><span>%</span></p>
+                                <p class="tag-num"><span id="ysglts" class="num-get">0</span><span>%</span></p>
                             </div>
                             <div class="layui-col-lg6 layui-col-md6 layui-tag">
                                 <p class="tag-info">应急次数(次)</p>
-                                <p class="tag-num"><span id="yjcs" class="num-get"></span><span>次</span></p>
+                                <p class="tag-num"><span id="yjcs" class="num-get">0</span><span>次</span></p>
                             </div>
                         </div>
                     </div>
