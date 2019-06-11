@@ -18,6 +18,7 @@
     <script type="text/javascript"
         src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
     </script>
+    <script src="components/jquery.cookie.js"></script>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -141,79 +142,79 @@
                         <div id="energyDetil" class="layui-row">
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn1">
                                 <p class="tag-title">蓄电池放电8小时以上站点数量(个)</p>
-                                <p class="tag-num"><span id="topDisChargeCount"></span><span
+                                <p class="tag-num"><span id="topDisChargeCount">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn2">
                                 <p class="tag-title">蓄电池放电不足4小时站点数量(个)</p>
-                                <p class="tag-num"><span id="lowDisChargeCount"></span><span
+                                <p class="tag-num"><span id="lowDisChargeCount">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn3">
                                 <p class="tag-title">蓄电池管理设备/DTU系统告警数量(个)</p>
-                                <p class="tag-num"><span id="dtuSysWarnCount"></span><span
+                                <p class="tag-num"><span id="dtuSysWarnCount">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn4">
                                 <p class="tag-title">蓄电池放电4~8小时站点数量(个)</p>
-                                <p class="tag-num"><span id="normalDisChargeCount"></span><span
+                                <p class="tag-num"><span id="normalDisChargeCount">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn5">
                                 <p class="tag-title">平均放电时长变动>20%站点数量(个)</p>
-                                <p class="tag-num"><span id="averageDisChargeWaveCount"></span><span
+                                <p class="tag-num"><span id="averageDisChargeWaveCount">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn6">
                                 <p class="tag-title">蓄电池管理设备/DTU离线告警数量(个)</p>
-                                <p class="tag-num"><span id="dtuOfflineCount"></span><span
+                                <p class="tag-num"><span id="dtuOfflineCount">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn7">
                                 <p class="tag-title">蓄电池电压告警数量(个)</p>
-                                <p class="tag-num"><span id="voltageWarnCount"></span><span
+                                <p class="tag-num"><span id="voltageWarnCount">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn8">
                                 <p class="tag-title">蓄电池温度告警数量(个)</p>
-                                <p class="tag-num"><span id="tempWarnCount"></span><span
+                                <p class="tag-num"><span id="tempWarnCount">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                         </div>
                         <div id="extendedDetil" class="layui-row" style="display:none">
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn9">
                                 <p class="tag-title">蓄电池放电3小时以上站点数量(个)</p>
-                                <p class="tag-num"><span id="topDisChargeCount1"></span><span
+                                <p class="tag-num"><span id="topDisChargeCount1">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn10">
                                 <p class="tag-title">蓄电池放电不足1小时站点数量(个)</p>
-                                <p class="tag-num"><span id="lowDisChargeCount1"></span><span
+                                <p class="tag-num"><span id="lowDisChargeCount1">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn11">
                                 <p class="tag-title">蓄电池管理设备/DTU离线告警数量(个)</p>
-                                <p class="tag-num"><span id="dtuOfflineCount1"></span><span
+                                <p class="tag-num"><span id="dtuOfflineCount1">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn12">
                                 <p class="tag-title">蓄电池放电1~3小时站点数量(个)</p>
-                                <p class="tag-num"><span id="normalDisChargeCount1"></span><span
+                                <p class="tag-num"><span id="normalDisChargeCount1">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn13">
                                 <p class="tag-title">蓄电池管理设备/DTU系统告警数量(个)</p>
-                                <p class="tag-num"><span id="dtuSysWarnCount1"></span><span
+                                <p class="tag-num"><span id="dtuSysWarnCount1">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn14">
                                 <p class="tag-title">蓄电池电压告警数量(个)</p>
-                                <p class="tag-num"><span id="voltageWarnCount1"></span><span
+                                <p class="tag-num"><span id="voltageWarnCount1">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                             <div class="layui-col-lg12 layui-col-md12 layui-tag" id="btn15">
                                 <p class="tag-title">蓄电池温度告警数量(个)</p>
-                                <p class="tag-num"><span id="tempWarnCount1"></span><span
+                                <p class="tag-num"><span id="tempWarnCount1">0</span><span
                                         style="font-size: 14px;display: inline-block;margin-left: 5px;">个</span></p>
                             </div>
                         </div>
