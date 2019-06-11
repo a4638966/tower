@@ -456,9 +456,9 @@ Monitoring.prototype.initChart = function () {
                 that._commonData.prefectureId = data.id
             }
             pointClick(data.name);
-            that.initEnergyBusiness(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);
-            that.initEnergyProduct(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId)
-            that.initResourceCenterList(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId)
+            that.initTable();
+            that.energyStation();
+            that.prolongStation();
         });
     }
 
