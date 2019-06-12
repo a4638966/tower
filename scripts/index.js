@@ -24,7 +24,8 @@ var Index = function () {
         extendCapacity: $('#extendCapacity'),
         extendPjxhnl: $('#extendPjxhnl'),
         extendXhnltsnl: $('#extendXhnltsnl'),
-        extendFDL: $('#extendFDL')
+        extendFDL: $('#extendFDL'),
+        roleName: $('#roleName')
     };
     this._commonData = {
         cdlbfb: 0,
@@ -359,10 +360,12 @@ Index.prototype.login = function () {
                 $.cookie('adminToken', res.result.adminToken);
                 $.cookie('mapRangeId', res.result.mapRangeId);
                 $.cookie('mapRange', res.result.mapRange);
-                layer.msg('登陆成功，欢迎您管理员', {
+                $.cookie('name', res.result.name);
+                layer.msg('登陆成功，欢迎您' + res.result.name + '', {
                     icon: 1,
                     time: 700 //2秒关闭（如果不配置，默认是3秒）
                 }, function () {
+                    that._controls.roleName.html($.cookie('name'))
                     that._controls.loginAgo.hide();
                     that._controls.loginAfter.show();
                     that._controls.userMin.show();
