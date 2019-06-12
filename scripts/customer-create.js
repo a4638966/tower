@@ -143,10 +143,10 @@ CustomerCreate.prototype.saveData = function () {
             userTrueName: that._controls.userTrueName.val(),
             contractCode: that._controls.contractCode.val(),
             userIphone: that._controls.userIphone.val(),
-            processDate: that._controls.processDate.val(),
+            processDateString: that._controls.processDate.val(),
             devType: that._commonData.devType,
             money: that._controls.money.val(),
-            beginTime: that._controls.beginTime.val(),
+            beginTimeString: that._controls.beginTime.val(),
             provinceId: that._commonData.provinceId,
             cityId: that._commonData.cityId,
             prefectureId: that._commonData.prefectureId,
@@ -156,7 +156,14 @@ CustomerCreate.prototype.saveData = function () {
             processCycle: that._controls.processCycle.val(),
         },
         success: function (res) {
-            console.log(res)
+            if (res.code === 200) {
+                layer.msg('添加成功！', {
+                    icon: 1,
+                    time: 700 //2秒关闭（如果不配置，默认是3秒）
+                }, function () {
+                    window.location.href="customer-maintain.html";
+                });
+            }
         }
     });
 }

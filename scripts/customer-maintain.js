@@ -15,14 +15,16 @@ var CustomerMaintain = function () {
         customerContact: $('#customerContact'),
         customerServer: $('#customerServer'),
 
-        btnSearch: $('#btnSearch')
+        btnSearch: $('#btnSearch'),
+
+        tbody: $('#tbody')
     };
     this._commonData = {
         form: null,
         provinceId: '',
         cityId: '',
         prefectureId: '',
-        devType: '25',
+        devType: '',
         customerType: ''
     }
 };
@@ -64,10 +66,10 @@ CustomerMaintain.prototype.initControl = function () {
             that._commonData.customerType = data.value;
         });
         laydate.render({
-            elem: '#startDate'
+            elem: '#beginTime'
         });
         laydate.render({
-            elem: '#endDate'
+            elem: '#endTime'
         })
     });
 
@@ -151,8 +153,8 @@ CustomerMaintain.prototype.handleSearch = function () {
             cityId: that._commonData.cityId,
             prefectureId: that._commonData.prefectureId,
             devType: that._commonData.devType,
-            beginTime: that._controls.beginTime.val(),
-            endTime: that._controls.endTime.val(),
+            beginTimeString: that._controls.beginTime.val(),
+            endTimeString: that._controls.endTime.val(),
             userTrueName: that._controls.userTrueName.val(),
             customerType: that._commonData.customerType,
             address: that._controls.address.val(),
@@ -160,7 +162,40 @@ CustomerMaintain.prototype.handleSearch = function () {
             customerServer: that._controls.customerServer.val()
         },
         success: function (res) {
-            console.log(res)
+            var str = '';
+            if (res.code === 200) {
+                if (res.result.length > 0) {
+                    for (var i=0;i< res.result.length;i++) {
+                        str += '<tr>';
+                        str += '<td>' + res.result[i].userName + '</td>';
+                        str += '<td>' + res.result[i].userTrueName + '</td>';
+                        str += '<td>' + res.result[i].userIphone + '</td>';
+                        if (res.result[i].userType === '0') {
+                            str += '<td>个人用户</td>';
+                        } else  if (res.result[i].userType === '1'){
+                            str += '<td>企业用户</td>'
+                        } else {
+                            str += '<td>其他用户</td>'
+                        }
+                        str += '<td>' + res.result[i].address + '</td>';
+                        str += '<td>' + res.result[i].customerContact + '</td>';
+                        str += '<td>' + res.result[i].customerServer + '</td>';
+                        str += '<td>';
+                        str += '<a href="javascript:void(0)" style="color: #fff">详情</a>'
+                        str += '</td>';
+                        str += '</tr>';
+                    }
+                } else {
+                    str = '<tr><td colspan="9" style="text-align:center">暂无数据</td></tr>'
+                }
+            } else {
+                str = '<tr><td clospan="9" style="text-align:center">暂无数据</td></tr>';
+            }
+            that._controls.tbody.html(str);
+        },
+        error: function () {
+            layer.msg('数据异常！');
+            that._controls.tbody.html('<tr><td clospan="9" style="text-align:center">暂无数据</td></tr>')
         }
     });
 }
