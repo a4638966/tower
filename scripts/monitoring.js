@@ -19,7 +19,8 @@ var Monitoring = function () {
             dataType: 'energy',
             provinceId: '',
             cityId: '',
-            prefectureId: ''
+            prefectureId: '',
+            name: ''
         }
 }
 Monitoring.prototype.initControl = function () {
@@ -320,6 +321,9 @@ Monitoring.prototype.initChart = function () {
                 map.addOverlay(ply);
                 pointArray = pointArray.concat(ply.getPath());
             }
+            if (that._commonData.name != '河南') {
+                map.setViewport(pointArray); //调整视野 
+            } 
             if (num === 1) {
                 getMap(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);
             }
@@ -518,24 +522,29 @@ Monitoring.prototype.initChart = function () {
 
     // 获取河南省各市区边界
     function getCitySide() {
-        getBoundary('郑州', 1);
-        getBoundary('开封', 2);
-        getBoundary('洛阳', 3);
-        getBoundary('平顶山', 4);
-        getBoundary('安阳', 5);
-        getBoundary('鹤壁', 6);
-        getBoundary('新乡', 7);
-        getBoundary('焦作', 8);
-        getBoundary('濮阳', 9);
-        getBoundary('许昌', 10);
-        getBoundary('漯河', 11);
-        getBoundary('三门峡', 12);
-        getBoundary('南阳', 13);
-        getBoundary('商丘', 14);
-        getBoundary('信阳', 15);
-        getBoundary('周口', 16);
-        getBoundary('驻马店', 17);
-        getBoundary('济源市', 18);
+        that._commonData.name = $.cookie('name').replace('管理员', '');
+        if (that._commonData.name != '河南') {
+            getBoundary(that._commonData.name, 1);
+        } else {
+            getBoundary('郑州', 1);
+            getBoundary('开封', 2);
+            getBoundary('洛阳', 3);
+            getBoundary('平顶山', 4);
+            getBoundary('安阳', 5);
+            getBoundary('鹤壁', 6);
+            getBoundary('新乡', 7);
+            getBoundary('焦作', 8);
+            getBoundary('濮阳', 9);
+            getBoundary('许昌', 10);
+            getBoundary('漯河', 11);
+            getBoundary('三门峡', 12);
+            getBoundary('南阳', 13);
+            getBoundary('商丘', 14);
+            getBoundary('信阳', 15);
+            getBoundary('周口', 16);
+            getBoundary('驻马店', 17);
+            getBoundary('济源市', 18);
+        }
     }
     setTimeout(function () {
         getCitySide();
