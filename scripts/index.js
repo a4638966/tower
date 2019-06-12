@@ -28,7 +28,10 @@ var Index = function () {
     };
     this._commonData = {
         cdlbfb: 0,
-        fdlbfb: 0
+        fdlbfb: 0,
+        provinceId: '',
+        cityId: '',
+        prefectureId: '',
     }
 };
 
@@ -118,18 +121,33 @@ Index.prototype.initControl = function () {
 
 }
 
+// 权限判断
+Index.prototype.cookieDeter = function () {
+    var that = this;
+    if ($.cookie('mapRange') === '1') {
+        that._commonData.provinceId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '2') {
+        that._commonData.cityId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '3') {
+        that._commonData.prefectureId = $.cookie('mapRangeId');
+    }
+}
+
 // 初始化备电点
 Index.prototype.initSearch = function (mode) {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/index/big_type_data',
         type: 'GET',
         dataType: 'json',
-        headers:{'Admin-Token':$.cookie('adminToken')},
+        headers: {
+            'Admin-Token': $.cookie('adminToken')
+        },
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: '',
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
             mode: mode
         },
         success: function (res) {
@@ -224,15 +242,18 @@ Index.prototype.initChart = function (data) {
 // 储能站
 Index.prototype.initEnergyStation = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/index/energy_station',
         type: 'GET',
         dataType: 'json',
-        headers:{'Admin-Token':$.cookie('adminToken')},
+        headers: {
+            'Admin-Token': $.cookie('adminToken')
+        },
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
         },
         success: function (res) {
             if (res.code === 200) {
@@ -262,15 +283,18 @@ Index.prototype.initEnergyStation = function () {
 // 延寿站
 Index.prototype.initExtended = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/index/prolong_station',
         type: 'GET',
         dataType: 'json',
-        headers:{'Admin-Token':$.cookie('adminToken')},
+        headers: {
+            'Admin-Token': $.cookie('adminToken')
+        },
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
         },
         success: function (res) {
             if (res.code === 200) {
@@ -333,6 +357,8 @@ Index.prototype.login = function () {
         success: function (res) {
             if (res.code === 200) {
                 $.cookie('adminToken', res.result.adminToken);
+                $.cookie('mapRangeId', res.result.mapRangeId);
+                $.cookie('mapRange', res.result.mapRange);
                 layer.msg('登陆成功，欢迎您管理员', {
                     icon: 1,
                     time: 700 //2秒关闭（如果不配置，默认是3秒）
@@ -344,6 +370,8 @@ Index.prototype.login = function () {
                     that.initEnergyStation();
                     that.initExtended();
                 });
+            } else {
+                layer.msg(res.message)
             }
         }
     });
@@ -365,6 +393,8 @@ Index.prototype.logout = function () {
             success: function (res) {
                 if (res.code === 200) {
                     $.cookie('adminToken', null);
+                    $.cookie('mapRange', null);
+                    $.cookie('mapRangeId', null)
                     layer.close(index);
                     layer.msg('退出成功', {
                         icon: 1,
