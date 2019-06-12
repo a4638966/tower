@@ -5,17 +5,19 @@ var Operation = function() {
             btnChart: $('#btnChart'),
             btnTable: $('#btnTable'),
             myChart: $('#myChart'),
-            myTable: $('#myTable')
+            myTable: $('#myTable'),
+            roleName: $('#roleName')
         },
         this._commonData = {
             chartType: false,
-            provinceId: 17,
+            provinceId: '',
             cityId: '',
             prefectureId: ''
         }
 }
 Operation.prototype.initControl = function() {
     var that = this;
+    this._controls.roleName.html($.cookie('name'));
     // 初始化日期
     this.initUpdate();
     // 初始化layui
@@ -47,6 +49,18 @@ Operation.prototype.initControl = function() {
         window.location.href = 'operation-detail.html';
     })
 };
+
+// 权限判断
+Operation.prototype.cookieDeter = function () {
+    var that = this;
+    if ($.cookie('mapRange') === '1') {
+        that._commonData.provinceId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '2') {
+        that._commonData.cityId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '3') {
+        that._commonData.prefectureId = $.cookie('mapRangeId');
+    }
+}
 // 初始化日期
 Operation.prototype.initUpdate = function() {
     var that = this;
@@ -335,6 +349,7 @@ Operation.prototype.initChart = function () {
 }
 Operation.prototype.getLeftData = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/operation_center/left_data',
         type: 'GET',
