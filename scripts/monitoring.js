@@ -11,18 +11,20 @@ var Monitoring = function () {
             myChart: $('#myChart'),
             myTable: $('#myTable'),
             tableEnergy: $('#tableEnergy'),
-            tableExtended: $('#tableExtended')
+            tableExtended: $('#tableExtended'),
+            roleName: $('#roleName')
         },
         this._commonData = {
             chartType: false,
             dataType: 'energy',
-            provinceId: 17,
+            provinceId: '',
             cityId: '',
             prefectureId: ''
         }
 }
 Monitoring.prototype.initControl = function () {
     var that = this;
+    this._controls.roleName.html($.cookie('name'))
     // 初始化日期
     this.initUpdate();
     // 初始化layui
@@ -133,6 +135,17 @@ Monitoring.prototype.initControl = function () {
         that.getList('208', 'table2')
     })
 };
+// 权限判断
+Monitoring.prototype.cookieDeter = function () {
+    var that = this;
+    if ($.cookie('mapRange') === '1') {
+        that._commonData.provinceId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '2') {
+        that._commonData.cityId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '3') {
+        that._commonData.prefectureId = $.cookie('mapRangeId');
+    }
+}
 // 初始化日期
 Monitoring.prototype.initUpdate = function () {
     var that = this;
@@ -161,6 +174,7 @@ Monitoring.prototype.initTable = function () {
     if (that._commonData.dataType === 'energy') {
         that._controls.tableEnergy.show();
         that._controls.tableExtended.hide();
+        this.cookieDeter();
         $.ajax({
             url: 'http://www.baoxingtech.com:9604/sys/monitor_center/energy_station_prefecture_panel_list',
             type: 'GET',
@@ -193,6 +207,7 @@ Monitoring.prototype.initTable = function () {
     } else if (that._commonData.dataType === 'extended') {
         that._controls.tableEnergy.hide();
         that._controls.tableExtended.show();
+        this.cookieDeter();
         $.ajax({
             url: 'http://www.baoxingtech.com:9604/sys/monitor_center/prolong_station_prefecture_panel_list',
             type: 'GET',
@@ -529,6 +544,7 @@ Monitoring.prototype.initChart = function () {
 
 Monitoring.prototype.energyStation = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/monitor_center/energy_station',
         type: 'GET',
@@ -559,6 +575,7 @@ Monitoring.prototype.energyStation = function () {
 
 Monitoring.prototype.prolongStation = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/monitor_center/prolong_station',
         type: 'GET',
@@ -588,6 +605,7 @@ Monitoring.prototype.prolongStation = function () {
 
 Monitoring.prototype.getList = function (code, tableId) {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/monitor_center/panel_list',
         type: 'GET',
