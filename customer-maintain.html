@@ -17,7 +17,8 @@
     </script>
     <script type="text/javascript"
         src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js">
-    </script>
+        </script>
+        <script src="components/jquery.cookie.js"></script>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -113,7 +114,7 @@
     <!-- 头部logo部分结束 -->
     <!-- 主体内容开始 -->
     <div class="layui-fluid">
-        <div class="layui-row">
+        <div class="layui-row" style="margin-bottom: 10px;">
             <div class="layui-col-lg6 layui-col-md6">
                 <span style="color:#778892;">位置：<a href="javascript:void(0)" style="color:#778892;">客户中心</a> - <a
                         href="javascript:void(0)" style="color:#778892;">客户维护</a></span>
@@ -124,30 +125,31 @@
             <div class="layui-col-lg12 layui-col-md12 layui-radius" style="padding-bottom: 20px;padding-left:10px;">
                 <div class="layui-row">
                     <div class="layui-col-lg12 layui-col-md12 layui-tag">
-                        <dl class="search-box">
-                            <dt>
-                                <i class="layui-icon layui-icon-location"></i>
-                                <span>区域</span>
-                            </dt>
-                            <dd class="hover active">新乡</dd>
-                            <dd class="hover">濮阳</dd>
-                            <dd class="hover">洛阳</dd>
-                            <dd class="hover">驻马店</dd>
-                            <dd class="hover">平顶山</dd>
-                            <dd class="hover">安阳</dd>
-                            <dd class="hover">鹤壁</dd>
-                            <dd class="hover">济源</dd>
-                            <dd class="hover">焦作</dd>
-                            <dd class="hover">开封</dd>
-                            <dd class="hover">漯河</dd>
-                            <dd class="hover">南阳</dd>
-                            <dd class="hover">三门峡</dd>
-                            <dd class="hover">商丘</dd>
-                            <dd class="hover">信阳</dd>
-                            <dd class="hover">许昌</dd>
-                            <dd class="hover">郑州</dd>
-                            <dd class="hover">周口</dd>
-                        </dl>
+                        <div class="layui-form">
+                            <dl class="search-box user-box">
+                                <dt style="margin-top: 5px;">
+                                    <i class="layui-icon layui-icon-location"></i>
+                                    <span>区域</span>
+                                </dt>
+                                <dd class="date-box">
+                                    <select id="ddlProvince" lay-filter="ddlProvince">
+                                        <option value="">客户所在省份</option>
+                                        <option value="17">河南省</option>
+
+                                    </select>
+                                </dd>
+                                <dd class="date-box">
+                                    <select id="ddlCidy" lay-filter="ddlCidy">
+                                        <option value="">客户所在城市</option>
+                                    </select>
+                                </dd>
+                                <dd class="date-box">
+                                    <select id="ddlprefecture" lay-filter="ddlprefecture">
+                                        <option value="">客户所在区县</option>
+                                    </select>
+                                </dd>
+                            </dl>
+                        </div>
                     </div>
                     <div class="layui-col-lg12 layui-col-md12">
                         <dl class="search-box">
@@ -155,12 +157,12 @@
                                 <i class="layui-icon layui-icon-app"></i>
                                 <span>业务类型</span>
                             </dt>
-                            <dd class="hover active">备电</dd>
-                            <dd class="hover">发电</dd>
-                            <dd class="hover">换电</dd>
-                            <dd class="hover">售电</dd>
-                            <dd class="hover">储能</dd>
-                            <dd class="hover">延寿</dd>
+                            <dd class="hover active" devType="25">备电</dd>
+                            <dd class="hover" devType="19">充电</dd>
+                            <dd class="hover" devType="">换电</dd>
+                            <dd class="hover" devType="">售电</dd>
+                            <dd class="hover" devType="22">储能站</dd>
+                            <dd class="hover" devType="18">延寿站</dd>
                         </dl>
                     </div>
                     <div class="layui-col-lg12 layui-col-md12">
@@ -170,10 +172,10 @@
                                 <span>时间</span>
                             </dt>
                             <dd class="date-box">
-                                <input type="text" class="layui-input" id="startDate" placeholder="请选择开始时间">
+                                <input type="text" class="layui-input" id="beginTime" placeholder="请选择开始时间">
                             </dd>
                             <dd class="date-box">
-                                <input type="text" class="layui-input" id="endDate" placeholder="请选择结束时间">
+                                <input type="text" class="layui-input" id="endTime" placeholder="请选择结束时间">
                             </dd>
                         </dl>
                     </div>
@@ -185,10 +187,10 @@
                                     <span>用户</span>
                                 </dt>
                                 <dd class="date-box">
-                                    <input type="text" class="layui-input" placeholder="请输入用户名称">
+                                    <input type="text" class="layui-input" placeholder="请输入用户名称" id='userTrueName'>
                                 </dd>
                                 <dd class="date-box">
-                                    <select>
+                                    <select id="customerType" lay-filter="customerType">
                                         <option value="">客户类型</option>
                                         <option value="1">金融机构</option>
                                         <option value="2">医疗卫生</option>
@@ -200,20 +202,20 @@
                                     </select>
                                 </dd>
                                 <dd class="date-box">
-                                    <input type="text" class="layui-input" placeholder="请输入客户地址">
+                                    <input type="text" class="layui-input" placeholder="请输入客户地址" id="address">
                                 </dd>
                                 <dd class="date-box">
-                                    <input type="text" class="layui-input" placeholder="请输入客户联系人名称">
+                                    <input type="text" class="layui-input" placeholder="请输入客户联系人名称" id="customerContact">
                                 </dd>
                                 <dd class="date-box">
-                                    <input type="text" class="layui-input" placeholder="请输入服务人名称">
+                                    <input type="text" class="layui-input" placeholder="请输入服务人名称" id="customerServer">
                                 </dd>
                             </dl>
                         </div>
                     </div>
                     <div class="layui-col-lg12 layui-col-md12">
                         <button class="layui-btn layui-btn-normal layui-btn-sm"
-                            style="background: #0070C9;margin-left: 20px;">查询</button>
+                            style="background: #0070C9;margin-left: 20px;" id="btnSearch">查询</button>
                     </div>
                 </div>
             </div>
@@ -225,9 +227,12 @@
                 <table class="layui-table" lay-skin="line">
                     <thead>
                         <tr>
-                            <th>所属地市</th>
-                            <th>所属区县</th>
+                            <!-- <th>所属地市</th>
+                            <th>所属区县</th> -->
                             <th>客户名称</th>
+                            <th>真实姓名</th>
+                            <th>客户手机号</th>
+                            <th>用户类型</th>
                             <th>客户类型</th>
                             <th>客户地址</th>
                             <th>联系人</th>
@@ -235,23 +240,7 @@
                             <th width="140">操作</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>新乡</td>
-                            <td>封丘</td>
-                            <td>封丘县农村信用社</td>
-                            <td>金融</td>
-                            <td>封丘县幸福路</td>
-                            <td>宋磊</td>
-                            <td>魏功明</td>
-                            <td>
-                                <a href="#" style="margin-right: 10px;color: #0070C9">查看详情</a>
-                                <a href="#" style="margin-right: 10px;color: #0070C9">修改</a>
-                                <a href="#" style="color: #0070C9">删除</a>
-                            </td>
-                        </tr>
-
-                    </tbody>
+                    <tbody id="tbody"></tbody>
                 </table>
             </div>
         </div>
