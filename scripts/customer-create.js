@@ -15,6 +15,8 @@ var CustomerCreate = function () {
         readyTime: $('#readyTime'),
         address: $('#address'),
         processCycle: $('#processCycle'),
+        customerContact: $('#customerContact'),
+        customerServer: $('#customerServer'),
         btnSave: $('#btnSave')
     };
     this._commonData = {
@@ -154,6 +156,8 @@ CustomerCreate.prototype.saveData = function () {
             readyTime: that._controls.readyTime.val(),
             address: that._controls.address.val(),
             processCycle: that._controls.processCycle.val(),
+            customerContact: that._controls.customerContact.val(),
+            customerServer: that._controls.customerServer.val()
         },
         success: function (res) {
             if (res.code === 200) {

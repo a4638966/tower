@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript"
         src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
-        <script src="components/jquery.cookie.js"></script>
+    <script src="components/jquery.cookie.js"></script>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -150,6 +150,13 @@
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
+                                            <label class="layui-form-label label-user">联系人</label>
+                                            <div class="layui-input-block input-user">
+                                                <input type="text" name="title" placeholder="请输入联系人"
+                                                    class="layui-input layui-input-sm" id="customerContact">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
                                             <label class="layui-form-label label-user">联系电话</label>
                                             <div class="layui-input-block input-user">
                                                 <input type="text" name="title" placeholder="请输入联系电话"
@@ -161,28 +168,6 @@
                                             <div class="layui-input-block input-user">
                                                 <input type="text" name="title" placeholder="请选择办理日期"
                                                     class="layui-input layui-input-sm" id="processDate">
-                                            </div>
-                                        </div>
-                                        <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">业务类型</label>
-                                            <div class="layui-input-block input-user">
-                                                <select id="devType" lay-filter="devType">
-                                                    <option value="">请选择</option>
-                                                    <option value="25">备电客户</option>
-                                                    <option value="19">充电客户</option>
-                                                    <option value="3">换电客户</option>
-                                                    <option value="4">售电客户</option>
-                                                    <option value="22">储能站</option>
-                                                    <option value="18">延寿站</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">签约人</label>
-                                            <div class="layui-input-block input-user">
-                                                <input type="text" name="title" placeholder="请输入合同签约人"
-                                                    class="layui-input layui-input-sm" id="signer">
                                             </div>
                                         </div>
                                         <!-- <div class="layui-form-item">
@@ -199,16 +184,24 @@
                                     </div>
                                     <div class="layui-col-lg4 layui-col-md4" style="padding-left: 20px;">
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label label-user">签约金额</label>
+                                            <label class="layui-form-label label-user">业务类型</label>
                                             <div class="layui-input-block input-user">
-                                                <input type="text" name="title" placeholder="请输入签约金额"
-                                                    class="layui-input layui-input-sm" id="money">
+                                                <select id="devType" lay-filter="devType">
+                                                    <option value="">请选择</option>
+                                                    <option value="25">备电客户</option>
+                                                    <option value="19">充电客户</option>
+                                                    <option value="3">换电客户</option>
+                                                    <option value="4">售电客户</option>
+                                                    <option value="22">储能站</option>
+                                                    <option value="18">延寿站</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
                                             <label class="layui-form-label label-user">生效日期</label>
                                             <div class="layui-input-block input-user">
-                                                <input type="text" class="layui-input" id="beginTime" placeholder="请选择生效日期">
+                                                <input type="text" class="layui-input" id="beginTime"
+                                                    placeholder="请选择生效日期">
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
@@ -236,6 +229,8 @@
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="layui-col-lg4 layui-col-md4" style="padding-left: 20px;">
                                         <div class="layui-form-item">
                                             <label class="layui-form-label label-user">备电时长</label>
                                             <div class="layui-input-block input-user">
@@ -243,8 +238,6 @@
                                                     class="layui-input layui-input-sm" id="readyTime">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="layui-col-lg4 layui-col-md4" style="padding-left: 20px;">
                                         <div class="layui-form-item">
                                             <label class="layui-form-label label-user">详细地址</label>
                                             <div class="layui-input-block input-user">
@@ -257,6 +250,20 @@
                                             <div class="layui-input-block input-user">
                                                 <input type="text" name="title" placeholder="请输入签约周期"
                                                     class="layui-input layui-input-sm" id="processCycle">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label label-user">签约金额</label>
+                                            <div class="layui-input-block input-user">
+                                                <input type="text" name="title" placeholder="请输入签约金额"
+                                                    class="layui-input layui-input-sm" id="money">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label label-user">服务人</label>
+                                            <div class="layui-input-block input-user">
+                                                <input type="text" name="title" placeholder="请输入服务人"
+                                                    class="layui-input layui-input-sm" id="customerServer">
                                             </div>
                                         </div>
                                     </div>

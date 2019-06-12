@@ -22,10 +22,13 @@ var CustomerMaintain = function () {
     this._commonData = {
         form: null,
         provinceId: '',
+        cityData: null,
         cityId: '',
+        prefectureData: '',
         prefectureId: '',
         devType: '',
-        customerType: ''
+        customerType: '',
+        searchData: null
     }
 };
 CustomerMaintain.prototype.initControl = function () {
@@ -45,6 +48,7 @@ CustomerMaintain.prototype.initControl = function () {
                 that._commonData.form.render()
                 that._commonData.cityId = '';
                 that._commonData.prefectureId = '';
+                that._commonData.provinceName = '';
             }
         });
         form.on('select(ddlCidy)', function (data) {
@@ -165,6 +169,7 @@ CustomerMaintain.prototype.handleSearch = function () {
             var str = '';
             if (res.code === 200) {
                 if (res.result.length > 0) {
+                    that._commonData.searchData = res,result;
                     for (var i=0;i< res.result.length;i++) {
                         str += '<tr>';
                         str += '<td>' + res.result[i].userName + '</td>';
@@ -198,4 +203,7 @@ CustomerMaintain.prototype.handleSearch = function () {
             that._controls.tbody.html('<tr><td clospan="9" style="text-align:center">暂无数据</td></tr>')
         }
     });
+};
+function handleDetail (id) {
+
 }
