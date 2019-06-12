@@ -36,7 +36,9 @@
             // 能源包
             btnEnergyPack: $('#btnEnergyPack'),
             energyPackTable: $('#energyPackTable'),
-            table8: $('#table8')
+            table8: $('#table8'),
+
+            roleName: $('#roleName')
         },
         this._commonData = {
             chartType: false,
@@ -45,8 +47,23 @@
             prefectureId: ''
         }
 }
+
+
+// 权限判断
+Resource.prototype.cookieDeter = function () {
+    var that = this;
+    if ($.cookie('mapRange') === '1') {
+        that._commonData.provinceId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '2') {
+        that._commonData.cityId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '3') {
+        that._commonData.prefectureId = $.cookie('mapRangeId');
+    }
+}
+
 Resource.prototype.initControl = function () {
     var that = this;
+    this._controls.roleName.html($.cookie('name'));
     // 初始化日期
     // this.initUpdate();
     // 根据参数判断哪个显示
@@ -454,6 +471,7 @@ Resource.prototype.initChart = function () {
 }
 Resource.prototype.initSecondBdList = function () {
     var that = this;
+    this.cookieDeter()
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_bd_list',
         type: 'GET',
@@ -501,6 +519,7 @@ Resource.prototype.initSecondBdList = function () {
 
 Resource.prototype.initSecondCdList = function () {
     var that = this;
+    this.cookieDeter()
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_cd_list',
         type: 'GET',
@@ -549,6 +568,7 @@ Resource.prototype.initSecondCdList = function () {
 
 Resource.prototype.initSecondCnzList = function () {
     var that = this;
+    this.cookieDeter()
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_cnz_list',
         type: 'GET',
@@ -599,6 +619,7 @@ Resource.prototype.initSecondCnzList = function () {
 
 Resource.prototype.initSecondYszList = function () {
     var that = this;
+    this.cookieDeter()
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_ysz_list',
         type: 'GET',
@@ -643,6 +664,7 @@ Resource.prototype.initSecondYszList = function () {
 
 Resource.prototype.initSecondXdcList = function () {
     var that = this;
+    this.cookieDeter()
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_xdc_list',
         type: 'GET',
@@ -687,6 +709,7 @@ Resource.prototype.initSecondXdcList = function () {
 
 Resource.prototype.initSecondNybList = function () {
     var that = this;
+    this.cookieDeter()
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/resource_center/second_nyb_list',
         type: 'GET',

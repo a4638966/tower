@@ -398,6 +398,7 @@ Index.prototype.logout = function () {
                     $.cookie('adminToken', null);
                     $.cookie('mapRange', null);
                     $.cookie('mapRangeId', null)
+                    $.cookie('name', '')
                     layer.close(index);
                     layer.msg('退出成功', {
                         icon: 1,
