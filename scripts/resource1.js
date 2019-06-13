@@ -488,7 +488,7 @@ Resource.prototype.initSecondBdList = function () {
                 if (res.result.length > 0) {
                     var str = '';
                     for (var i = 0; i < res.result.length; i++) {
-                        str += '<tr>';
+                        str += '<tr onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].panelId + '\')">';
                         str += '<td>' + res.result[i].name + '</td>';
                         str += '<td>' + res.result[i].customerName + '</td>';
                         str += '<td>' + res.result[i].panelName + '</td>';
@@ -536,7 +536,7 @@ Resource.prototype.initSecondCdList = function () {
                 if (res.result.length > 0) {
                     var str = '';
                     for (var i = 0; i < res.result.length; i++) {
-                        str += '<tr>';
+                        str += '<tr onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].panelId + '\')">';
                         str += '<td>' + res.result[i].name + '</td>';
                         str += '<td>' + res.result[i].cdzmc + '</td>';
                         str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].deviceCode + '</td>';

@@ -38,6 +38,7 @@ var Index = function () {
 
 Index.prototype.initControl = function () {
     var that = this;
+    this._controls.roleName.html($.cookie('name'));
     // 初始化layui
     layui.use(['carousel', 'form', 'element'], function () {
         var carousel = layui.carousel;
