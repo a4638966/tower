@@ -321,7 +321,7 @@ Monitoring.prototype.initChart = function () {
                 map.addOverlay(ply);
                 pointArray = pointArray.concat(ply.getPath());
             }
-            if (that._commonData.name != '河南') {
+            if ($.cookie('userRole') != '河南') {
                 map.setViewport(pointArray); //调整视野 
             } 
             if (num === 1) {
@@ -522,9 +522,8 @@ Monitoring.prototype.initChart = function () {
 
     // 获取河南省各市区边界
     function getCitySide() {
-        that._commonData.name = $.cookie('name').replace('管理员', '');
-        if (that._commonData.name != '河南') {
-            getBoundary(that._commonData.name, 1);
+        if ($.cookie('userRole') != '河南') {
+            getBoundary($.cookie('userRole'), 1);
         } else {
             getBoundary('郑州', 1);
             getBoundary('开封', 2);

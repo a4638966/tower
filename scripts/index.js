@@ -362,6 +362,30 @@ Index.prototype.login = function () {
                 $.cookie('mapRangeId', res.result.mapRangeId);
                 $.cookie('mapRange', res.result.mapRange);
                 $.cookie('name', res.result.name);
+                if (res.result.mapRange === 1) {
+                    $.cookie('userRole', '河南')
+                } else if (res.result.mapRange === 2) {
+                    $.ajax({
+                        url: 'http://www.baoxingtech.com:9604/sys/area/shi',
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'Admin-Token':  res.result.adminToken
+                        },
+                        data: {
+                            provinceId: 17
+                        },
+                        success: function (res1) {
+                            if (res.code === 200) {
+                                for (var i=0;i< res1.result.length;i++) {
+                                    if (res1.result[i].id === res.result.mapRangeId) {
+                                        $.cookie('userRole', res1.result[i].name);
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
                 layer.msg('登陆成功，欢迎您' + res.result.name + '', {
                     icon: 1,
                     time: 700 //2秒关闭（如果不配置，默认是3秒）
@@ -400,6 +424,7 @@ Index.prototype.logout = function () {
                     $.cookie('mapRange', null);
                     $.cookie('mapRangeId', null)
                     $.cookie('name', '')
+                    $.cookie('userRole', '');
                     layer.close(index);
                     layer.msg('退出成功', {
                         icon: 1,
