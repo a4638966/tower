@@ -134,8 +134,10 @@ Resource.prototype.initControl = function () {
                 elem: '#treeNav' //默认是点击节点可进行收缩
                     ,
                 data: cityArray,
+                onlyIconControl: true,
                 click: function (obj) {
                     if (obj.data.children === undefined) {
+                        that._commonData.cityId = '';
                         that._commonData.prefectureId = obj.data.id;
                         that._controls.btnStandbyPower.children('.energy-block').addClass('active')
                         that._controls.btnStandbyPower.children('.energy-text').addClass('text-active');
@@ -146,6 +148,14 @@ Resource.prototype.initControl = function () {
                         that.initSecondBdList();
                     } else {
                         that._commonData.cityId = obj.data.id
+                        that._commonData.prefectureId = ''
+                        that._controls.btnStandbyPower.children('.energy-block').addClass('active')
+                        that._controls.btnStandbyPower.children('.energy-text').addClass('text-active');
+                        that._controls.btnStandbyPower.siblings().children('.energy-block').removeClass('active');
+                        that._controls.btnStandbyPower.siblings().children('.energy-text').removeClass('text-active');
+                        that._controls.standbyPowerTable.show();
+                        that._controls.standbyPowerTable.siblings('table').hide();
+                        that.initSecondBdList();
                     }
 
                 }
@@ -246,6 +256,7 @@ Resource.prototype.initControl = function () {
             that._controls.btnCharge.children('.energy-block').addClass('active')
             that._controls.btnCharge.children('.energy-text').addClass('text-active');
             that._controls.chargeTable.show();
+            that.initSecondCdList();
             break;
             // 换电
         case 'powerExchange':
@@ -264,24 +275,28 @@ Resource.prototype.initControl = function () {
             that._controls.btnProlongLife.children('.energy-block').addClass('active')
             that._controls.btnProlongLife.children('.energy-text').addClass('text-active');
             that._controls.prolongLifeTable.show();
+            that.initSecondCnzList();
             break;
             // 延寿站
         case 'energyStorage':
             that._controls.btnEnergyStorage.children('.energy-block').addClass('active')
             that._controls.btnEnergyStorage.children('.energy-text').addClass('text-active');
             that._controls.energyStorageTable.show();
+            that.initSecondYszList();
             break;
             // 蓄电池batter
         case 'batter':
             that._controls.btnBatter.children('.energy-block').addClass('active')
             that._controls.btnBatter.children('.energy-text').addClass('text-active');
             that._controls.batteryTable.show();
+            that.initSecondXdcList();
             break;
             // 能源包
         case 'energyPack':
             that._controls.btnEnergyPack.children('.energy-block').addClass('active')
             that._controls.btnEnergyPack.children('.energy-text').addClass('text-active');
             that._controls.energyPackTable.show();
+            that.initSecondNybList();
             break;
     }
     this.initSecondBdList();
@@ -727,14 +742,14 @@ Resource.prototype.initSecondNybList = function () {
                     for (var i = 0; i < res.result.length; i++) {
                         str += '<tr>';
                         str += '<td>' + res.result[i].name + '</td>';
-                        str += '<td>' + res.result[i].xdcbh + '</td>';
-                        str += '<td>' + res.result[i].zzywid + '</td>';
+                        str += '<td>' + res.result[i].nybbm + '</td>';
+                        str += '<td>' + res.result[i].zdmc + '</td>';
                         str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].zzywid + '</td>';
                         str += '<td>' + res.result[i].batType + '</td>';
                         str += '<td>' + res.result[i].capacity + '</td>';
+                        str += '<td>' + res.result[i].brand + '</td>';
                         str += '<td>' + res.result[i].rwsj + '</td>';
-                        str += '<td>' + res.result[i].mchr + '</td>';
-                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].bdsc + '</td>';
+                        str += '<td style="border-right: 1px solid #e6e6e6">' + res.result[i].fdbl + '</td>';
                         str += '</tr>';
                     }
                     that._controls.table8.html(str);
