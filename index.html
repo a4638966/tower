@@ -95,7 +95,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">
                         <i class="layui-icon layui-icon-username"
-                            style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i> 管理员
+                            style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i> <span id="roleName"></span>
                         <span class="layui-nav-more"></span></a>
                     <dl class="layui-nav-child layui-anim layui-anim-upbit">
                         <dd><a href="personal.html">个人中心</a></dd>
@@ -198,7 +198,7 @@
                     </div>
                 </div>
             </div>
-            <div class="layui-col-lg3 layui-col-md3 layui-col-wheight layui-user layui-radius"
+            <div class="layui-col-lg3 layui-col-md3 layui-col-wheight layui-user layui-radius pos"
                 style="margin-left: 0.7%;">
                 <div id="loginAgo" class="layui-row" style="display:block">
                     <div class="layui-col-lg12 lay-col-md12 main-login">
@@ -237,18 +237,22 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="layui-col-lg12 layui-col-md12">
+                    <div class="row w_dl">
+                        <div class="layui-col-lg6 layui-col-md6">
                             <span class="layui-badge layui-badge1">6</span>
                             <span class="badeg-info">待办事项</span>
                         </div>
-                        <div class="layui-col-lg12 layui-col-md12">
+                        <div class="layui-col-lg6 layui-col-md6">
                             <span class="layui-badge layui-badge2">6</span>
                             <span class="badeg-info">已办事项</span>
                         </div>
-                        <div class="layui-col-lg12 layui-col-md12">
+                        <div class="layui-col-lg6 layui-col-md6">
                             <span class="layui-badge layui-badge3">0</span>
                             <span class="badeg-info">需求申请</span>
+                        </div>
+                        <div class="layui-col-lg6 layui-col-md6">
+                            <span class="layui-badge layui-badge4">0</span>
+                            <span class="badeg-info">更新中</span>
                         </div>
                     </div>
                 </div>
@@ -456,10 +460,15 @@
                                     <p class="energy-content-title">容量</p>
                                     <p class="energy-content-number" id="extendCapacity">0</p>
                                 </div>
-                                <div class="layui-col-lg12 layui-col-md12" style="margin-top: 2rem;">
+                                <div class="layui-col-lg6 layui-col-md6" style="margin-top: 2rem;">
                                     <p class="energy-content-title">平均续航时长</p>
                                     <p class="energy-content-number" id="extendPjxhnl">0</p>
                                 </div>
+                                <div class="layui-col-lg6 layui-col-md6" style="margin-top: 2rem;">
+                                    <p class="energy-content-title">应急时长</p>
+                                    <p class="energy-content-number" id="">0<span>H</span></p>
+                                </div>
+                                 <div class="clearfix"></div>
                                 <div class="layui-row">
                                     <div class="layui-col-lg12 layui-col-md12">
                                         <div class="progress-box" style="margin-top: 2.9rem;">
@@ -521,20 +530,31 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
-                <ul class="news-content">
+                <ul class="news-content download">
+                        
                     <li>
-                        <p class="news-info">能源平台说明书</p>
-                        <p class="news-date">2019-05-27 14:13</p>
+                        <a href="http://www.baoxingtech.com:8989/file/af313561-e892-4fe0-aa02-8820f1032238.pdf
+                        " target="view_window1">
+                            <p class="news-info">DTU功能说明</p>
+                            <p class="news-date">2019-05-27 14:13</p>
+                        </a>
+                       
                         <div class="clearfix"></div>
                     </li>
                     <li>
-                        <p class="news-info">DTU安装手册</p>
-                        <p class="news-date">2019-05-27 15:41</p>
+                        <a href=" http://www.baoxingtech.com:8989/file/6503d082-9141-4b54-87b8-4f45bbb6c726.pdf" target="view_window2">
+                            <p class="news-info">普通型阀控式密封铅酸蓄电池质量检测标准</p>
+                            <p class="news-date">2019-05-27 15:41</p>
+                        </a>
+                       
                         <div class="clearfix"></div>
                     </li>
                     <li>
-                        <p class="news-info">电池修复利旧规程</p>
-                        <p class="news-date">2019-05-27 17:08</p>
+                        <a href="http://www.baoxingtech.com:8989/file/95d436bb-4d75-483c-aa16-52393ae448dc.pdf" target="view_window3">
+                            <p class="news-info">梯次电池技术及服务规范</p>
+                            <p class="news-date">2019-05-27 17:08</p>
+                        </a>
+                       
                         <div class="clearfix"></div>
                     </li>
                 </ul>
@@ -583,8 +603,14 @@
                 </div>
                 <!-- 金融机构图片位置 -->
                 <div id="jinrongInfo" class="customer-box">
-                    <img src="images/jinrong1.png" alt="腾讯云" style="margin-left:0;width: 180px;height: 150px;">
-                    <img src="images/jinrong2.png" alt="腾讯云" style="width: 150px;height: 150px;">
+                	<div class="pic">
+                		<div><img src="images/jinrong1.png" alt=""></div>
+                		<div>中国农村信用合作社</div>
+                	</div>
+                    <div class="pic">
+                    	<div><img src="images/jinrong2.png" alt=""></div>
+                    	<div>河南省农村信用社</div>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
                 <!-- 医疗机构图片位置 -->
@@ -593,7 +619,10 @@
                 </div>
                 <!-- 公安机构图片位置 -->
                 <div id="gonganInfo" class="customer-box" style="display:none">
-                    <img src="images/gongan.png" alt="腾讯云" style="margin-left:0;width: 180px;height: 150px;">
+                	<div class="pic">
+                		<div><img src="images/gongan.png" alt=""></div>
+                		<div>人民警察</div>
+                	</div>
                     <div class="clearfix"></div>
                 </div>
                 <!-- 学校机构图片位置 -->
@@ -602,9 +631,12 @@
                 </div>
                 <!-- 单位机构图片位置 -->
                 <div id="danweiInfo" class="customer-box" style="display:none">
-                    <img src="images/danwei.png" alt="腾讯云" style="margin-left:0;width: 250px;height: 65px;">
+                	<div class="pic">
+                		<div><img src="images/danwei.png" alt=""></div>
+                		<div>河南旭东电气科技有限公司</div>
+                	</div>
                     <div class="clearfix"></div>
-                </div>
+				</div>
                 <!-- 数据机构图片位置 -->
                 <div id="shujuInfo" class="customer-box" style="display:none">
                     <div class="clearfix"></div>
@@ -628,5 +660,4 @@
         index.initControl();
     </script>
 </body>
-
 </html>

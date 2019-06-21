@@ -11,7 +11,7 @@ ExtendedTree.prototype.initControl = function() {
             elem: '#treeNav',
             skin: 'shihuang',
             nodes: [{ //节点
-                name: '河南省',
+                name: '河南',
                 spread: true,
                 children: [{
                     name: '郑州市',

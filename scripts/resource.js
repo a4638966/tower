@@ -16,86 +16,34 @@ var Resource = function () {
             cnzsl: $('#cnzsl'),
             yszsl: $('#yszsl'),
             xdcgm1: $('#xdcgm1'),
-            tableList: $('#tableList')
+            tableList: $('#tableList'),
+            roleName: $('#roleName')
         },
         this._commonData = {
             chartType: false,
-            provinceId: 17,
+            provinceId: '',
             cityId: '',
-            prefectureId: ''
+            prefectureId: '',
+            name: ''
         }
 }
 Resource.prototype.initControl = function () {
     var that = this;
+    this._controls.roleName.html($.cookie('name'));
     // 初始化日期
     this.initUpdate();
     layui.use(['tree', 'element'], function () {
         var element = layui.element;
-        // layui.tree({
-        //   elem: '#treeNav',
-        //   skin: 'shihuang',
-        //   nodes: [{ //节点
-        //     name: '河南省',
-        //     spread: true,
-        //     children: [{
-        //       name: '郑州市',
-        //       spread: true,
-        //       children: [{
-        //           name: '二七区'
-        //         },
-        //         {
-        //           name: '二七区'
-        //         }, {
-        //           name: '二七区'
-        //         }, {
-        //           name: '二七区'
-        //         }, {
-        //           name: '二七区'
-        //         }
-        //       ]
-        //     }, {
-        //       name: '洛阳',
-        //       children: [{
-        //           name: '二七区'
-        //         },
-        //         {
-        //           name: '二七区'
-        //         }, {
-        //           name: '二七区'
-        //         }, {
-        //           name: '二七区'
-        //         }, {
-        //           name: '二七区'
-        //         }
-        //       ]
-        //     }, {
-        //       name: '新乡',
-        //       children: [{
-        //           name: '二七区'
-        //         },
-        //         {
-        //           name: '二七区'
-        //         }, {
-        //           name: '二七区'
-        //         }, {
-        //           name: '二七区'
-        //         }, {
-        //           name: '二七区'
-        //         }
-        //       ]
-        //     }]
-        //   }]
-        // });
     });
 
     // 初始化地图
     this.initChart();
 
-    this.initEnergyBusiness('17', '', '');
+    this.initEnergyBusiness();
 
-    this.initEnergyProduct('17', '', '');
+    this.initEnergyProduct();
 
-    this.initResourceCenterList('17', '', '');
+    this.initResourceCenterList();
     // 按钮事件
     this._controls.btnChart.on('click', function () {
         that._controls.myChart.show();
@@ -117,6 +65,19 @@ Resource.prototype.initControl = function () {
 
 
 };
+
+// 权限判断
+Resource.prototype.cookieDeter = function () {
+    var that = this;
+    if ($.cookie('mapRange') === '1') {
+        that._commonData.provinceId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '2') {
+        that._commonData.cityId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '3') {
+        that._commonData.prefectureId = $.cookie('mapRangeId');
+    }
+}
+
 // 初始化日期
 Resource.prototype.initUpdate = function () {
     var that = this;
@@ -218,7 +179,11 @@ Resource.prototype.initChart = function () {
                 });
                 map.addOverlay(ply);
                 pointArray = pointArray.concat(ply.getPath());
+                
             }
+            if ($.cookie('userRole') != '河南') {
+                map.setViewport(pointArray); //调整视野 
+            } 
             if (num === 1) {
                 getMap(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);    
             }
@@ -268,10 +233,6 @@ Resource.prototype.initChart = function () {
             }
         }
     };
-
-    var provinceId1 = '17';
-    var cityId1 = '';
-    var prefectureId1 = '';
 
     function addMark(point, myIcon, data) {
         // 生成图像标注
@@ -370,41 +331,48 @@ Resource.prototype.initChart = function () {
 
     // 获取河南省各市区边界
     function getCitySide() {
-        getBoundary('郑州', 1);
-        getBoundary('开封', 2);
-        getBoundary('洛阳', 3);
-        getBoundary('平顶山', 4);
-        getBoundary('安阳', 5);
-        getBoundary('鹤壁', 6);
-        getBoundary('新乡', 7);
-        getBoundary('焦作', 8);
-        getBoundary('濮阳', 9);
-        getBoundary('许昌', 10);
-        getBoundary('漯河', 11);
-        getBoundary('三门峡', 12);
-        getBoundary('南阳', 13);
-        getBoundary('商丘', 14);
-        getBoundary('信阳', 15);
-        getBoundary('周口', 16);
-        getBoundary('驻马店', 17);
-        getBoundary('济源市', 18);
+        console.log($.cookie('userRole'))
+        if ($.cookie('userRole') != '河南') {
+            getBoundary($.cookie('userRole'), 1);
+        } else {
+            getBoundary('郑州', 1);
+            getBoundary('开封', 2);
+            getBoundary('洛阳', 3);
+            getBoundary('平顶山', 4);
+            getBoundary('安阳', 5);
+            getBoundary('鹤壁', 6);
+            getBoundary('新乡', 7);
+            getBoundary('焦作', 8);
+            getBoundary('濮阳', 9);
+            getBoundary('许昌', 10);
+            getBoundary('漯河', 11);
+            getBoundary('三门峡', 12);
+            getBoundary('南阳', 13);
+            getBoundary('商丘', 14);
+            getBoundary('信阳', 15);
+            getBoundary('周口', 16);
+            getBoundary('驻马店', 17);
+            getBoundary('济源市', 18);
+        }
+        
     }
     setTimeout(function () {
         getCitySide();
     }, 100);
 }
 
-Resource.prototype.initEnergyBusiness = function (provinceId, cityId, prefectureId) {
+Resource.prototype.initEnergyBusiness = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/resource_center/energy_business_data',
         type: 'GET',
         dataType: 'json',
         headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
-            provinceId: provinceId,
-            cityId: cityId,
-            prefectureId: prefectureId
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId
         },
         success: function (res) {
             if (res.code === 200) {
@@ -421,17 +389,18 @@ Resource.prototype.initEnergyBusiness = function (provinceId, cityId, prefecture
     });
 }
 
-Resource.prototype.initEnergyProduct = function (provinceId, cityId, prefectureId) {
+Resource.prototype.initEnergyProduct = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/resource_center/energy_product_guarantee',
         type: 'GET',
         dataType: 'json',
         headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
-            provinceId: provinceId,
-            cityId: cityId,
-            prefectureId: prefectureId
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId
         },
         success: function (res) {
             if (res.code === 200) {
@@ -446,17 +415,18 @@ Resource.prototype.initEnergyProduct = function (provinceId, cityId, prefectureI
     });
 }
 
-Resource.prototype.initResourceCenterList = function (provinceId, cityId, prefectureId) {
+Resource.prototype.initResourceCenterList = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/resource_center/resource_center_list',
         type: 'GET',
         dataType: 'json',
         headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
-            provinceId: provinceId,
-            cityId: cityId,
-            prefectureId: prefectureId
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId
         },
         success: function (res) {
             if (res.code === 200) {

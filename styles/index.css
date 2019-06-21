@@ -554,7 +554,7 @@ body {
 }
 
 .energy-content .energy-center .energy-content-number {
-    margin-left: 0;
+    margin-left: 0;height:20px;display:block;
 }
 
 .extended-longevity .progress-money,
@@ -632,25 +632,25 @@ body {
 .customer-box {
     margin-top: 20px;
     margin-bottom: 20px;
-    padding-bottom: 6rem;
+    padding-bottom: 4rem;
     padding-left: 6.9rem;
     padding-right: 6.9rem;
 
     min-height: 80px;
 }
-
-.customer-box img {
-    float: left;
-
-    /* width: 8.8rem;
-    height: 2.4rem; */
-
-    margin-left: 1.8rem;
+.customer-box .pic{margin-left: 1.8rem;float:left;text-align:center;
     margin-right: 1.8rem;
-    margin-bottom: 20px;
+    }
+.customer-box .pic img {
+   /* float: left;*/
+
+    /* max-width: 8.8rem;*/
+   max-height: 3rem;
+margin-bottom: 10px;
+    
 }
 
-
+.clearfix{clear:both;}
 .badeg-info {
     text-align: center;
     margin-top: 5px;
@@ -677,3 +677,5 @@ body {
 .layui-badge3 {
     background:#02C160;
 }
+.w_dl{overflow:hidden;padding:0 10%;position:absolute;width:100%;left:0;top:50%;transform: translateY(-50%);box-sizing: border-box;}
+.pos{position:relative;}

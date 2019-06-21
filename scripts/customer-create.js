@@ -17,7 +17,8 @@ var CustomerCreate = function () {
         processCycle: $('#processCycle'),
         customerContact: $('#customerContact'),
         customerServer: $('#customerServer'),
-        btnSave: $('#btnSave')
+        btnSave: $('#btnSave'),
+        roleName: $('#roleName')
     };
     this._commonData = {
         form: null,
@@ -29,6 +30,7 @@ var CustomerCreate = function () {
 };
 CustomerCreate.prototype.initControl = function () {
     var that = this;
+    this._controls.roleName.html($.cookie('name'));
     layui.use(['form', 'laydate', 'element', 'upload'], function () {
         var form = layui.form;
         that._commonData.form = layui.form;

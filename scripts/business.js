@@ -16,17 +16,20 @@ var Business = function () {
             t1pjyjsc: $('#t1pjyjsc'),
             ysglts: $('#ysglts'),
             yjcs: $('#yjcs'),
-            table1: $('#table1')
+            table1: $('#table1'),
+            roleName: $('#roleName')
         },
         this._commonData = {
             chartType: false,
-            provinceId: 17,
+            provinceId: '',
             cityId: '',
-            prefectureId: ''
+            prefectureId: '',
+            name: ''
         }
 }
 Business.prototype.initControl = function () {
     var that = this;
+    this._controls.roleName.html($.cookie('name'));
     // 初始化日期
     this.initUpdate();
     // 初始化layui
@@ -48,13 +51,23 @@ Business.prototype.initControl = function () {
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnChart.removeClass('layui-btn-normal').addClass('layui-btn-primary');
     });
-    this._controls._layuiTag.on('click', function () {
-        window.location.href = "business-second.html";
-    });
 
     this.energyStation();
     this.prolongStation();
 };
+
+// 权限判断
+Business.prototype.cookieDeter = function () {
+    var that = this;
+    if ($.cookie('mapRange') === '1') {
+        that._commonData.provinceId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '2') {
+        that._commonData.cityId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '3') {
+        that._commonData.prefectureId = $.cookie('mapRangeId');
+    }
+}
+
 // 初始化日期
 Business.prototype.initUpdate = function () {
     var that = this;
@@ -156,6 +169,9 @@ Business.prototype.initChart = function () {
                 map.addOverlay(ply);
                 pointArray = pointArray.concat(ply.getPath());
             }
+            if ($.cookie('userRole') != '河南') {
+                map.setViewport(pointArray); //调整视野 
+            } 
             if (num === 1) {
                 getMap(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);    
             }
@@ -326,24 +342,28 @@ Business.prototype.initChart = function () {
 
     // 获取河南省各市区边界
     function getCitySide() {
-        getBoundary('郑州', 1);
-        getBoundary('开封', 2);
-        getBoundary('洛阳', 3);
-        getBoundary('平顶山', 4);
-        getBoundary('安阳', 5);
-        getBoundary('鹤壁', 6);
-        getBoundary('新乡', 7);
-        getBoundary('焦作', 8);
-        getBoundary('濮阳', 9);
-        getBoundary('许昌', 10);
-        getBoundary('漯河', 11);
-        getBoundary('三门峡', 12);
-        getBoundary('南阳', 13);
-        getBoundary('商丘', 14);
-        getBoundary('信阳', 15);
-        getBoundary('周口', 16);
-        getBoundary('驻马店', 17);
-        getBoundary('济源市', 18);
+        if ($.cookie('userRole') != '河南') {
+            getBoundary($.cookie('userRole'), 1);
+        } else {
+            getBoundary('郑州', 1);
+            getBoundary('开封', 2);
+            getBoundary('洛阳', 3);
+            getBoundary('平顶山', 4);
+            getBoundary('安阳', 5);
+            getBoundary('鹤壁', 6);
+            getBoundary('新乡', 7);
+            getBoundary('焦作', 8);
+            getBoundary('濮阳', 9);
+            getBoundary('许昌', 10);
+            getBoundary('漯河', 11);
+            getBoundary('三门峡', 12);
+            getBoundary('南阳', 13);
+            getBoundary('商丘', 14);
+            getBoundary('信阳', 15);
+            getBoundary('周口', 16);
+            getBoundary('驻马店', 17);
+            getBoundary('济源市', 18);
+        }
     }
     setTimeout(function () {
         getCitySide();
@@ -352,13 +372,14 @@ Business.prototype.initChart = function () {
 
 Business.prototype.energyStation = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/business_center/energy_station',
         type: 'GET',
         dataType: 'json',
         headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
-            provinceId: 17,
+            provinceId: that._commonData.provinceId,
             cityId: that._commonData.cityId,
             prefectureId: that._commonData.prefectureId
         },
@@ -376,13 +397,14 @@ Business.prototype.energyStation = function () {
 
 Business.prototype.prolongStation = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/business_center/prolong_station',
         type: 'GET',
         dataType: 'json',
         headers:{'Admin-Token':$.cookie('adminToken')},
         data: {
-            provinceId: 17,
+            provinceId: that._commonData.provinceId,
             cityId: that._commonData.cityId,
             prefectureId: that._commonData.prefectureId
         },

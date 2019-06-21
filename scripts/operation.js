@@ -1,54 +1,69 @@
-var Operation = function() {
+var Operation = function () {
     this._urls = {};
     this._controls = {
             uploadDate: $('#uploadDate'),
             btnChart: $('#btnChart'),
             btnTable: $('#btnTable'),
             myChart: $('#myChart'),
-            myTable: $('#myTable')
+            myTable: $('#myTable'),
+            roleName: $('#roleName')
         },
         this._commonData = {
             chartType: false,
-            provinceId: 17,
+            provinceId: '',
             cityId: '',
-            prefectureId: ''
+            prefectureId: '',
+            name: ''
         }
 }
-Operation.prototype.initControl = function() {
+Operation.prototype.initControl = function () {
     var that = this;
+    this._controls.roleName.html($.cookie('name'));
     // 初始化日期
     this.initUpdate();
     // 初始化layui
-    layui.use('element', function() {
+    layui.use('element', function () {
         var element = layui.element;
     });
     // 初始化地图
     this.initChart();
     this.getLeftData();
     // 按钮事件
-    this._controls.btnChart.on('click', function() {
+    this._controls.btnChart.on('click', function () {
         that._controls.myChart.show();
         that._controls.myTable.hide();
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnTable.addClass('layui-btn-primary').removeClass('layui-btn-normal');
-        setTimeout(function() {
+        setTimeout(function () {
             that._commonData.chartType = true;
             that.initChart.getBoundary;
         }, 100);
     });
-    that._controls.btnTable.on('click', function() {
+    that._controls.btnTable.on('click', function () {
         that._controls.myChart.hide();
         that._controls.myTable.show();
         $(this).addClass('layui-btn-normal').removeClass('layui-btn-primary');
         that._controls.btnChart.removeClass('layui-btn-normal').addClass('layui-btn-primary');
     });
 
-    $('.operation-content').on('click', function() {
+    $('.operation-content').on('click', function () {
         window.location.href = 'operation-detail.html';
     })
 };
+
+// 权限判断
+Operation.prototype.cookieDeter = function () {
+    var that = this;
+    if ($.cookie('mapRange') === '1') {
+        that._commonData.provinceId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '2') {
+        that._commonData.cityId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '3') {
+        that._commonData.prefectureId = $.cookie('mapRangeId');
+    }
+}
 // 初始化日期
-Operation.prototype.initUpdate = function() {
+Operation.prototype.initUpdate = function () {
     var that = this;
 
     function add(m) {
@@ -65,7 +80,7 @@ Operation.prototype.initUpdate = function() {
         return (y + '-' + add(m) + '-' + add(d) + ' ' + add(h) + ':' + add(mm) + ':' + add(s));
     }
 
-    var date = new Date(new Date().getTime());// + (1000 * 60 * 60 * 72));
+    var date = new Date(new Date().getTime()); // + (1000 * 60 * 60 * 72));
     var date_str = fortime(date);
     that._controls.uploadDate.html(date_str)
 };
@@ -114,7 +129,7 @@ Operation.prototype.initChart = function () {
             that._commonData.provinceId = 17;
             that._commonData.cityId = '';
             that._commonData.prefectureId = '';
-            
+
             map.centerAndZoom(new BMap.Point(113.557234, 33.902115), 8);
             map.setCurrentCity("郑州");
             map.clearOverlays();
@@ -147,19 +162,24 @@ Operation.prototype.initChart = function () {
                 map.addOverlay(ply);
                 pointArray = pointArray.concat(ply.getPath());
             }
+            if ($.cookie('userRole') != '河南') {
+                map.setViewport(pointArray); //调整视野 
+            }
             if (num === 1) {
-                getMap(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);    
+                getMap(that._commonData.provinceId, that._commonData.cityId, that._commonData.prefectureId);
             }
         });
     }
-    
+
 
     function getMap(provinceId, cityId, prefectureId) {
         $.ajax({
             url: 'http://www.baoxingtech.com:9604/sys/operation_center/map',
             type: 'GET',
             dataType: 'json',
-            headers:{'Admin-Token':$.cookie('adminToken')},
+            headers: {
+                'Admin-Token': $.cookie('adminToken')
+            },
             data: {
                 provinceId: provinceId,
                 cityId: cityId,
@@ -253,13 +273,15 @@ Operation.prototype.initChart = function () {
         mark.addEventListener('mouseout', function () {
             lable.hide();
         });
-        var label1 = new BMap.Label(data.name,{offset:new BMap.Size(20,-10)});
+        var label1 = new BMap.Label(data.name, {
+            offset: new BMap.Size(20, -10)
+        });
         label1.setStyle({
             border: 'none',
             border: '1px solid rgba(36,110,221, .5)',
             borderRadius: '5px'
         });
-	    mark.setLabel(label1);
+        mark.setLabel(label1);
         mark.addEventListener('click', function (e) {
 
             if (map.getZoom() === 8) {
@@ -280,7 +302,7 @@ Operation.prototype.initChart = function () {
         function getPointBoundary() {
             var bdary = new BMap.Boundary();
             bdary.get(name, function (rs) { //获取行政区域
-                     
+
                 var count = rs.boundaries.length; //行政区域的点有多少个
                 if (count === 0) {
                     alert('未能获取当前输入行政区域');
@@ -310,24 +332,28 @@ Operation.prototype.initChart = function () {
 
     // 获取河南省各市区边界
     function getCitySide() {
-        getBoundary('郑州', 1);
-        getBoundary('开封', 2);
-        getBoundary('洛阳', 3);
-        getBoundary('平顶山', 4);
-        getBoundary('安阳', 5);
-        getBoundary('鹤壁', 6);
-        getBoundary('新乡', 7);
-        getBoundary('焦作', 8);
-        getBoundary('濮阳', 9);
-        getBoundary('许昌', 10);
-        getBoundary('漯河', 11);
-        getBoundary('三门峡', 12);
-        getBoundary('南阳', 13);
-        getBoundary('商丘', 14);
-        getBoundary('信阳', 15);
-        getBoundary('周口', 16);
-        getBoundary('驻马店', 17);
-        getBoundary('济源市', 18);
+        if ($.cookie('userRole') != '河南') {
+            getBoundary($.cookie('userRole'), 1);
+        } else {
+            getBoundary('郑州', 1);
+            getBoundary('开封', 2);
+            getBoundary('洛阳', 3);
+            getBoundary('平顶山', 4);
+            getBoundary('安阳', 5);
+            getBoundary('鹤壁', 6);
+            getBoundary('新乡', 7);
+            getBoundary('焦作', 8);
+            getBoundary('濮阳', 9);
+            getBoundary('许昌', 10);
+            getBoundary('漯河', 11);
+            getBoundary('三门峡', 12);
+            getBoundary('南阳', 13);
+            getBoundary('商丘', 14);
+            getBoundary('信阳', 15);
+            getBoundary('周口', 16);
+            getBoundary('驻马店', 17);
+            getBoundary('济源市', 18);
+        }
     }
     setTimeout(function () {
         getCitySide();
@@ -335,11 +361,14 @@ Operation.prototype.initChart = function () {
 }
 Operation.prototype.getLeftData = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/operation_center/left_data',
         type: 'GET',
         dataType: 'json',
-        headers:{'Admin-Token':$.cookie('adminToken')},
+        headers: {
+            'Admin-Token': $.cookie('adminToken')
+        },
         data: {
             provinceId: that._commonData.provinceId,
             cityId: that._commonData.cityId,

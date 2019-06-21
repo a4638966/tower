@@ -17,7 +17,9 @@ var CustomerMaintain = function () {
 
         btnSearch: $('#btnSearch'),
 
-        tbody: $('#tbody')
+        tbody: $('#tbody'),
+
+        roleName: $('#roleName')
     };
     this._commonData = {
         form: null,
@@ -33,6 +35,7 @@ var CustomerMaintain = function () {
 };
 CustomerMaintain.prototype.initControl = function () {
     var that = this;
+    this._controls.roleName.html($.cookie('name'));
     layui.use(['laydate','element', 'form'], function () {
         var laydate = layui.laydate;
         var form = layui.form;
@@ -169,7 +172,7 @@ CustomerMaintain.prototype.handleSearch = function () {
             var str = '';
             if (res.code === 200) {
                 if (res.result.length > 0) {
-                    that._commonData.searchData = res,result;
+                    that._commonData.searchData = res.result;
                     for (var i=0;i< res.result.length;i++) {
                         str += '<tr>';
                         str += '<td>' + res.result[i].userName + '</td>';
@@ -182,11 +185,12 @@ CustomerMaintain.prototype.handleSearch = function () {
                         } else {
                             str += '<td>其他用户</td>'
                         }
+                        str += '<td>' + res.result[i].userDev + '</td>';
                         str += '<td>' + res.result[i].address + '</td>';
                         str += '<td>' + res.result[i].customerContact + '</td>';
                         str += '<td>' + res.result[i].customerServer + '</td>';
                         str += '<td>';
-                        str += '<a href="javascript:void(0)" style="color: #fff">详情</a>'
+                        // str += '<a href="javascript:void(0)" style="color: #fff">详情</a>'
                         str += '</td>';
                         str += '</tr>';
                     }

@@ -24,16 +24,21 @@ var Index = function () {
         extendCapacity: $('#extendCapacity'),
         extendPjxhnl: $('#extendPjxhnl'),
         extendXhnltsnl: $('#extendXhnltsnl'),
-        extendFDL: $('#extendFDL')
+        extendFDL: $('#extendFDL'),
+        roleName: $('#roleName')
     };
     this._commonData = {
         cdlbfb: 0,
-        fdlbfb: 0
+        fdlbfb: 0,
+        provinceId: '',
+        cityId: '',
+        prefectureId: '',
     }
 };
 
 Index.prototype.initControl = function () {
     var that = this;
+    this._controls.roleName.html($.cookie('name'));
     // 初始化layui
     layui.use(['carousel', 'form', 'element'], function () {
         var carousel = layui.carousel;
@@ -118,18 +123,33 @@ Index.prototype.initControl = function () {
 
 }
 
+// 权限判断
+Index.prototype.cookieDeter = function () {
+    var that = this;
+    if ($.cookie('mapRange') === '1') {
+        that._commonData.provinceId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '2') {
+        that._commonData.cityId = $.cookie('mapRangeId');
+    } else if ($.cookie('mapRange') === '3') {
+        that._commonData.prefectureId = $.cookie('mapRangeId');
+    }
+}
+
 // 初始化备电点
 Index.prototype.initSearch = function (mode) {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/index/big_type_data',
         type: 'GET',
         dataType: 'json',
-        headers:{'Admin-Token':$.cookie('adminToken')},
+        headers: {
+            'Admin-Token': $.cookie('adminToken')
+        },
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: '',
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
             mode: mode
         },
         success: function (res) {
@@ -224,15 +244,18 @@ Index.prototype.initChart = function (data) {
 // 储能站
 Index.prototype.initEnergyStation = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/index/energy_station',
         type: 'GET',
         dataType: 'json',
-        headers:{'Admin-Token':$.cookie('adminToken')},
+        headers: {
+            'Admin-Token': $.cookie('adminToken')
+        },
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
         },
         success: function (res) {
             if (res.code === 200) {
@@ -262,15 +285,18 @@ Index.prototype.initEnergyStation = function () {
 // 延寿站
 Index.prototype.initExtended = function () {
     var that = this;
+    this.cookieDeter();
     $.ajax({
         url: 'http://www.baoxingtech.com:9604/sys/index/prolong_station',
         type: 'GET',
         dataType: 'json',
-        headers:{'Admin-Token':$.cookie('adminToken')},
+        headers: {
+            'Admin-Token': $.cookie('adminToken')
+        },
         data: {
-            provinceId: 17,
-            cityId: '',
-            prefectureId: ''
+            provinceId: that._commonData.provinceId,
+            cityId: that._commonData.cityId,
+            prefectureId: that._commonData.prefectureId,
         },
         success: function (res) {
             if (res.code === 200) {
@@ -333,10 +359,38 @@ Index.prototype.login = function () {
         success: function (res) {
             if (res.code === 200) {
                 $.cookie('adminToken', res.result.adminToken);
-                layer.msg('登陆成功，欢迎您管理员', {
+                $.cookie('mapRangeId', res.result.mapRangeId);
+                $.cookie('mapRange', res.result.mapRange);
+                $.cookie('name', res.result.name);
+                if (res.result.mapRange === 1) {
+                    $.cookie('userRole', '河南')
+                } else if (res.result.mapRange === 2) {
+                    $.ajax({
+                        url: 'http://www.baoxingtech.com:9604/sys/area/shi',
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'Admin-Token':  res.result.adminToken
+                        },
+                        data: {
+                            provinceId: 17
+                        },
+                        success: function (res1) {
+                            if (res.code === 200) {
+                                for (var i=0;i< res1.result.length;i++) {
+                                    if (res1.result[i].id === res.result.mapRangeId) {
+                                        $.cookie('userRole', res1.result[i].name);
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                layer.msg('登陆成功，欢迎您' + res.result.name + '', {
                     icon: 1,
                     time: 700 //2秒关闭（如果不配置，默认是3秒）
                 }, function () {
+                    that._controls.roleName.html($.cookie('name'))
                     that._controls.loginAgo.hide();
                     that._controls.loginAfter.show();
                     that._controls.userMin.show();
@@ -344,6 +398,8 @@ Index.prototype.login = function () {
                     that.initEnergyStation();
                     that.initExtended();
                 });
+            } else {
+                layer.msg(res.message)
             }
         }
     });
@@ -365,6 +421,10 @@ Index.prototype.logout = function () {
             success: function (res) {
                 if (res.code === 200) {
                     $.cookie('adminToken', null);
+                    $.cookie('mapRange', null);
+                    $.cookie('mapRangeId', null)
+                    $.cookie('name', '')
+                    $.cookie('userRole', '');
                     layer.close(index);
                     layer.msg('退出成功', {
                         icon: 1,
