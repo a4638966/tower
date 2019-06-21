@@ -120,9 +120,42 @@ Index.prototype.initControl = function () {
         that.initEnergyStation();
         that.initExtended();
     }
+    that.getInfo()
 
 }
 
+//获取签约快讯
+Index.prototype.getInfo = function () {
+    $.ajax({
+        url: 'http://www.baoxingtech.com:9604/sys/news/homeList',
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Admin-Token': $.cookie('adminToken')
+        },
+        data: {
+            size:7,
+            type:0,
+        },
+        success: function (res) {
+            console.log(res)
+            let data = res.result; 
+            var str = ''
+            for (let i = 0; i < data.length; i++) {
+                 str += "<li style='overflow: hidden;white-space: nowrap;text-overflow: ellipsis;' onclick="  + "window.open('new_detail_ifrom.html?id="+data[i].id+"')" + ">" +
+                    '<p class="news-info">'+data[i].title+'</p>' +
+                    '<p class="news-date">'+data[i].releaseTime+'</p>' +
+                    '<div class="clearfix"></div>' +
+                    '</li>';
+            }
+            $('#news_kx').html(str);
+        },
+        error: function () {
+            layer.msg('数据异常！')
+        }
+    });
+    
+}
 // 权限判断
 Index.prototype.cookieDeter = function () {
     var that = this;
@@ -395,6 +428,7 @@ Index.prototype.login = function () {
                     that._controls.loginAfter.show();
                     that._controls.userMin.show();
                     that.initSearch('bd');
+                    that.getInfo();
                     that.initEnergyStation();
                     that.initExtended();
                 });
