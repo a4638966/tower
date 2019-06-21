@@ -381,11 +381,11 @@ Resource.prototype.initEnergyBusiness = function () {
                 res.result.cddsl === 0 ? that._controls.cddsl.html('-') : that._controls.cddsl.html(res.result.cddsl);
                 res.result.hddsl === 0 ? that._controls.hddsl.html('-') : that._controls.hddsl.html(res.result.hddsl);
                 res.result.sddsl === 0 ? that._controls.sddsl.html('-') : that._controls.sddsl.html(res.result.sddsl);
-                res.result.bddrl === 0 ? $('#bddnyb').html('-'): $('#bddnyb').html(res.result.bddrl);
-                res.result.cddrl === 0 ? $('#cddnyb').html('-'): $('#cddnyb').html(res.result.cddrl);
-                res.result.hddrl === 0 ? $('#hddnyb').html('-'): $('#hddnyb').html(res.result.hddrl);
-                res.result.sdddl === 0 ? $('#sdddl').html('-'): $('#sdddl').html(res.result.sdddl);
-                res.result.xdcgm === 0 ? $('#xdcgm').html('-') : $('#xdcgm').html(res.result.xdcgm);
+                res.result.bddrl === 0 ? $('#bddnyb').html('0'): $('#bddnyb').html(res.result.bddrl);
+                res.result.cddrl === 0 ? $('#cddnyb').html('0'): $('#cddnyb').html(res.result.cddrl);
+                res.result.hddrl === 0 ? $('#hddnyb').html('0'): $('#hddnyb').html(res.result.hddrl);
+                res.result.sdddl === 0 ? $('#sdddl').html('0'): $('#sdddl').html(res.result.sdddl);
+                res.result.xdcgm === 0 ? $('#xdcgm').html('0') : $('#xdcgm').html(res.result.xdcgm);
             }
         },
         error: function () {
@@ -411,7 +411,7 @@ Resource.prototype.initEnergyProduct = function () {
             if (res.code === 200) {
                 res.result.cnzsl === 0 ? $('#cnzsl').html('-') : $('#cnzsl').html(res.result.cnzsl);
                 res.result.cnzrl === 0 ? $('#cnzrl').html('-') : $('#cnzrl').html(res.result.cnzrl);
-                res.result.yszsl === 0 ? $('#yszsl').html('-') : $('#yszsl').html(res.result.cnzrl);
+                res.result.yszsl === 0 ? $('#yszsl').html('-') : $('#yszsl').html(res.result.yszsl);
                 res.result.yszrl === 0 ? $('#yszrl').html('-') : $('#yszrl').html(res.result.yszrl);
             }
         },
