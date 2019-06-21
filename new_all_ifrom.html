@@ -101,12 +101,12 @@
         </div>
         <div class="layui-row">
             <div class="layui-col-lg12 layui-col-md12 layui-radius" style="box-shadow: none;">
-                <iframe id="ifroms" src="http://localhost:8080/#/allnew" frameborder="0" style="width:100%;min-height:500px;"></iframe >
-                <!-- <h1 class="new_title" id="title"></h1>
-                <div class="new_info">
-                    <p>来源：<span id="source"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：<span id="createTime"></span></p>
+                <div class="page">
+                    <div class="new_wrap flot bor4">
+                        <ul class="news-content-if">
+                        </ul>
+                    </div>
                 </div>
-                <div class="new_content" id="content"></div> -->
             </div>
         </div>
     </div>
@@ -114,9 +114,95 @@
         <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
         <p>creenshots © Their respective owners. Google+</p>
     </footer>
-    
+    <script>
+        var data = {
+                type: 0,//文章类型  0：签约快讯
+                pageNum: 1,
+                pageSize: 20
+        }
+         $.ajax({
+                url: 'http://www.baoxingtech.com:9604/sys/news/newsList',
+                type: 'POST',
+                dataType: 'json',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                
+                data: JSON.stringify(data),
+                success: function (res) {
+                    console.log(res)
+                    let data =  res.result.records;
+                    var str = ''
+                    for (let i = 0; i < data.length; i++) {
+                        str += '<li>'+
+                                   ' <p  class="news-info" onclick="goto('+data[i].id+')" >'+data[i].title+'</p>'+
+                                   ' <p class="news-date">'+data[i].releaseTime+'</p>'+
+                               ' </li>' ;
+                    }
+                    $('.news-content-if').html(str);
+                },
+                error: function () {
+                    layer.msg('数据异常！')
+                }
+            });
+            function goto(id) {
+                window.open('new_detail_ifrom.html?id='+id)
+            }
+            
+    </script>
+    <style>
+        .news-content li > .news-info:hover {
+            color: #0070c9;
+        }
+        .page {
+            margin: 0 auto;
+            background: #fff;
+            height:700px;
+        }
+        .new_wrap {
+            background: #fff;
+            height: 100%;
+        }
+        .news-content-if{
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .news-content-if li {
+            height: 40px;
+            width: 49%;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .news-info {
+            float: left;
+            width: 50%;
+            margin-left: 1.8%;
+            font-size: 0.9rem;
+            color: #283945;
+            line-height: 40px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .news-date {
+            float: right;
+            cursor: pointer;
+            margin-right: 8%;
+            font-size: 14px;
+            color: #acb7bf;
+            line-height: 40px;
+        }
+        .placed {
+            background: #008eff;
+            height: 18px;
+            line-height: 18px;
+            position: relative;
+            padding: 0 6px;
+            font-size: 12px;
+            text-align: center;
+            color: #fff;
+            border-radius: 2px;
+        }
+    </style>
 </body>
-<script>
- 
-</script>
 </html>
