@@ -503,7 +503,8 @@ Resource.prototype.initSecondBdList = function () {
                 if (res.result.length > 0) {
                     var str = '';
                     for (var i = 0; i < res.result.length; i++) {
-                        str += '<tr onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].panelId + '\')">';
+                        // str += '<tr onclick="window.open(\'http://www.baoxingtech.com:2037/escape/siteDetail.html?panelId=' + res.result[i].panelId + '\')">';
+                        str += '<tr onclick="window.open(\'newpage/index.html#/chartDetails?panelId=' + res.result[i].panelId + '\')">';
                         str += '<td>' + res.result[i].name + '</td>';
                         str += '<td>' + res.result[i].customerName + '</td>';
                         str += '<td>' + res.result[i].panelName + '</td>';

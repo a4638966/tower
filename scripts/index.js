@@ -23,6 +23,7 @@ var Index = function () {
         extendTotal: $('#extendTotal'),
         extendCapacity: $('#extendCapacity'),
         extendPjxhnl: $('#extendPjxhnl'),
+        extendXhsc: $('#extendXhsc'),
         extendXhnltsnl: $('#extendXhnltsnl'),
         extendFDL: $('#extendFDL'),
         roleName: $('#roleName')
@@ -302,7 +303,8 @@ Index.prototype.initExtended = function () {
             if (res.code === 200) {
                 res.result.total === '' ? that._controls.extendTotal.html('0<span>个</span>') : that._controls.extendTotal.html(res.result.total + '<span>个</span>');
                 res.result.capacity === '' ? that._controls.extendCapacity.html('0<span>MWH</span>') : that._controls.extendCapacity.html(res.result.capacity + '<span>MWH</span>');
-                res.result.pjxhnl === '' ? that._controls.extendPjxhnl.html('0<span>H</span>') : that._controls.extendPjxhnl.html(res.result.pjxhnl + '<span>H</span>');
+                res.result.xhsc === '' ? that._controls.extendPjxhnl.html('0<span>H</span>') : that._controls.extendPjxhnl.html(res.result.xhsc + '<span>H</span>');
+                res.result.pjxhnl === '' ? that._controls.extendXhsc.html('0<span>H</span>') : that._controls.extendXhsc.html(res.result.pjxhnl + '<span>H</span>');
                 res.result.xhnltsnl === '' ? that._controls.extendXhnltsnl.html('0<span>%</span>') : that._controls.extendXhnltsnl.html(res.result.xhnltsnl + '<span>%</span>');
                 res.result.fdl === '' ? that._controls.extendFDL.html('0<span>MWH</span>') : that._controls.extendFDL.html(res.result.fdl + '<span>MWH</span>');
                 layui.use(['carousel', 'form', 'element'], function () {

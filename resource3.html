@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国铁塔股份有限公司河南省分公司</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="components/layui/css/layui.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/resource.css">
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/layui/layui.js"></script>
+    <script src="components/chart.js/Chart.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=As3hEGohORpA0rnrOwu2cNdefeZM84mW"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+    <script src="components/jquery.cookie.js"></script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="layui-layout-body layui-layout layui-layout-admin" style="overflow: auto">
+    <!-- 头部logo部分开始 -->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header logo-box">
+            <a href="index.html">
+                <img src="images/logo.png" alt="logo">
+            </a>
+            <ul class="layui-nav layui-layout-left nav-box">
+                <li class="layui-nav-item ">
+                    <a href="index.html">首页
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="resource.html">资源中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="javascript:void(0);">监控中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="monitoring.html">能源生产保障</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=5">能源备电监控</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=6">能源发电监控</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="javascript:void(0)">业务中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="business.html">能源生产保障</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=8">能源发电业务</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=7">能源备电业务</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="javascript:void(0)">调度中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=1">对内应急保障中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=2">备电客户保障中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=3">电力停电预警中心</a></dd>
+                        <dd><a href="iframe.html?http://henan.towercom.vip/tower_manage_bms/a/sso/login?username=baoxing_hn&password=123456&sso=4">基站能源均衡中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="javascript:void(0)">客户中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="customer-maintain.html">客户维护</a></dd>
+                        <dd><a href="demand-detail.html">客户管理</a></dd>
+                        <dd><a href="customer.html">客户统计</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a href="operation.html">运营中心
+            <!-- <span class="layui-badge-dot"></span> --></a>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-username" style="color: #fff;font-size: 1.1rem;display: inline-block;margin-right: 5px;"></i> <span id="roleName"></span>
+                        <span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                        <dd><a href="personal.html">个人中心</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 头部logo部分结束 -->
+    <!-- 主体内容开始 -->
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <div class="layui-col-lg12 layui-col-md12" style="text-align: right;color: #ACB7BF;margin-bottom: 10px;">
+                <p style="margin-right: 6%;">数据更新于<span id="uploadDate"></span></p>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-lg4 layui-col-md4">
+                <div class="layui-row">
+                    <div class="layui-col-lg12 layui-col-md12 layui-radius">
+                        <div class="news-left-block"></div>
+                        <div class="news-title">
+                            <p>能源经营业务</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="layui-row">
+                            <div class="layui-col-lg3 layui-col-md3 layui-tag" data-info="standbyPower">
+                                <span class="tag-num" id="bddsl">0</span>
+                                <span class="tag-info">备电点(个)</span>
+                            </div>
+                            <div class="layui-col-lg3 layui-col-md3 layui-tag" data-info="charge">
+                                <span class="tag-num" id="cddsl">0</span>
+                                <span class="tag-info">充电点(个)</span>
+                            </div>
+                            <div class="layui-col-lg3 layui-col-md3 layui-tag" data-info="powerExchange">
+                                <span class="tag-num" id="hddsl">0</span>
+                                <span class="tag-info">换电点(个)</span>
+                            </div>
+                            <div class="layui-col-lg3 layui-col-md3 layui-tag" style="border-right: none" data-info="sellingElectricity">
+                                <span class="tag-num" id="sddsl">0</span>
+                                <span class="tag-info">售电点(个)</span>
+                            </div>
+                            <div class="layui-col-lg3 layui-col-md3 layui-tag" data-info="energyPack">
+                                <span class="tag-num" id="bddnyb">0</span>
+                                <span class="tag-info">能源包(AH)</span>
+                            </div>
+                            <div class="layui-col-lg3 layui-col-md3 layui-tag" data-info="">
+                                <span class="tag-num" id="hddnyb">0</span>
+                                <span class="tag-info">能源包(AH)</span>
+                            </div>
+                             <div class="layui-col-lg3 layui-col-md3 layui-tag" data-info="">
+                                <span class="tag-num" id="sdddl">0</span>
+                                <span class="tag-info">能源包(AH)</span>
+                            </div>
+                             <div class="layui-col-lg3 layui-col-md3 layui-tag" style="border-right: none" data-info="">
+                                <span class="tag-num" id="xdcgm">0</span>
+                                <span class="tag-info">电量(KW/H)</span>
+                            </div>
+                            <div class="layui-col-lg4 layui-col-md4"></div>
+                        </div>
+                    </div>
+                    <div class="layui-col-lg12 layui-col-md12 layui-radius" style="margin-top: 10px;">
+                        <div class="news-left-block"></div>
+                        <div class="news-title">
+                            <p>能源生产保障</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="layui-row">
+                            <div class="layui-col-lg6 layui-col-md6 layui-tag" data-info="prolongLife">
+                                <span class="tag-num" id="cnzsl">0</span>
+                                <span class="tag-info">储能站(个)</span>
+                            </div>
+                            <div class="layui-col-lg6 layui-col-md6 layui-tag" data-info="energyStorage">
+                                <span class="tag-num" id="yszsl">0</span>
+                                <span class="tag-info">延寿站(个)</span>
+                            </div>
+                            <div class="layui-col-lg6 layui-col-md6 layui-tag" data-info="batter">
+                                <span class="tag-num" id="cnzrl">0</span>
+                                <span class="tag-info">蓄电池(AH)</span>
+                            </div>
+                            <div class="layui-col-lg6 layui-col-md6 layui-tag" style="border-right: none" data-info="">
+                                <span class="tag-num" id="yszrl">0</span>
+                                <span class="tag-info">蓄电池(AH)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-lg8 layui-col-md8">
+                <div class="layui-radius" style="width: 90%;min-height: 448px;margin-left: 10px;margin-bottom: 50px;">
+                    <div class="layui-row chart-box">
+                        <div class="layui-col-lg12 layui-col-md12 chart-title">
+                            <div class="layui-btn-group chart-btn-box">
+                                <button id="btnChart" class="layui-btn layui-btn-sm layui-btn-normal">地图</button>
+                                <button id="btnTable" class="layui-btn layui-btn-sm layui-btn-primary">列表</button>
+                            </div>
+                        </div>
+                        <div id="myChart" class="layui-col-lg12 layui-col-md12 chart-content"></div>
+                        <div id="myTable" class="layui-col-lg12 layui-col-md12" style="display:none">
+                            <table class="layui-table" lay-skin="line">
+                                <thead>
+                                    <tr>
+                                        <td colspan="6" style="font-size: 16px;border-right: 1px solid #e6e6e6">能源经营业务</td>
+                                        <td colspan="3" style="font-size: 16px;">能源生产保障</td>
+                                    </tr>
+                                    <tr>
+                                        <th>地区</th>
+                                        <th>备电点</th>
+                                        <th>充电点</th>
+                                        <th>换电点</th>
+                                        <th>售电点</th>
+                                        <th style="border-right: 1px solid #e6e6e6">蓄电池</th>
+                                        <th>储能站</th>
+                                        <th>延寿站</th>
+                                        <th>蓄电池规模</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableList"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Copyright © 2010-2019 Graphic Resources S.L. All screenshots © </p>
+        <p>creenshots © Their respective owners. Google+</p>
+    </footer>
+    <script src="scripts/resource.js"></script>
+    <script src="./components/jquery.cookie.js"></script>
+    <script>
+        var resource = null;
+        resource = new Resource();
+        resource.initControl();
+    </script>
+</body>
+
+</html>
